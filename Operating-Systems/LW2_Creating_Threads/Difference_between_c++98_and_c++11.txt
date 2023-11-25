@@ -1,0 +1,17 @@
+C++98:
+1. **Threading Library:** Uses `pthread.h` for multi-threading support.
+2. **Mutex:** Utilizes `pthread_mutex_t` for mutex and manual locking/unlocking.
+3. **Sleep Function:** Defines a custom `sleep_ms` function using `nanosleep` for sleeping in milliseconds.
+4. **Thread Creation:** Creates threads using `pthread_create` and waits for thread completion using `pthread_join`.
+5. **Thread Function Signature:** Thread functions have a `void*` return type and take a `void*` parameter.
+6. **Global Variables:** Uses global variables for min, max, and average values.
+7. **Global Mutex:** Declares a global mutex for synchronization.
+
+C++11:
+1. **Threading Library:** Uses `<thread>` and `<windows.h>` for multi-threading support.
+2. **Mutex:** Utilizes `std::mutex` for automatic locking and unlocking.
+3. **Sleep Function:** Uses `std::this_thread::sleep_for` for sleeping in milliseconds.
+4. **Thread Creation:** Creates threads using `std::thread` and joins them with `join`.
+5. **Thread Function Signature:** Thread functions have a `void` return type and take no parameters.
+6. **Local Variables:** Min, max, and average values are local to the respective thread functions.
+7. **Lock Guards:** Utilizes `std::lock_guard` to automatically lock and unlock mutexes.

@@ -1,0 +1,14 @@
+1. **Boost.Thread for Multithreading:**
+   - Utilized `boost::thread` for managing threads, simplifying thread creation and synchronization.
+
+2. **Portable Thread Sleep:**
+   - Replaced platform-specific `Sleep` with `boost::this_thread::sleep` for portable thread sleeping.
+
+3. **Passing Parameters to Threads:**
+   - Enhanced thread function parameter passing using `boost::ref` to avoid unnecessary data copying.
+
+4. **Improved Code Readability:**
+   - Boost abstractions improved code readability and maintainability.
+
+6. **Better Cross-Platform Compatibility:**
+   - Boost provides a cross-platform solution, ensuring compatibility across different systems.
