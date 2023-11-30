@@ -1,17 +1,46 @@
-C++98:
-1. **Threading Library:** Uses `pthread.h` for multi-threading support.
-2. **Mutex:** Utilizes `pthread_mutex_t` for mutex and manual locking/unlocking.
-3. **Sleep Function:** Defines a custom `sleep_ms` function using `nanosleep` for sleeping in milliseconds.
-4. **Thread Creation:** Creates threads using `pthread_create` and waits for thread completion using `pthread_join`.
-5. **Thread Function Signature:** Thread functions have a `void*` return type and take a `void*` parameter.
-6. **Global Variables:** Uses global variables for min, max, and average values.
-7. **Global Mutex:** Declares a global mutex for synchronization.
+1. **Thread Management:**
+   - C++98 uses the pthread library for thread management.
+   - C++11 uses the `<thread>` header and `std::thread` for thread management.
 
-C++11:
-1. **Threading Library:** Uses `<thread>` and `<windows.h>` for multi-threading support.
-2. **Mutex:** Utilizes `std::mutex` for automatic locking and unlocking.
-3. **Sleep Function:** Uses `std::this_thread::sleep_for` for sleeping in milliseconds.
-4. **Thread Creation:** Creates threads using `std::thread` and joins them with `join`.
-5. **Thread Function Signature:** Thread functions have a `void` return type and take no parameters.
-6. **Local Variables:** Min, max, and average values are local to the respective thread functions.
-7. **Lock Guards:** Utilizes `std::lock_guard` to automatically lock and unlock mutexes.
+2. **Thread Creation:**
+   - C++98: `pthread_create(&args.minMaxThread, NULL, FindMinMaxThread, &args);`
+   - C++11: `std::thread([&args]{ FindMinMaxThread(&args); }).detach();`
+
+3. **Thread Joining:**
+   - C++98: `pthread_join(args.minMaxThread, NULL);`
+   - C++11: `hMinMax = std::thread(FindMinMaxThread, &args); hMinMax.join();`
+
+4. **Mutex Initialization:**
+   - C++98: `pthread_mutex_t mutex = PTHREAD_MUTEX_INITIALIZER;`
+   - C++11: `std::mutex mutex;`
+
+5. **Mutex Locking and Unlocking:**
+   - C++98:
+     ```cpp
+     pthread_mutex_lock(&args->mutex);
+     // ... critical section ...
+     pthread_mutex_unlock(&args->mutex);
+     ```
+   - C++11:
+     ```cpp
+     std::lock_guard<std::mutex> lock(args.mutex);
+     // ... critical section ...
+     ```
+
+6. **Sleep Function:**
+   - C++98: Uses `usleep` or `Sleep` (Windows).
+   - C++11: Uses `std::this_thread::sleep_for` along with `std::chrono` for sleep durations.
+
+7. **Thread Function Signature:**
+   - C++98: `void* FindMinMaxThread(void* arg)`
+   - C++11: `DWORD WINAPI FindMinMaxThread(LPVOID param)`
+
+8. **Dynamic Thread Creation:**
+   - C++98: `pthread_t minMaxThread; pthread_create(&minMaxThread, NULL, FindMinMaxThread, &args);`
+   - C++11: `std::thread minMaxThread(FindMinMaxThread, &args);`
+
+9. **Thread Detaching (C++11):**
+   - `minMaxThread.detach();`
+
+10. **Conditional Variable (C++11):**
+    - C++11 might use `std::condition_variable` for more advanced synchronization.
