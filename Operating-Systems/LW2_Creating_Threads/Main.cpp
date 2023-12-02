@@ -1,7 +1,8 @@
-﻿#include <iostream>
+#include <iostream>
 #include <vector>
 #include <thread>
 #include <windows.h>
+#include "Main.h"
 
 // Function for the min_max thread
 DWORD WINAPI FindMinMaxThread(LPVOID param) {
@@ -99,6 +100,6 @@ int main() {
     std::cout << std::endl;
     printVector(arr);
     std::cout << std::endl;
-    
+
     return 0;
 }
