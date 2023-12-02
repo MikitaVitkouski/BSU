@@ -1,11 +1,4 @@
-﻿#include <iostream>
-#include <vector>
-#include <thread>
-#include <mutex>
-#include <fstream>
-#include <sstream>
-#include <chrono>
-#include <random>
+#include "Task2.h"
 
 std::mutex mtx;
 std::vector<std::vector<int>> matrix_A, matrix_B, matrix_C;
@@ -74,7 +67,16 @@ int main() {
 
     matrix_C.resize(m, std::vector<int>(k, 0));
 
-    int num_threads = std::thread::hardware_concurrency();
+    std::cout << "Enter the number of threads: ";
+    int num_threads;
+    std::cin >> num_threads;
+
+    std::cout << "Enter the path to the output directory: ";
+    std::string output_directory;
+    std::cin >> output_directory;
+
+    std::string output_path_C = output_directory + "/out.dat";
+
     std::vector<std::thread> threads;
     result_messages.resize(num_threads);
 
@@ -97,7 +99,7 @@ int main() {
     std::cout << "\nMatrix C (Result of A * B):" << std::endl;
     print_matrix(matrix_C);
 
-    std::ofstream outfile("out.dat");
+    std::ofstream outfile(output_path_C);
     if (outfile.is_open()) {
         for (const auto& row : matrix_C) {
             for (int element : row) {
