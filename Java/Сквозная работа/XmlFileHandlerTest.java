@@ -8,12 +8,7 @@ import java.nio.file.Path;
 import java.nio.file.StandardOpenOption;
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
-import javax.xml.transform.Transformer;
-import javax.xml.transform.TransformerFactory;
-import javax.xml.transform.dom.DOMSource;
-import javax.xml.transform.stream.StreamResult;
 
-import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertNotNull;
 
 public class XmlFileHandlerTest {
@@ -23,7 +18,8 @@ public class XmlFileHandlerTest {
         Path testFilePath = Path.of("test.xml");
         createSampleXmlFile(testFilePath);
 
-        Document document = XmlFileHandler.readXmlFile(testFilePath);
+        XmlHandler xmlFileHandler = new XmlFileHandler();
+        Document document = xmlFileHandler.readXmlFile(testFilePath);
 
         assertNotNull(document);
     }
@@ -32,11 +28,13 @@ public class XmlFileHandlerTest {
     void testWriteXmlFile() throws Exception {
         Path testFilePath = Path.of("test_write.xml");
 
+        XmlHandler xmlFileHandler = new XmlFileHandler();
         Document document = createSampleDocument();
 
-        XmlFileHandler.writeXmlFile(testFilePath, document);
+        xmlFileHandler.writeXmlFile(testFilePath, document);
 
-        Document readDocument = XmlFileHandler.readXmlFile(testFilePath);
+        XmlHandler xmlFileHandlerForRead = new XmlFileHandler();
+        Document readDocument = xmlFileHandlerForRead.readXmlFile(testFilePath);
         assertNotNull(readDocument);
     }
 
@@ -46,7 +44,7 @@ public class XmlFileHandlerTest {
                 "    <element>Test</element>\n" +
                 "</root>";
 
-        Files.write(filePath,xmlContent.getBytes(),StandardOpenOption.CREATE,StandardOpenOption.WRITE);
+        Files.write(filePath, xmlContent.getBytes(), StandardOpenOption.CREATE, StandardOpenOption.WRITE);
     }
 
     private Document createSampleDocument() throws Exception {

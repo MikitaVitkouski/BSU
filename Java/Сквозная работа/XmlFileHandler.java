@@ -12,8 +12,7 @@ import javax.xml.transform.stream.StreamResult;
 import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
-public class XmlFileHandler {
-
+public class XmlFileHandler implements XmlHandler {
     /**
      * Reads an XML file and returns a Document object.
      *
@@ -21,8 +20,8 @@ public class XmlFileHandler {
      * @return The Document object representing the XML content.
      * @throws IOException If an error occurs while reading the file.
      */
-
-    public static Document readXmlFile(Path filePath) throws IOException {
+    @Override
+    public Document readXmlFile(Path filePath) throws IOException {
         try {
             DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -30,7 +29,6 @@ public class XmlFileHandler {
         } catch (ParserConfigurationException | SAXException e) {
             throw new IOException("Failed to read XML file", e);
         }
-
     }
 
     /**
@@ -40,15 +38,16 @@ public class XmlFileHandler {
      * @param document The Document object to write to the file.
      * @throws IOException If an error occurs while writing to the file.
      */
-    public static void writeXmlFile(Path filePath, Document document) throws IOException {
+    @Override
+    public void writeXmlFile(Path filePath, Document document) throws IOException {
         try {
             TransformerFactory transformerFactory = TransformerFactory.newInstance();
             Transformer transformer = transformerFactory.newTransformer();
             DOMSource source = new DOMSource(document);
-            StreamResult result = new StreamResult(Files.newBufferedWriter(filePath,StandardOpenOption.CREATE,StandardOpenOption.WRITE));
+            StreamResult result = new StreamResult(Files.newBufferedWriter(filePath, StandardOpenOption.CREATE, StandardOpenOption.WRITE));
 
-            transformer.transform(source,result);
-        } catch (Exception e ) {
+            transformer.transform(source, result);
+        } catch (Exception e) {
             throw new IOException("Failed to write XML file", e);
         }
     }

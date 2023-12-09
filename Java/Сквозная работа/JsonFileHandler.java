@@ -1,42 +1,37 @@
-import javax.json.bind.Jsonb;
-import javax.json.bind.JsonbBuilder;
+import com.fasterxml.jackson.databind.ObjectMapper;
+
 import java.io.IOException;
-import java.nio.file.Files;
 import java.nio.file.Path;
 import java.util.Map;
-public class JsonFileHandler {
-    /**
-     * Reads a JSON file and returns a Map representing the JSON content.
-     *
-     * @param filePath The path to the JSON file.
-     * @return A Map representing the JSON content.
-     * @throws IOException If an error occurs while reading the file.
-     */
-    public static Map<String,Object> readJsonFromFile(Path filePath) throws IOException {
+
+public class JsonFileHandler implements JsonHandler {
+
+    private final ObjectMapper objectMapper = new ObjectMapper();
+
+    @Override
+    public Map<String, Object> readJsonFile(Path filePath) throws IOException {
         try {
-            Jsonb jsonb = JsonbBuilder.create();
-            byte[] jsonData = Files.readAllBytes(filePath);
-            return jsonb.fromJson(new String(jsonData), Map.class);
-        }catch (IOException e) {
+            return objectMapper.readValue(filePath.toFile(), Map.class);
+        } catch (IOException e) {
             throw new IOException("Failed to read JSON file", e);
         }
     }
 
-    /**
-     * Writes a Map to a JSON file.
-     *
-     * @param filePath The path to the JSON file.
-     * @param jsonMap  The Map to write to the file.
-     * @throws IOException If an error occurs while writing to the file.
-     */
-    public static void writeJsonFile(Path filePath, Map<String,Object> jsonMap) throws IOException {
+    @Override
+    public void writeJsonFile(Path filePath, Map<String, Object> jsonMap) throws IOException {
         try {
-            Jsonb jsonb = JsonbBuilder.create();
-            String jsonString = jsonb.toJson(jsonMap);
-            Files.write(filePath,jsonString.getBytes());
-        } catch(IOException e) {
+            objectMapper.writeValue(filePath.toFile(), jsonMap);
+        } catch (IOException e) {
             throw new IOException("Failed to write JSON file", e);
         }
     }
 
+    @Override
+    public String toJsonString(Map<String, Object> jsonMap) {
+        try {
+            return objectMapper.writeValueAsString(jsonMap);
+        } catch (IOException e) {
+            throw new RuntimeException("Failed to convert JSON to string", e);
+        }
+    }
 }

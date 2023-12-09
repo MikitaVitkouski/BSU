@@ -1,4 +1,7 @@
+import org.testng.annotations.AfterMethod;
+import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Test;
+
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -6,25 +9,45 @@ import java.util.List;
 
 import static org.testng.AssertJUnit.assertEquals;
 import static org.testng.AssertJUnit.assertTrue;
-import static org.testng.AssertJUnit.assertNotNull;
 
 public class TextFileHandlerTest {
 
+    private Path testDirectory;
+
+    @BeforeMethod
+    public void setUp() throws IOException {
+        testDirectory = Files.createTempDirectory("test");
+    }
+
+    @AfterMethod
+    public void tearDown() throws IOException {
+        Files.walk(testDirectory)
+                .sorted((a, b) -> b.compareTo(a))
+                .forEach(path -> {
+                    try {
+                        Files.delete(path);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                });
+    }
+
     @Test
     void testReadTextFile() throws IOException {
-        Path testFilePath = Path.of("test.txt");
-        Files.write(testFilePath, List.of("Line 1", "Line 2", "Line 3"));
+        Path testFilePath = createTestFile("test.txt", List.of("Line 1", "Line 2", "Line 3"));
 
-        List<String> lines = TextFileHandler.readTextFile(testFilePath);
+        FileHandler fileHandler = new TextFileHandler();
+        List<String> lines = fileHandler.readFile(testFilePath);
         assertEquals(List.of("Line 1", "Line 2", "Line 3"), lines);
     }
 
     @Test
     void testWriteTextFile() throws IOException {
-        Path testFilePath = Path.of("test.txt");
+        Path testFilePath = testDirectory.resolve("test.txt");
         List<String> content = List.of("Line 1", "Line 2", "Line 3");
 
-        TextFileHandler.writeTextFile(testFilePath, content);
+        FileHandler fileHandler = new TextFileHandler();
+        fileHandler.writeFile(testFilePath, content);
 
         List<String> lines = Files.readAllLines(testFilePath);
         assertEquals(content, lines);
@@ -32,24 +55,22 @@ public class TextFileHandlerTest {
 
     @Test
     void testReadEmptyFile() throws IOException {
-        Path testFilePath = Path.of("empty.txt");
+        Path testFilePath = createTestFile("empty.txt", List.of());
 
-        Files.deleteIfExists(testFilePath);
-
-        Files.createFile(testFilePath);
-
-        List<String> lines = TextFileHandler.readTextFile(testFilePath);
+        FileHandler fileHandler = new TextFileHandler();
+        List<String> lines = fileHandler.readFile(testFilePath);
         assertTrue(lines.isEmpty());
     }
 
     @Test
     void testWriteToNonexistentFile() throws IOException {
-        Path testFilePath = Path.of("nonexistent.txt");
+        Path testFilePath = testDirectory.resolve("nonexistent.txt");
         Files.deleteIfExists(testFilePath); //Ensuring file doesn't exist :)
 
         List<String> content = List.of("Line 1", "Line 2");
 
-        TextFileHandler.writeTextFile(testFilePath,content);
+        FileHandler fileHandler = new TextFileHandler();
+        fileHandler.writeFile(testFilePath, content);
 
         List<String> lines = Files.readAllLines(testFilePath);
         assertEquals(content, lines);
@@ -57,12 +78,19 @@ public class TextFileHandlerTest {
 
     @Test
     void testFileWithSpecialCharacters() throws IOException {
-        Path testFilePath = Path.of("special_chars.txt");
+        Path testFilePath = testDirectory.resolve("special_chars.txt");
         List<String> content = List.of("Line with $pecial characters! @#");
 
-        TextFileHandler.writeTextFile(testFilePath,content);
+        FileHandler fileHandler = new TextFileHandler();
+        fileHandler.writeFile(testFilePath, content);
 
-        List<String> lines = TextFileHandler.readTextFile(testFilePath);
+        List<String> lines = fileHandler.readFile(testFilePath);
         assertEquals(content, lines);
+    }
+
+    private Path createTestFile(String fileName, List<String> lines) throws IOException {
+        Path testFilePath = testDirectory.resolve(fileName);
+        Files.write(testFilePath, lines);
+        return testFilePath;
     }
 }
