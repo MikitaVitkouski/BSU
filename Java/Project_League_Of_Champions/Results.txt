@@ -1,0 +1,4 @@
+Manchester_United 12 5
+Inter 8 4
+Barcelona 5 2
+Torpedo_Belaz 3 3
