@@ -34,7 +34,7 @@ Manchester_United 3:2 Inter
 Basel 4:4 Liverpool
 
 
-3) Groups.txt:
+2) Groups.txt:
 Format: Each line represents the result of a game between two teams, with the score separated by a space.
 Example (Each group on the new line):
 
