@@ -6,7 +6,7 @@ Input files:
 
 1) Game.txt:
 Format: Each line contains the letter representing a group and the names of teams in that group, separated by spaces.
-Example:
+Example (Each result on the new line):
 
 Atletico_M 1:0 Juventus
 Atletico_M 2:0 Olympiacos
@@ -36,7 +36,7 @@ Basel 4:4 Liverpool
 
 3) Groups.txt:
 Format: Each line represents the result of a game between two teams, with the score separated by a space.
-Example:
+Example (Each group on the new line):
 
 A Atletico_M Juventus Olympiacos Malmo
 B Real_Madrid Basel Liverpool Ludogorets
@@ -63,7 +63,7 @@ The overall number of matches for all groups is Count.
 
 Output files:
 
-Results for each group are written to GroupsOut.txt with the following format:
+Results for each group are written to GroupsOut.txt with the following format (Each team on the new line):
 
 Group A:
 Atletico_M 15 4 1 1 14 3
@@ -72,9 +72,9 @@ Olympiacos 12 3 0 3 10 13
 Malmo 8 1 0 5 4 15
 
 
-Note:The teams are sorted first by points and then, if points are equal, by the goal difference.
+Note: The teams are sorted first by points and then, if points are equal, by the goal difference.
 
-The overall Champions League table results are written to Results.txt with sorting based on points:
+The overall Champions League table results are written to Results.txt with sorting based on points (Each team on the new line):
 
 Atletico_M 18 6
 Manchester_United 12 5
