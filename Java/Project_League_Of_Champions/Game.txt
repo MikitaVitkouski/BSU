@@ -22,4 +22,3 @@ Torpedo_Belaz 1:3 Inter
 Inter 2:5 Manchester_United
 Manchester_United 3:2 Inter
 Basel 4:4 Liverpool
-BATE 1:1 Atletico_M
