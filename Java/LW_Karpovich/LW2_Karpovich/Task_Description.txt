@@ -4,5 +4,4 @@ Write a Java console application for working with matrix. Enter the size of the 
 
 2) For a given matrix nxn, find the maximum among the sums of elements of diagonals parallel to the main diagonal of the matrix.
 
-
 3) Arrange the rows of the mxn matrix by non-decreasing (increasing) their largest elements.
