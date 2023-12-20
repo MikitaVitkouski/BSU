@@ -1,9 +1,12 @@
+package org.example;
+
 import java.util.Arrays;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.Comparator;
+import java.util.ArrayList;
 import java.io.*;
 
 public class ClassBD implements InterfBD {
@@ -61,15 +64,28 @@ public class ClassBD implements InterfBD {
         }
     }
 
-    public void writeOverallResults(String filePath) throws IOException {
-        FileWriter writer = new FileWriter(filePath);
-
-        List<Team> allTeams = teams.values().stream()
+    public List<Team> getAllTeamsInGroup() {
+        return teams.values().stream()
                 .filter(team -> team.getGamesPlayed() > 0)
                 .sorted(Comparator.comparingInt(Team::getPoints)
                         .reversed()
-                        .thenComparingInt(Team::getGamesPlayed))
+                        .thenComparing(Comparator.comparingInt(Team::getGamesPlayed))
+                )
                 .collect(Collectors.toList());
+    }
+
+    public void writeOverallResults(String filePath, List<ClassBD> allGroups) throws IOException {
+        FileWriter writer = new FileWriter(filePath);
+
+        List<Team> allTeams = new ArrayList<>();
+        for (ClassBD classBD : allGroups) {
+            allTeams.addAll(classBD.getAllTeamsInGroup());
+        }
+
+        allTeams.sort(Comparator.comparingInt(Team::getPoints)
+                .reversed()
+                .thenComparing(Comparator.comparingInt(Team::getGamesPlayed))
+        );
 
         for (Team team : allTeams) {
             writer.write(team.getName() + " " +

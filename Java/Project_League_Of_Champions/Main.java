@@ -1,3 +1,5 @@
+package org.example;
+
 /*Витковский Никита Фёдорович 2 курс 5 группа 19/12/2023
 
  я не ввожу значения с клавитару с N,M,K, Count. код воспринимает информацию из файлов нормально!!! может быть разное количество команд в группе.
@@ -23,7 +25,7 @@ public class Main {
             writeResults(groupsBDs, "GroupsOut.txt");
 
             for(ClassBD classBD: groupsBDs) {
-                classBD.writeOverallResults("Results.txt");
+                classBD.writeOverallResults("Results.txt", Arrays.asList(groupsBDs));
             }
 
         } catch (IOException e) {
