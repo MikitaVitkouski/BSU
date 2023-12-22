@@ -61,11 +61,18 @@ void sender(const std::string& file_name) {
 }
 
 int main() {
-    const std::string file_name = "shared_messages.bin";
+    std::string sender_file;
+    std::cout << std::endl << "Enter a sender name: " << std::endl;
+    std::cin >> sender_file;
+    std::cin.ignore();
 
-    std::thread receiver_thread(receiver, file_name);
-    std::thread sender_thread(sender, file_name);
+    std::string receiver_file;
+    std::cout << std::endl << "Enter a receiver name: " << std::endl;
+    std::cin >> receiver_file;
+    std::cin.ignore();
 
+    std::thread receiver_thread(receiver, receiver_file);
+    std::thread sender_thread(sender, sender_file);
     receiver_thread.join();
     sender_thread.join();
 
