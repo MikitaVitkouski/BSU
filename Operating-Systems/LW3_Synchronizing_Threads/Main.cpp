@@ -6,12 +6,13 @@
 #include <ctime>
 #include <mutex>
 #include <condition_variable>
-#include <algorithm>
+#include <chrono>
+#include <stdexcept>
 
 class MarkerThread {
 public:
-    MarkerThread(int markerNumber, std::vector<int>& array, int arraySize, std::mutex& arrayMutex, std::condition_variable& cv, std::atomic<bool>& startSignal)
-        : markerNumber(markerNumber), array(array), arraySize(arraySize), arrayMutex(arrayMutex), cv(cv), startSignal(startSignal), isTerminated(false) {}
+    MarkerThread(int markerNumber, std::vector<int>& array, int arraySize, std::mutex& arrayMutex, std::condition_variable& cv, std::atomic<bool>& startSignal, std::atomic<bool>& continueSignal)
+        : markerNumber(markerNumber), array(array), arraySize(arraySize), arrayMutex(arrayMutex), cv(cv), startSignal(startSignal), continueSignal(continueSignal), isTerminated(false) {}
 
     void start() {
         thread = std::thread(&MarkerThread::run, this);
@@ -35,6 +36,7 @@ private:
     std::mutex& arrayMutex;
     std::condition_variable& cv;
     std::atomic<bool>& startSignal;
+    std::atomic<bool>& continueSignal;
     bool isTerminated;
 
     void run() {
@@ -42,43 +44,44 @@ private:
 
         srand(static_cast<unsigned int>(markerNumber));
 
-        startSignal.store(true);
+        {
+            std::unique_lock<std::mutex> lock(arrayMutex);
+            cv.wait(lock, [&] { return startSignal.load(); });
+        }
 
         while (true) {
             int randomNumber = rand();
-            int index = -1;
+            int index = randomNumber % arraySize;
 
             {
                 std::unique_lock<std::mutex> lock(arrayMutex);
 
-                for (int i = 0; i < arraySize; ++i) {
-                    if (array[i] == 0) {
-                        index = i;
-                        break;
-                    }
-                }
-
-                if (index != -1 && !isTerminated) {
+                if (array[index] == 0) {
                     std::this_thread::sleep_for(std::chrono::milliseconds(5));
                     array[index] = markerNumber;
                     std::this_thread::sleep_for(std::chrono::milliseconds(5));
 
-                    std::cout << "Array state: ";
-                    for (int i = 0; i < arraySize; ++i) {
-                        std::cout << array[i] << " ";
-                    }
-                    std::cout << std::endl;
+                    std::cout << "Marker " << markerNumber << ": Marked element at index " << index << std::endl;
                 }
                 else {
-                    std::cout << "Marker " << markerNumber << ": Unable to find a zero to mark" << std::endl;
-                    isTerminated = true;
-                    break;
+                    std::cout << "Marker " << markerNumber << ": Element at index " << index << " is already marked" << std::endl;
+                    std::cout << "Marker " << markerNumber << ": Signaling main thread about inability to continue" << std::endl;
+                    continueSignal.store(false);
+                    cv.notify_one();
+                    cv.wait(lock, [&] { return startSignal.load() || isTerminated; });
+
+                    if (isTerminated) {
+                        break;
+                    }
                 }
             }
 
-            cv.notify_all();
             std::unique_lock<std::mutex> lock(arrayMutex);
-            cv.wait(lock, [&] { return isTerminated || array[index] == 0; });
+            cv.wait(lock, [&] { return continueSignal.load() || isTerminated; });
+
+            if (isTerminated) {
+                break;
+            }
         }
 
         std::cout << "Marker " << markerNumber << ": Thread ended" << std::endl;
@@ -100,6 +103,7 @@ int main() {
     std::mutex arrayMutex;
     std::condition_variable cv;
     std::atomic<bool> startSignal(false);
+    std::atomic<bool> continueSignal(true);
 
     std::cout << "Enter number of marker threads: ";
     std::cin >> numMarkerThreads;
@@ -107,16 +111,14 @@ int main() {
     std::vector<MarkerThread> markerThreads;
 
     for (int i = 0; i < numMarkerThreads; ++i) {
-        markerThreads.emplace_back(i + 1, array, arraySize, arrayMutex, cv, startSignal);
+        markerThreads.emplace_back(i + 1, array, arraySize, arrayMutex, cv, startSignal, continueSignal);
     }
 
     for (auto& markerThread : markerThreads) {
         markerThread.start();
     }
 
-    while (!startSignal.load()) {
-        std::this_thread::yield();
-    }
+    startSignal.store(true);
 
     while (true) {
         std::this_thread::sleep_for(std::chrono::milliseconds(500));
@@ -124,14 +126,6 @@ int main() {
         std::cout << "Array state: ";
         for (int i = 0; i < arraySize; ++i) {
             std::cout << array[i] << " ";
-        }
-        std::cout << std::endl;
-
-        std::cout << "Active threads: ";
-        for (size_t i = 0; i < markerThreads.size(); ++i) {
-            if (!markerThreads[i].getTerminationStatus()) {
-                std::cout << "Marker " << i + 1 << " ";
-            }
         }
         std::cout << std::endl;
 
@@ -147,11 +141,13 @@ int main() {
             }
         }
 
-        if (threadToTerminate >= 0 && threadToTerminate <= markerThreads.size()) {
-            markerThreads[threadToTerminate - 1].terminate();
-        }
+        std::unique_lock<std::mutex> lock(arrayMutex);
+        continueSignal.store(true);
+        startSignal.store(true);
+        lock.unlock();
+        cv.notify_all();
+        markerThreads[threadToTerminate - 1].terminate();
 
-        
         bool allThreadsTerminated = std::all_of(markerThreads.begin(), markerThreads.end(),
             [](const MarkerThread& markerThread) { return markerThread.getTerminationStatus(); });
 
