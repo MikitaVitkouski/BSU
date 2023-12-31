@@ -11,7 +11,7 @@ void testFindMinMaxThread() {
 	int max = static_cast<int>(result >> 16);
 
 	assert(min == 1);
-	assert(min == 8);
+	assert(max == 8);
 }
 
 void testAverageThread() {
@@ -26,9 +26,9 @@ void testAverageThread() {
     }
 
     double average = static_cast<double>(sum) / testVectorCopy.size();
-    double tolerance = 1e-9;
-
-    assert(std::abs(testVectorCopy[0] - average) < tolerance);
+    double epsilon = 1e-9;
+	
+    assert(std::abs(testVectorCopy[0] - average) < epsilon);
 
     assert(testVectorCopy[0] == static_cast<int>(average + 0.5));
 }
