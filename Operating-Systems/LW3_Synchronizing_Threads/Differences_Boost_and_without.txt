@@ -1,5 +1,3 @@
-The provided code snippets demonstrate implementations of multithreading using Boost.Thread and the standard C++11 library. Here are some key differences:
-
 1. **Thread Creation:**
    - **Boost.Thread:** `boost::thread(boost::bind(&ThreadBase::run, this))`
    - **C++11:** `std::thread(&MarkerThread::run, this)`
