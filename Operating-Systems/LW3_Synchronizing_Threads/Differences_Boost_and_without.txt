@@ -1,0 +1,33 @@
+The provided code snippets demonstrate implementations of multithreading using Boost.Thread and the standard C++11 library. Here are some key differences:
+
+1. **Thread Creation:**
+   - **Boost.Thread:** `boost::thread(boost::bind(&ThreadBase::run, this))`
+   - **C++11:** `std::thread(&MarkerThread::run, this)`
+
+2. **Sleep Duration:**
+   - **Boost.Thread:** `boost::this_thread::sleep_for(boost::chrono::milliseconds(5));`
+   - **C++11:** `std::this_thread::sleep_for(std::chrono::milliseconds(5));`
+
+3. **Mutex and Condition Variable Management:**
+   - **Boost.Thread:** Uses `boost::mutex` and `boost::condition_variable`.
+   - **C++11:** Uses `std::mutex` and `std::condition_variable`.
+
+4. **Thread Creation and Waiting:**
+   - **Boost.Thread:** Uses `boost::thread` and `boost::unique_lock`.
+   - **C++11:** Uses `std::thread` and `std::unique_lock`.
+
+5. **Atomic Operations:**
+   - **Boost.Thread:** `boost::atomic<bool>`.
+   - **C++11:** `std::atomic<bool>`.
+
+6. **Creating and Waiting for Threads Inside Other Classes:**
+   - **Boost.Thread:** Involves `boost::thread` and `boost::condition_variable`.
+   - **C++11:** Involves `std::thread` and `std::condition_variable`.
+
+7. **Thread Termination Approach:**
+   - **Boost.Thread:** Uses `boost::thread::join()` to wait for thread termination.
+   - **C++11:** Uses `std::thread::join()` to wait for thread termination.
+
+8. **Determining Thread Termination State:**
+   - **Boost.Thread:** `boost::atomic<bool> isTerminated`.
+   - **C++11:** `std::atomic<bool> isTerminated`.
