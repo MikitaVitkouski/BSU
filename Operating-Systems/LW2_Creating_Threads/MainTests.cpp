@@ -27,6 +27,7 @@ void testAverageThread() {
 
     double average = static_cast<double>(sum) / testVectorCopy.size();
     double epsilon = 1e-9;
+
 	
     assert(std::abs(testVectorCopy[0] - average) < epsilon);
 
