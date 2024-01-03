@@ -9,7 +9,8 @@ Teacher: Anton Semenchenko
 
 
 -----------------------------------------------
+
 C++98
 C++11
-Boost 1.83.0
+Boost, BoostTest
 CMake
