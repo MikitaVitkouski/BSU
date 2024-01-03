@@ -1,0 +1,36 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilterByPalindromic", "FilterByPalindromic\FilterByPalindromic.csproj", "{958532C6-3A61-42BB-A2B2-E60CF081936D}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FilterByPalindromic.Tests", "FilterByPalindromic.Tests\FilterByPalindromic.Tests.csproj", "{0910A71F-FC76-4CC1-9BEE-4D853C91002C}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{07EF0033-7541-487E-B711-6D9EE1E614B7}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{958532C6-3A61-42BB-A2B2-E60CF081936D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{958532C6-3A61-42BB-A2B2-E60CF081936D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{958532C6-3A61-42BB-A2B2-E60CF081936D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{958532C6-3A61-42BB-A2B2-E60CF081936D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{0910A71F-FC76-4CC1-9BEE-4D853C91002C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{0910A71F-FC76-4CC1-9BEE-4D853C91002C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{0910A71F-FC76-4CC1-9BEE-4D853C91002C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{0910A71F-FC76-4CC1-9BEE-4D853C91002C}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {EE0CDD71-ACEA-4AC2-9C64-2DDF4294BE03}
+	EndGlobalSection
+EndGlobal
