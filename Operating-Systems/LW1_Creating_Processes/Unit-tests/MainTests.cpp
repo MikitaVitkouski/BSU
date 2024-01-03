@@ -1,4 +1,4 @@
-#define BOOST_TEST_MODULE MyTest
+#define BOOST_TEST_MODULE MainTests
 #include <boost/test/included/unit_test.hpp>
 
 DWORD ExecuteProcess(const std::string& processName, const std::string& arguments, HANDLE& hProcess) {
