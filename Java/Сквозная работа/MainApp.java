@@ -1,4 +1,8 @@
+import net.lingala.zip4j.exception.ZipException;
+
+import java.io.IOException;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 
 public class MainApp {
 
@@ -23,5 +27,16 @@ public class MainApp {
         Path inputJsonFilePath = Path.of("input.json");
         Path outputJsonFilePath = Path.of("output.json");
         jsonParser.processFile(inputJsonFilePath, outputJsonFilePath);
+
+        //Archivation
+        try {
+            String zipFilePath = "test.zip";
+            String extractTo = "extracted/";
+
+            CompressionZip.decompressAndProcess(zipFilePath, extractTo);
+
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 }
