@@ -52,7 +52,6 @@ public class XmlFileHandlerTest {
         DocumentBuilder builder = factory.newDocumentBuilder();
         Document document = builder.newDocument();
 
-        // Create a sample XML structure within the document
         Element rootElement = document.createElement("root");
         document.appendChild(rootElement);
 

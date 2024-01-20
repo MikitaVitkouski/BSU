@@ -13,13 +13,6 @@ import org.w3c.dom.Document;
 import org.xml.sax.SAXException;
 
 public class XmlFileHandler implements XmlHandler {
-    /**
-     * Reads an XML file and returns a Document object.
-     *
-     * @param filePath The path to the XML file.
-     * @return The Document object representing the XML content.
-     * @throws IOException If an error occurs while reading the file.
-     */
     @Override
     public Document readXmlFile(Path filePath) throws IOException {
         try {
@@ -31,13 +24,6 @@ public class XmlFileHandler implements XmlHandler {
         }
     }
 
-    /**
-     * Writes a Document object to an XML file.
-     *
-     * @param filePath The path to the XML file.
-     * @param document The Document object to write to the file.
-     * @throws IOException If an error occurs while writing to the file.
-     */
     @Override
     public void writeXmlFile(Path filePath, Document document) throws IOException {
         try {
