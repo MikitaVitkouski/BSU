@@ -1,0 +1,23 @@
+# Android/IntelliJ/Gradle files
+.gradle/
+.idea/
+build/
+*.iml
+local.properties
+
+# Gradle Wrapper files
+gradle-wrapper.jar
+gradle-wrapper.properties
+
+# Android Studio & IntelliJ files
+/.idea/
+*.iml
+
+# macOS system files
+.DS_Store
+
+# Ignore test output
+/target/
+/test-output/
+
+# Ignore all the things that are generated during the build process.
