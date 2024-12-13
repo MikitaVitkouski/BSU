@@ -1,3 +1,0 @@
-sqrt(16)
-sqrt(9)
-sqrt(4)

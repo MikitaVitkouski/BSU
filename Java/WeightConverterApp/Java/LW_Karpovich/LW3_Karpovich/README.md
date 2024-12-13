@@ -1,3 +1,0 @@
-3.1) The string consists of words. In one look at the characters of a string, find all the longest words, the characters in which are in strict ascending order of codes, and put them in a new line. The words in the original string are separated by some set of separators. The words in the new line must be separated by exactly one space.
-
-3.2) Lines of a text file input.txt consists of words separated by one or more spaces. Spaces may be missing before the first and also after the last word of the string. You need to determine the word that is most often found in the file. Output the result to the console in a form that is easy to read.
