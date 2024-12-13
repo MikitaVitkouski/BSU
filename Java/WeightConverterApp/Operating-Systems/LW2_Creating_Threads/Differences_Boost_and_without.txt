@@ -1,0 +1,35 @@
+1. **Thread Management:**
+   - C++11 uses the `<thread>` header and `std::thread` for thread management.
+   - Boost.Thread uses the `<boost/thread.hpp>` header and `boost::thread` for thread management.
+
+2. **Thread Creation:**
+   - C++11: `std::thread(FindMinMaxThread, &arr, std::ref(min), std::ref(max));`
+   - Boost.Thread: `boost::thread minMaxThread(FindMinMaxThread, boost::ref(arr), boost::ref(min), boost::ref(max));`
+
+3. **Thread Joining:**
+   - C++11: `minMaxThread.join();`
+   - Boost.Thread: `minMaxThread.join();`
+
+4. **Mutex:**
+   - C++11: Uses `std::mutex` for mutex.
+   - Boost.Thread: Uses `boost::mutex` for mutex.
+
+5. **Sleep Function:**
+   - C++11: `std::this_thread::sleep_for(std::chrono::milliseconds(7));`
+   - Boost.Thread: `boost::this_thread::sleep(boost::posix_time::milliseconds(7));`
+
+6. **Thread Function Signature:**
+   - C++11: `void FindMinMaxThread(std::vector<int>& arr, int& min, int& max)`
+   - Boost.Thread: `void FindMinMaxThread(std::vector<int>& arr, int& min, int& max)`
+
+7. **Dynamic Thread Creation:**
+   - C++11: `std::thread minMaxThread(FindMinMaxThread, std::ref(arr), std::ref(min), std::ref(max));`
+   - Boost.Thread: `boost::thread minMaxThread(FindMinMaxThread, boost::ref(arr), boost::ref(min), boost::ref(max));`
+
+8. **Thread Detaching:**
+   - C++11: `minMaxThread.detach();` (not recommended due to potential resource leaks)
+   - Boost.Thread: `minMaxThread.detach();` (not recommended due to potential resource leaks)
+
+9. **Condition Variable (C++11):**
+   - C++11 might use `std::condition_variable` for more advanced synchronization.
+   - Boost.Thread provides `boost::condition_variable` for similar functionality.

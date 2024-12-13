@@ -1,0 +1,28 @@
+# Android/IntelliJ/Gradle files
+.idea/
+*.iml
+.gradle/
+local.properties
+
+# macOS system files
+.DS_Store
+
+# Build output
+/build/
+
+# Captures (снимки экрана, которые могут быть сгенерированы Android Studio)
+captures/
+
+# External native build directories
+.externalNativeBuild/
+
+# C++ build output
+.cxx/
+
+# Gradle Wrapper files
+gradle-wrapper.jar
+gradle-wrapper.properties
+
+# Ignore test output
+/target/
+/test-output/

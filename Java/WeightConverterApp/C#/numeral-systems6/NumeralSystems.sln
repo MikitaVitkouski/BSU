@@ -1,0 +1,36 @@
+
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumeralSystems.Tests", "NumeralSystems.Tests\NumeralSystems.Tests.csproj", "{A11F926D-6EA3-4A40-B4BF-1985E13E4CB4}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "NumeralSystems", "NumeralSystems\NumeralSystems.csproj", "{75F4B210-ABC4-49B7-999F-D2B1892DB588}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{B4652C53-3467-49A5-8A5D-4FCF9B9C7BF4}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{A11F926D-6EA3-4A40-B4BF-1985E13E4CB4}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A11F926D-6EA3-4A40-B4BF-1985E13E4CB4}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A11F926D-6EA3-4A40-B4BF-1985E13E4CB4}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A11F926D-6EA3-4A40-B4BF-1985E13E4CB4}.Release|Any CPU.Build.0 = Release|Any CPU
+		{75F4B210-ABC4-49B7-999F-D2B1892DB588}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{75F4B210-ABC4-49B7-999F-D2B1892DB588}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{75F4B210-ABC4-49B7-999F-D2B1892DB588}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{75F4B210-ABC4-49B7-999F-D2B1892DB588}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {50D31DC3-D044-4702-A4FE-1CA838823BFC}
+	EndGlobalSection
+EndGlobal
