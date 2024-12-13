@@ -1,0 +1,36 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30320.27
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RelocationElementsTask", "RelocationElements\RelocationElements.csproj", "{96ED2D93-6CE4-43AC-B0CD-685B53D3B1C5}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "RelocationElements.Tests", "RelocationElements.Tests\RelocationElements.Tests.csproj", "{90F56D81-CF63-4A01-B85F-A984246A4657}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{CB090897-BFC7-46C5-813E-D5FC2AC7F20C}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{96ED2D93-6CE4-43AC-B0CD-685B53D3B1C5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{96ED2D93-6CE4-43AC-B0CD-685B53D3B1C5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{96ED2D93-6CE4-43AC-B0CD-685B53D3B1C5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{96ED2D93-6CE4-43AC-B0CD-685B53D3B1C5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{90F56D81-CF63-4A01-B85F-A984246A4657}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{90F56D81-CF63-4A01-B85F-A984246A4657}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{90F56D81-CF63-4A01-B85F-A984246A4657}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{90F56D81-CF63-4A01-B85F-A984246A4657}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {3D493283-EFE9-4513-B6C9-9074E3B2AB32}
+	EndGlobalSection
+EndGlobal

@@ -1,0 +1,35 @@
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30611.23
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShiftArrayElementsRecursion", "ShiftArrayElementsRecursion\ShiftArrayElementsRecursion.csproj", "{5442389F-D1C2-4F54-A8E3-6353DBEC7579}"
+EndProject
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ShiftArrayElementsRecursion.Tests", "ShiftArrayElementsRecursion.Tests\ShiftArrayElementsRecursion.Tests.csproj", "{B3F8FFE0-E960-4904-80DB-6A1DE97FF314}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Solution Items", "Solution Items", "{C9B8D92E-3AC1-4BAD-87F5-37D2BE2EC629}"
+	ProjectSection(SolutionItems) = preProject
+		README.md = README.md
+	EndProjectSection
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{5442389F-D1C2-4F54-A8E3-6353DBEC7579}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5442389F-D1C2-4F54-A8E3-6353DBEC7579}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5442389F-D1C2-4F54-A8E3-6353DBEC7579}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5442389F-D1C2-4F54-A8E3-6353DBEC7579}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3F8FFE0-E960-4904-80DB-6A1DE97FF314}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3F8FFE0-E960-4904-80DB-6A1DE97FF314}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3F8FFE0-E960-4904-80DB-6A1DE97FF314}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3F8FFE0-E960-4904-80DB-6A1DE97FF314}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {DEED1972-065C-4F02-8EF7-800A73F6933D}
+	EndGlobalSection
+EndGlobal
