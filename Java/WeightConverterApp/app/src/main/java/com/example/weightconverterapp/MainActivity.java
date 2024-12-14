@@ -1,16 +1,13 @@
 package com.example.weightconverterapp;
 
 import android.os.Bundle;
-
-import android.os.Bundle;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
+import android.widget.Spinner;
 import android.widget.TextView;
-import android.widget.Toast;
+
 import androidx.appcompat.app.AppCompatActivity;
 
 public class MainActivity extends AppCompatActivity {
@@ -18,9 +15,7 @@ public class MainActivity extends AppCompatActivity {
     private EditText weightInput;
     private Button convertButton;
     private TextView resultText;
-    private CheckBox kgToLbCheckBox;
-    private RadioGroup unitSelectionGroup;
-    private RadioButton radioKgToLb, radioLbToKg, radioKgToOz;
+    private Spinner fromUnitSpinner, toUnitSpinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,11 +25,14 @@ public class MainActivity extends AppCompatActivity {
         weightInput = findViewById(R.id.weightInput);
         convertButton = findViewById(R.id.convertButton);
         resultText = findViewById(R.id.resultText);
-        kgToLbCheckBox = findViewById(R.id.kgToLbCheckBox);
-        unitSelectionGroup = findViewById(R.id.unitSelectionGroup);
-        radioKgToLb = findViewById(R.id.radioKgToLb);
-        radioLbToKg = findViewById(R.id.radioLbToKg);
-        radioKgToOz = findViewById(R.id.radioKgToOz);
+        fromUnitSpinner = findViewById(R.id.fromUnitSpinner);
+        toUnitSpinner = findViewById(R.id.toUnitSpinner);
+
+        String[] units = {"Килограммы", "Фунты", "Унции"};
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_item, units);
+        adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+        fromUnitSpinner.setAdapter(adapter);
+        toUnitSpinner.setAdapter(adapter);
 
         convertButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -45,33 +43,50 @@ public class MainActivity extends AppCompatActivity {
     }
 
     private void convertWeight() {
+        String fromUnit = fromUnitSpinner.getSelectedItem().toString();
+        String toUnit = toUnitSpinner.getSelectedItem().toString();
         String input = weightInput.getText().toString();
 
-        if(input.isEmpty()) {
-            Toast.makeText(this, "Введите значение!", Toast.LENGTH_SHORT).show();
+        if (input.isEmpty()) {
+            resultText.setText("Введите вес!");
             return;
         }
 
         double weight = Double.parseDouble(input);
-        if(weight <= 0) {
-            Toast.makeText(this, "Введите положительное значение!", Toast.LENGTH_SHORT).show();
+
+        if (weight <= 0) {
+            resultText.setText("Вес должен быть больше нуля!");
             return;
         }
 
-        double result = 0;
-        String unit = "";
+        double result = 0.0;
 
-        if(radioKgToLb.isChecked()) {
-            result = weight*2.20462;
-            unit = " фунтов (lb)";
-        } else if (radioLbToKg.isChecked()) {
-            result = weight*0.453592;
-            unit = " килограммов (kg)";
-        } else if (radioKgToOz.isChecked()) {
-            result = weight*35.274;
-            unit = " унций (oz)";
+        if (fromUnit.equals("Килограммы")) {
+            if (toUnit.equals("Фунты")) {
+                result = weight * 2.20462;
+            } else if (toUnit.equals("Унции")) {
+                result = weight * 35.274;
+            } else if (toUnit.equals("Килограммы")) {
+                result = weight;
+            }
+        } else if (fromUnit.equals("Фунты")) {
+            if (toUnit.equals("Килограммы")) {
+                result = weight * 0.453592;
+            } else if (toUnit.equals("Унции")) {
+                result = weight * 16.0;
+            } else if (toUnit.equals("Фунты")) {
+                result = weight;
+            }
+        } else if (fromUnit.equals("Унции")) {
+            if (toUnit.equals("Килограммы")) {
+                result = weight * 0.0283495;
+            } else if (toUnit.equals("Фунты")) {
+                result = weight * 0.0625;
+            } else if (toUnit.equals("Унции")) {
+                result = weight;
+            }
         }
 
-        resultText.setText(String.format("Результат: %.2f%s", result, unit));
+        resultText.setText(String.format("Результат: %.2f %s", result, toUnit));
     }
 }
