@@ -44,5 +44,21 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    private void convertWeight() {
+        String input = weightInput.getText().toString();
 
+        if(input.isEmpty()) {
+            Toast.makeText(this, "Введите значение!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        double weight = Double.parseDouble(input);
+        if(weight <= 0) {
+            Toast.makeText(this, "Введите положительное значение!", Toast.LENGTH_SHORT).show();
+            return;
+        }
+
+        double result = 0;
+        String unit = "";
+    }
 }
