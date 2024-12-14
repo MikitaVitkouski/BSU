@@ -2,25 +2,47 @@ package com.example.weightconverterapp;
 
 import android.os.Bundle;
 
-import androidx.activity.EdgeToEdge;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.CheckBox;
+import android.widget.EditText;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.TextView;
+import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 public class MainActivity extends AppCompatActivity {
+
+    private EditText weightInput;
+    private Button convertButton;
+    private TextView resultText;
+    private CheckBox kgToLbCheckBox;
+    private RadioGroup unitSelectionGroup;
+    private RadioButton radioKgToLb, radioLbToKg, radioKgToOz;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
-        ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
-            Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-            v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
-            return insets;
+
+        weightInput = findViewById(R.id.weightInput);
+        convertButton = findViewById(R.id.convertButton);
+        resultText = findViewById(R.id.resultText);
+        kgToLbCheckBox = findViewById(R.id.kgToLbCheckBox);
+        unitSelectionGroup = findViewById(R.id.unitSelectionGroup);
+        radioKgToLb = findViewById(R.id.radioKgToLb);
+        radioLbToKg = findViewById(R.id.radioLbToKg);
+        radioKgToOz = findViewById(R.id.radioKgToOz);
+
+        convertButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                convertWeight();
+            }
         });
     }
-}
 
-//eto shoke...
+
+}
