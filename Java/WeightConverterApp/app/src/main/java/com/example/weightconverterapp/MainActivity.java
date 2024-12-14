@@ -60,5 +60,18 @@ public class MainActivity extends AppCompatActivity {
 
         double result = 0;
         String unit = "";
+
+        if(radioKgToLb.isChecked()) {
+            result = weight*2.20462;
+            unit = " фунтов (lb)";
+        } else if (radioLbToKg.isChecked()) {
+            result = weight*0.453592;
+            unit = " килограммов (kg)";
+        } else if (radioKgToOz.isChecked()) {
+            result = weight*35.274;
+            unit = " унций (oz)";
+        }
+
+        resultText.setText(String.format("Результат: %.2f%s", result, unit));
     }
 }
