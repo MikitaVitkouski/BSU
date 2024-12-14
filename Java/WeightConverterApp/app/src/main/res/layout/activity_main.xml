@@ -10,7 +10,7 @@
     <EditText
         android:id="@+id/weightInput"
         android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_height="48dp"
         android:hint="Введите вес"
         android:inputType="numberDecimal"
         app:layout_constraintTop_toTopOf="parent"
@@ -48,11 +48,40 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Конвертировать в фунты (lb)"
-        app:layout_constraintTop_toBottomOf="@id/resultTest"
+        app:layout_constraintTop_toBottomOf="@id/resultText"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:layout_marginTop="16dp"
         />
-    
+
+    <RadioGroup
+        android:id="@+id/unitSelectionGroup"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@id/kgToLbCheckBox"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:layout_marginTop="16dp"
+        >
+
+        <RadioButton
+            android:id="@+id/radioKgToLb"
+            android:text="Килограммы в фунты"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+
+        <RadioButton
+            android:id="@+id/radioLbToKg"
+            android:text="Фунты в килограммы"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+        
+        <RadioButton
+            android:id="@+id/radioKgToOz"
+            android:text="Килограммы в унции (oz)"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"/>
+
+    </RadioGroup>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
