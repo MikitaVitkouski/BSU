@@ -106,7 +106,17 @@ int main() {
 
 	cout << endl;
 
+	string NAME;
+	cout << "Enter the name for the search: ";
+	cin >> NAME;
 
+	auto it = find(upperNames.begin(), upperNames.end(), NAME);
+	if (it != upperNames.end()) {
+		cout << "\nFound student: " << *it << endl;
+	}
+	else {
+		cout << "\nStudent not found.\n";
+	}
 
 	return 0;
 }
