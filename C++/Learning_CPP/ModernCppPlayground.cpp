@@ -4,6 +4,10 @@
 #include <numeric>
 #include <memory>
 #include <string>
+#include <map>
+#include <unordered_map>
+#include <set>
+#include <list>
 
 using namespace std;
 
@@ -53,6 +57,40 @@ int main() {
 		cout << "\nShared Student: \n";
 		locked->display();
 	}
+
+	map<string, int> studentMap = {
+		{"Nikita",1},
+		{"Dima", 2},
+		{"Vlad", 3}
+	};
+
+	unordered_map<string, vector<int>> gradeMap = {
+		{"Nikita",{50,150,75}},
+		{"Dima", {67,83,0}},
+		{"Vlad", {78,49,56}}
+	};
+
+	set<string> studentSet;
+	list<string> studentList;
+
+	for (const auto& [name, _] : studentMap) {
+		studentSet.insert(name);
+		studentList.push_back(name);
+	}
+
+	cout << endl;
+
+	for (const auto& student : studentSet) {
+		cout << student << " ";
+	}
+
+	cout << endl;
+
+	for (const auto& student : studentList) {
+		cout << student << " ";
+	}
+
+
 
 	return 0;
 }
