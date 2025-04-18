@@ -90,6 +90,22 @@ int main() {
 		cout << student << " ";
 	}
 
+	vector<string> upperNames;
+	transform(studentList.begin(), studentList.end(), back_inserter(upperNames), [](const string& name) {
+		string up = name;
+		for_each(up.begin(), up.end(), [](char& c) { c = toupper(c); });
+		return up;
+		});
+
+	cout << endl;
+
+	cout << "\nUppercase names: \n";
+	for (const auto& name : upperNames) {
+		cout << name << " ";
+	}
+
+	cout << endl;
+
 
 
 	return 0;
