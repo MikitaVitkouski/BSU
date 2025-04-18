@@ -46,5 +46,13 @@ int main() {
 		student->display();
 	}
 
+	shared_ptr<Student> sharedStudent = make_shared<Student>("Maria", vector<int>{85, 87, 90});
+	weak_ptr<Student> weakStudent = sharedStudent;
+
+	if (auto locked = weakStudent.lock()) {
+		cout << "\nShared Student: \n";
+		locked->display();
+	}
+
 	return 0;
 }
