@@ -100,6 +100,16 @@ public:
 	}
 };
 
+void furnishRoom(const FurnitureFactory& factory) {
+	auto chair = factory.createChair();
+	auto sofa = factory.createSofa();
+	auto table = factory.createTable();
+
+	chair->sit();
+	sofa->lie();
+	table->use();
+}
+
 int main() {
 
 
