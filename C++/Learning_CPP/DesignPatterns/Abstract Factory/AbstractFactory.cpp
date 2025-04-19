@@ -62,6 +62,44 @@ public:
 	}
 };
 
+class FurnitureFactory {
+public:
+	virtual std::unique_ptr<Chair> createChair() const = 0;
+	virtual std::unique_ptr<Sofa> createSofa() const = 0;
+	virtual std::unique_ptr<Table> createTable() const = 0;
+	virtual ~FurnitureFactory() = default;
+};
+
+class ScandinavianFurnitureFactory : public FurnitureFactory {
+public:
+	std::unique_ptr<Chair> createChair() const override {
+		return std::make_unique<ScandinavianChair>();
+	}
+
+	std::unique_ptr<Sofa> createSofa() const override {
+		return std::make_unique<ScandinavianSofa>();
+	}
+
+	std::unique_ptr<Table> createTable() const override {
+		return std::make_unique<ScandinavianTable>();
+	}
+};
+
+class AmericanFurnitureFactory : public FurnitureFactory {
+public:
+	std::unique_ptr<Chair> createChair() const override {
+		return std::make_unique<AmericanChair>();
+	}
+
+	std::unique_ptr<Sofa> createSofa() const override {
+		return std::make_unique<AmericanSofa>();
+	}
+
+	std::unique_ptr<Table> createTable() const override {
+		return std::make_unique<AmericanTable>();
+	}
+};
+
 int main() {
 
 
