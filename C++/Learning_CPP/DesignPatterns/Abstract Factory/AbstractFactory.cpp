@@ -111,7 +111,24 @@ void furnishRoom(const FurnitureFactory& factory) {
 }
 
 int main() {
+	std::string style;
+	std::cout << "Choose furniture style (scandinavian/american): " << std::endl;
+	std::cin >> style;
 
+	std::unique_ptr<FurnitureFactory> factory;
+
+	if (style == "scandinavian") {
+		factory = std::make_unique<ScandinavianFurnitureFactory>();
+	}
+	else if (style == "american") {
+		factory = std::make_unique<AmericanFurnitureFactory>();
+	}
+	else {
+		std::cerr << "Unsupported style of furniture.\n";
+		return -1;
+	}
+
+	furnishRoom(*factory);
 
 	return 0;
 }
