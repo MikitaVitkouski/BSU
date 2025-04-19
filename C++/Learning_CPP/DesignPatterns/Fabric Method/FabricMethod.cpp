@@ -41,7 +41,7 @@ public:
 	}
 };
 
-class SMSNoficationCenter : public NotificationCreator {
+class SMSNotificationCreator : public NotificationCreator {
 public:
 	std::unique_ptr<Notification> createNotification() const override {
 		return std::make_unique<EmailNotification>();
@@ -49,7 +49,24 @@ public:
 };
 
 int main() {
+	std::string type;
+	std::cout << "Enter notification type (email/sms): ";
+	std::cin >> type;
 
+	std::unique_ptr<NotificationCreator> creator;
+
+	if (type == "email") {
+		creator = std::make_unique<EmailNotificationCreator>();
+	}
+	else if (type == "sms") {
+		creator = std::make_unique<SMSNotificationCreator>();
+	}
+	else {
+		std::cerr << "Unsupported notification type.\n";
+		return -1;
+	}
+
+	creator->notify("Hello from Fabric Method with Creator!");
 
 	return 0;
 }
