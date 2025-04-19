@@ -20,6 +20,27 @@ public:
 	virtual ~Table() = default;
 };
 
+class ScandinavianChair : public Chair {
+public:
+	void sit() const override {
+		std::cout << "You sit on a minimalist Scandinavian chair.\n";
+	}
+};
+
+class ScandinavianSofa : public Sofa {
+public:
+	void lie() const override {
+		std::cout << "You lie on a cozy Scandinavian sofa.\n";
+	}
+};
+
+class ScandinavianTable : public Table {
+public:
+	void use() const override {
+		std::cout << "You use a light wooden Scandinavian table.\n";
+	}
+};
+
 int main() {
 
 
