@@ -41,6 +41,27 @@ public:
 	}
 };
 
+class AmericanChair : public Chair {
+public:
+	void sit() const override {
+		std::cout << "You sit on a bulky American chair.\n";
+	}
+};
+
+class AmericanSofa : public Sofa {
+public:
+	void lie() const override {
+		std::cout << "You lie on a massive American sofa.\n";
+	}
+};
+
+class AmericanTable : public Table {
+public:
+	void use() const override {
+		std::cout << "You use a heavy oak American table.\n";
+	}
+};
+
 int main() {
 
 
