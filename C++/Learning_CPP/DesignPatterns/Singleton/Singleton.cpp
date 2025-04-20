@@ -27,8 +27,17 @@ public:
 
 };
 
-int main() {
+std::unique_ptr<Logger> Logger::instance = nullptr;
+std::mutex Logger::mutex;
 
+int main() {
+	Logger::getInstance().log("Starting app...");
+	Logger::getInstance().log("Closing app...");
+
+	/* Output:
+	[LOG]: Starting app...
+	[LOG]: Closing app...
+	*/
 
 	return 0;
 }
