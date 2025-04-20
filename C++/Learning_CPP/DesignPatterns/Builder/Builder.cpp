@@ -72,6 +72,20 @@ public:
 	}
 };
 
+class CharacterDirector {
+public:
+	void createFullCharacter(CharacterBuilder& builder) {
+		builder.buildWeapon();
+		builder.buildArmor();
+		builder.buildMagic();
+	}
+
+	void createLightCharacter(CharacterBuilder& builder) {
+		builder.buildWeapon();
+		builder.buildArmor(); //Without buildMagic()
+	}
+};
+
 int main() {
 
 
