@@ -53,7 +53,7 @@ public:
 	Rectangle(const Rectangle& other) : Shape(other), width(other.width), height(other.height) { }
 
 	std::unique_ptr<Shape> clone() const override {
-		return std::make_unique<Circle>(*this);
+		return std::make_unique<Rectangle>(*this);
 	}
 
 	void draw() const override {
@@ -89,6 +89,14 @@ int main() {
 	for (const auto& shape : shapes) {
 		shape->draw();
 	}
+
+	/*
+	Drawing all shapes:
+	Circle with radius 10 and color Blue
+	Circle with radius 10 and color Blue
+	Rectangle 20x30 and color Green
+	Rectangle 20x30 and color Green
+	*/
 
 	return 0;
 }
