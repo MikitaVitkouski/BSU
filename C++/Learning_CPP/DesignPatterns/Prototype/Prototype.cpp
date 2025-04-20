@@ -67,7 +67,28 @@ public:
 };
 
 int main() {
+	std::vector<std::unique_ptr<Shape>> shapes;
 
+	auto originalCircle = std::make_unique<Circle>();
+	originalCircle->setRadius(10);
+	originalCircle->setColor("Blue");
+	shapes.push_back(std::move(originalCircle));
+
+	auto clonedCircle = shapes.back()->clone();
+	shapes.push_back(std::move(clonedCircle));
+
+	auto originalRectangle = std::make_unique<Rectangle>();
+	originalRectangle->setSize(20, 30);
+	originalRectangle->setColor("Green");
+	shapes.push_back(std::move(originalRectangle));
+
+	auto clonedRectangle = shapes.back()->clone();
+	shapes.push_back(std::move(clonedRectangle));
+
+	std::cout << "Drawing all shapes:\n";
+	for (const auto& shape : shapes) {
+		shape->draw();
+	}
 
 	return 0;
 }
