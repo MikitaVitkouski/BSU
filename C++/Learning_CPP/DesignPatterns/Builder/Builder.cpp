@@ -26,6 +26,52 @@ public:
 	virtual ~CharacterBuilder() = default;
 };
 
+class WarriorBuilder : public CharacterBuilder {
+private:
+	std::unique_ptr<Character> character;
+public:
+	WarriorBuilder() { character = std::make_unique<Character>(); }
+
+	void buildWeapon() override {
+		character->weapon = "Sword";
+	}
+
+	void buildArmor() override {
+		character->armor = "Heavy Plate Armor";
+	}
+
+	void buildMagic() override {
+		character->magic = ""; //Warriors don't use the magic
+	}
+
+	std::unique_ptr<Character> getResult() override {
+		return std::move(character);
+	}
+};
+
+class MageBuilder : public CharacterBuilder {
+private:
+	std::unique_ptr<Character> character;
+public:
+	MageBuilder() { character = std::make_unique<Character>(); }
+
+	void buildWeapon() override {
+		character->weapon = "Magic Staff";
+	}
+
+	void buildArmor() override {
+		character->armor = "Cloth Robe";
+	}
+
+	void buildMagic() override {
+		character->magic = "Fireball";
+	}
+
+	std::unique_ptr<Character> getResult() override {
+		return std::move(character);
+	}
+};
+
 int main() {
 
 
