@@ -87,7 +87,34 @@ public:
 };
 
 int main() {
+	CharacterDirector director;
 
+	WarriorBuilder warriorBuilder;
+	director.createFullCharacter(warriorBuilder);
+	auto warrior = warriorBuilder.getResult();
+	std::cout << "--- Warrior ---\n";
+	warrior->show();
+
+	MageBuilder mageBuilder;
+	director.createLightCharacter(mageBuilder);
+	auto mage = mageBuilder.getResult();
+	std::cout << "--- Mage ---\n";
+	mage->show();
+
+	/*Output:
+	
+	--- Warrior ---
+Character Loadout:
+Weapon: Sword
+Armor: Heavy Plate Armor
+Magic: None
+--- Mage ---
+Character Loadout:
+Weapon: Magic Staff
+Armor: Cloth Robe
+Magic: None
+
+	*/
 
 	return 0;
 }
