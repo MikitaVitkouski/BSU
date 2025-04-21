@@ -26,8 +26,25 @@ public:
 	}
 };
 
+class MediaPlayer {
+private:
+	VideoDecoder video;
+	AudioDecoder audio;
+	Renderer renderer;
+public:
+	void playMedia(const std::string& filename) {
+		std::cout << "[MediaPlayer] Starting playback\n";
+		video.decodeVideo(filename);
+		audio.decodeAudio(filename);
+		renderer.renderVideo();
+		renderer.playAudio();
+		std::cout << "[MediaPlayer] Playback finished\n";
+	}
+};
+
 int main() {
-	
+	MediaPlayer mediaPlayer;
+	mediaPlayer.playMedia("awesome_movie.mp4");
 
 	return 0;
 }
