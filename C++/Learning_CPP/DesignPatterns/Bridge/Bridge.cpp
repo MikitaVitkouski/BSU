@@ -50,7 +50,16 @@ public:
 };
 
 int main() {
+	std::shared_ptr<Color> red = std::make_shared<Red>();
+	std::shared_ptr<Color> blue = std::make_shared<Blue>();
 
+	std::unique_ptr<Shape> redCircle = std::make_unique<Circle>(red);
+	std::unique_ptr<Shape> blueSquare = std::make_unique<Square>(blue);
+	std::unique_ptr<Shape> redSquare = std::make_unique<Square>(red);
+
+	redCircle->draw();
+	blueSquare->draw();
+	redSquare->draw();
 
 	return 0;
 }
