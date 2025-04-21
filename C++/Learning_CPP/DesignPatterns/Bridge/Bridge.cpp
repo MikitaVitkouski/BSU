@@ -31,6 +31,24 @@ public:
 	virtual ~Shape() = default;
 };
 
+class Circle : public Shape {
+public:
+	Circle(std::shared_ptr<Color> c) : Shape(std::move(c)) { }
+
+	void draw() const override {
+		std::cout << "Drawing a " << color->getColor() << " Circle.\n";
+	}
+};
+
+class Square : public Shape {
+public:
+	Square(std::shared_ptr<Color> c) : Shape(std::move(c)) { }
+
+	void draw() const override {
+		std::cout << "Drawing a " << color->getColor() << " Square.\n";
+	}
+};
+
 int main() {
 
 
