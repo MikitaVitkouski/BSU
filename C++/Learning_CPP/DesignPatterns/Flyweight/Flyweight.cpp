@@ -29,6 +29,36 @@ public:
 	}
 };
 
+class TreeFactory {
+private:
+	std::unordered_map<std::string, std::shared_ptr<TreeType>> types;
+public:
+	std::shared_ptr<TreeType> getTreeType(const std::string& name, const std::string& texture, const std::string& color) {
+		std::string key = name + texture + color;
+		if (types.find(key) == types.end()) {
+			types[key] = std::make_shared<TreeType>(name, texture, color);
+		}
+		return types[key];
+	}
+};
+
+class Forest {
+private:
+	std::vector<Tree> trees;
+	TreeFactory factory;
+public:
+	void plantTree(int x, int y, const std::string& name, const std::string& texture, const std::string& color) {
+		auto type = factory.getTreeType(name, texture, color);
+		trees.emplace_back(x, y, type);
+	}
+
+	void drawForest() const {
+		for (const auto& tree : trees) {
+			tree.draw();
+		}
+	}
+};
+
 int main() {
 
 
