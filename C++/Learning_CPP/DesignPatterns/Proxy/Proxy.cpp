@@ -29,7 +29,39 @@ public:
 	}
 };
 
+class ProtectedBankAccountProxy : public IBankAccount {
+private:
+	std::shared_ptr<RealBankAccount> realAccount;
+	std::string password;
 
+	bool authenticate() const {
+		std::string input;
+		std::cout << "Enter password: ";
+		std::cin >> input;
+		return input == password;
+	}
+
+public:
+	ProtectedBankAccountProxy(std::shared_ptr<RealBankAccount> account, std::string pass) : realAccount(std::move(account)), password(std::move(pass)) { }
+
+	void withdraw(double amount) override {
+		if (authenticate()) {
+			realAccount->withdraw(amount);
+		}
+		else {
+			std::cout << "Access denied: wrong password.\n";
+		}
+	}
+
+	void deposit(double amount) override {
+		if (authenticate()) {
+			realAccount->deposit(amount);
+		}
+		else {
+			std::cout << "Access denied: wrong password.\n";
+		}
+	}
+};
 
 int main() {
 
