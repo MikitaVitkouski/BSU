@@ -12,7 +12,7 @@ public:
 	TreeType(const std::string& n, const std::string& t, const std::string& c) : name(n), texture(t), color(c) { }
 
 	void draw(int x, int y) const {
-		std::cout << "Drawing tree '" << name << "' at(" << x << ", " << y
+		std::cout << "Drawing tree '" << name << "' at (" << x << ", " << y
 			<< ") with texture '" << texture << "' and color '" << color << "'\n";
 	}
 };
@@ -60,7 +60,21 @@ public:
 };
 
 int main() {
+	Forest forest;
 
+	forest.plantTree(30, 40, "Bereza", "bereza_texture.jpeg", "Green");
+	forest.plantTree(20, 30, "Pine", "pine_texture.png", "DarkGreen");
+	forest.plantTree(50, 60, "Bereza", "oak_texture.jpg", "Green");
+
+	std::cout << "Rendering forest: \n";
+	forest.drawForest();
+
+	/* Output:
+	Rendering forest:
+	Drawing tree 'Bereza' at (30, 40) with texture 'bereza_texture.jpeg' and color 'Green'
+	Drawing tree 'Pine' at (20, 30) with texture 'pine_texture.png' and color 'DarkGreen'
+	Drawing tree 'Bereza' at (50, 60) with texture 'oak_texture.jpg' and color 'Green'
+	*/
 
 	return 0;
 }
