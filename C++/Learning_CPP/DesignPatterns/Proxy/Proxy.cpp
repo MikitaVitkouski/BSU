@@ -64,7 +64,21 @@ public:
 };
 
 int main() {
+	std::shared_ptr<RealBankAccount> realAccount = std::make_shared<RealBankAccount>();
+	ProtectedBankAccountProxy proxy(realAccount, "1234");
 
+	proxy.deposit(100);
+	proxy.withdraw(30);
+	proxy.withdraw(100);
+
+	/* Output:
+	Enter password: 1234
+	Deposited $100, new balance: $100
+	Enter password: 1234
+	Withdrew $30, remaining: $70
+	Enter password: 1234
+	Insufficient funds!
+	*/
 
 	return 0;
 }
