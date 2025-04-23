@@ -28,6 +28,44 @@ public:
 	}
 };
 
+class TeamLead : public BaseHandler {
+public:
+	void handleRequest(const std::string& issue) override {
+		if (issue == "workload") {
+			std::cout << "TeamLead: I will handle the workload issue.\n";
+		}
+		else {
+			std::cout << "TeamLead: Can't handle \"" << issue << "\", passing on...\n";
+			BaseHandler::handleRequest(issue);
+		}
+	}
+};
+
+class Manager : public BaseHandler {
+public:
+	void handleRequest(const std::string& issue) override {
+		if (issue == "salary") {
+			std::cout << "Manager: I will handle the salary issue.\n";
+		}
+		else {
+			std::cout << "Manager: Can't handle \"" << issue << "\", passing on...";
+			BaseHandler:handleRequest(issue);
+		}
+	}
+};
+
+class HR : public BaseHandler {
+public:
+	void handleRequest(const std::string& issue) override {
+		if (issue == "harassment") {
+			std::cout << "HR: I will handle the harassment issue.\n";
+		}
+		else {
+			std::cout << "HR: Can't handle \"" << issue << "\". Issue unresolved.\n";
+		}
+	}
+};
+
 int main() {
 
 
