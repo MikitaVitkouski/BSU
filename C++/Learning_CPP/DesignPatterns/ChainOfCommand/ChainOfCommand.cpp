@@ -86,7 +86,20 @@ int main() {
 	lead.handleRequest("unknown");
 
 	/*Output:
-	
+	--- Case 1: workload ---
+	TeamLead: I will handle the workload issue.
+
+	--- Case 2: salary ---
+	TeamLead: Can't handle "salary", passing on...
+	Manager: I will handle the salary issue.
+
+	--- Case 3: harassment ---
+	TeamLead: Can't handle "harassment", passing on...
+	Manager: Can't handle "harassment", passing on...HR: I will handle the harassment issue.
+
+	--- Case 4: unknown issue ---
+	TeamLead: Can't handle "unknown", passing on...
+	Manager: Can't handle "unknown", passing on...HR: Can't handle "unknown". Issue unresolved.
 	*/
 
 	return 0;
