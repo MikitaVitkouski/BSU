@@ -1,6 +1,7 @@
 #include <iostream>
 #include <memory>
 #include <string>
+#include <vector>
 
 //command's interface
 class Command {
@@ -41,8 +42,33 @@ public:
 	}
 };
 
-int main() {
+//(Invoker)
+class RemoteControl {
+private:
+	std::vector<std::shared_ptr<Command>> history;
+public:
+	void pressButton(std::shared_ptr<Command> cmd) {
+		cmd->execute();
+		history.push_back(cmd); // can be used for cancelling
+	}
+};
 
+
+//Client
+int main() {
+	Light livingRoomLight;
+
+	auto onCommand = std::make_shared<TurnOnCommand>(livingRoomLight);
+	auto offCommand = std::make_shared<TurnOffCommand>(livingRoomLight);
+
+	RemoteControl remote;
+	remote.pressButton(onCommand);
+	remote.pressButton(offCommand);
+
+	/*Output:
+	Light is ON
+	Light is OFF
+	*/
 
 	return 0;
 }
