@@ -49,7 +49,7 @@ public:
 		}
 		else {
 			std::cout << "Manager: Can't handle \"" << issue << "\", passing on...";
-			BaseHandler:handleRequest(issue);
+			BaseHandler::handleRequest(issue);
 		}
 	}
 };
@@ -67,7 +67,27 @@ public:
 };
 
 int main() {
+	TeamLead lead;
+	Manager manager;
+	HR hr;
 
+	lead.setNext(&manager)->setNext(&hr); //ChainOfCommand TeamLead -> Manager -> HR
+
+	std::cout << "--- Case 1: workload ---\n";
+	lead.handleRequest("workload");
+
+	std::cout << "\n--- Case 2: salary ---\n";
+	lead.handleRequest("salary");
+
+	std::cout << "\n--- Case 3: harassment ---\n";
+	lead.handleRequest("harassment");
+
+	std::cout << "\n--- Case 4: unknown issue ---\n";
+	lead.handleRequest("unknown");
+
+	/*Output:
+	
+	*/
 
 	return 0;
 }
