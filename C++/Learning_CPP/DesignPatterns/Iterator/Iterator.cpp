@@ -77,5 +77,12 @@ int main() {
 		std::cout << "- " << book.getTitle() << "\n";
 	}
 
+	/*Output:
+	Books in library:
+	- Clean Code
+	- Design Patterns
+	- Clean Agile
+	*/
+
 	return 0;
 }
