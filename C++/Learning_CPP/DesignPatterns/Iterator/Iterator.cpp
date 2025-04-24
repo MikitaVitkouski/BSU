@@ -58,8 +58,24 @@ public:
 	}
 };
 
-int main() {
+std::unique_ptr<IIterator<Book>> BookCollection::createIterator() {
+	return std::make_unique<BookIterator>(this->books);
+}
 
+int main() {
+	BookCollection library;
+	
+	library.addBook(Book("Clean Code"));
+	library.addBook(Book("Design Patterns"));
+	library.addBook(Book("Clean Agile"));
+
+	auto iterator = library.createIterator();
+
+	std::cout << "Books in library:\n";
+	while (iterator->hasNext()) {
+		Book book = iterator->next();
+		std::cout << "- " << book.getTitle() << "\n";
+	}
 
 	return 0;
 }
