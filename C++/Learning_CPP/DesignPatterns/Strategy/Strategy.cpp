@@ -36,7 +36,7 @@ private:
 	std::unique_ptr<RouteStrategy> strategy;
 public:
 	void setStrategy(std::unique_ptr<RouteStrategy> newStrategy) {
-		strategy == std::move(newStrategy);
+		strategy = std::move(newStrategy);
 	}
 
 	void navigate(const std::string& from, const std::string& to) {
@@ -50,7 +50,6 @@ public:
 };
 
 int main() {
-
 
 	return 0;
 }
