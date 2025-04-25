@@ -31,6 +31,24 @@ public:
 	}
 };
 
+class Navigator {
+private:
+	std::unique_ptr<RouteStrategy> strategy;
+public:
+	void setStrategy(std::unique_ptr<RouteStrategy> newStrategy) {
+		strategy == std::move(newStrategy);
+	}
+
+	void navigate(const std::string& from, const std::string& to) {
+		if (strategy) {
+			strategy->buildRoute(from, to);
+		}
+		else {
+			std::cout << "There is no any strategy of route.\n";
+		}
+	}
+};
+
 int main() {
 
 
