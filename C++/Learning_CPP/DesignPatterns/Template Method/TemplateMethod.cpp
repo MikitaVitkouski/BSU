@@ -26,6 +26,26 @@ protected:
 	virtual ~Beverage() = default;
 };
 
+class Tea : public Beverage {
+	void brew() override {
+		std::cout << "Brewing tea\n";
+	}
+
+	void addCondiments() override {
+		std::cout << "Adding lemon\n";
+	}
+};
+
+class Coffee : public Beverage {
+	void brew() override {
+		std::cout << "Brewing coffee\n";
+	}
+
+	void addCondiments() override {
+		std::cout << "Adding milk\n";
+	}
+};
+
 int main() {
 
 
