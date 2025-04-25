@@ -47,6 +47,36 @@ public:
 	void withdrawCash(ATM& atm, int amount) override;
 };
 
+class ATM {
+private:
+	std::unique_ptr<ATMState> currentState;
+	friend class NoCardState;
+	friend class HasCardState;
+	friend class AuthenticatedState;
+public:
+	ATM() {
+		currentState = std::make_unique<NoCardState>();
+	}
+
+	void setState(std::unique_ptr<ATMState> state) {
+		currentState = std::move(state);
+	}
+
+	void insertCard() {
+		currentState->insertCard(*this);
+	}
+
+	void enterPIN(int pin) {
+		currentState->enterPIN(*this, pin);
+	}
+
+	void withdrawCash(int amount) {
+		currentState->withdrawCash(*this, amount);
+	}
+};
+
+
+
 int main() {
 
 
