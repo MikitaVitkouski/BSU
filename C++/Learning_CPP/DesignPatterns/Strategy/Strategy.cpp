@@ -50,6 +50,22 @@ public:
 };
 
 int main() {
+	Navigator nav;
+
+	nav.setStrategy(std::make_unique<CarRoute>());
+	nav.navigate("Hotel", "Museum");
+
+	nav.setStrategy(std::make_unique<WalkingRoute>());
+	nav.navigate("Museum", "Cafe");
+
+	nav.setStrategy(std::make_unique<PublicTransportRoute>());
+	nav.navigate("Cafe", "Airport");
+
+	/*Output:
+	Building route by car: Hotel -> Museum
+	Building route on foot: Museum -> Cafe
+	Building route by public transport: Cafe -> Airport
+	*/
 
 	return 0;
 }
