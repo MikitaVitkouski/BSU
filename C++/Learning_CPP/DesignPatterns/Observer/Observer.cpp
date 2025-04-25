@@ -33,6 +33,16 @@ private:
 	}
 };
 
+class Reader : public ISubscriber {
+	std::string name;
+public:
+	Reader(const std::string& n) : name(n) { }
+
+	void update(const std::string& news) override {
+		std::cout << name << " ???????(?) ???????: " << news << "\n";
+	}
+};
+
 int main() {
 
 
