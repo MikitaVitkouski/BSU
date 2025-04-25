@@ -50,7 +50,26 @@ public:
 };
 
 int main() {
+	TextEditor editor;
+	History history;
 
+	editor.type("Hello");
+	history.backup(editor.save());
+
+	editor.type(", world!");
+	history.backup(editor.save());
+
+	editor.showText(); //Hello, world!
+
+	std::cout << "Undo...\n";
+	editor.restore(history.undo()); //editor.text = "Hello" (removed ", world!")
+
+	editor.showText();
+
+	std::cout << "Undo once again...\n";
+	editor.restore(history.undo()); //editor.text = "" (removed "Hello")
+
+	editor.showText();
 
 	return 0;
 }
