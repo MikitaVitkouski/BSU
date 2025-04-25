@@ -99,7 +99,20 @@ void AuthenticatedState::withdrawCash(ATM& atm, int amount) {
 int main() {
 	ATM atm;
 
+	atm.withdrawCash(100); //Can't withdraw yet
+	atm.enterPIN(1234); //No card yet
+	atm.insertCard(); //Insert card
+	atm.enterPIN(1234); //Enter correct PIN
+	atm.withdrawCash(200);	 //Withdraw money
 
+	/*Output:
+	Insert card first.
+	 card first.
+	Card inserted.
+	PIN correct.
+	Dispensing $200.
+	Transaction complete.
+	*/
 
 	return 0;
 }
