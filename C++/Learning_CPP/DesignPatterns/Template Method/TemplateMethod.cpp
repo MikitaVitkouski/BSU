@@ -1,4 +1,4 @@
-#include <iostream>
+﻿#include <iostream>
 #include <memory>
 #include <string>
 
@@ -47,7 +47,28 @@ class Coffee : public Beverage {
 };
 
 int main() {
+	Tea tea;
+	Coffee coffee;
 
+	std::cout << "--- Making tea ---\n";
+	tea.prepareRecipe();
+
+	std::cout << "\n--- Making coffee ---\n";
+	coffee.prepareRecipe();
+
+	/*Output:
+	--- Making tea ---
+	Boiling water
+	Brewing tea
+	Pouring in cup
+	Adding lemon
+
+	--- Making coffee ---
+	Boiling water
+	Brewing coffee
+	Pouring in cup
+	Adding milk
+	*/
 
 	return 0;
 }
