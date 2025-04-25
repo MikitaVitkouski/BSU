@@ -75,9 +75,30 @@ public:
 	}
 };
 
+void NoCardState::insertCard(ATM& atm) {
+	std::cout << "Card inserted.\n";
+	atm.setState(std::make_unique<HasCardState>());
+}
 
+void HasCardState::enterPIN(ATM& atm, int pin) {
+	if (pin == 1234) {
+		std::cout << "PIN correct.\n";
+		atm.setState(std::make_unique<AuthenticatedState>());
+	}
+	else {
+		std::cout << "Incorrect PIN.\n";
+	}
+}
+
+void AuthenticatedState::withdrawCash(ATM& atm, int amount) {
+	std::cout << "Dispensing $" << amount << ".\n";
+	std::cout << "Transaction complete.\n";
+	atm.setState(std::make_unique<NoCardState>());
+}
 
 int main() {
+	ATM atm;
+
 
 
 	return 0;
