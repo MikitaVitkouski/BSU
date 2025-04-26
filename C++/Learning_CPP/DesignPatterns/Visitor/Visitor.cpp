@@ -21,7 +21,40 @@ public:
 };
 
 //Concrete elements
+class Circle : public Shape {
+private:
+	double radius;
+public:
+	Circle(double radius) : radius(radius) { }
 
+	double getRadius() const {
+		return radius;
+	}
+
+	void accept(Visitor& visitor) override {
+		visitor.visit(*this);
+	}
+};
+
+class Rectangle : public Shape {
+private:
+	double width;
+	double height;
+public:
+	Rectangle(double w, double h) : width(w), height(h) { }
+
+	double getWidth() const {
+		return width;
+	}
+
+	double getHeight() const {
+		return height;
+	}
+
+	void accept(Visitor& visitor) override {
+		visitor.visit(*this);
+	}
+};
 
 int main() {
 
