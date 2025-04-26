@@ -82,7 +82,32 @@ public:
 };
 
 int main() {
+	std::vector<std::unique_ptr<Shape>> shapes;
+	shapes.push_back(std::make_unique<Circle>(5.0));
+	shapes.push_back(std::make_unique<Rectangle>(4.0, 6.0));
 
+	DrawVisitor drawVisitor;
+	AreaVisitor areaVisitor;
+
+	std::cout << "===Drawing shapes===\n";
+	for (auto& shape : shapes) {
+		shape->accept(drawVisitor);
+	}
+
+	std::cout << "\n===Counting areas===\n";
+	for (auto& shape : shapes) {
+		shape->accept(areaVisitor);
+	}
+
+	/*Output:
+	===Drawing shapes===
+	Drawing circle with radius: 5.
+	Drawing rectangle with width 4 and height 6.
+
+	===Counting areas===
+	Area of circle: 78.5.
+	Area of rectangle: 24.
+	*/
 
 	return 0;
 }
