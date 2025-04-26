@@ -56,6 +56,31 @@ public:
 	}
 };
 
+//Concrete visitors
+class AreaVisitor : public Visitor {
+public:
+	void visit(Circle& circle) override {
+		double area = 3.14 * circle.getRadius() * circle.getRadius();
+		std::cout << "Area of circle: " << area << ".\n";
+	}
+
+	void visit(Rectangle& rectangle) override {
+		double area = rectangle.getHeight() * rectangle.getWidth();
+		std::cout << "Area of rectangle: " << area << ".\n";
+	}
+};
+
+class DrawVisitor : public Visitor {
+public:
+	void visit(Circle& circle) override {
+		std::cout << "Drawing circle with radius: " << circle.getRadius() << ".\n";
+	}
+
+	void visit(Rectangle& rectangle) override {
+		std::cout << "Drawing rectangle with width " << rectangle.getWidth() << " and height " << rectangle.getHeight() << ".\n";
+	}
+};
+
 int main() {
 
 
