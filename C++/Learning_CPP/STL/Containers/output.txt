@@ -1,0 +1,2 @@
+After numbers.erase(numbers.begin()): 42 3 5 9 7 11 13 
+

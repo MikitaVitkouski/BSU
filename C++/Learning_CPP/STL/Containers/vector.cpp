@@ -3,10 +3,24 @@
 #include <algorithm>
 #include <numeric>
 #include <ostream>
+#include <fstream>
 
 int main() {
-	// initializing elements of vector numbers
-	std::vector<int> numbers = { 5,1,8,3,9,2 };
+	// initializing vector numbers from input.txt
+	std::vector<int> numbers;
+
+	std::ifstream in("input.txt");
+
+	if (!in) {
+		std::cerr << "Can't open input.txt\n";
+		return 1;
+	}
+
+	int value;
+	while (in >> value) {
+		numbers.push_back(value);
+	}
+	in.close();
 
 	std::cout << "Initial vector: ";
 	for (const auto& num : numbers) {
@@ -86,11 +100,18 @@ int main() {
 		numbers.erase(numbers.begin()); // erasing first element
 	}
 
-	std::cout << "After numbers.erase(numbers.begin()): ";
-	for (const auto& i : numbers) {
-		std::cout << i << " ";
+	std::ofstream out("output.txt");
+
+	if (!out) {
+		std::cerr << "Can't open output.txt\n";
+		return 1;
 	}
-	std::cout << "\n\n";
+
+	out << "After numbers.erase(numbers.begin()): ";
+	for (const auto& i : numbers) {
+		out << i << " ";
+	}
+	out << "\n\n";
 
 	numbers.clear();
 	std::cout << "After numbers.clear(): size = " << numbers.size() << ", capacity = " << numbers.capacity() << "\n";
