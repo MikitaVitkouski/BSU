@@ -60,5 +60,40 @@ int main() {
 	std::cout << "Current size of vector: " << numbers.size() << "\n";
 	std::cout << "Current capacity of vector: " << numbers.capacity() << "\n";
 
+	numbers.reserve(20); // reserving space for 20 elements
+	std::cout << "Capacity after reserve(20): " << numbers.capacity() << "\n";
+
+	numbers.shrink_to_fit(); // making vector's size real
+	std::cout << "Capacity after shrink_to_fit(): " << numbers.capacity() << "\n";
+
+	numbers.emplace_back(13); // adding element without extra copying
+
+	std::cout << "Accessing elements by index: ";
+	for (size_t i = 0; i < numbers.size(); ++i) {
+		std::cout << numbers[i] << " "; // we can access elements of std::vector by index
+	}
+	std::cout << "\n\n";
+
+	numbers.insert(numbers.begin() + 1, 42); // inserting num 42 on the first place
+
+	std::cout << "After numbers.insert(numbers.begin() + 1, 42): ";
+	for (const auto& i : numbers) {
+		std::cout << i << " ";
+	}
+	std::cout << "\n\n";
+
+	if (!numbers.empty()) {
+		numbers.erase(numbers.begin()); // erasing first element
+	}
+
+	std::cout << "After numbers.erase(numbers.begin()): ";
+	for (const auto& i : numbers) {
+		std::cout << i << " ";
+	}
+	std::cout << "\n\n";
+
+	numbers.clear();
+	std::cout << "After numbers.clear(): size = " << numbers.size() << ", capacity = " << numbers.capacity() << "\n";
+
 	return 0;
 }
