@@ -1,0 +1,36 @@
+# Visual Studio
+.vs/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.user
+*.opensdf
+*.sdf
+*.db
+
+# CMake build artifacts
+build/
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake
+Makefile
+
+# Output binaries
+*.exe
+*.out
+*.dll
+*.so
+*.a
+*.lib
+*.o
+*.obj
+
+# Test results
+Testing/
+CTestTestfile.cmake
+
+# Logs
+*.log
+
+# Others
+*.DS_Store
