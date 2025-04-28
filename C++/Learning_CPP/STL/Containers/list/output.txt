@@ -1,0 +1,6 @@
+myList: 4 5 9 10 13 3 5 18 90 23 
+
+myList after clear(): 
+
+Sum of the elements of myList is 116
+
