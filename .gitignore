@@ -1,36 +1,45 @@
+# CMake build directories
+/build/
+CMakeCache.txt
+CMakeFiles/
+Makefile
+CMakeScripts/
+cmake_install.cmake
+CTestTestfile.cmake
+
 # Visual Studio
 .vs/
-*.sln
+.vscode/
 *.vcxproj
 *.vcxproj.filters
 *.user
-*.opensdf
+*.suo
+*.userosscache
+*.sln
 *.sdf
 *.db
-
-# CMake build artifacts
-build/
-CMakeFiles/
-CMakeCache.txt
-cmake_install.cmake
-Makefile
-
-# Output binaries
-*.exe
-*.out
-*.dll
-*.so
-*.a
-*.lib
-*.o
+*.pdb
+*.ipch
+*.aps
+*.ncb
 *.obj
+*.exe
+*.dll
+*.lib
+*.pdb
+*.cache
 
-# Test results
-Testing/
-CTestTestfile.cmake
-
-# Logs
+# Temporary files
 *.log
+*.swp
+*.bak
+*.tmp
+*~
+Thumbs.db
+ehthumbs.db
 
-# Others
-*.DS_Store
+# macOS
+.DS_Store
+
+# Linux
+*.swp
