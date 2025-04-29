@@ -43,3 +43,5 @@ ehthumbs.db
 
 # Linux
 *.swp
+
+x64/Debug/
