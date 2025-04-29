@@ -40,3 +40,31 @@ void Fraction::simplify() {
 	}
 }
 
+Fraction Fraction::operator+(const Fraction& other) const {
+	int num = other.denominator * numerator + denominator * other.numerator;
+	int den = other.denominator * denominator;
+	return Fraction(num, den);
+}
+
+Fraction Fraction::operator-(const Fraction& other) const {
+	int num = numerator*other.denominator - other.numerator*denominator;
+	int den = other.denominator*denominator;
+	return Fraction(num, den);
+}
+
+Fraction Fraction::operator*(const Fraction& other) const {
+	int num = numerator * other.numerator;
+	int den = denominator * other.denominator;
+	return Fraction(num, den);
+}
+
+Fraction Fraction::operator/(const Fraction& other) const {
+	int num = numerator * other.denominator;
+	int den = denominator * other.numerator;
+	return Fraction(num, den);
+}
+
+std::ostream& operator<<(std::ostream& os, const Fraction& frac) {
+	os << frac.numerator << "/" << frac.denominator;
+	return os;
+}
