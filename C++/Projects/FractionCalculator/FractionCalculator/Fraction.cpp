@@ -64,6 +64,63 @@ Fraction Fraction::operator/(const Fraction& other) const {
 	return Fraction(num, den);
 }
 
+Fraction& Fraction::operator+=(const Fraction& other) {
+	*this = *this + other;
+	return *this;
+}
+
+Fraction& Fraction::operator-=(const Fraction& other) {
+	*this = *this - other;
+	return *this;
+}
+
+Fraction& Fraction::operator*=(const Fraction& other) {
+	*this = *this * other;
+	return *this;
+}
+
+Fraction& Fraction::operator/=(const Fraction& other) {
+	*this = *this / other;
+	return *this;
+}
+
+bool Fraction::operator==(const Fraction& other) const {
+	return numerator == other.numerator && denominator == other.denominator;
+}
+
+bool Fraction::operator!=(const Fraction& other) const {
+	return !(*this == other);
+}
+
+bool Fraction::operator>(const Fraction& other) const {
+	return numerator * other.denominator > denominator * other.numerator;
+}
+
+bool Fraction::operator<(const Fraction& other) const {
+	return numerator * other.denominator < denominator * other.numerator;
+}
+
+bool Fraction::operator>=(const Fraction& other) const {
+	return numerator * other.denominator >= denominator * other.numerator;
+}
+
+bool Fraction::operator<=(const Fraction& other) const {
+	return numerator * other.denominator <= denominator * other.numerator;
+}
+
+std::istream& operator>>(std::istream& is, Fraction& frac) {
+	int num, den;
+	char slash;
+	is >> num >> slash >> den;
+	if (slash != '/' || den == 0) {
+		is.setstate(std::ios::failbit);
+	}
+	else {
+		frac = Fraction(num, den);
+	}
+	return is;
+}
+
 std::ostream& operator<<(std::ostream& os, const Fraction& frac) {
 	os << frac.numerator << "/" << frac.denominator;
 	return os;
