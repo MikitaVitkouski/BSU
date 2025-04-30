@@ -23,6 +23,13 @@ int main() {
 		Fraction div = f3 / f2;
 		out << "f3 / f2 = " << div << "\n";
 
+		try {
+			Fraction f4(1, 0);
+		}
+		catch (const std::invalid_argument& e) {
+			out << "Error creating Fraction with zero denominator: " << e.what() << "\n";
+		}
+
 		auto printBool = [&](const std::string& message, bool condition) {
 			out << message << (condition ? "yes" : "no") << "\n";
 		};
