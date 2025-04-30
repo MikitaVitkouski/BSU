@@ -2,6 +2,7 @@
 #include <fstream>
 
 std::ofstream out("output.txt");
+std::ifstream in("input.txt");
 
 int main() {
 	try {
@@ -22,10 +23,26 @@ int main() {
 		Fraction div = f3 / f2;
 		out << "f3 / f2 = " << div << "\n";
 
-		Fraction f4(1, 0);
+		auto printBool = [&](const std::string& message, bool condition) {
+			out << message << (condition ? "yes" : "no") << "\n";
+		};
+
+		printBool("f1 == f2? ", f1 == f2);
+		printBool("f1 != f2? ", f1 != f2);
+		printBool("f1 < f2? ", f1 < f2);
+		printBool("f1 <= f2? ", f1 <= f2);
+		printBool("f1 > f2? ", f1 > f2);
+		printBool("f1 >= f2? ", f1 >= f2);
+
+		Fraction f;
+		in >> f;
+		out << "f: " << f << "\n";
+
 	} catch (const std::exception& e) {
 		out << "Error: " << e.what() << std::endl;
 	}
 
+	out.flush();
+	out.close();
 	return 0;
 }
