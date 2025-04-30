@@ -20,7 +20,19 @@ public:
 	Fraction operator-(const Fraction& other) const;
 	Fraction operator*(const Fraction& other) const;
 	Fraction operator/(const Fraction& other) const;
+	Fraction operator+=(const Fraction& other);
+	Fraction operator-=(const Fraction& other);
+	Fraction operator*=(const Fraction& other);
+	Fraction operator/=(const Fraction& other);
 
+	bool operator==(const Fraction& other) const;
+	bool operator>=(const Fraction& other) const;
+	bool operator<=(const Fraction& other) const;
+	bool operator>(const Fraction& other) const;
+	bool operator<(const Fraction& other) const;
+	bool operator!=(const Fraction& other) const;
+
+	friend std::istream& operator>>(std::istream& is, Fraction& frac);
 	friend std::ostream& operator<<(std::ostream& os, const Fraction& frac);
 };
 
