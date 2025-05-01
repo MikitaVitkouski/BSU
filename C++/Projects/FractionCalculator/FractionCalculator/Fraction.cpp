@@ -139,6 +139,54 @@ Fraction Fraction::operator--(int){
 	return temp;
 }
 
+bool Fraction::operator==(int value) const {
+	return numerator == value * denominator;
+}
+
+bool Fraction::operator>(int value) const {
+	return numerator > value * denominator;
+}
+
+bool Fraction::operator>=(int value) const {
+	return numerator >= value * denominator;
+}
+
+bool Fraction::operator<(int value) const {
+	return numerator < value * denominator;
+}
+
+bool Fraction::operator<=(int value) const {
+	return numerator <= value * denominator;
+}
+
+bool Fraction::operator!=(int value) const {
+	return numerator != value * denominator;
+}
+
+bool Fraction::operator==(double value) const {
+	return toDouble() == value;
+}
+
+bool Fraction::operator>(double value) const {
+	return toDouble() > value;
+}
+
+bool Fraction::operator>=(double value) const {
+	return toDouble() >= value;
+}
+
+bool Fraction::operator<(double value) const {
+	return toDouble() < value;
+}
+
+bool Fraction::operator<=(double value) const {
+	return toDouble() <= value;
+}
+
+bool Fraction::operator!=(double value) const {
+	return toDouble() != value;
+}
+
 double Fraction::toDouble() const {
 	return static_cast<double> (numerator / denominator);
 }
