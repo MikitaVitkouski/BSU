@@ -188,7 +188,7 @@ bool Fraction::operator!=(double value) const {
 }
 
 double Fraction::toDouble() const {
-	return static_cast<double> (numerator / denominator);
+	return static_cast<double> (numerator) / denominator;
 }
 
 std::string Fraction::toString() const {
@@ -196,7 +196,7 @@ std::string Fraction::toString() const {
 }
 
 Fraction::operator double() const {
-	return static_cast<double> (numerator / denominator);
+	return static_cast<double> (numerator) / denominator;
 }
 
 std::istream& operator>>(std::istream& is, Fraction& frac) {
