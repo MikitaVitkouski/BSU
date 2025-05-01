@@ -109,7 +109,35 @@ bool Fraction::operator<=(const Fraction& other) const {
 	return numerator * other.denominator <= denominator * other.numerator;
 }
 
+Fraction Fraction::operator+() const {
+	return Fraction(+numerator, +denominator);
+}
 
+Fraction Fraction::operator-() const {
+	return Fraction(-numerator, denominator);
+}
+
+Fraction& Fraction::operator++() {
+	*this += 1;
+	return *this;
+}
+
+Fraction Fraction::operator++(int){
+	Fraction temp = *this;
+	*this += 1;
+	return temp;
+}
+
+Fraction& Fraction::operator--() {
+	*this -= 1;
+	return *this;
+}
+
+Fraction Fraction::operator--(int){
+	Fraction temp = *this;
+	*this -= 1;
+	return temp;
+}
 
 double Fraction::toDouble() const {
 	return static_cast<double> (numerator / denominator);
