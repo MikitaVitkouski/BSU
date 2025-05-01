@@ -2,6 +2,7 @@
 #include <numeric>
 #include <stdexcept>
 #include <cmath>
+#include <string>
 
 Fraction::Fraction(int num, int den) {
 	if (den == 0) {
@@ -106,6 +107,20 @@ bool Fraction::operator>=(const Fraction& other) const {
 
 bool Fraction::operator<=(const Fraction& other) const {
 	return numerator * other.denominator <= denominator * other.numerator;
+}
+
+
+
+double Fraction::toDouble() const {
+	return static_cast<double> (numerator / denominator);
+}
+
+std::string Fraction::toString() const {
+	return std::to_string(numerator) + "/" + std::to_string(denominator);
+}
+
+Fraction::operator double() const {
+	return static_cast<double> (numerator / denominator);
 }
 
 std::istream& operator>>(std::istream& is, Fraction& frac) {
