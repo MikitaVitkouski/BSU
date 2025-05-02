@@ -74,6 +74,16 @@ int main() {
 		Fraction f;
 		in >> f;
 		out << "f: " << f << "\n";
+		f.reverse();
+		out << "reversed f: " << f << "\n";
+		Fraction f_minus(-1, 2);
+		out << "f_minus: " << f_minus << "\n";
+		f_minus.abs();
+		out << "f_minus.abs(): " << f_minus << "\n";
+		f_minus ^= 2;
+		out << "(f_minus.abs())^2: " << f_minus << "\n";
+		f_minus ^= (-3);
+		out << "(f_minus^2)^(-3): " << f_minus << "\n";
 
 	} catch (const std::exception& e) {
 		out << "Error: " << e.what() << std::endl;

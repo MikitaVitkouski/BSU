@@ -31,3 +31,8 @@ f2 as double (toDouble()): 0.75
 f3 as string (toString()): 1/4
 f1 using static_cast<double>: 0.5
 f: 7/8
+reversed f: 8/7
+f_minus: -1/2
+f_minus.abs(): 1/2
+(f_minus.abs())^2: 1/2
+(f_minus^2)^(-3): 1/2
