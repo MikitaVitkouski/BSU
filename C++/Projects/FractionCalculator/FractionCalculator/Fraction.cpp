@@ -32,13 +32,13 @@ void Fraction::setDenominator(int den) {
 }
 
 void Fraction::simplify() {
-	int gcd = std::gcd(numerator, denominator);
-	numerator /= gcd;
-	denominator /= gcd;
 	if (denominator < 0) {
 		numerator = -numerator;
 		denominator = -denominator;
 	}
+	int gcd = std::gcd(numerator, denominator);
+	numerator /= gcd;
+	denominator /= gcd;
 }
 
 Fraction Fraction::operator+(const Fraction& other) const {
@@ -139,6 +139,20 @@ Fraction Fraction::operator--(int){
 	return temp;
 }
 
+Fraction Fraction::operator^(int n) const {
+	if (n == 0) return Fraction(1);
+	Fraction base = *this;
+
+	if (n < 0) {
+		base.reverse();
+		n *= -1;
+	}
+
+	int new_num = std::pow(numerator, n);
+	int new_den = std::pow(denominator, n);
+	return Fraction(new_num, new_den);
+}
+
 bool Fraction::operator==(int value) const {
 	return numerator == value * denominator;
 }
@@ -197,6 +211,19 @@ std::string Fraction::toString() const {
 
 Fraction::operator double() const {
 	return static_cast<double> (numerator) / denominator;
+}
+
+Fraction& Fraction::reverse() {
+	auto temp = denominator;
+	denominator = numerator;
+	numerator = temp;
+	return *this;
+}
+
+Fraction& Fraction::abs() {
+	numerator = std::abs(numerator);
+	denominator = std::abs(denominator);
+	return *this;
 }
 
 std::istream& operator>>(std::istream& is, Fraction& frac) {
