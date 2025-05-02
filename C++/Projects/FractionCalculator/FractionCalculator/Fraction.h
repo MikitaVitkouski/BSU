@@ -34,6 +34,7 @@ public:
 	Fraction operator--(int); //postfix--
 
 	Fraction operator^(int n) const;
+	Fraction& operator^=(int n);
 
 	bool operator==(const Fraction& other) const;
 	bool operator>=(const Fraction& other) const;

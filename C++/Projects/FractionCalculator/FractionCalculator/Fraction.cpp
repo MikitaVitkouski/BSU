@@ -139,8 +139,10 @@ Fraction Fraction::operator--(int){
 	return temp;
 }
 
-Fraction Fraction::operator^(int n) const {
-	if (n == 0) return Fraction(1);
+Fraction Fraction::operator^(int n) const{
+	if (n == 0) {
+		return Fraction(1);
+	};
 	Fraction base = *this;
 
 	if (n < 0) {
@@ -148,9 +150,27 @@ Fraction Fraction::operator^(int n) const {
 		n *= -1;
 	}
 
-	int new_num = std::pow(numerator, n);
-	int new_den = std::pow(denominator, n);
-	return Fraction(new_num, new_den);
+	auto new_num = std::pow(base.numerator, n);
+	auto new_din = std::pow(base.denominator, n);
+
+	return Fraction(new_num, new_din);
+}
+
+Fraction& Fraction::operator^=(int n){
+	if (n == 0) {
+		numerator = 1;
+		denominator = 1;
+		return *this;
+	};
+
+	if (n < 0) {
+		reverse();
+		n *= -1;
+	}
+
+	numerator = std::pow(numerator, n);
+	denominator = std::pow(denominator, n);
+	return *this;
 }
 
 bool Fraction::operator==(int value) const {
@@ -240,6 +260,11 @@ std::istream& operator>>(std::istream& is, Fraction& frac) {
 }
 
 std::ostream& operator<<(std::ostream& os, const Fraction& frac) {
-	os << frac.numerator << "/" << frac.denominator;
+	if (frac.getDenominator() == 1) {
+		os << frac.getNumerator();
+	}
+	else {
+		os << frac.getNumerator() << "/" << frac.getDenominator();
+	}
 	return os;
 }
