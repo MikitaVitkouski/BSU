@@ -33,6 +33,8 @@ public:
 	Fraction& operator--(); //prefix--
 	Fraction operator--(int); //postfix--
 
+	Fraction operator^(int n) const;
+
 	bool operator==(const Fraction& other) const;
 	bool operator>=(const Fraction& other) const;
 	bool operator<=(const Fraction& other) const;
@@ -59,6 +61,8 @@ public:
 	double toDouble() const; // returns decimal representation of the fraction
 	std::string toString() const; // for future purpose (GUI)
 	explicit operator double() const; // for "static_cast<double>(Fraction_object)"
+	Fraction& reverse();
+	Fraction& abs();
 
 	friend std::istream& operator>>(std::istream& is, Fraction& frac);
 	friend std::ostream& operator<<(std::ostream& os, const Fraction& frac);
