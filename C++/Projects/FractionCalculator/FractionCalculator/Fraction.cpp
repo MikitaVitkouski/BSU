@@ -173,6 +173,20 @@ Fraction& Fraction::operator^=(int n) {
     return *this;
 }
 
+Fraction Fraction::operator*(int value) const {
+    int num = getNumerator() * value;
+    int den = getDenominator();
+
+    return Fraction(num, den);
+}
+
+Fraction Fraction::operator*(double value) const {
+    int num = static_cast<int>(getNumerator() * value);
+    int den = getDenominator();
+
+    return Fraction(num, den);
+}
+
 bool Fraction::operator==(int value) const {
     return getNumerator() == value * getDenominator();
 }
@@ -280,4 +294,46 @@ Fraction operator+(double lhs, const Fraction& rhs) {
     double newDenominator = rhs.getDenominator();
 
     return Fraction(static_cast<int>(newNumerator), static_cast<int>(newDenominator));
+}
+
+Fraction operator*(int lhs, const Fraction& rhs) {
+    int num = lhs * rhs.getNumerator();
+    int den = rhs.getDenominator();
+
+    return Fraction(num, den);
+}
+
+Fraction operator*(double lhs, const Fraction& rhs) {
+    int num = static_cast<int>(lhs * rhs.getNumerator());
+    int den = rhs.getDenominator();
+
+    return Fraction(num, den);
+}
+
+Fraction operator-(int lhs, const Fraction& rhs) {
+    int num = lhs * rhs.getDenominator() - rhs.getNumerator();
+    int den = rhs.getDenominator();
+
+    return Fraction(num, den);
+}
+
+Fraction operator-(double lhs, const Fraction& rhs) {
+    int num = static_cast<int>(lhs * rhs.getDenominator() - rhs.getNumerator());
+    int den = rhs.getDenominator();
+
+    return Fraction(num, den);
+}
+
+Fraction operator/(int lhs, const Fraction& rhs) {
+    int num = lhs / rhs.getDenominator();
+    int den = rhs.getNumerator();
+
+    return Fraction(num, den);
+}
+
+Fraction operator/(double lhs, const Fraction& rhs) {
+    int num = static_cast<int>(lhs / rhs.getDenominator());
+    int den = rhs.getNumerator();
+
+    return Fraction(num, den);
 }
