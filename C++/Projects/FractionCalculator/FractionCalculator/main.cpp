@@ -84,8 +84,11 @@ int main() {
 		out << "(f_minus.abs())^2: " << f_minus << "\n";
 		f_minus ^= (-3);
 		out << "(f_minus^2)^(-3): " << f_minus << "\n";
+		f1 ^= 3;
+		out << "(f1)^3: " << f1 << "\n";
 
-	} catch (const std::exception& e) {
+	}
+	catch (const std::exception& e) {
 		out << "Error: " << e.what() << std::endl;
 	}
 
