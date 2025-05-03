@@ -36,6 +36,9 @@ public:
 	Fraction operator^(int n) const;
 	Fraction& operator^=(int n);
 
+	Fraction operator*(int value) const;
+	Fraction operator*(double value) const;
+
 	bool operator==(const Fraction& other) const;
 	bool operator>=(const Fraction& other) const;
 	bool operator<=(const Fraction& other) const;
@@ -69,6 +72,7 @@ public:
 	friend std::ostream& operator<<(std::ostream& os, const Fraction& frac);
 	friend Fraction operator+(int lhs, const Fraction& rhs);
 	friend Fraction operator+(double lhs, const Fraction& rhs);
+
 };
 
 #endif
