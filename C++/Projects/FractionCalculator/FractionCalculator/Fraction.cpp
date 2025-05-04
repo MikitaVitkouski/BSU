@@ -157,19 +157,7 @@ Fraction Fraction::operator^(int n) const {
 }
 
 Fraction& Fraction::operator^=(int n) {
-    if (n == 0) {
-        numerator = 1;
-        denominator = 1;
-        return *this;
-    }
-
-    if (n < 0) {
-        reverse();
-        n *= -1;
-    }
-
-    numerator = std::pow(getNumerator(), n);
-    denominator = std::pow(getDenominator(), n);
+    *this = *this ^ n;
     return *this;
 }
 

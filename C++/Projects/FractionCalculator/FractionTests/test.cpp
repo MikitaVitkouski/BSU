@@ -273,10 +273,10 @@ TEST(FractionTest, Pow) {
     EXPECT_EQ(c.getDenominator(), 1);
 
     Fraction d(-2, 3);
-    Fraction e = d ^ 3;
+    Fraction e = d ^ (-3);
 
-    EXPECT_EQ(e.getNumerator(), -8);
-    EXPECT_EQ(e.getDenominator(), 27);
+    EXPECT_EQ(e.getNumerator(), -27);
+    EXPECT_EQ(e.getDenominator(), 8);
 
     Fraction f(-15, 8);
     Fraction y = f ^ 0;
