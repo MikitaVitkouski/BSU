@@ -137,3 +137,125 @@ TEST(FractionTest, DivideEqual) {
     EXPECT_EQ(a.getNumerator(), 5);
     EXPECT_EQ(a.getDenominator(), 12);
 }
+
+TEST(FractionTest, UnaryPlus) {
+    Fraction a(3, 4);
+    Fraction result1 = +a;
+    Fraction b(-1, 2);
+    Fraction result2 = +b;
+    Fraction c(0, 7);
+    Fraction result3 = +c;
+
+    EXPECT_EQ(result1.getNumerator(), 3);
+    EXPECT_EQ(result1.getDenominator(), 4);
+    EXPECT_EQ(result2.getNumerator(), -1);
+    EXPECT_EQ(result2.getDenominator(), 2);
+    EXPECT_EQ(result3.getNumerator(), 0);
+    EXPECT_EQ(result3.getDenominator(), 1);
+}
+
+TEST(FractionTest, UnaryMinus) {
+    Fraction a(3, 5);
+    Fraction result1 = -a;
+    Fraction b(-7, 8);
+    Fraction result2 = -b;
+    Fraction c(0, 7);
+    Fraction result3 = -c;
+
+    EXPECT_EQ(result1.getNumerator(), -3);
+    EXPECT_EQ(result1.getDenominator(), 5);
+    EXPECT_EQ(result2.getNumerator(), 7);
+    EXPECT_EQ(result2.getDenominator(), 8);
+    EXPECT_EQ(result3.getNumerator(), 0);
+    EXPECT_EQ(result3.getDenominator(), 1);
+}
+
+TEST(FractionTest, PrefixPlusPlus) {
+    Fraction f(1, 2);
+    ++f;
+    Fraction zero(0, 7);
+    ++zero;
+    Fraction minus_f(-7, 16);
+    ++minus_f;
+    
+    EXPECT_EQ(f.getNumerator(), 3);
+    EXPECT_EQ(f.getDenominator(), 2);
+    EXPECT_EQ(zero.getNumerator(), 1);
+    EXPECT_EQ(zero.getDenominator(), 1);
+    EXPECT_EQ(minus_f.getNumerator(), 9);
+    EXPECT_EQ(minus_f.getDenominator(), 16);
+}
+
+TEST(FractionTest, PostfixPlusPlus) {
+    Fraction f(1, 2);
+    Fraction temp_f = f++;
+
+    EXPECT_EQ(temp_f.getNumerator(), 1);
+    EXPECT_EQ(temp_f.getDenominator(), 2);
+
+    EXPECT_EQ(f.getNumerator(), 3);
+    EXPECT_EQ(f.getDenominator(), 2);
+
+    Fraction zero(0, 7);
+    Fraction temp_zero = zero++;
+
+    EXPECT_EQ(temp_zero.getNumerator(), 0);
+    EXPECT_EQ(temp_zero.getDenominator(), 1);
+
+    EXPECT_EQ(zero.getNumerator(), 1);
+    EXPECT_EQ(zero.getDenominator(), 1);
+
+    Fraction minus_f(-7, 16);
+    Fraction temp_minus_f = minus_f++;
+
+    EXPECT_EQ(temp_minus_f.getNumerator(), -7);
+    EXPECT_EQ(temp_minus_f.getDenominator(), 16);
+
+    EXPECT_EQ(minus_f.getNumerator(), 9);
+    EXPECT_EQ(minus_f.getDenominator(), 16);
+}
+
+TEST(FractionTest, PrefixMinusMinus) {
+    Fraction f(1, 2);
+    --f;
+    Fraction zero(0, 7);
+    --zero;
+    Fraction minus_f(-7, 16);
+    --minus_f;
+
+    EXPECT_EQ(f.getNumerator(), -1);
+    EXPECT_EQ(f.getDenominator(), 2);
+    EXPECT_EQ(zero.getNumerator(), -1);
+    EXPECT_EQ(zero.getDenominator(), 1);
+    EXPECT_EQ(minus_f.getNumerator(), -23);
+    EXPECT_EQ(minus_f.getDenominator(), 16);
+}
+
+TEST(FractionTest, PostfixMinusMinus) {
+    Fraction f(3, 2);
+    Fraction temp_f = f--;
+
+    EXPECT_EQ(temp_f.getNumerator(), 3);
+    EXPECT_EQ(temp_f.getDenominator(), 2);
+
+    EXPECT_EQ(f.getNumerator(), 1);
+    EXPECT_EQ(f.getDenominator(), 2);
+
+    Fraction zero(0, 7);
+    Fraction temp_zero = zero--;
+
+    EXPECT_EQ(temp_zero.getNumerator(), 0);
+    EXPECT_EQ(temp_zero.getDenominator(), 1);
+
+    EXPECT_EQ(zero.getNumerator(), -1);
+    EXPECT_EQ(zero.getDenominator(), 1);
+
+    Fraction minus_f(-11, 16);
+    Fraction temp_minus_f = minus_f--;
+
+    EXPECT_EQ(temp_minus_f.getNumerator(), -11);
+    EXPECT_EQ(temp_minus_f.getDenominator(), 16);
+
+    EXPECT_EQ(minus_f.getNumerator(), -27);
+    EXPECT_EQ(minus_f.getDenominator(), 16);
+}
