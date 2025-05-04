@@ -557,3 +557,159 @@ TEST(FractionTest, LessOrEqual) {
 
     EXPECT_EQ(result, true);
 }
+
+TEST(FractionTest, EqualToInt) {
+    Fraction a(1, 2);
+    int i = 2;
+    bool result = a == i;
+
+    EXPECT_EQ(result, false);
+
+    Fraction c(3, 1);
+    i = 3;
+    result = c == i;
+
+    EXPECT_EQ(result, true);
+
+    Fraction d(0, 16);
+    i = 0;
+    result = d == i;
+
+    EXPECT_EQ(result, true);
+
+    c.setNumerator(-3);
+    i = -3;
+    result = c == i;
+
+    EXPECT_EQ(result, true);
+}
+
+TEST(FractionTest, NotEqualToInt) {
+    Fraction a(1, 2);
+    int i = 2;
+    bool result = a != i;
+
+    EXPECT_EQ(result, true);
+
+    Fraction c(3, 1);
+    i = 3;
+    result = c != i;
+
+    EXPECT_EQ(result, false);
+
+    Fraction d(0, 16);
+    i = 0;
+    result = d != i;
+
+    EXPECT_EQ(result, false);
+
+    c.setNumerator(-3);
+    i = -3;
+    result = c != i;
+
+    EXPECT_EQ(result, false);
+}
+
+TEST(FractionTest, MoreToInt) {
+    Fraction a(1, 2);
+    int i = 2;
+    bool result = a > i;
+
+    EXPECT_EQ(result, false);
+
+    Fraction c(3, 1);
+    i = 3;
+    result = c > i;
+
+    EXPECT_EQ(result, false);
+
+    Fraction d(0, 16);
+    i = 0;
+    result = d > i;
+
+    EXPECT_EQ(result, false);
+
+    c.setNumerator(-3);
+    i = -4;
+    result = c > i;
+
+    EXPECT_EQ(result, true);
+}
+
+TEST(FractionTest, MoreOrEqualToInt) {
+    Fraction a(1, 2);
+    int i = 2;
+    bool result = a >= i;
+
+    EXPECT_EQ(result, false);
+
+    Fraction c(3, 1);
+    i = 3;
+    result = c >= i;
+
+    EXPECT_EQ(result, true);
+
+    Fraction d(0, 16);
+    i = 0;
+    result = d >= i;
+
+    EXPECT_EQ(result, true);
+
+    c.setNumerator(-3);
+    i = -4;
+    result = c >= i;
+
+    EXPECT_EQ(result, true);
+}
+
+TEST(FractionTest, LessToInt) {
+    Fraction a(1, 2);
+    int i = 2;
+    bool result = a < i;
+
+    EXPECT_EQ(result, true);
+
+    Fraction c(3, 1);
+    i = 3;
+    result = c < i;
+
+    EXPECT_EQ(result, false);
+
+    Fraction d(0, 16);
+    i = 0;
+    result = d < i;
+
+    EXPECT_EQ(result, false);
+
+    c.setNumerator(-3);
+    i = -4;
+    result = c < i;
+
+    EXPECT_EQ(result, false);
+}
+
+TEST(FractionTest, LessOrEqualToInt) {
+    Fraction a(1, 2);
+    int i = 2;
+    bool result = a <= i;
+
+    EXPECT_EQ(result, true);
+
+    Fraction c(3, 1);
+    i = 3;
+    result = c <= i;
+
+    EXPECT_EQ(result, true);
+
+    Fraction d(0, 16);
+    i = 0;
+    result = d <= i;
+
+    EXPECT_EQ(result, true);
+
+    c.setNumerator(-3);
+    i = -4;
+    result = c <= i;
+
+    EXPECT_EQ(result, false);
+}
