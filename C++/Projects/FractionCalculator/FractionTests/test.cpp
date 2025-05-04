@@ -381,3 +381,179 @@ TEST(FractionTest, MultiplyByDouble) {
     EXPECT_EQ(b.getNumerator(), 8);
     EXPECT_EQ(b.getDenominator(), 9);
 }
+
+TEST(FractionTest, Equal) {
+    Fraction a(1, 2);
+    Fraction b(4, 8);
+    bool result = a == b;
+
+    EXPECT_EQ(result, true);
+
+    Fraction c(3, 4);
+    result = c == a;
+    
+    EXPECT_EQ(result, false);
+
+    result = c == b;
+
+    EXPECT_EQ(result, false);
+
+    a.setNumerator(0);
+    b.setNumerator(0);
+    result = a == b;
+
+    EXPECT_EQ(result, true);
+
+    b.setDenominator(-8);
+    result = a == b;
+
+    EXPECT_EQ(result, true);
+}
+
+TEST(FractionTest, NotEqual) {
+    Fraction a(1, 2);
+    Fraction b(4, 8);
+    bool result = a != b;
+
+    EXPECT_EQ(result, false);
+
+    Fraction c(3, 4);
+    result = c != a;
+
+    EXPECT_EQ(result, true);
+
+    result = c != b;
+
+    EXPECT_EQ(result, true);
+
+    a.setNumerator(0);
+    b.setNumerator(0);
+    result = a != b;
+
+    EXPECT_EQ(result, false);
+
+    b.setDenominator(-8);
+    result = a != b;
+
+    EXPECT_EQ(result, false);
+}
+
+TEST(FractionTest, More) {
+    Fraction a(1, 2);
+    Fraction b(4, 8);
+    bool result = a > b;
+
+    EXPECT_EQ(result, false);
+
+    Fraction c(3, 4);
+    result = c > a;
+
+    EXPECT_EQ(result, true);
+
+    result = c > b;
+
+    EXPECT_EQ(result, true);
+
+    a.setNumerator(0);
+    b.setNumerator(0);
+    result = a > b;
+
+    EXPECT_EQ(result, false);
+
+    b.setDenominator(-8);
+    result = a > b;
+
+    EXPECT_EQ(result, false);
+}
+
+TEST(FractionTest, MoreOrEqual) {
+    Fraction a(1, 2);
+    Fraction b(4, 8);
+    bool result = a >= b;
+
+    EXPECT_EQ(result, true);
+
+    Fraction c(3, 4);
+    result = c >= a;
+
+    EXPECT_EQ(result, true);
+
+    result = c >= b;
+
+    EXPECT_EQ(result, true);
+
+    a.setNumerator(0);
+    b.setNumerator(0);
+    result = a >= b;
+
+    EXPECT_EQ(result, true);
+
+    b.setDenominator(-8);
+    result = a >= b;
+
+    EXPECT_EQ(result, true);
+}
+
+TEST(FractionTest, Less) {
+    Fraction a(1, 2);
+    Fraction b(4, 8);
+    bool result = a < b;
+
+    EXPECT_EQ(result, false);
+
+    Fraction c(3, 4);
+    result = c < a;
+
+    EXPECT_EQ(result, false);
+
+    result = c < b;
+
+    EXPECT_EQ(result, false);
+
+    a.setNumerator(0);
+    b.setNumerator(0);
+    result = a <  b;
+
+    EXPECT_EQ(result, false);
+
+    b.setDenominator(-8);
+    result = a < b;
+    EXPECT_EQ(result, false);
+
+    Fraction d(5, 8);
+    result = a < d;
+
+    EXPECT_EQ(result, true);
+}
+
+TEST(FractionTest, LessOrEqual) {
+    Fraction a(1, 2);
+    Fraction b(4, 8);
+    bool result = a <= b;
+
+    EXPECT_EQ(result, true);
+
+    Fraction c(3, 4);
+    result = c <= a;
+
+    EXPECT_EQ(result, false);
+
+    result = c <= b;
+
+    EXPECT_EQ(result, false);
+
+    a.setNumerator(0);
+    b.setNumerator(0);
+    result = a <= b;
+
+    EXPECT_EQ(result, true);
+
+    b.setDenominator(-8);
+    result = a <= b;
+    EXPECT_EQ(result, true);
+
+    Fraction d(5, 8);
+    result = a <= d;
+
+    EXPECT_EQ(result, true);
+}
