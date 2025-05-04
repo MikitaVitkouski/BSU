@@ -101,3 +101,39 @@ TEST(FractionTest, ZeroDividedByFraction) {
 TEST(FractionTest, InvalidDenominator) {
     EXPECT_THROW(Fraction(1, 0), std::invalid_argument);
 }
+
+TEST(FractionTest, PlusEqual) {
+    Fraction a(3, 6);
+    Fraction b(7, 6);
+    a += b;
+
+    EXPECT_EQ(a.getNumerator(), 5);
+    EXPECT_EQ(a.getDenominator(), 3);
+}
+
+TEST(FractionTest, MinusEqual) {
+    Fraction a(29, 8);
+    Fraction b(11, 8);
+    a -= b;
+
+    EXPECT_EQ(a.getNumerator(), 9);
+    EXPECT_EQ(a.getDenominator(), 4);
+}
+
+TEST(FractionTest, MultiplyEqual) {
+    Fraction a(5, 8);
+    Fraction b(8, 6);
+    a *= b;
+
+    EXPECT_EQ(a.getNumerator(), 5);
+    EXPECT_EQ(a.getDenominator(), 6);
+}
+
+TEST(FractionTest, DivideEqual) {
+    Fraction a(11, 6);
+    Fraction b(22, 5);
+    a /= b;
+
+    EXPECT_EQ(a.getNumerator(), 5);
+    EXPECT_EQ(a.getDenominator(), 12);
+}
