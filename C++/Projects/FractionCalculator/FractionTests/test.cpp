@@ -259,3 +259,125 @@ TEST(FractionTest, PostfixMinusMinus) {
     EXPECT_EQ(minus_f.getNumerator(), -27);
     EXPECT_EQ(minus_f.getDenominator(), 16);
 }
+
+TEST(FractionTest, Pow) {
+    Fraction a(1, 4);
+    Fraction b = a ^ 4;
+
+    EXPECT_EQ(b.getNumerator(), 1);
+    EXPECT_EQ(b.getDenominator(), 256);
+
+    Fraction c = a ^ (-4);
+
+    EXPECT_EQ(c.getNumerator(), 256);
+    EXPECT_EQ(c.getDenominator(), 1);
+
+    Fraction d(-2, 3);
+    Fraction e = d ^ 3;
+
+    EXPECT_EQ(e.getNumerator(), -8);
+    EXPECT_EQ(e.getDenominator(), 27);
+
+    Fraction f(-15, 8);
+    Fraction y = f ^ 0;
+
+    EXPECT_EQ(y.getNumerator(), 1);
+    EXPECT_EQ(y.getDenominator(), 1);
+
+    Fraction x = f ^ 1;
+
+    EXPECT_EQ(x.getNumerator(), -15);
+    EXPECT_EQ(x.getDenominator(), 8);
+}
+
+TEST(FractionTest, PowEqual) {
+    Fraction a(1, 4);
+    a ^= 3;
+
+    EXPECT_EQ(a.getNumerator(), 1);
+    EXPECT_EQ(a.getDenominator(), 64);
+
+    Fraction c = a ^ (-4);
+    c ^= 0;
+
+    EXPECT_EQ(c.getNumerator(), 1);
+    EXPECT_EQ(c.getDenominator(), 1);
+
+    Fraction d(-2, 3);
+    d ^= -3;
+
+    EXPECT_EQ(d.getNumerator(), -27);
+    EXPECT_EQ(d.getDenominator(), 8);
+
+    Fraction f(-15, 8);
+    f ^= -1;
+
+    EXPECT_EQ(f.getNumerator(), -8);
+    EXPECT_EQ(f.getDenominator(), 15);
+}
+
+TEST(FractionTest, MultiplyByInt) {
+    Fraction a(8, 9);
+    int x = 3;
+    Fraction b = a * x;
+
+    EXPECT_EQ(b.getNumerator(), 8);
+    EXPECT_EQ(b.getDenominator(), 3);
+
+    x = -2;
+    b = a * x;
+
+    EXPECT_EQ(b.getNumerator(), -16);
+    EXPECT_EQ(b.getDenominator(), 9);
+
+    x = 5;
+    b = a * x;
+
+    EXPECT_EQ(b.getNumerator(), 40);
+    EXPECT_EQ(b.getDenominator(), 9);
+
+    x = 0;
+    b = a * x;
+
+    EXPECT_EQ(b.getNumerator(), 0);
+    EXPECT_EQ(b.getDenominator(), 1);
+
+    x = 1;
+    b = a * x;
+
+    EXPECT_EQ(b.getNumerator(), 8);
+    EXPECT_EQ(b.getDenominator(), 9);
+}
+
+TEST(FractionTest, MultiplyByDouble) {
+    Fraction a(8, 9);
+    double x = 1.5;
+    Fraction b = a * x;
+
+    EXPECT_EQ(b.getNumerator(), 4);
+    EXPECT_EQ(b.getDenominator(), 3);
+
+    x = -2.5;
+    b = a * x;
+
+    EXPECT_EQ(b.getNumerator(), -20);
+    EXPECT_EQ(b.getDenominator(), 9);
+
+    x = 1.8;
+    b = a * x;
+
+    EXPECT_EQ(b.getNumerator(), 14);
+    EXPECT_EQ(b.getDenominator(), 9);
+
+    x = 0.0;
+    b = a * x;
+
+    EXPECT_EQ(b.getNumerator(), 0);
+    EXPECT_EQ(b.getDenominator(), 1);
+
+    x = 1.0;
+    b = a * x;
+
+    EXPECT_EQ(b.getNumerator(), 8);
+    EXPECT_EQ(b.getDenominator(), 9);
+}
