@@ -910,3 +910,50 @@ TEST(FractionTest, LessOrEqualToDouble) {
 
     EXPECT_EQ(result, true);
 }
+
+TEST(FractionTest, toDouble) {
+    Fraction a(1, 2);
+    double v = 0.5;
+
+    EXPECT_EQ(a.toDouble(), v);
+
+    Fraction b(3, 4);
+    double q = 0.75;
+
+    EXPECT_EQ(b.toDouble(), q);
+
+    Fraction c(1, 1);
+    Fraction d(0, 1);
+    double t = 1.0;
+    double y = 0.0;
+
+    EXPECT_EQ(c.toDouble(), t);
+    EXPECT_EQ(d.toDouble(), y);
+
+    Fraction e(-5, 4);
+    Fraction f(-6, 8);
+    t = -1.25;
+    y = -0.75;
+
+    EXPECT_EQ(e.toDouble(), t);
+    EXPECT_EQ(f.toDouble(), y);
+}
+
+TEST(FractionTest, reverse) {
+    Fraction a(3, 9);
+    Fraction b(3, 1);
+
+    EXPECT_EQ(a.reverse(), b);
+
+    Fraction c(-3, 11);
+    Fraction d(-11, 3);
+
+    EXPECT_EQ(c.reverse(), d);
+
+    Fraction e(-8, 40);
+    Fraction f(-5, 1);
+
+    EXPECT_EQ(e.reverse(), f);
+
+   
+}
