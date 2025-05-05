@@ -713,3 +713,200 @@ TEST(FractionTest, LessOrEqualToInt) {
 
     EXPECT_EQ(result, false);
 }
+
+TEST(FractionTest, EqualToDouble) {
+    Fraction a(1, 2);
+    double i = 0.5;
+    bool result = a == i;
+
+    EXPECT_EQ(result, true);
+
+    Fraction c(3, 1);
+    i = 3.0;
+    result = c == i;
+
+    EXPECT_EQ(result, true);
+
+    Fraction d(0, 16);
+    i = 0.0;
+    result = d == i;
+
+    EXPECT_EQ(result, true);
+
+    c.setNumerator(-3);
+    c.setDenominator(6);
+    i = -0.5;
+    result = c == i;
+
+    EXPECT_EQ(result, true);
+}
+
+TEST(FractionTest, NotEqualToDouble) {
+    Fraction a(1, 2);
+    double i = 0.5;
+    bool result = a != i;
+
+    EXPECT_EQ(result, false);
+
+    Fraction c(3, 1);
+    i = 3.0;
+    result = c != i;
+
+    EXPECT_EQ(result, false);
+
+    Fraction d(0, 16);
+    i = 0.0;
+    result = d != i;
+
+    EXPECT_EQ(result, false);
+
+    c.setNumerator(-3);
+    c.setDenominator(6);
+    i = -0.5;
+    result = c != i;
+
+    EXPECT_EQ(result, false);
+
+    d.setNumerator(4);
+    d.setDenominator(10);
+    i = 0.33;
+    result = d != i;
+
+    EXPECT_EQ(result, true);
+}
+
+TEST(FractionTest, MoreToDouble) {
+    Fraction a(1, 2);
+    double i = 0.33;
+    bool result = a > i;
+
+    EXPECT_EQ(result, true);
+
+    Fraction c(3, 2);
+    i = 3.0;
+    result = c > i;
+
+    EXPECT_EQ(result, false);
+
+    Fraction d(0, 16);
+    i = 0.0;
+    result = d > i;
+
+    EXPECT_EQ(result, false);
+
+    c.setNumerator(-3);
+    c.setDenominator(8);
+    i = -0.5;
+    result = c > i;
+
+    EXPECT_EQ(result, true);
+
+    d.setNumerator(4);
+    d.setDenominator(10);
+    i = 0.33;
+    result = d > i;
+
+    EXPECT_EQ(result, true);
+}
+
+TEST(FractionTest, MoreOrEqualToDouble) {
+    Fraction a(1, 2);
+    double i = 0.5;
+    bool result = a >= i;
+
+    EXPECT_EQ(result, true);
+
+    Fraction c(3, 2);
+    i = 3.0;
+    result = c >= i;
+
+    EXPECT_EQ(result, false);
+
+    Fraction d(0, 16);
+    i = 0.0;
+    result = d >= i;
+
+    EXPECT_EQ(result, true);
+
+    c.setNumerator(-3);
+    c.setDenominator(8);
+    i = -0.5;
+    result = c >= i;
+
+    EXPECT_EQ(result, true);
+
+    d.setNumerator(1);
+    d.setDenominator(3);
+    i = 0.33;
+    result = d >= i;
+
+    EXPECT_EQ(result, true);
+}
+
+TEST(FractionTest, LessToDouble) {
+    Fraction a(3, 4);
+    double i = 1.33;
+    bool result = a < i;
+
+    EXPECT_EQ(result, true);
+
+    Fraction c(3, 8);
+    i = 3.0;
+    result = c < i;
+
+    EXPECT_EQ(result, true);
+
+    Fraction d(0, 16);
+    i = 0.0;
+    result = d < i;
+
+    EXPECT_EQ(result, false);
+
+    c.setNumerator(-3);
+    c.setDenominator(8);
+    i = -0.5;
+    result = c < i;
+
+    EXPECT_EQ(result, false);
+
+    d.setNumerator(4);
+    d.setDenominator(18);
+    i = 0.33;
+    result = d < i;
+
+    EXPECT_EQ(result, true);
+}
+
+TEST(FractionTest, LessOrEqualToDouble) {
+    Fraction a(3, 4);
+    double i = 1.33;
+    bool result = a <= i;
+
+    EXPECT_EQ(result, true);
+
+    Fraction c(3, 8);
+    i = 3.0;
+    result = c <= i;
+
+    EXPECT_EQ(result, true);
+
+    Fraction d(0, 16);
+    i = 0.0;
+    result = d <= i;
+
+    EXPECT_EQ(result, true);
+
+    c.setNumerator(-3);
+    c.setDenominator(8);
+    i = -0.5;
+    result = c <= i;
+
+    EXPECT_EQ(result, false);
+
+    d.setNumerator(1);
+    d.setDenominator(1);
+    i = 1.0;
+    result = d <= i;
+
+    EXPECT_EQ(result, true);
+}
