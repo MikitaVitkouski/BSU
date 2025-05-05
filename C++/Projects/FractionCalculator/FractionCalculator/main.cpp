@@ -78,7 +78,7 @@ int main() {
 		out << "reversed f: " << f << "\n";
 		Fraction f_minus(-1, 2);
 		out << "f_minus: " << f_minus << "\n";
-		f_minus.abs();
+		f_minus = f_minus.abs();
 		out << "f_minus.abs(): " << f_minus << "\n";
 		f_minus ^= 2;
 		out << "(f_minus.abs())^2: " << f_minus << "\n";

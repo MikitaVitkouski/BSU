@@ -958,3 +958,47 @@ TEST(FractionTest, reverse) {
     Fraction t(0, 17);
     EXPECT_THROW(t.reverse(), std::invalid_argument);
 }
+
+TEST(FractionTest, abs) {
+    Fraction a(0, -9);
+    Fraction b(0, 1);
+
+    EXPECT_EQ(a.abs(), b);
+
+    Fraction c(-1, 7);
+    Fraction d(1, 7);
+
+    EXPECT_EQ(c.abs(), d);
+
+    Fraction e(3, -4);
+    Fraction f(3, 4);
+
+    EXPECT_EQ(e.abs(), f);
+
+    Fraction g(-5, -6);
+    Fraction h(5, 6);
+
+    EXPECT_EQ(g.abs(), h);
+
+    Fraction i(2, 3);
+    Fraction j(2, 3);
+
+    EXPECT_EQ(i.abs(), j);
+}
+
+TEST(FractionTest, toString) {
+    Fraction f(1, 2);
+    EXPECT_EQ(f.toString(), "1/2");
+
+    Fraction a(-3, 4);
+    EXPECT_EQ(a.toString(), "-3/4");
+
+    Fraction b(5, -8);
+    EXPECT_EQ(b.toString(), "-5/8");
+
+    Fraction c(-6, -9);
+    EXPECT_EQ(c.toString(), "2/3");
+
+    Fraction e(0, 7);
+    EXPECT_EQ(e.toString(), "0/1");
+}

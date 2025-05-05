@@ -242,10 +242,8 @@ Fraction Fraction::reverse() const{
     return Fraction(denominator, numerator);
 }
 
-Fraction& Fraction::abs() {
-    numerator = std::abs(getNumerator());
-    denominator = std::abs(getDenominator());
-    return *this;
+Fraction Fraction::abs() const {
+    return Fraction(std::abs(getNumerator()), std::abs(getDenominator()));
 }
 
 std::istream& operator>>(std::istream& is, Fraction& frac) {

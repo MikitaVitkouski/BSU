@@ -66,7 +66,7 @@ public:
 	std::string toString() const; // for future purpose (GUI)
 	explicit operator double() const; // for "static_cast<double>(Fraction_object)"
 	Fraction reverse() const; // 1/2 -> 2/1
-	Fraction& abs(); // -1/2 -> 1/2
+	Fraction abs() const; // -1/2 -> 1/2
 
 	friend std::istream& operator>>(std::istream& is, Fraction& frac);
 	friend std::ostream& operator<<(std::ostream& os, const Fraction& frac);
