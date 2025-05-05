@@ -74,7 +74,7 @@ int main() {
 		Fraction f;
 		in >> f;
 		out << "f: " << f << "\n";
-		f.reverse();
+		f = f.reverse();
 		out << "reversed f: " << f << "\n";
 		Fraction f_minus(-1, 2);
 		out << "f_minus: " << f_minus << "\n";

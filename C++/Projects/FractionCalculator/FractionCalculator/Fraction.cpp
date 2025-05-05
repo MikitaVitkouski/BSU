@@ -146,7 +146,7 @@ Fraction Fraction::operator^(int n) const {
     Fraction base = *this;
 
     if (n < 0) {
-        base.reverse();
+        base = base.reverse();
         n *= -1;
     }
 
@@ -235,11 +235,11 @@ Fraction::operator double() const {
     return static_cast<double>(getNumerator()) / getDenominator();
 }
 
-Fraction& Fraction::reverse() {
-    auto temp = getDenominator();
-    denominator = getNumerator();
-    numerator = temp;
-    return *this;
+Fraction Fraction::reverse() const{
+    if (numerator == 0) {
+        throw std::invalid_argument("Cannot reverse a fraction with numerator 0.");
+    }
+    return Fraction(denominator, numerator);
 }
 
 Fraction& Fraction::abs() {

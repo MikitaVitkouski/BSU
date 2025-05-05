@@ -65,7 +65,7 @@ public:
 	double toDouble() const; // returns decimal representation of the fraction
 	std::string toString() const; // for future purpose (GUI)
 	explicit operator double() const; // for "static_cast<double>(Fraction_object)"
-	Fraction& reverse(); // 1/2 -> 2/1
+	Fraction reverse() const; // 1/2 -> 2/1
 	Fraction& abs(); // -1/2 -> 1/2
 
 	friend std::istream& operator>>(std::istream& is, Fraction& frac);

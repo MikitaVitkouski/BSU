@@ -955,5 +955,6 @@ TEST(FractionTest, reverse) {
 
     EXPECT_EQ(e.reverse(), f);
 
-   
+    Fraction t(0, 17);
+    EXPECT_THROW(t.reverse(), std::invalid_argument);
 }
