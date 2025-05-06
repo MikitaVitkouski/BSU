@@ -36,8 +36,14 @@ public:
 	Fraction operator^(int n) const;
 	Fraction& operator^=(int n);
 
+	Fraction operator+(int rhs) const;
+	Fraction operator+(double rhs) const;
+	Fraction operator-(int rhs) const;
+	Fraction operator-(double rhs) const;
 	Fraction operator*(int value) const;
 	Fraction operator*(double value) const;
+	Fraction operator/(int rhs) const;
+	Fraction operator/(double rhs) const;
 
 	bool operator==(const Fraction& other) const;
 	bool operator>=(const Fraction& other) const;
