@@ -358,14 +358,14 @@ Fraction operator-(double lhs, const Fraction& rhs) {
 }
 
 Fraction operator/(int lhs, const Fraction& rhs) {
-    int num = lhs / rhs.getDenominator();
+    int num = lhs * rhs.getDenominator();
     int den = rhs.getNumerator();
 
     return Fraction(num, den);
 }
 
 Fraction operator/(double lhs, const Fraction& rhs) {
-    int num = static_cast<int>(lhs / rhs.getDenominator());
+    int num = static_cast<int>(lhs * rhs.getDenominator());
     int den = rhs.getNumerator();
 
     return Fraction(num, den);

@@ -1066,3 +1066,187 @@ TEST(FractionTest, IstreamOperator) {
 
     EXPECT_TRUE(is4.fail());
 }
+
+TEST(FractionTest, IntPlusFraction) {
+    int a = 2;
+    Fraction f(3, 2);
+    Fraction result = a + f;
+
+    EXPECT_EQ(result.getNumerator(), 7);
+    EXPECT_EQ(result.getDenominator(), 2);
+
+    a = 3;
+    Fraction q(6, 8);
+    result = a + q;
+
+    EXPECT_EQ(result.getNumerator(), 15);
+    EXPECT_EQ(result.getDenominator(), 4);
+
+    a = 2;
+    Fraction y(-3, 8);
+    result = a + y;
+
+    EXPECT_EQ(result.getNumerator(), 13);
+    EXPECT_EQ(result.getDenominator(), 8);
+}
+
+TEST(FractionTest, DoublePlusFraction) {
+    double a = 2.0;
+    Fraction f(3, 2);
+    Fraction result = a + f;
+
+    EXPECT_EQ(result.getNumerator(), 7);
+    EXPECT_EQ(result.getDenominator(), 2);
+
+    a = 3.0;
+    Fraction q(6, 8);
+    result = a + q;
+
+    EXPECT_EQ(result.getNumerator(), 15);
+    EXPECT_EQ(result.getDenominator(), 4);
+
+    a = 2.0;
+    Fraction y(-3, 8);
+    result = a + y;
+
+    EXPECT_EQ(result.getNumerator(), 13);
+    EXPECT_EQ(result.getDenominator(), 8);
+}
+
+TEST(FractionTest, IntMinusFraction) {
+    int a = 2;
+    Fraction f(3, 2);
+    Fraction result = a - f;
+
+    EXPECT_EQ(result.getNumerator(), 1);
+    EXPECT_EQ(result.getDenominator(), 2);
+
+    a = 3;
+    Fraction q(6, 8);
+    result = a - q;
+
+    EXPECT_EQ(result.getNumerator(), 9);
+    EXPECT_EQ(result.getDenominator(), 4);
+
+    a = 2;
+    Fraction y(-3, 8);
+    result = a - y;
+
+    EXPECT_EQ(result.getNumerator(), 19);
+    EXPECT_EQ(result.getDenominator(), 8);
+}
+
+TEST(FractionTest, DoubleMinusFraction) {
+    double a = 2.0;
+    Fraction f(3, 2);
+    Fraction result = a - f;
+
+    EXPECT_EQ(result.getNumerator(), 1);
+    EXPECT_EQ(result.getDenominator(), 2);
+
+    a = 3.0;
+    Fraction q(6, 8);
+    result = a - q;
+
+    EXPECT_EQ(result.getNumerator(), 9);
+    EXPECT_EQ(result.getDenominator(), 4);
+
+    a = 2.0;
+    Fraction y(-3, 8);
+    result = a - y;
+
+    EXPECT_EQ(result.getNumerator(), 19);
+    EXPECT_EQ(result.getDenominator(), 8);
+}
+
+TEST(FractionTest, IntMulFraction) {
+    int a = 2;
+    Fraction f(3, 2);
+    Fraction result = a * f;
+
+    EXPECT_EQ(result.getNumerator(), 3);
+    EXPECT_EQ(result.getDenominator(), 1);
+
+    a = 3;
+    Fraction q(6, 8);
+    result = a * q;
+
+    EXPECT_EQ(result.getNumerator(), 9);
+    EXPECT_EQ(result.getDenominator(), 4);
+
+    a = 2;
+    Fraction y(-3, 8);
+    result = a * y;
+
+    EXPECT_EQ(result.getNumerator(), -3);
+    EXPECT_EQ(result.getDenominator(), 4);
+}
+
+TEST(FractionTest, DoubleMulFraction) {
+    double a = 2.0;
+    Fraction f(3, 2);
+    Fraction result = a * f;
+
+    EXPECT_EQ(result.getNumerator(), 3);
+    EXPECT_EQ(result.getDenominator(), 1);
+
+    a = 3.0;
+    Fraction q(6, 8);
+    result = a * q;
+
+    EXPECT_EQ(result.getNumerator(), 9);
+    EXPECT_EQ(result.getDenominator(), 4);
+
+    a = 2.0;
+    Fraction y(-3, 8);
+    result = a * y;
+
+    EXPECT_EQ(result.getNumerator(), -3);
+    EXPECT_EQ(result.getDenominator(), 4);
+}
+
+TEST(FractionTest, IntDivFraction) {
+    int a = 2;
+    Fraction f(3, 2);
+    Fraction result = a / f;
+
+    EXPECT_EQ(result.getNumerator(), 4);
+    EXPECT_EQ(result.getDenominator(), 3);
+
+    a = 3;
+    Fraction q(6, 8);
+    result = a / q;
+
+    EXPECT_EQ(result.getNumerator(), 4);
+    EXPECT_EQ(result.getDenominator(), 1);
+
+    a = 2;
+    Fraction y(-3, 8);
+    result = a / y;
+
+    EXPECT_EQ(result.getNumerator(), -16);
+    EXPECT_EQ(result.getDenominator(), 3);
+}
+
+TEST(FractionTest, DoubleDivFraction) {
+    double a = 2.0;
+    Fraction f(3, 2);
+    Fraction result = a / f;
+
+    EXPECT_EQ(result.getNumerator(), 4);
+    EXPECT_EQ(result.getDenominator(), 3);
+
+    a = 3.0;
+    Fraction q(6, 8);
+    result = a / q;
+
+    EXPECT_EQ(result.getNumerator(), 4);
+    EXPECT_EQ(result.getDenominator(), 1);
+
+    a = 2.0;
+    Fraction y(-3, 8);
+    result = a / y;
+
+    EXPECT_EQ(result.getNumerator(), -16);
+    EXPECT_EQ(result.getDenominator(), 3);
+}
