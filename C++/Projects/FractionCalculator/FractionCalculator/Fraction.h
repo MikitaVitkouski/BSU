@@ -40,8 +40,8 @@ public:
 	Fraction operator+(double rhs) const;
 	Fraction operator-(int rhs) const;
 	Fraction operator-(double rhs) const;
-	Fraction operator*(int value) const;
-	Fraction operator*(double value) const;
+	Fraction operator*(int rhs) const;
+	Fraction operator*(double rhs) const;
 	Fraction operator/(int rhs) const;
 	Fraction operator/(double rhs) const;
 

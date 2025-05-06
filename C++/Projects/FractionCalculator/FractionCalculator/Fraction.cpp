@@ -161,18 +161,54 @@ Fraction& Fraction::operator^=(int n) {
     return *this;
 }
 
-Fraction Fraction::operator*(int value) const {
-    int num = getNumerator() * value;
+Fraction Fraction::operator+(int rhs) const {
+    int num = getNumerator() + rhs * getDenominator();
     int den = getDenominator();
 
     return Fraction(num, den);
 }
 
-Fraction Fraction::operator*(double value) const {
-    int num = static_cast<int>(getNumerator() * value);
+Fraction Fraction::operator+(double rhs) const {
+    double result = this->toDouble() + rhs;
+
+    return Fraction(static_cast<int>(result * 1000000000), 1000000000);
+}
+
+
+Fraction Fraction::operator-(int rhs) const {
+    int num = getNumerator() - rhs * getDenominator();
     int den = getDenominator();
 
     return Fraction(num, den);
+}
+
+Fraction Fraction::operator-(double rhs) const {
+    double result = this->toDouble() - rhs;
+
+    return Fraction(static_cast<int>(result * 1000000000), 1000000000);
+}
+
+Fraction Fraction::operator*(int rhs) const {
+    int num = getNumerator() * rhs;
+    int den = getDenominator();
+
+    return Fraction(num, den);
+}
+
+Fraction Fraction::operator*(double rhs) const {
+    int num = static_cast<int>(getNumerator() * rhs);
+    int den = getDenominator();
+
+    return Fraction(num, den);
+}
+Fraction Fraction::operator/(int rhs) const {
+    return *this * Fraction(1, rhs);
+}
+
+Fraction Fraction::operator/(double rhs) const {
+    double result = static_cast<double>(*this) / rhs;
+
+    return Fraction(static_cast<int>(result * 1000000000), 1000000000);
 }
 
 bool Fraction::operator==(int value) const {
