@@ -1002,3 +1002,30 @@ TEST(FractionTest, toString) {
     Fraction e(0, 7);
     EXPECT_EQ(e.toString(), "0/1");
 }
+
+TEST(FractionTest, toDoubleOperator) {
+    Fraction a(5, 8);
+    double result = static_cast<double>(a);
+
+    EXPECT_DOUBLE_EQ(result, 0.625);
+
+    Fraction b(3, -4);
+    result = static_cast<double>(b);
+
+    EXPECT_DOUBLE_EQ(result, -0.75);
+
+    Fraction f(5, -10);
+    result = static_cast<double>(f);
+
+    EXPECT_DOUBLE_EQ(result, -0.5);
+
+    Fraction y(-2, -10);
+    result = static_cast<double>(y);
+
+    EXPECT_DOUBLE_EQ(result, 0.2);
+
+    Fraction zero(0, -15);
+    result = static_cast<double>(zero);
+
+    EXPECT_DOUBLE_EQ(result, 0.0);
+}
