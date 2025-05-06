@@ -1029,3 +1029,45 @@ TEST(FractionTest, toDoubleOperator) {
 
     EXPECT_DOUBLE_EQ(result, 0.0);
 }
+
+TEST(FractionTest, OstreamOperator) {
+    Fraction f(3, 4);
+    std::ostringstream os;
+    os << f;
+    
+    EXPECT_EQ(os.str(), "3/4");
+}
+
+TEST(FractionTest, IstreamOperator) {
+    Fraction f;
+    std::istringstream is("5/8");
+    is >> f;
+
+    EXPECT_EQ(f.getNumerator(), 5);
+    EXPECT_EQ(f.getDenominator(), 8);
+
+    Fraction a;
+    std::istringstream is1("8/20");
+    is1 >> a;
+
+    EXPECT_EQ(a.getNumerator(), 2);
+    EXPECT_EQ(a.getDenominator(), 5);
+
+    Fraction y;
+    std::istringstream is2("3 4");
+    is2 >> y;
+
+    EXPECT_TRUE(is2.fail());
+
+    Fraction z;
+    std::istringstream is3("3/0");
+    is3 >> z;
+
+    EXPECT_TRUE(is3.fail());
+
+    Fraction v;
+    std::istringstream is4("5/8abc");
+    is4 >> v;
+
+    EXPECT_TRUE(is4.fail());
+}
