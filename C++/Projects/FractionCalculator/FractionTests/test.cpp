@@ -8,24 +8,27 @@ TEST(FractionTest, Addition) {
 
     EXPECT_EQ(result.getNumerator(), 5);
     EXPECT_EQ(result.getDenominator(), 6);
-}
 
-TEST(FractionTest, NegativeAddition) {
-    Fraction a(-1, 2);
-    Fraction b(1, 3);
-    Fraction result = a + b;
+    Fraction c(-1, 2);
+    Fraction d(1, 3);
+    result = c + d;
 
     EXPECT_EQ(result.getNumerator(), -1);
     EXPECT_EQ(result.getDenominator(), 6);
-}
 
-TEST(FractionTest, ZeroAddition) {
     Fraction zero(0, 1);
-    Fraction b(1, 3);
-    Fraction result = zero + b;
+    Fraction q(1, 3);
+    result = zero + q;
 
     EXPECT_EQ(result.getNumerator(), 1);
     EXPECT_EQ(result.getDenominator(), 3);
+
+    Fraction y(3, 6);
+    Fraction x(4, 8);
+    result = y + x;
+
+    EXPECT_EQ(result.getNumerator(), 1);
+    EXPECT_EQ(result.getDenominator(), 1);
 }
 
 TEST(FractionTest, Reduction) {
@@ -44,12 +47,10 @@ TEST(FractionTest, Subtraction) {
 
     EXPECT_EQ(result.getNumerator(), 7);
     EXPECT_EQ(result.getDenominator(), 6);
-}
 
-TEST(FractionTest, NegativeSubtraction) {
     Fraction a(-1, 2);
     Fraction b(-1, 3);
-    Fraction result = a - b;
+    result = a - b;
 
     EXPECT_EQ(result.getNumerator(), -1);
     EXPECT_EQ(result.getDenominator(), 6);
@@ -62,12 +63,10 @@ TEST(FractionTest, Multiplication) {
 
     EXPECT_EQ(result.getNumerator(), 5);
     EXPECT_EQ(result.getDenominator(), 12);
-}
 
-TEST(FractionTest, OneMultiplication) {
     Fraction one(1, 1);
     Fraction f(5, 3);
-    Fraction result = one * f;
+    result = one * f;
 
     EXPECT_EQ(result.getNumerator(), 5);
     EXPECT_EQ(result.getDenominator(), 3);
@@ -80,19 +79,15 @@ TEST(FractionTest, Division) {
 
     EXPECT_EQ(result.getNumerator(), 15);
     EXPECT_EQ(result.getDenominator(), 7);
-}
 
-TEST(FractionTest, DivisionByZeroNumerator) {
-    Fraction f1(1, 5);
-    Fraction f2(0, 7);
+    Fraction f3(1, 5);
+    Fraction f4(0, 7);
 
-    EXPECT_THROW(f1 / f2, std::invalid_argument);
-}
+    EXPECT_THROW(f3 / f4, std::invalid_argument);
 
-TEST(FractionTest, ZeroDividedByFraction) {
     Fraction zero(0, 8);
     Fraction f(5, 7);
-    Fraction result = zero / f;
+    result = zero / f;
 
     EXPECT_EQ(result.getNumerator(), 0);
     EXPECT_EQ(result.getDenominator(), 1);
