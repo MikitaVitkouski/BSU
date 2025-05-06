@@ -311,7 +311,74 @@ TEST(FractionTest, PowEqual) {
     EXPECT_EQ(f.getDenominator(), 15);
 }
 
-TEST(FractionTest, MultiplyByInt) {
+TEST(FractionTest, FractionAddInt) {
+    Fraction a(8, 9);
+    int x = 3;
+    Fraction b = a + x;
+
+    EXPECT_EQ(b.getNumerator(), 35);
+    EXPECT_EQ(b.getDenominator(), 9);
+
+    x = -2;
+    b = a + x;
+
+    EXPECT_EQ(b.getNumerator(), -10);
+    EXPECT_EQ(b.getDenominator(), 9);
+
+    x = 5;
+    b = a + x;
+
+    EXPECT_EQ(b.getNumerator(), 53);
+    EXPECT_EQ(b.getDenominator(), 9);
+
+    x = 0;
+    b = a + x;
+
+    EXPECT_EQ(b.getNumerator(), 8);
+    EXPECT_EQ(b.getDenominator(), 9);
+
+    x = 1;
+    b = a + x;
+
+    EXPECT_EQ(b.getNumerator(), 17);
+    EXPECT_EQ(b.getDenominator(), 9);
+}
+
+TEST(FractionTest, FractionMinusInt) {
+    Fraction a(28,9);
+    int x = 3;
+    Fraction b = a - x;
+
+    EXPECT_EQ(b.getNumerator(), 1);
+    EXPECT_EQ(b.getDenominator(), 9);
+
+    x = -2;
+    b = a - x;
+
+    EXPECT_EQ(b.getNumerator(), 46);
+    EXPECT_EQ(b.getDenominator(), 9);
+
+    x = 5;
+    b = a - x;
+
+    EXPECT_EQ(b.getNumerator(), -17);
+    EXPECT_EQ(b.getDenominator(), 9);
+
+    x = 0;
+    b = a - x;
+
+    EXPECT_EQ(b.getNumerator(), 28);
+    EXPECT_EQ(b.getDenominator(), 9);
+
+    x = 1;
+    b = a - x;
+
+    EXPECT_EQ(b.getNumerator(), 19);
+    EXPECT_EQ(b.getDenominator(), 9);
+}
+
+
+TEST(FractionTest, FractionMulInt) {
     Fraction a(8, 9);
     int x = 3;
     Fraction b = a * x;
@@ -344,39 +411,38 @@ TEST(FractionTest, MultiplyByInt) {
     EXPECT_EQ(b.getDenominator(), 9);
 }
 
-TEST(FractionTest, MultiplyByDouble) {
+TEST(FractionTest, FractionDivInt) {
     Fraction a(8, 9);
-    double x = 1.5;
-    Fraction b = a * x;
+    int x = 3;
+    Fraction b = a / x;
+
+    EXPECT_EQ(b.getNumerator(), 8);
+    EXPECT_EQ(b.getDenominator(), 27);
+
+    x = -2;
+    b = a / x;
+
+    EXPECT_EQ(b.getNumerator(), -4);
+    EXPECT_EQ(b.getDenominator(), 9);
+
+    x = 5;
+    b = a / x;
+
+    EXPECT_EQ(b.getNumerator(), 8);
+    EXPECT_EQ(b.getDenominator(), 45);
+
+    x = 2;
+    b = a / x;
 
     EXPECT_EQ(b.getNumerator(), 4);
-    EXPECT_EQ(b.getDenominator(), 3);
-
-    x = -2.5;
-    b = a * x;
-
-    EXPECT_EQ(b.getNumerator(), -20);
     EXPECT_EQ(b.getDenominator(), 9);
 
-    x = 1.8;
-    b = a * x;
-
-    EXPECT_EQ(b.getNumerator(), 14);
-    EXPECT_EQ(b.getDenominator(), 9);
-
-    x = 0.0;
-    b = a * x;
-
-    EXPECT_EQ(b.getNumerator(), 0);
-    EXPECT_EQ(b.getDenominator(), 1);
-
-    x = 1.0;
-    b = a * x;
+    x = 1;
+    b = a / x;
 
     EXPECT_EQ(b.getNumerator(), 8);
     EXPECT_EQ(b.getDenominator(), 9);
 }
-
 TEST(FractionTest, Equal) {
     Fraction a(1, 2);
     Fraction b(4, 8);
@@ -1090,29 +1156,6 @@ TEST(FractionTest, IntPlusFraction) {
     EXPECT_EQ(result.getDenominator(), 8);
 }
 
-TEST(FractionTest, DoublePlusFraction) {
-    double a = 2.0;
-    Fraction f(3, 2);
-    Fraction result = a + f;
-
-    EXPECT_EQ(result.getNumerator(), 7);
-    EXPECT_EQ(result.getDenominator(), 2);
-
-    a = 3.0;
-    Fraction q(6, 8);
-    result = a + q;
-
-    EXPECT_EQ(result.getNumerator(), 15);
-    EXPECT_EQ(result.getDenominator(), 4);
-
-    a = 2.0;
-    Fraction y(-3, 8);
-    result = a + y;
-
-    EXPECT_EQ(result.getNumerator(), 13);
-    EXPECT_EQ(result.getDenominator(), 8);
-}
-
 TEST(FractionTest, IntMinusFraction) {
     int a = 2;
     Fraction f(3, 2);
@@ -1129,29 +1172,6 @@ TEST(FractionTest, IntMinusFraction) {
     EXPECT_EQ(result.getDenominator(), 4);
 
     a = 2;
-    Fraction y(-3, 8);
-    result = a - y;
-
-    EXPECT_EQ(result.getNumerator(), 19);
-    EXPECT_EQ(result.getDenominator(), 8);
-}
-
-TEST(FractionTest, DoubleMinusFraction) {
-    double a = 2.0;
-    Fraction f(3, 2);
-    Fraction result = a - f;
-
-    EXPECT_EQ(result.getNumerator(), 1);
-    EXPECT_EQ(result.getDenominator(), 2);
-
-    a = 3.0;
-    Fraction q(6, 8);
-    result = a - q;
-
-    EXPECT_EQ(result.getNumerator(), 9);
-    EXPECT_EQ(result.getDenominator(), 4);
-
-    a = 2.0;
     Fraction y(-3, 8);
     result = a - y;
 
@@ -1182,29 +1202,6 @@ TEST(FractionTest, IntMulFraction) {
     EXPECT_EQ(result.getDenominator(), 4);
 }
 
-TEST(FractionTest, DoubleMulFraction) {
-    double a = 2.0;
-    Fraction f(3, 2);
-    Fraction result = a * f;
-
-    EXPECT_EQ(result.getNumerator(), 3);
-    EXPECT_EQ(result.getDenominator(), 1);
-
-    a = 3.0;
-    Fraction q(6, 8);
-    result = a * q;
-
-    EXPECT_EQ(result.getNumerator(), 9);
-    EXPECT_EQ(result.getDenominator(), 4);
-
-    a = 2.0;
-    Fraction y(-3, 8);
-    result = a * y;
-
-    EXPECT_EQ(result.getNumerator(), -3);
-    EXPECT_EQ(result.getDenominator(), 4);
-}
-
 TEST(FractionTest, IntDivFraction) {
     int a = 2;
     Fraction f(3, 2);
@@ -1221,29 +1218,6 @@ TEST(FractionTest, IntDivFraction) {
     EXPECT_EQ(result.getDenominator(), 1);
 
     a = 2;
-    Fraction y(-3, 8);
-    result = a / y;
-
-    EXPECT_EQ(result.getNumerator(), -16);
-    EXPECT_EQ(result.getDenominator(), 3);
-}
-
-TEST(FractionTest, DoubleDivFraction) {
-    double a = 2.0;
-    Fraction f(3, 2);
-    Fraction result = a / f;
-
-    EXPECT_EQ(result.getNumerator(), 4);
-    EXPECT_EQ(result.getDenominator(), 3);
-
-    a = 3.0;
-    Fraction q(6, 8);
-    result = a / q;
-
-    EXPECT_EQ(result.getNumerator(), 4);
-    EXPECT_EQ(result.getDenominator(), 1);
-
-    a = 2.0;
     Fraction y(-3, 8);
     result = a / y;
 

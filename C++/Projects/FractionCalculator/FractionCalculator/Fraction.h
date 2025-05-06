@@ -37,13 +37,9 @@ public:
 	Fraction& operator^=(int n);
 
 	Fraction operator+(int rhs) const;
-	Fraction operator+(double rhs) const;
 	Fraction operator-(int rhs) const;
-	Fraction operator-(double rhs) const;
 	Fraction operator*(int rhs) const;
-	Fraction operator*(double rhs) const;
 	Fraction operator/(int rhs) const;
-	Fraction operator/(double rhs) const;
 
 	bool operator==(const Fraction& other) const;
 	bool operator>=(const Fraction& other) const;
@@ -77,13 +73,9 @@ public:
 	friend std::istream& operator>>(std::istream& is, Fraction& frac);
 	friend std::ostream& operator<<(std::ostream& os, const Fraction& frac);
 	friend Fraction operator+(int lhs, const Fraction& rhs);
-	friend Fraction operator+(double lhs, const Fraction& rhs);
 	friend Fraction operator*(int lhs, const Fraction& rhs);
-	friend Fraction operator*(double lhs, const Fraction& rhs);
 	friend Fraction operator-(int lhs, const Fraction& rhs);
-	friend Fraction operator-(double lhs, const Fraction& rhs);
 	friend Fraction operator/(int lhs, const Fraction& rhs);
-	friend Fraction operator/(double lhs, const Fraction& rhs);
 
 };
 
