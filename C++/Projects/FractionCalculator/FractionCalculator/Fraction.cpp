@@ -249,13 +249,24 @@ Fraction Fraction::abs() const {
 std::istream& operator>>(std::istream& is, Fraction& frac) {
     int num, den;
     char slash;
+
+    std::istream::sentry s(is);
+    if (!s) return is;
+
     is >> num >> slash >> den;
-    if (slash != '/' || den == 0) {
+
+    if (!is || slash != '/' || den == 0) {
         is.setstate(std::ios::failbit);
+        return is;
     }
-    else {
-        frac = Fraction(num, den);
+
+    is >> std::ws;
+    if (is.peek() != EOF) {
+        is.setstate(std::ios::failbit);
+        return is;
     }
+
+    frac = Fraction(num, den);
     return is;
 }
 
