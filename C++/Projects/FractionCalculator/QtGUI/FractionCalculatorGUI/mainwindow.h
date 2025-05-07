@@ -2,6 +2,7 @@
 #define MAINWINDOW_H
 
 #include <QMainWindow>
+#include "Fraction.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -16,8 +17,21 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+private slots:
+    void onAddClicked();
+    void onSubClicked();
+    void onMulClicked();
+    void onDivClicked();
+    void onPowClicked();
+    void onEqualClicked();
+    void onLessClicked();
+    void onMoreClicked();
 
 private:
     Ui::MainWindow *ui;
+
+    Fraction getFraction1() const;
+    Fraction getFraction2() const;
+    void setResult(const QString& result);
 };
 #endif // MAINWINDOW_H

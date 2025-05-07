@@ -28,6 +28,11 @@ qt_add_executable(FractionCalculatorGUI
     ${UIS}
 )
 
+target_include_directories(FractionCalculatorGUI
+    PRIVATE
+        ../../FractionCalculator
+)
+
 target_link_libraries(FractionCalculatorGUI
     PRIVATE Qt6::Widgets FractionLib
 )
