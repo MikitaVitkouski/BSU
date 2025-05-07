@@ -76,7 +76,6 @@ public:
 	friend Fraction operator*(int lhs, const Fraction& rhs);
 	friend Fraction operator-(int lhs, const Fraction& rhs);
 	friend Fraction operator/(int lhs, const Fraction& rhs);
-
 };
 
 #endif

@@ -1,0 +1,8 @@
+cmake_minimum_required(VERSION 3.16)
+project(FractionCalculatorFull)
+
+# Подпроект с Qt GUI
+add_subdirectory(FractionCalculatorGUI)
+
+# Подпроект с бекэндом
+add_subdirectory(FractionCalculator)

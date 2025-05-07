@@ -1,7 +1,7 @@
-cmake_minimum_required(VERSION 3.10)
+cmake_minimum_required(VERSION 3.16)
+project(FractionCalculator LANGUAGES CXX)
 
-project(FractionCalculator)
-
-set(CMAKE_CXX_STANDARD 17)
-
-add_executable(FractionCalculator main.cpp Fraction.cpp)
+add_library(FractionLib STATIC
+    Fraction.cpp
+    Fraction.h
+)
