@@ -26,6 +26,9 @@ private slots:
     void onEqualClicked();
     void onLessClicked();
     void onMoreClicked();
+    void onLessOrEqualClicked();
+    void onMoreOrEqualClicked();
+    void onNotEqualClicked();
 
 private:
     Ui::MainWindow *ui;

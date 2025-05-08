@@ -17,7 +17,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnEqual,&QPushButton::clicked,this,&MainWindow::onEqualClicked);
     connect(ui->btnLess,&QPushButton::clicked,this,&MainWindow::onLessClicked);
     connect(ui->btnMore,&QPushButton::clicked,this,&MainWindow::onMoreClicked);
-
+    connect(ui->btnLessOrEqual, &QPushButton::clicked,this &MainWindow::onLessOrEqualClicked());
 }
 
 MainWindow::~MainWindow()
