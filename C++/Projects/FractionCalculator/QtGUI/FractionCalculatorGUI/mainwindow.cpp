@@ -17,7 +17,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnEqual,&QPushButton::clicked,this,&MainWindow::onEqualClicked);
     connect(ui->btnLess,&QPushButton::clicked,this,&MainWindow::onLessClicked);
     connect(ui->btnMore,&QPushButton::clicked,this,&MainWindow::onMoreClicked);
-    connect(ui->btnLessOrEqual, &QPushButton::clicked,this &MainWindow::onLessOrEqualClicked());
+    connect(ui->btnLessOrEqual, &QPushButton::clicked,this, &MainWindow::onLessOrEqualClicked);
+    connect(ui->btnMoreOrEqual,&QPushButton::clicked,this,&MainWindow::onMoreOrEqualClicked);
+    connect(ui->btnNotEqual, &QPushButton::clicked,this,&MainWindow::onNotEqualClicked);
 }
 
 MainWindow::~MainWindow()
@@ -121,5 +123,38 @@ void MainWindow::onMoreClicked() {
         setResult("More");
     } else {
         setResult("Less or equal");
+    }
+}
+
+void MainWindow::onMoreOrEqualClicked() {
+    Fraction frac1 = getFraction1();
+    Fraction frac2 = getFraction2();
+
+    if(frac1 >= frac2) {
+        setResult("More or equal");
+    } else {
+        setResult("Less");
+    }
+}
+
+void MainWindow::onLessOrEqualClicked() {
+    Fraction frac1 = getFraction1();
+    Fraction frac2 = getFraction2();
+
+    if(frac1 <= frac2) {
+        setResult("Less or equal");
+    } else {
+        setResult("More");
+    }
+}
+
+void MainWindow::onNotEqualClicked() {
+    Fraction frac1 = getFraction1();
+    Fraction frac2 = getFraction2();
+
+    if (frac1 != frac2) {
+        setResult("Not equal");
+    } else {
+        setResult("Equal");
     }
 }
