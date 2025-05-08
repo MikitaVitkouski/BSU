@@ -24,3 +24,102 @@ MainWindow::~MainWindow()
 {
     delete ui;
 }
+
+Fraction MainWindow::getFraction1() const {
+    int num = ui->lineEditNum1->text().toInt();
+    int den = ui->lineEditDen1->text().toInt();
+    return Fraction(num, den);
+}
+
+Fraction MainWindow::getFraction2() const {
+    int num = ui->lineEditNum2->text().toInt();
+    int den = ui->lineEditDen2->text().toInt();
+    return Fraction(num, den);
+}
+
+void MainWindow::setResult(const QString& result) {
+    ui->labelResult->setText(result);
+}
+
+void MainWindow::onAddClicked() {
+    Fraction frac1 = getFraction1();
+    Fraction frac2 = getFraction2();
+
+    Fraction result = frac1 + frac2;
+
+    setResult(QString::fromStdString(result.toString()));
+}
+
+void MainWindow::onSubClicked() {
+    Fraction frac1 = getFraction1();
+    Fraction frac2 = getFraction2();
+
+    Fraction result = frac1 - frac2;
+
+    setResult(QString::fromStdString(result.toString()));
+}
+
+void MainWindow::onMulClicked() {
+    Fraction frac1 = getFraction1();
+    Fraction frac2 = getFraction2();
+
+    Fraction result = frac1 * frac2;
+
+    setResult(QString::fromStdString(result.toString()));
+}
+
+void MainWindow::onDivClicked() {
+    Fraction frac1 = getFraction1();
+    Fraction frac2 = getFraction2();
+
+    if(frac2.getNumerator() == 0) {
+        QMessageBox::warning(this, "Error", "Dividing on zero!");
+        return;
+    }
+
+    Fraction result = frac1 / frac2;
+
+    setResult(QString::fromStdString(result.toString()));
+}
+
+void MainWindow::onPowClicked() {
+    Fraction frac1 = getFraction1();
+    Fraction frac2 = getFraction2();
+
+    int exponent = frac2.getNumerator();
+    Fraction result = frac1 ^ exponent;
+    setResult(QString::fromStdString(result.toString()));
+}
+
+void MainWindow::onEqualClicked() {
+    Fraction frac1 = getFraction1();
+    Fraction frac2 = getFraction2();
+
+    if (frac1 == frac2) {
+        setResult("Equal");
+    } else {
+        setResult("Not equal");
+    }
+}
+
+void MainWindow::onLessClicked() {
+    Fraction frac1 = getFraction1();
+    Fraction frac2 = getFraction2();
+
+    if (frac1 < frac2) {
+        setResult("Less");
+    } else {
+        setResult("More or equal");
+    }
+}
+
+void MainWindow::onMoreClicked() {
+    Fraction frac1 = getFraction1();
+    Fraction frac2 = getFraction2();
+
+    if (frac1 > frac2) {
+        setResult("More");
+    } else {
+        setResult("Less or equal");
+    }
+}
