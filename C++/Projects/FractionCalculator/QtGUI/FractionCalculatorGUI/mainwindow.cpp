@@ -46,121 +46,31 @@ void MainWindow::setResult(const QString& result) {
 }
 
 void MainWindow::onAddClicked() {
-    Fraction frac1 = getFraction1();
-    Fraction frac2 = getFraction2();
-
-    Fraction result = frac1 + frac2;
-
-    setResult(QString::fromStdString(result.toString()));
+    // Append '+' to the expression in the lineEdit
+    ui->lineEditExpression->insert("+");
 }
 
 void MainWindow::onSubClicked() {
-    Fraction frac1 = getFraction1();
-    Fraction frac2 = getFraction2();
-
-    Fraction result = frac1 - frac2;
-
-    setResult(QString::fromStdString(result.toString()));
+    // Append '-' to the expression in the lineEdit
+    ui->lineEditExpression->insert("-");
 }
 
 void MainWindow::onMulClicked() {
-    Fraction frac1 = getFraction1();
-    Fraction frac2 = getFraction2();
-
-    Fraction result = frac1 * frac2;
-
-    setResult(QString::fromStdString(result.toString()));
+    // Append '*' to the expression in the lineEdit
+    ui->lineEditExpression->insert("*");
 }
 
 void MainWindow::onDivClicked() {
-    Fraction frac1 = getFraction1();
-    Fraction frac2 = getFraction2();
-
-    if(frac2.getNumerator() == 0) {
-        QMessageBox::warning(this, "Error", "Dividing on zero!");
-        return;
-    }
-
-    Fraction result = frac1 / frac2;
-
-    setResult(QString::fromStdString(result.toString()));
+    // Append '/' to the expression in the lineEdit
+    ui->lineEditExpression->insert("/");
 }
 
 void MainWindow::onPowClicked() {
-    Fraction frac1 = getFraction1();
-    Fraction frac2 = getFraction2();
-
-    int exponent = frac2.getNumerator();
-    Fraction result = frac1 ^ exponent;
-    setResult(QString::fromStdString(result.toString()));
+    // Append '^' to the expression in the lineEdit
+    ui->lineEditExpression->insert("^");
 }
 
-void MainWindow::onEqualClicked() {
-    Fraction frac1 = getFraction1();
-    Fraction frac2 = getFraction2();
-
-    if (frac1 == frac2) {
-        setResult("Equal");
-    } else {
-        setResult("Not equal");
-    }
-}
-
-void MainWindow::onLessClicked() {
-    Fraction frac1 = getFraction1();
-    Fraction frac2 = getFraction2();
-
-    if (frac1 < frac2) {
-        setResult("Less");
-    } else {
-        setResult("More or equal");
-    }
-}
-
-void MainWindow::onMoreClicked() {
-    Fraction frac1 = getFraction1();
-    Fraction frac2 = getFraction2();
-
-    if (frac1 > frac2) {
-        setResult("More");
-    } else {
-        setResult("Less or equal");
-    }
-}
-
-void MainWindow::onMoreOrEqualClicked() {
-    Fraction frac1 = getFraction1();
-    Fraction frac2 = getFraction2();
-
-    if(frac1 >= frac2) {
-        setResult("More or equal");
-    } else {
-        setResult("Less");
-    }
-}
-
-void MainWindow::onLessOrEqualClicked() {
-    Fraction frac1 = getFraction1();
-    Fraction frac2 = getFraction2();
-
-    if(frac1 <= frac2) {
-        setResult("Less or equal");
-    } else {
-        setResult("More");
-    }
-}
-
-void MainWindow::onNotEqualClicked() {
-    Fraction frac1 = getFraction1();
-    Fraction frac2 = getFraction2();
-
-    if (frac1 != frac2) {
-        setResult("Not equal");
-    } else {
-        setResult("Equal");
-    }
-}
-
+// Evaluate the expression when the "Evaluate" button is clicked
 void MainWindow::onEvaluateClicked() {
     QString expr = ui->lineEditExpression->text();
     try {
