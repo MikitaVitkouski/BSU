@@ -7,6 +7,54 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
+    QString styleSheet = R"(
+    QWidget {
+        background-color: #1e1e1e;
+        color: #ffffff;
+        font-family: Segoe UI, sans-serif;
+        font-size: 16px;
+    }
+
+    QLineEdit {
+        background-color: #2a2a2a;
+        color: #f0f0f0;
+        border: 2px solid #ffaa00;
+        border-radius: 8px;
+        padding: 5px;
+    }
+
+    QLabel {
+        color: #a0ffb3;
+        font-weight: bold;
+    }
+
+    QPushButton {
+        background-color: #ffaa00;
+        color: #1e1e1e;
+        border: none;
+        border-radius: 6px;
+        padding: 6px 12px;
+    }
+
+    QPushButton:hover {
+        background-color: #ffcc66;
+    }
+
+    QPushButton:pressed {
+        background-color: #ff9900;
+    }
+
+    QPushButton#btnClear {
+        background-color: #ff4d4d;
+        color: white;
+    }
+
+    QPushButton#btnEvaluate {
+        background-color: #00cc66;
+        color: white;
+    }
+)";
+    this->setStyleSheet(styleSheet);
 
     //connect (sender, signal, receiver, slot)
     connect(ui->btnAdd,&QPushButton::clicked,this,&MainWindow::onAddClicked);
