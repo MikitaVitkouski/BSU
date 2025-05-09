@@ -59,7 +59,7 @@ void MainWindow::onDivClicked() {
 }
 
 void MainWindow::onPowClicked() {
-    ui->lineEditExpression->insert("^ ");
+    ui->lineEditExpression->insert(" ^ ");
 }
 
 void MainWindow::onLeftBracketClicked() {
