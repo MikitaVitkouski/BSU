@@ -183,12 +183,12 @@ void MainWindow::onBackspaceClicked() {
 void MainWindow::onToggleFormatClicked() {
     if (showingAsDecimal) {
         // Show a fraction expression
-        setResult(QString::fromStdString(lastResult.toString()));
+        ui->labelResult->setText(QString::fromStdString(lastResult.toString()));
         ui->btnToggleFormat->setText("→ double");
         showingAsDecimal = false;
     } else {
         // Show a decimal expression
-        setResult(QString::number(lastResult.toDouble(), 'f', 6));
+        ui->labelResult->setText(QString::number(lastResult.toDouble(), 'f', 6));
         ui->btnToggleFormat->setText("→ fraction");
         showingAsDecimal = true;
     }
@@ -198,6 +198,7 @@ void MainWindow::onToggleFormatClicked() {
 void MainWindow::onEvaluateClicked() {
     QString expr = ui->lineEditExpression->text();
     try {
+        lastResult = parseExpression(expr);
         Fraction result = parseExpression(expr);
         setResult(QString::fromStdString(result.toString()));
     } catch (const std::exception& e) {
