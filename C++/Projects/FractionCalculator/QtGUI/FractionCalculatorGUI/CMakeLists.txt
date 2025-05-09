@@ -9,10 +9,12 @@ add_subdirectory(../../FractionCalculator/ ${CMAKE_BINARY_DIR}/FractionCalculato
 set(SOURCES
     main.cpp
     mainwindow.cpp
+    ExpressionParser.cpp
 )
 
 set(HEADERS
     mainwindow.h
+    ExpressionParser.h
 )
 
 set(UIS

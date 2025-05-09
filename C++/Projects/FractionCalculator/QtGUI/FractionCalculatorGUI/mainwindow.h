@@ -23,12 +23,6 @@ private slots:
     void onMulClicked();
     void onDivClicked();
     void onPowClicked();
-    void onEqualClicked();
-    void onLessClicked();
-    void onMoreClicked();
-    void onLessOrEqualClicked();
-    void onMoreOrEqualClicked();
-    void onNotEqualClicked();
     void onEvaluateClicked();
 
 private:

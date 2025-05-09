@@ -15,12 +15,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnMul,&QPushButton::clicked,this,&MainWindow::onMulClicked);
     connect(ui->btnDiv,&QPushButton::clicked,this,&MainWindow::onDivClicked);
     connect(ui->btnPow,&QPushButton::clicked,this,&MainWindow::onPowClicked);
-    connect(ui->btnEqual,&QPushButton::clicked,this,&MainWindow::onEqualClicked);
-    connect(ui->btnLess,&QPushButton::clicked,this,&MainWindow::onLessClicked);
-    connect(ui->btnMore,&QPushButton::clicked,this,&MainWindow::onMoreClicked);
-    connect(ui->btnLessOrEqual, &QPushButton::clicked,this, &MainWindow::onLessOrEqualClicked);
-    connect(ui->btnMoreOrEqual,&QPushButton::clicked,this,&MainWindow::onMoreOrEqualClicked);
-    connect(ui->btnNotEqual, &QPushButton::clicked,this,&MainWindow::onNotEqualClicked);
     connect(ui->btnEvaluate, &QPushButton::clicked, this, &MainWindow::onEvaluateClicked);
 }
 
