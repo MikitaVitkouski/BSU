@@ -25,12 +25,12 @@ private slots:
     void onDivClicked();
     void onPowClicked();
     void onEvaluateClicked();
+    void onLeftBracketClicked();
+    void onRightBracketClicked();
 
 private:
     Ui::MainWindow *ui;
 
-    Fraction getFraction1() const;
-    Fraction getFraction2() const;
     void setResult(const QString& result);
 };
 #endif // MAINWINDOW_H

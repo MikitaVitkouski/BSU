@@ -22,18 +22,6 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
-Fraction MainWindow::getFraction1() const {
-    int num = ui->lineEditNum1->text().toInt();
-    int den = ui->lineEditDen1->text().toInt();
-    return Fraction(num, den);
-}
-
-Fraction MainWindow::getFraction2() const {
-    int num = ui->lineEditNum2->text().toInt();
-    int den = ui->lineEditDen2->text().toInt();
-    return Fraction(num, den);
-}
-
 void MainWindow::setResult(const QString& result) {
     ui->labelResult->setText(result);
 }
