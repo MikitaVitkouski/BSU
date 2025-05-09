@@ -1,6 +1,5 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
-#include "Fraction.h"
 #include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -68,7 +67,7 @@ void MainWindow::onPowClicked() {
 void MainWindow::onEvaluateClicked() {
     QString expr = ui->lineEditExpression->text();
     try {
-        Fraction result = evaluate(expr);
+        Fraction result = parseExpression(expr);
         setResult(QString::fromStdString(result.toString()));
     } catch (const std::exception& e) {
         QMessageBox::critical(this,"Error",e.what());

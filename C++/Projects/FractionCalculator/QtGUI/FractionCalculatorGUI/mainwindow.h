@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "Fraction.h"
+#include "ExpressionParser.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -31,7 +32,5 @@ private:
     Fraction getFraction1() const;
     Fraction getFraction2() const;
     void setResult(const QString& result);
-
-    Fraction evaluate(const QString& expression);
 };
 #endif // MAINWINDOW_H
