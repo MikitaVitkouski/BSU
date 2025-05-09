@@ -15,6 +15,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnDiv,&QPushButton::clicked,this,&MainWindow::onDivClicked);
     connect(ui->btnPow,&QPushButton::clicked,this,&MainWindow::onPowClicked);
     connect(ui->btnEvaluate, &QPushButton::clicked, this, &MainWindow::onEvaluateClicked);
+    connect(ui->btnLeftBracket,&QPushButton::clicked, this, &MainWindow::onLeftBracketClicked);
+    connect(ui->btnRightBracket,&QPushButton::clicked, this, &MainWindow::onRightBracketClicked);
 }
 
 MainWindow::~MainWindow()
@@ -27,18 +29,18 @@ void MainWindow::setResult(const QString& result) {
 }
 
 void MainWindow::onAddClicked() {
-    // Append '+' to the expression in the lineEdit
-    ui->lineEditExpression->insert("+");
+    // Append ' + ' to the expression in the lineEdit
+    ui->lineEditExpression->insert(" + ");
 }
 
 void MainWindow::onSubClicked() {
-    // Append '-' to the expression in the lineEdit
-    ui->lineEditExpression->insert("-");
+    // Append ' - ' to the expression in the lineEdit
+    ui->lineEditExpression->insert(" - ");
 }
 
 void MainWindow::onMulClicked() {
-    // Append '*' to the expression in the lineEdit
-    ui->lineEditExpression->insert("*");
+    // Append ' * ' to the expression in the lineEdit
+    ui->lineEditExpression->insert(" * ");
 }
 
 void MainWindow::onDivClicked() {
@@ -47,8 +49,18 @@ void MainWindow::onDivClicked() {
 }
 
 void MainWindow::onPowClicked() {
-    // Append '^' to the expression in the lineEdit
-    ui->lineEditExpression->insert("^");
+    // Append '^ ' to the expression in the lineEdit
+    ui->lineEditExpression->insert("^ ");
+}
+
+void MainWindow::onLeftBracketClicked() {
+    // Append '( ' to the expression in the lineEdit
+    ui->lineEditExpression->insert("( ");
+}
+
+void MainWindow::onRightBracketClicked() {
+    // Append ' )' to the expression in the lineEdit
+    ui->lineEditExpression->insert(" )");
 }
 
 // Evaluate the expression when the "Evaluate" button is clicked
