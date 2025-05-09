@@ -27,6 +27,18 @@ private slots:
     void onEvaluateClicked();
     void onLeftBracketClicked();
     void onRightBracketClicked();
+    void onOneClicked();
+    void onTwoClicked();
+    void onThreeClicked();
+    void onFourClicked();
+    void onFiveClicked();
+    void onSixClicked();
+    void onSevenClicked();
+    void onEightClicked();
+    void onNineClicked();
+    void onZeroClicked();
+    void onClearClicked();
+    void onSlashClicked();
 
 private:
     Ui::MainWindow *ui;

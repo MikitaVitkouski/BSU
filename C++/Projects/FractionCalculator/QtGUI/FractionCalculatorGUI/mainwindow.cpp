@@ -17,6 +17,18 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnEvaluate, &QPushButton::clicked, this, &MainWindow::onEvaluateClicked);
     connect(ui->btnLeftBracket,&QPushButton::clicked, this, &MainWindow::onLeftBracketClicked);
     connect(ui->btnRightBracket,&QPushButton::clicked, this, &MainWindow::onRightBracketClicked);
+    connect(ui->btnOne,&QPushButton::clicked,this,&MainWindow::onOneClicked);
+    connect(ui->btnTwo,&QPushButton::clicked,this,&MainWindow::onTwoClicked);
+    connect(ui->btnThree,&QPushButton::clicked,this,&MainWindow::onThreeClicked);
+    connect(ui->btnFour,&QPushButton::clicked,this,&MainWindow::onFourClicked);
+    connect(ui->btnFive,&QPushButton::clicked,this,&MainWindow::onFiveClicked);
+    connect(ui->btnSix,&QPushButton::clicked,this,&MainWindow::onSixClicked);
+    connect(ui->btnSeven,&QPushButton::clicked,this,&MainWindow::onSevenClicked);
+    connect(ui->btnEight,&QPushButton::clicked,this,&MainWindow::onEightClicked);
+    connect(ui->btnNine,&QPushButton::clicked,this,&MainWindow::onNineClicked);
+    connect(ui->btnZero,&QPushButton::clicked,this,&MainWindow::onZeroClicked);
+    connect(ui->btnClear,&QPushButton::clicked,this,&MainWindow::onClearClicked);
+    connect(ui->btnSlash,&QPushButton::clicked,this,&MainWindow::onSlashClicked);
 }
 
 MainWindow::~MainWindow()
@@ -28,39 +40,83 @@ void MainWindow::setResult(const QString& result) {
     ui->labelResult->setText(result);
 }
 
+// These methods append symbols to lineEditExpression field
+
 void MainWindow::onAddClicked() {
-    // Append ' + ' to the expression in the lineEdit
     ui->lineEditExpression->insert(" + ");
 }
 
 void MainWindow::onSubClicked() {
-    // Append ' - ' to the expression in the lineEdit
     ui->lineEditExpression->insert(" - ");
 }
 
 void MainWindow::onMulClicked() {
-    // Append ' * ' to the expression in the lineEdit
     ui->lineEditExpression->insert(" * ");
 }
 
 void MainWindow::onDivClicked() {
-    // Append '/' to the expression in the lineEdit
     ui->lineEditExpression->insert("/");
 }
 
 void MainWindow::onPowClicked() {
-    // Append '^ ' to the expression in the lineEdit
     ui->lineEditExpression->insert("^ ");
 }
 
 void MainWindow::onLeftBracketClicked() {
-    // Append '( ' to the expression in the lineEdit
     ui->lineEditExpression->insert("( ");
 }
 
 void MainWindow::onRightBracketClicked() {
-    // Append ' )' to the expression in the lineEdit
     ui->lineEditExpression->insert(" )");
+}
+
+void MainWindow::onOneClicked() {
+    ui->lineEditExpression->insert("1");
+}
+
+void MainWindow::onTwoClicked() {
+    ui->lineEditExpression->insert("2");
+}
+
+void MainWindow::onThreeClicked() {
+    ui->lineEditExpression->insert("3");
+}
+
+void MainWindow::onFourClicked() {
+    ui->lineEditExpression->insert("4");
+}
+
+void MainWindow::onFiveClicked() {
+    ui->lineEditExpression->insert("5");
+}
+
+void MainWindow::onSixClicked() {
+    ui->lineEditExpression->insert("6");
+}
+
+void MainWindow::onSevenClicked() {
+    ui->lineEditExpression->insert("7");
+}
+
+void MainWindow::onEightClicked() {
+    ui->lineEditExpression->insert("8");
+}
+
+void MainWindow::onNineClicked() {
+    ui->lineEditExpression->insert("9");
+}
+
+void MainWindow::onZeroClicked() {
+    ui->lineEditExpression->insert("0");
+}
+
+void MainWindow::onSlashClicked() {
+    ui->lineEditExpression->insert("/");
+}
+
+void MainWindow::onClearClicked() {
+    ui->lineEditExpression->clear();
+    ui->labelResult->clear();
 }
 
 // Evaluate the expression when the "Evaluate" button is clicked
