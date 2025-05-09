@@ -1,14 +1,11 @@
 cmake_minimum_required(VERSION 3.16)
 project(FractionCalculatorGUI LANGUAGES CXX)
 
-# Найти Qt
 find_package(Qt6 REQUIRED COMPONENTS Widgets)
 qt_standard_project_setup()
 
-# Добавляем бэкенд как подпроект
 add_subdirectory(../../FractionCalculator/ ${CMAKE_BINARY_DIR}/FractionCalculatorBuild)
 
-# Источники для GUI
 set(SOURCES
     main.cpp
     mainwindow.cpp
@@ -26,6 +23,8 @@ qt_add_executable(FractionCalculatorGUI
     ${SOURCES}
     ${HEADERS}
     ${UIS}
+    ExpressionParser.h
+    ExpressionParser.cpp
 )
 
 target_include_directories(FractionCalculatorGUI

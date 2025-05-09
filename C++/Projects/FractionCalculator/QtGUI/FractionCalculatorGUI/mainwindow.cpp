@@ -160,3 +160,13 @@ void MainWindow::onNotEqualClicked() {
         setResult("Equal");
     }
 }
+
+void MainWindow::onEvaluateClicked() {
+    QString expr = ui->lineEditExpression->text();
+    try {
+        Fraction result = evaluate(expr);
+        setResult(QString::fromStdString(result.toString()));
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this,"Error",e.what());
+    }
+}
