@@ -36,7 +36,7 @@ bool isRightAssociative(const QString& op) {
 }
 
 // Converts an infix expression (standard mathematical notation) to Reverse Polish Notation (RPN)
-QVector<QString> toRPN(const QString& tokens) {
+QVector<QString> toRPN(const QStringList& tokens) {
     QVector<QString> output; // This will store the resulting RPN expression
     std::stack<QString> ops; // Stack for operators and parentheses
 
@@ -77,3 +77,39 @@ QVector<QString> toRPN(const QString& tokens) {
     return output;
 }
 
+// Evaluates a Reverse Polish Notation (RPN) expression
+Fraction evalRPN(const QVector<QString>& rpn) {
+    std::stack<Fraction> st;
+
+    for(const QString& token : rpn) {
+        if (isOperator(token)) {
+            // If the token is an operator, pop two operands from the stack and apply the operator
+            if (st.size() < 2) throw std::runtime_error("Insufficient operands");
+            Fraction b = st.top(); st.pop();
+            Fraction a = st.top(); st.pop();
+
+            if (token == "+") st.push(a + b);
+            else if (token == "-") st.push(a - b);
+            else if (token == "*") st.push(a * b);
+            else if (token == "/") st.push(a / b);
+            else if (token == "^") st.push(a ^ b.getNumerator());
+        } else {
+             // If the token is not an operator, it must be a fraction or a number
+            st.push(parseFraction(token));
+        }
+    }
+
+    if(st.size() != 1) throw std::runtime_error("Error while evaluating the expression");
+    return st.top();
+}
+
+// Parses a mathematical expression and returns the result as a Fraction
+Fraction parseExpression(const QString& expr) {
+    // Split the expression into tokens
+    QStringList tokens = expr.split(' ', Qt::SkipEmptyParts);
+
+    // Convert the tokens to RPN
+    auto rpn = toRPN(tokens);
+
+    return evalRPN(rpn);
+}
