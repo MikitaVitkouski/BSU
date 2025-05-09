@@ -9,49 +9,57 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     QString styleSheet = R"(
     QWidget {
-        background-color: #1e1e1e;
-        color: #ffffff;
+        background-color: #fdfdfd;
+        color: #333333;
         font-family: Segoe UI, sans-serif;
         font-size: 16px;
     }
 
     QLineEdit {
         background-color: #2a2a2a;
-        color: #f0f0f0;
+        color: #000000;
         border: 2px solid #ffaa00;
-        border-radius: 8px;
-        padding: 5px;
+        border-radius: 10px;
+        padding: 6px;
     }
 
     QLabel {
-        color: #a0ffb3;
+        color: #ff6600;
         font-weight: bold;
+        font-size: 18px;
     }
 
     QPushButton {
-        background-color: #ffaa00;
-        color: #1e1e1e;
-        border: none;
-        border-radius: 6px;
-        padding: 6px 12px;
+        background-color: #ffffff;
+        color: #333333;
+        border: 1 px solid #e0e0e0;
+        border-radius: 40px;
+        padding: 10px;
+        min-width: 60px;
     }
 
     QPushButton:hover {
-        background-color: #ffcc66;
+        background-color: #f5f5f5;
     }
 
     QPushButton:pressed {
         background-color: #ff9900;
     }
 
-    QPushButton#btnClear {
-        background-color: #ff4d4d;
+    QPushButton#btnEvaluate {
+        background-color: #ff6600;
         color: white;
+        font-weight: bold;
     }
 
-    QPushButton#btnEvaluate {
-        background-color: #00cc66;
+    QPushButton#btnClear {
+        background-color: #ff6600;
         color: white;
+        font-weight: bold;
+    }
+
+    QPushButton#btnSlash, QPushButton#btnMul, QPushButton#btnDiv, QPushButton#btnAdd, QPushButton#btnSub, QPushButton#btnPow {
+        color: #ff6600;
     }
 )";
     this->setStyleSheet(styleSheet);
@@ -77,6 +85,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnZero,&QPushButton::clicked,this,&MainWindow::onZeroClicked);
     connect(ui->btnClear,&QPushButton::clicked,this,&MainWindow::onClearClicked);
     connect(ui->btnSlash,&QPushButton::clicked,this,&MainWindow::onSlashClicked);
+    connect(ui->btnBackspace, &QPushButton::clicked, this,&MainWindow::onBackspaceClicked);
 }
 
 MainWindow::~MainWindow()
@@ -165,6 +174,14 @@ void MainWindow::onSlashClicked() {
 void MainWindow::onClearClicked() {
     ui->lineEditExpression->clear();
     ui->labelResult->clear();
+}
+
+void MainWindow::onBackspaceClicked() {
+    QString text = ui->lineEditExpression->text();
+    if (!text.isEmpty()) {
+        text.chop(1); // deletes last symbol
+        ui->lineEditExpression->setText(text);
+    }
 }
 
 // Evaluate the expression when the "Evaluate" button is clicked

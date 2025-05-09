@@ -39,6 +39,7 @@ private slots:
     void onZeroClicked();
     void onClearClicked();
     void onSlashClicked();
+    void onBackspaceClicked();
 
 private:
     Ui::MainWindow *ui;
