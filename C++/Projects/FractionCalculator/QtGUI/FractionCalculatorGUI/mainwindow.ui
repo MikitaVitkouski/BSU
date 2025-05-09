@@ -61,8 +61,8 @@
    <widget class="QPushButton" name="btnDiv">
     <property name="geometry">
      <rect>
-      <x>690</x>
-      <y>210</y>
+      <x>530</x>
+      <y>130</y>
       <width>80</width>
       <height>80</height>
      </rect>
@@ -299,19 +299,6 @@
      <string>С</string>
     </property>
    </widget>
-   <widget class="QPushButton" name="btnSlash">
-    <property name="geometry">
-     <rect>
-      <x>530</x>
-      <y>130</y>
-      <width>80</width>
-      <height>80</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>/</string>
-    </property>
-   </widget>
    <widget class="QPushButton" name="btnBackspace">
     <property name="geometry">
      <rect>
@@ -328,6 +315,19 @@
     </property>
     <property name="text">
      <string>⌫</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnToggleFormat">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>210</y>
+      <width>80</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>toggle</string>
     </property>
    </widget>
   </widget>

@@ -84,8 +84,8 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnNine,&QPushButton::clicked,this,&MainWindow::onNineClicked);
     connect(ui->btnZero,&QPushButton::clicked,this,&MainWindow::onZeroClicked);
     connect(ui->btnClear,&QPushButton::clicked,this,&MainWindow::onClearClicked);
-    connect(ui->btnSlash,&QPushButton::clicked,this,&MainWindow::onSlashClicked);
     connect(ui->btnBackspace, &QPushButton::clicked, this,&MainWindow::onBackspaceClicked);
+    connect(ui->btnToggleFormat, &QPushButton::clicked,this,&MainWindow::onToggleFormatClicked);
 }
 
 MainWindow::~MainWindow()
@@ -167,10 +167,6 @@ void MainWindow::onZeroClicked() {
     ui->lineEditExpression->insert("0");
 }
 
-void MainWindow::onSlashClicked() {
-    ui->lineEditExpression->insert("/");
-}
-
 void MainWindow::onClearClicked() {
     ui->lineEditExpression->clear();
     ui->labelResult->clear();
@@ -184,6 +180,20 @@ void MainWindow::onBackspaceClicked() {
     }
 }
 
+void MainWindow::onToggleFormatClicked() {
+    if (showingAsDecimal) {
+        // Show a fraction expression
+        setResult(QString::fromStdString(lastResult.toString()));
+        ui->btnToggleFormat->setText("→ double");
+        showingAsDecimal = false;
+    } else {
+        // Show a decimal expression
+        setResult(QString::number(lastResult.toDouble(), 'f', 6));
+        ui->btnToggleFormat->setText("→ fraction");
+        showingAsDecimal = true;
+    }
+}
+
 // Evaluate the expression when the "Evaluate" button is clicked
 void MainWindow::onEvaluateClicked() {
     QString expr = ui->lineEditExpression->text();
@@ -193,4 +203,6 @@ void MainWindow::onEvaluateClicked() {
     } catch (const std::exception& e) {
         QMessageBox::critical(this,"Error",e.what());
     }
+    showingAsDecimal = false;
+    ui->btnToggleFormat->setText("→ double");
 }

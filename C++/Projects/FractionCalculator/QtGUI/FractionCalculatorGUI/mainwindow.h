@@ -38,12 +38,13 @@ private slots:
     void onNineClicked();
     void onZeroClicked();
     void onClearClicked();
-    void onSlashClicked();
     void onBackspaceClicked();
+    void onToggleFormatClicked();
 
 private:
     Ui::MainWindow *ui;
-
+    Fraction lastResult;
+    bool showingAsDecimal = false;
     void setResult(const QString& result);
 };
 #endif // MAINWINDOW_H
