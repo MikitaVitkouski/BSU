@@ -35,3 +35,45 @@ bool isRightAssociative(const QString& op) {
     return op == "^";
 }
 
+// Converts an infix expression (standard mathematical notation) to Reverse Polish Notation (RPN)
+QVector<QString> toRPN(const QString& tokens) {
+    QVector<QString> output; // This will store the resulting RPN expression
+    std::stack<QString> ops; // Stack for operators and parentheses
+
+    for(const QString& token : tokens) {
+        if (token == "(") {
+            ops.push(token); // Push opening parentheses to the stack
+        } else if (token == ")") {
+            // Process everything until the matching opening parenthesis
+            while(!ops.empty() && ops.top() != "(") {
+                output.push_back(ops.top());
+                ops.pop();
+            }
+            if(ops.empty()) throw std::runtime_error("Mismatched parentheses");
+            ops.pop(); // Pop the "(" from the stack
+        } else if (isOperator(token)) {
+            // Process operators based on precedence
+            while (!ops.empty() && isOperator(ops.top())) {
+                if ((getPrecedence(ops.top()) > getPrecedence(token)) ||
+                    (getPrecedence(ops.top()) == getPrecedence(token) && !isRightAssociative(token))) {
+                    output.push_back(ops.top());
+                    ops.pop();
+                } else break;
+            }
+            ops.push(token);
+        } else {
+            // If the token is not an operator or parentheses, it's a fraction or number
+            output.push_back(token);
+        }
+
+    }
+
+    // Pop remaining operators from the stack
+    while (!ops.empty()) {
+        if (ops.top() == "(" || ops.top() == ")") throw std::runtime_error("Mismatched parentheses");
+        output.push_back(ops.top());
+        ops.pop();
+    }
+    return output;
+}
+
