@@ -29,6 +29,7 @@ private slots:
     void onLessOrEqualClicked();
     void onMoreOrEqualClicked();
     void onNotEqualClicked();
+    void onEvaluateClicked();
 
 private:
     Ui::MainWindow *ui;
@@ -36,5 +37,7 @@ private:
     Fraction getFraction1() const;
     Fraction getFraction2() const;
     void setResult(const QString& result);
+
+    Fraction evaluate(const QString& expression);
 };
 #endif // MAINWINDOW_H

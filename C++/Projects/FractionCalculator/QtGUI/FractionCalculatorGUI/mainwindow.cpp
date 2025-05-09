@@ -9,6 +9,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
+    //connect (sender, signal, receiver, slot)
     connect(ui->btnAdd,&QPushButton::clicked,this,&MainWindow::onAddClicked);
     connect(ui->btnSub,&QPushButton::clicked,this,&MainWindow::onSubClicked);
     connect(ui->btnMul,&QPushButton::clicked,this,&MainWindow::onMulClicked);
@@ -20,6 +21,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnLessOrEqual, &QPushButton::clicked,this, &MainWindow::onLessOrEqualClicked);
     connect(ui->btnMoreOrEqual,&QPushButton::clicked,this,&MainWindow::onMoreOrEqualClicked);
     connect(ui->btnNotEqual, &QPushButton::clicked,this,&MainWindow::onNotEqualClicked);
+    connect(ui->btnEvaluate, &QPushButton::clicked, this, &MainWindow::onEvaluateClicked);
 }
 
 MainWindow::~MainWindow()
