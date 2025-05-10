@@ -58,7 +58,8 @@ MainWindow::MainWindow(QWidget *parent)
         font-weight: bold;
     }
 
-    QPushButton#btnSlash, QPushButton#btnMul, QPushButton#btnDiv, QPushButton#btnAdd, QPushButton#btnSub, QPushButton#btnPow {
+    QPushButton#btnSlash, QPushButton#btnMul, QPushButton#btnDiv, QPushButton#btnAdd, QPushButton#btnSub, QPushButton#btnPow, QPushButton#btnReverse,
+    QPushButton#btnLeftBracket, QPushButton#btnRightBracket, QPushButton#btnToggleFormat, QPushButton#btnBackspace {
         color: #ff6600;
     }
 )";
@@ -86,6 +87,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnClear,&QPushButton::clicked,this,&MainWindow::onClearClicked);
     connect(ui->btnBackspace, &QPushButton::clicked, this,&MainWindow::onBackspaceClicked);
     connect(ui->btnToggleFormat, &QPushButton::clicked,this,&MainWindow::onToggleFormatClicked);
+    connect(ui->btnReverse, &QPushButton::clicked,this,&MainWindow::onReverseClicked);
 }
 
 MainWindow::~MainWindow()
@@ -206,4 +208,23 @@ void MainWindow::onEvaluateClicked() {
     }
     showingAsDecimal = false;
     ui->btnToggleFormat->setText("→ double");
+}
+
+void MainWindow::onReverseClicked() {
+    try {
+        if (lastResult.getNumerator() == 0) {
+            throw std::runtime_error("Can't reverse fraction with zero numerator.");
+        }
+
+        lastResult = lastResult.reverse();
+
+        if (showingAsDecimal) {
+            ui->labelResult->setText(QString::number(lastResult.toDouble(), 'f', 6));
+        } else {
+            ui->labelResult->setText(QString::fromStdString(lastResult.toString()));
+        }
+
+    } catch (const std::exception& e) {
+        QMessageBox::critical(this, "Error", e.what());
+    }
 }

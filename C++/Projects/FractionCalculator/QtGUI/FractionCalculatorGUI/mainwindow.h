@@ -40,6 +40,7 @@ private slots:
     void onClearClicked();
     void onBackspaceClicked();
     void onToggleFormatClicked();
+    void onReverseClicked();
 
 private:
     Ui::MainWindow *ui;

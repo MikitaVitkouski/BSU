@@ -330,6 +330,19 @@
      <string>toggle</string>
     </property>
    </widget>
+   <widget class="QPushButton" name="btnReverse">
+    <property name="geometry">
+     <rect>
+      <x>690</x>
+      <y>290</y>
+      <width>80</width>
+      <height>80</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>reverse</string>
+    </property>
+   </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
