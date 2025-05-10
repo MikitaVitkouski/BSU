@@ -41,6 +41,7 @@ private slots:
     void onBackspaceClicked();
     void onToggleFormatClicked();
     void onReverseClicked();
+    void onSlashClicked();
 
 private:
     Ui::MainWindow *ui;

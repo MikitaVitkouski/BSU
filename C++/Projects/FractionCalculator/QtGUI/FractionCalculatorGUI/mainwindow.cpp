@@ -59,7 +59,7 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     QPushButton#btnSlash, QPushButton#btnMul, QPushButton#btnDiv, QPushButton#btnAdd, QPushButton#btnSub, QPushButton#btnPow, QPushButton#btnReverse,
-    QPushButton#btnLeftBracket, QPushButton#btnRightBracket, QPushButton#btnToggleFormat, QPushButton#btnBackspace {
+    QPushButton#btnLeftBracket, QPushButton#btnRightBracket, QPushButton#btnToggleFormat, QPushButton#btnBackspace, QPushButton#btnSlash {
         color: #ff6600;
     }
 )";
@@ -88,6 +88,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnBackspace, &QPushButton::clicked, this,&MainWindow::onBackspaceClicked);
     connect(ui->btnToggleFormat, &QPushButton::clicked,this,&MainWindow::onToggleFormatClicked);
     connect(ui->btnReverse, &QPushButton::clicked,this,&MainWindow::onReverseClicked);
+    connect(ui->btnSlash,&QPushButton::clicked,this,&MainWindow::onSlashClicked);
 }
 
 MainWindow::~MainWindow()
@@ -114,7 +115,7 @@ void MainWindow::onMulClicked() {
 }
 
 void MainWindow::onDivClicked() {
-    ui->lineEditExpression->insert("/");
+    ui->lineEditExpression->insert(" / ");
 }
 
 void MainWindow::onPowClicked() {
@@ -227,4 +228,8 @@ void MainWindow::onReverseClicked() {
     } catch (const std::exception& e) {
         QMessageBox::critical(this, "Error", e.what());
     }
+}
+
+void MainWindow::onSlashClicked() {
+    ui->lineEditExpression->insert("/");
 }
