@@ -7,7 +7,7 @@ Fraction parseFraction(const QString& token) {
     // Split the string by the '/' character
     QStringList parts = token.split('/');
     if (parts.size() == 1) {
-        // If there's only one part, it's a whole number (e.g. "6"), treat it as "5/1"
+        // If there's only one part, it's a whole number (e.g. "6"), treat it as "6/1"
         return Fraction(parts[0].toInt(), 1);
     } else if (parts.size() == 2) {
         // If the format is correct: numerator and denominator (e.g. "3/4")

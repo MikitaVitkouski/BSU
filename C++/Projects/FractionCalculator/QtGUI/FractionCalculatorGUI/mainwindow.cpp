@@ -10,7 +10,7 @@ MainWindow::MainWindow(QWidget *parent)
     QString styleSheet = R"(
     QWidget {
         background-color: #fdfdfd;
-        color: #333333;
+        color: #444444;
         font-family: Segoe UI, sans-serif;
         font-size: 16px;
     }
