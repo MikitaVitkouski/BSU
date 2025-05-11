@@ -18,6 +18,8 @@ Fraction evalRPN(const QVector<QString>& rpn);
 // Parses and evaluates an infix expression string (e.g. "1/2 + 3/4")
 Fraction parseExpression(const QString& expr);
 
+QStringList preprocessUnaryMinus(const QStringList& tokens);
+
 // Operator helpers
 int getPrecedence(const QString& op);
 bool isOperator(const QString& token);

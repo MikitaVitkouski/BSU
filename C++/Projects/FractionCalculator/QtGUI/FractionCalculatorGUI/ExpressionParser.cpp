@@ -103,10 +103,27 @@ Fraction evalRPN(const QVector<QString>& rpn) {
     return st.top();
 }
 
+QStringList preprocessUnaryMinus(const QStringList& tokens) {
+    QStringList result;
+    for(int i = 0;i<tokens.size();++i) {
+        QString token = tokens[i];
+
+        if(token == "-" && (i == 0 || tokens[i-1] == "(" || isOperator(tokens[i-1]))) {
+            result << "0"; // for example, we have -(2/3) and this line makes it 0 - 2/3
+        }
+
+        result << token;
+    }
+
+    return result;
+}
+
 // Parses a mathematical expression and returns the result as a Fraction
 Fraction parseExpression(const QString& expr) {
     // Split the expression into tokens
     QStringList tokens = expr.split(' ', Qt::SkipEmptyParts);
+
+    tokens = preprocessUnaryMinus(tokens);
 
     // Convert the tokens to RPN
     auto rpn = toRPN(tokens);
