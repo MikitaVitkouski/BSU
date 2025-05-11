@@ -103,6 +103,7 @@ Fraction evalRPN(const QVector<QString>& rpn) {
     return st.top();
 }
 
+// method to preprocess unary minuses in our expression
 QStringList preprocessUnaryMinus(const QStringList& tokens) {
     QStringList result;
     for(int i = 0;i<tokens.size();++i) {
@@ -123,6 +124,7 @@ Fraction parseExpression(const QString& expr) {
     // Split the expression into tokens
     QStringList tokens = expr.split(' ', Qt::SkipEmptyParts);
 
+    // if there are unary minuses, they'll be preprocessed
     tokens = preprocessUnaryMinus(tokens);
 
     // Convert the tokens to RPN
