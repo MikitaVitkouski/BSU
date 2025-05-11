@@ -1,0 +1,17 @@
+-19 -8 3 9 10 11 56 57 
+
+-19 3 9 10 11 56 57 
+
+Found 10 in set
+equal_range(5) = [9, 9)
+
+s2: 3 5 7 10 20 
+
+Intersection of s and s2: 3 10 
+
+Union of s and s2: -19 3 5 7 9 10 11 20 56 57 
+
+Difference s - s2: -19 9 11 56 57 
+
+Symmetric difference between s and s2 (unique elements from both s and s2 sets): -19 5 7 9 11 20 56 57 
+
