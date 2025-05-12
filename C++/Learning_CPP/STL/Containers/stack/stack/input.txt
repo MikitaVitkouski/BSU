@@ -1,0 +1,6 @@
+AddClip
+Cut
+AddEffect
+Move
+ColorCorrect
+Delete

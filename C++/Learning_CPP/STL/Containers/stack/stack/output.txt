@@ -1,0 +1,10 @@
+Before ctrl+z:
+[top] Delete ColorCorrect Move AddEffect Cut AddClip [bottom]
+
+Undo: Delete
+Undo: ColorCorrect
+Undo: Move
+
+After 3 backup actions: 
+[top] AddEffect Cut AddClip [bottom]
+
