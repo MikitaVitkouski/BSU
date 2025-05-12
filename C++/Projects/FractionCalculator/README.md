@@ -1,3 +1,7 @@
+![image](https://github.com/user-attachments/assets/bd6c4852-02da-4e58-bd57-e22d8ac4c279)
+![image](https://github.com/user-attachments/assets/37f02296-a420-4e14-97e7-37993f407fe9)
+![image](https://github.com/user-attachments/assets/98ec076d-a99e-4564-ba18-d6bf9b000179)
+
 A simple C++ application for performing arithmetic operations on fractions with a graphical user interface built using Qt.
 
 Features
@@ -45,9 +49,3 @@ FractionTests: Includes optional unit tests for the core functionality.
 Enter fractions or integers to perform arithmetic operations.
 Toggle between fraction and decimal views for the results.
 Perform basic operations like addition, subtraction, multiplication, and division directly in the UI.
-
-## Screenshots
-![image](https://github.com/user-attachments/assets/bd6c4852-02da-4e58-bd57-e22d8ac4c279)
-![image](https://github.com/user-attachments/assets/37f02296-a420-4e14-97e7-37993f407fe9)
-![image](https://github.com/user-attachments/assets/98ec076d-a99e-4564-ba18-d6bf9b000179)
-
