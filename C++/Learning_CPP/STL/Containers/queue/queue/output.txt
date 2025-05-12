@@ -1,0 +1,9 @@
+Queue before servicing:
+[front] Nikita John Timofey Ignat Anton Pasha Masha Dasha Alexandr Vanya [back]
+
+Serviced: Nikita
+Serviced: John
+
+Queue after 2 people have been serviced: 
+[front] Timofey Ignat Anton Pasha Masha Dasha Alexandr Vanya [back]
+
