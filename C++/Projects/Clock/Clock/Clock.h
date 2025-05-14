@@ -6,7 +6,7 @@
 
 class Clock {
 public:
-	Clock();
+	Clock() = default;
 
 	std::string getTime() const;
 };
