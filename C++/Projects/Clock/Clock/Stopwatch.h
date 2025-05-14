@@ -11,10 +11,8 @@ private:
 	std::chrono::milliseconds accumulatedTime{0};
 	std::vector<std::chrono::milliseconds> laps;
 public:
-	Stopwatch();
-
 	void start();
-	void stop();
+	void pause();
 	void reset();
 	void lap();
 
