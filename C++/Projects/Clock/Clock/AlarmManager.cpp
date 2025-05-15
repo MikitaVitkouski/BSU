@@ -33,3 +33,9 @@ std::vector<Alarm> AlarmManager::getActiveAlarms() const {
 	
 	return result;
 }
+
+void AlarmManager::sortAlarmsByTime() {
+	std::sort(alarms.begin(), alarms.end(), [](const Alarm& a, const Alarm& b) {
+		return a.time < b.time;
+		});
+}
