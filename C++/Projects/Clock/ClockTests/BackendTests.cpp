@@ -35,8 +35,8 @@ TEST(StopwatchTest, StartsAndPausesCorrectly) {
 
 	auto elapsed = sw.elapsed().count();
 
-	EXPECT_GE(elapsed, 90);
-	EXPECT_LE(elapsed, 200);
+	EXPECT_GE(elapsed, 90); // elapsed time >= 90?
+	EXPECT_LE(elapsed, 200); // elapsed time <= 200?
 }
 
 TEST(StopwatchTest, ResetClearsTimeAndLaps) {
@@ -48,11 +48,25 @@ TEST(StopwatchTest, ResetClearsTimeAndLaps) {
 	sw.pause();
 
 	EXPECT_FALSE(sw.getLaps().empty());
-	EXPECT_GT(sw.elapsed().count(), 0);
+	EXPECT_GT(sw.elapsed().count(), 0); // elapsed time > 0?
 
 	sw.reset();
 
-	EXPECT_EQ(sw.elapsed().count(), 0);
+	EXPECT_EQ(sw.elapsed().count(), 0); // elapsed time = 0?
 	EXPECT_TRUE(sw.getLaps().empty());
 	EXPECT_FALSE(sw.isRunning());
+}
+
+TEST(StopwatchTest, LapsAreStoredCorrectly) {
+	Stopwatch sw;
+	sw.start();
+	std::this_thread::sleep_for(std::chrono::milliseconds(75));
+	sw.lap();
+	std::this_thread::sleep_for(std::chrono::milliseconds(75));
+	sw.lap();
+	sw.pause();
+
+	const auto& laps = sw.getLaps();
+	EXPECT_EQ(laps.size(), 2);
+	EXPECT_GE(laps[1], laps[0]); // second lap's time >= first lap's time
 }
