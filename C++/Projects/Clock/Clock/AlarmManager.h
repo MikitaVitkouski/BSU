@@ -19,7 +19,8 @@ public:
 
 	void addAlarm(const Alarm& alarm);
 	void removeAlarm(int index);
-	void enableAlarm(int index, bool enable);
+	void toggleAlarm(int index);
+	void setAlarmEnabled(int index, bool enable);
 	std::vector<Alarm> getActiveAlarms() const;
 
 	void checkAndTriggerAlarms(); // periodically call to run alarms at the set time
