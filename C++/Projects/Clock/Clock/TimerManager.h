@@ -5,6 +5,7 @@
 #include <chrono>
 
 class Timer {
+public:
 	std::chrono::milliseconds duration;
 	std::chrono::steady_clock::time_point startTime;
 	bool running;
