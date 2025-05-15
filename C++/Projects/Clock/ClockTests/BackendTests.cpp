@@ -1,0 +1,58 @@
+#include "pch.h"
+#include "AlarmManager.h"
+#include "Clock.h"
+#include "Stopwatch.h"
+#include "TimerManager.h"
+#include <regex>
+#include <thread>
+
+//testing: getTime returns valid time format or not
+TEST(ClockTest, ReturnsValidTimeFormat) {
+	Clock clock;
+	std::string timeStr = clock.getTime();
+
+	// HH:MM:SS
+	std::regex timeFormat(R"(^\d{1,2}:\d{2}:\d{2}(?:\.\d+)?$)");
+
+	EXPECT_FALSE(timeStr.empty());
+
+	EXPECT_TRUE(std::regex_match(timeStr, timeFormat)) << "Returned: " << timeStr;
+}
+
+TEST(StopwatchTest, StartsAndPausesCorrectly) {
+	Stopwatch sw;
+
+	EXPECT_FALSE(sw.isRunning());
+
+	sw.start();
+
+	EXPECT_TRUE(sw.isRunning());
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(100));
+	sw.pause();
+
+	EXPECT_FALSE(sw.isRunning());
+
+	auto elapsed = sw.elapsed().count();
+
+	EXPECT_GE(elapsed, 90);
+	EXPECT_LE(elapsed, 200);
+}
+
+TEST(StopwatchTest, ResetClearsTimeAndLaps) {
+	Stopwatch sw;
+	sw.start();
+
+	std::this_thread::sleep_for(std::chrono::milliseconds(150));
+	sw.lap();
+	sw.pause();
+
+	EXPECT_FALSE(sw.getLaps().empty());
+	EXPECT_GT(sw.elapsed().count(), 0);
+
+	sw.reset();
+
+	EXPECT_EQ(sw.elapsed().count(), 0);
+	EXPECT_TRUE(sw.getLaps().empty());
+	EXPECT_FALSE(sw.isRunning());
+}
