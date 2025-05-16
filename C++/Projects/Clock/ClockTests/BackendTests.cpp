@@ -99,3 +99,36 @@ TEST(AlarmManagerTest, ToggleAlarmEnablesDisabledAlarm) {
 	EXPECT_EQ(manager.getActiveAlarms().size(), 1);
 }
 
+TEST(AlarmManagerTest, SetAlarmEnabledEnablesAlarm) {
+	AlarmManager manager;
+	Alarm a1{ std::chrono::system_clock::now(),"Dinner",false };
+	Alarm a2{ std::chrono::system_clock::now(),"Breakfast",false };
+	Alarm a3{ std::chrono::system_clock::now(),"Going for a walk",false };
+	manager.addAlarm(a1);
+	manager.addAlarm(a2);
+	manager.addAlarm(a3);
+
+	manager.setAlarmEnabled(0,true);
+	manager.setAlarmEnabled(1,true);
+
+
+	EXPECT_EQ(manager.getActiveAlarms().size(), 2);
+}
+
+TEST(AlarmManagerTest, RemoveAlarmRemovesCertainAlarmFromVectorAlarms) {
+	AlarmManager manager;
+	Alarm a1{ std::chrono::system_clock::now(),"Dinner",true };
+	Alarm a2{ std::chrono::system_clock::now(),"Wake up",true };
+	Alarm a3{ std::chrono::system_clock::now(),"Sleep",true };
+	manager.addAlarm(a1);
+	manager.addAlarm(a2);
+	manager.addAlarm(a3);
+
+	manager.removeAlarm(2);
+	manager.removeAlarm(0);
+
+	Alarm a4{ std::chrono::system_clock::now(), "University", true };
+	manager.addAlarm(a4);
+
+	EXPECT_EQ(manager.getActiveAlarms().size(), 2);
+}
