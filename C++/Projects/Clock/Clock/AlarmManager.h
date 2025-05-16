@@ -1,8 +1,9 @@
 #ifndef ALARMMANAGER_H
 #define ALARMMANAGER_H
 
-#include <iostream>
 #include <chrono>
+#include <vector>
+#include <string>
 
 class Alarm {
 public:
