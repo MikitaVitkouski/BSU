@@ -132,3 +132,21 @@ TEST(AlarmManagerTest, RemoveAlarmRemovesCertainAlarmFromVectorAlarms) {
 
 	EXPECT_EQ(manager.getActiveAlarms().size(), 2);
 }
+
+TEST(AlarmManagerTest, SortAlarmsByTime) {
+	AlarmManager manager;
+	Alarm a1{ std::chrono::system_clock::now() + std::chrono::minutes(5), "Pasta is ready", true };
+	Alarm a2{ std::chrono::system_clock::now() + std::chrono::minutes(15), "Potato is ready", true };
+	Alarm a3{ std::chrono::system_clock::now() + std::chrono::minutes(27), "Tea is ready", true };
+
+	manager.addAlarm(a2);
+	manager.addAlarm(a1);
+	manager.addAlarm(a3);
+
+	manager.sortAlarmsByTime();
+
+	auto sorted = manager.getActiveAlarms();
+
+	EXPECT_LT(sorted[0].time, sorted[1].time);
+	EXPECT_LT(sorted[1].time, sorted[2].time);
+}
