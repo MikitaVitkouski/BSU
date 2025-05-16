@@ -13,8 +13,7 @@ Reverse Fraction: Reverse fractions (e.g., `2/3` becomes `3/2`).
 
 ## Technologies Used
 
-C++11: The project is developed using modern C++ standards (C++11), leveraging features like smart pointers, lambda expressions, and STL containers.
-Qt 5: The GUI is built using Qt 5, providing a simple and interactive interface for performing calculations.
+Qt 6.9: The GUI is built using Qt 6.9, providing a simple and interactive interface for performing calculations.
 CMake: The project uses CMake as the build system for easy compilation and setup across platforms.
 GTest: Unit tests are provided for core functionalities, ensuring the reliability of fraction operations and handling edge cases.
 Standard Libraries: The project utilizes the <iostream>, <cmath>, <numeric>, and <stdexcept> standard libraries.
