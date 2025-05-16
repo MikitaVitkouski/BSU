@@ -70,3 +70,32 @@ TEST(StopwatchTest, LapsAreStoredCorrectly) {
 	EXPECT_EQ(laps.size(), 2);
 	EXPECT_GE(laps[1], laps[0]); // second lap's time >= first lap's time
 }
+
+TEST(AlarmManagerTest, AddAlarmIncreasesCount) {
+	AlarmManager manager;
+	Alarm a1{ std::chrono::system_clock::now(), "Breakfast", true};
+	manager.addAlarm(a1);
+
+	EXPECT_EQ(manager.getActiveAlarms().size(), 1);
+}
+
+TEST(AlarmManagerTest, ToggleAlarmDisablesEnabledAlarm) {
+	AlarmManager manager;
+	Alarm a1{ std::chrono::system_clock::now(),"Dinner",true };
+	manager.addAlarm(a1);
+
+	manager.toggleAlarm(0);
+
+	EXPECT_EQ(manager.getActiveAlarms().size(), 0);
+}
+
+TEST(AlarmManagerTest, ToggleAlarmEnablesDisabledAlarm) {
+	AlarmManager manager;
+	Alarm a1{ std::chrono::system_clock::now(),"Dinner",false };
+	manager.addAlarm(a1);
+
+	manager.toggleAlarm(0);
+
+	EXPECT_EQ(manager.getActiveAlarms().size(), 1);
+}
+
