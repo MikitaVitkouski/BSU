@@ -28,7 +28,7 @@ TEST(StopwatchTest, StartsAndPausesCorrectly) {
 
 	EXPECT_TRUE(sw.isRunning());
 
-	std::this_thread::sleep_for(std::chrono::milliseconds(100));
+	std::this_thread::sleep_for(std::chrono::milliseconds{100});
 	sw.pause();
 
 	EXPECT_FALSE(sw.isRunning());
@@ -43,7 +43,7 @@ TEST(StopwatchTest, ResetClearsTimeAndLaps) {
 	Stopwatch sw;
 	sw.start();
 
-	std::this_thread::sleep_for(std::chrono::milliseconds(150));
+	std::this_thread::sleep_for(std::chrono::milliseconds{150});
 	sw.lap();
 	sw.pause();
 
@@ -60,9 +60,9 @@ TEST(StopwatchTest, ResetClearsTimeAndLaps) {
 TEST(StopwatchTest, LapsAreStoredCorrectly) {
 	Stopwatch sw;
 	sw.start();
-	std::this_thread::sleep_for(std::chrono::milliseconds(75));
+	std::this_thread::sleep_for(std::chrono::milliseconds{75});
 	sw.lap();
-	std::this_thread::sleep_for(std::chrono::milliseconds(75));
+	std::this_thread::sleep_for(std::chrono::milliseconds{75});
 	sw.lap();
 	sw.pause();
 
@@ -135,9 +135,9 @@ TEST(AlarmManagerTest, RemoveAlarmRemovesCertainAlarmFromVectorAlarms) {
 
 TEST(AlarmManagerTest, SortAlarmsByTime) {
 	AlarmManager manager;
-	Alarm a1{ std::chrono::system_clock::now() + std::chrono::minutes(5), "Pasta is ready", true };
-	Alarm a2{ std::chrono::system_clock::now() + std::chrono::minutes(15), "Potato is ready", true };
-	Alarm a3{ std::chrono::system_clock::now() + std::chrono::minutes(27), "Tea is ready", true };
+	Alarm a1{ std::chrono::system_clock::now() + std::chrono::minutes{5}, "Pasta is ready", true};
+	Alarm a2{ std::chrono::system_clock::now() + std::chrono::minutes{15}, "Potato is ready", true};
+	Alarm a3{ std::chrono::system_clock::now() + std::chrono::minutes{27}, "Tea is ready", true};
 
 	manager.addAlarm(a2);
 	manager.addAlarm(a1);
@@ -149,4 +149,53 @@ TEST(AlarmManagerTest, SortAlarmsByTime) {
 
 	EXPECT_LT(sorted[0].time, sorted[1].time);
 	EXPECT_LT(sorted[1].time, sorted[2].time);
+}
+
+TEST(TimerManagerTest, TimerStartsAndRemainingTime) {
+	TimerManager manager;
+
+	auto duration = std::chrono::minutes{ 10 };
+	manager.start(duration);
+
+	auto remained = manager.remaining();
+
+	EXPECT_LE(remained, std::chrono::duration_cast<std::chrono::milliseconds>(duration));
+	EXPECT_GT(remained, std::chrono::milliseconds{0});
+}
+
+TEST(TimerManagerTest, ResetTimer) {
+	TimerManager manager;
+    manager.start(std::chrono::minutes{1});
+
+    std::this_thread::sleep_for(std::chrono::milliseconds{10});
+    manager.reset();
+
+    EXPECT_EQ(manager.remaining(), std::chrono::milliseconds{0});
+    EXPECT_FALSE(manager.isFinished());
+}
+
+TEST(TimerManagerTest, PauseResumeTimer) {
+	TimerManager manager;
+	manager.start(std::chrono::milliseconds{200});
+	manager.pause();
+
+	std::this_thread::sleep_for(std::chrono::milliseconds{150});
+	EXPECT_FALSE(manager.isFinished());
+
+	manager.resume();
+
+	std::this_thread::sleep_for(std::chrono::milliseconds{250});
+
+	EXPECT_TRUE(manager.isFinished());
+}
+
+TEST(TimerManagerTest, TimerTicksAndFinishes) {
+	TimerManager manager;
+	manager.start(std::chrono::milliseconds{100});
+
+	EXPECT_FALSE(manager.isFinished());
+
+	std::this_thread::sleep_for(std::chrono::milliseconds{150});
+
+	EXPECT_TRUE(manager.isFinished());
 }
