@@ -39,3 +39,7 @@ void AlarmManager::sortAlarmsByTime() {
 		return a.time < b.time;
 		});
 }
+
+void AlarmManager::checkAndTriggerAlarms() {
+
+}
