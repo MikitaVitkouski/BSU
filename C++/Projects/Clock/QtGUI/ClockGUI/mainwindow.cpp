@@ -22,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Timer
     connect(timer, &QTimer::timeout, this, &MainWindow::updateClockTime);
-    timer->start(1000); // updating every second
+    timer->start(999); // updating every second
 
     updateClockTime(); // update clock time when launched
 }

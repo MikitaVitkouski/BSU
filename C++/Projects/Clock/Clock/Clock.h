@@ -3,17 +3,17 @@
 
 #include <string>
 #include <chrono>
-#include <string>
-#include <format>
 
 class Clock {
-private:
-    std::string timezone = "UTC";
 public:
-	Clock() = default;
+    Clock() : timezone_(std::chrono::current_zone()) {}
 
-    void setTimezone(const std::string& tz);
-	std::string getTime() const;
+    void setTimezone(const std::string& tzName);
+
+    std::string getTime() const;
+
+private:
+    const std::chrono::time_zone* timezone_;
 };
 
-#endif
+#endif // CLOCK_H

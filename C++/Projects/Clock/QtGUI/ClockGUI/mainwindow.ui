@@ -81,7 +81,7 @@
      <widget class="QLabel" name="labelTime">
       <property name="geometry">
        <rect>
-        <x>330</x>
+        <x>400</x>
         <y>80</y>
         <width>341</width>
         <height>151</height>
@@ -93,7 +93,7 @@
        </font>
       </property>
       <property name="text">
-       <string>TextLabel</string>
+       <string/>
       </property>
      </widget>
      <widget class="QComboBox" name="comboBoxTimezone">
