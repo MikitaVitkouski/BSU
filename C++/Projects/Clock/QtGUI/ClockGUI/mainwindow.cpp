@@ -18,6 +18,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnTimer, &QPushButton::clicked, this, [=]() {
         ui->stackedWidget->setCurrentIndex(3);
     });
+    ui->stackedWidget->setCurrentIndex(0);
 
 }
 
