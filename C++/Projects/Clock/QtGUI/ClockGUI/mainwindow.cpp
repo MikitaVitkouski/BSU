@@ -48,6 +48,7 @@ QString styleSheet = R"(
     }
 )";
     this->setStyleSheet(styleSheet);
+    ui->comboBoxTimezone->setMaxVisibleItems(15);
     // Pages
     connect(ui->btnAlarm, &QPushButton::clicked, this, &MainWindow::onAlarmClicked);
     connect(ui->btnStopwatch, &QPushButton::clicked, this, &MainWindow::onStopwatchClicked);
