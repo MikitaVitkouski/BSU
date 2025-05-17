@@ -180,6 +180,16 @@
        <string>Lap</string>
       </property>
      </widget>
+     <widget class="QListWidget" name="listWidgetLaps">
+      <property name="geometry">
+       <rect>
+        <x>595</x>
+        <y>61</y>
+        <width>301</width>
+        <height>201</height>
+       </rect>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pageClock">
      <widget class="QLabel" name="labelTime">

@@ -177,6 +177,7 @@ void MainWindow::on_btnResetStopwatch_clicked() {
     stopwatch.reset();
     stopwatchTimer->stop();
     ui->labelTimeStopwatch->setText("00:00:00.000");
+    ui->listWidgetLaps->clear();
 }
 
 void MainWindow::on_btnAddLap_clicked() {
