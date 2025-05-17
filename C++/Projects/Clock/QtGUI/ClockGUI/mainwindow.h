@@ -28,6 +28,7 @@ private slots:
     void updateStopwatchDisplay();
     void on_btnPlayStopwatch_clicked();
     void on_btnPauseStopwatch_clicked();
+    void on_btnResumeStopwatch_clicked();
     void on_btnResetStopwatch_clicked();
     void on_btnAddLap_clicked();
 

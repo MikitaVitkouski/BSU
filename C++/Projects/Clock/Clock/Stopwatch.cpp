@@ -7,11 +7,11 @@ bool Stopwatch::isRunning() const{
 
 // total time elapsed, pauses count
 std::chrono::milliseconds Stopwatch::elapsed() const {
-	if (isRunning()) {
-		return accumulatedTime + std::chrono::duration_cast<std::chrono::milliseconds>(
-			std::chrono::steady_clock::now() - startTime);
-	}
-	return accumulatedTime;
+    if (isRunning()) {
+        return accumulatedTime + std::chrono::duration_cast<std::chrono::milliseconds>(
+                   std::chrono::steady_clock::now() - startTime);
+    }
+    return accumulatedTime;
 }
 
 // start a stopwatch, fix a start time
@@ -49,10 +49,14 @@ void Stopwatch::reset() {
 
 // push_back lap's time to laps' vector
 void Stopwatch::lap() {
-	if (isRunning()) {
-		auto now = std::chrono::steady_clock::now();
-		laps.push_back(accumulatedTime + std::chrono::duration_cast<std::chrono::milliseconds>(now - startTime));
-	}
+    if (!isRunning()) return;
+
+    auto now = elapsed();
+
+    if (!laps.empty() && laps.back() == now)
+        return;
+
+    laps.push_back(now);
 }
 
 // get laps' vector

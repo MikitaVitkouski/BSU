@@ -130,7 +130,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Pause/Unpause</string>
+       <string>Pause</string>
       </property>
      </widget>
      <widget class="QPushButton" name="btnResetStopwatch">
@@ -188,6 +188,19 @@
         <width>301</width>
         <height>201</height>
        </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnResumeStopwatch">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>390</y>
+        <width>150</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Resume</string>
       </property>
      </widget>
     </widget>
