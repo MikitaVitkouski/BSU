@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include <QTimer>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -19,7 +20,11 @@ MainWindow::MainWindow(QWidget *parent)
         ui->stackedWidget->setCurrentIndex(3);
     });
     ui->stackedWidget->setCurrentIndex(0);
-
+    QTimer *timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, [this]() {
+        ui->labelTime->setText(QString::fromStdString(clock.getTime()));
+    });
+    timer->start(1000);
 }
 
 MainWindow::~MainWindow()
