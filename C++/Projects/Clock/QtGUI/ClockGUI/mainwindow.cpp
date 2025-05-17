@@ -157,3 +157,28 @@ void MainWindow::updateClockTime()
 {
     ui->labelTime->setText(QString::fromStdString(clock.getTime()));
 }
+
+void MainWindow::on_btnPlayStopwatch_clicked() {
+    stopwatch.start();
+    stopwatchTimer->start(100); // updating timer each 100 ms
+}
+
+void MainWindow::on_btnPauseStopwatch_clicked() {
+    if(stopwatch.isRunning()) {
+        stopwatch.pause();
+        stopwatchTimer->stop();
+    } else {
+        stopwatch.resume();
+        stopwatchTimer->start(100);
+    }
+}
+
+void MainWindow::on_btnResetStopwatch_clicked() {
+    stopwatch.reset();
+    stopwatchTimer->stop();
+    ui->labelTimeStopwatch->setText("00:00:00.000");
+}
+
+void MainWindow::on_btnAddLap_clicked() {
+
+}
