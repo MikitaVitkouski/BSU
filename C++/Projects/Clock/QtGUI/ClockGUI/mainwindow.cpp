@@ -160,7 +160,7 @@ void MainWindow::updateClockTime()
 
 void MainWindow::on_btnPlayStopwatch_clicked() {
     stopwatch.start();
-    stopwatchTimer->start(100); // updating timer each 100 ms
+    stopwatchTimer->start(10); // updating timer each 100 ms
 }
 
 void MainWindow::on_btnPauseStopwatch_clicked() {
@@ -169,7 +169,7 @@ void MainWindow::on_btnPauseStopwatch_clicked() {
         stopwatchTimer->stop();
     } else {
         stopwatch.resume();
-        stopwatchTimer->start(100);
+        stopwatchTimer->start(10);
     }
 }
 
@@ -181,5 +181,38 @@ void MainWindow::on_btnResetStopwatch_clicked() {
 }
 
 void MainWindow::on_btnAddLap_clicked() {
+    stopwatch.lap();
+    const auto& laps = stopwatch.getLaps();
+    auto lastLap = laps.back();
 
+    int ms = lastLap.count();
+    int h = ms / 3600000;
+    int m = (ms / 60000) % 60;
+    int s = (ms / 1000) % 60;
+    int milli = ms % 1000;
+
+    QString lapStr = QString("Lap %1 - %2:%3:%4.%5")
+                         .arg(laps.size())
+                         .arg(h, 2, 10, QChar('0'))
+                         .arg(m, 2, 10, QChar('0'))
+                         .arg(s, 2, 10, QChar('0'))
+                         .arg(milli, 3, 10, QChar('0'));
+
+    ui->listWidgetLaps->addItem(lapStr);
+}
+
+void MainWindow::updateStopwatchDisplay() {
+    auto ms = stopwatch.elapsed().count();
+    int h = ms / 3600000;
+    int m = (ms / 60000) % 60;
+    int s = (ms / 1000) % 60;
+    int milli = ms % 1000;
+
+    QString timeStr = QString("%1:%2:%3.%4")
+                          .arg(h, 2, 10, QChar('0'))
+                          .arg(m, 2, 10, QChar('0'))
+                          .arg(s, 2, 10, QChar('0'))
+                          .arg(milli, 3, 10, QChar('0'));
+
+    ui->labelTimeStopwatch->setText(timeStr);
 }

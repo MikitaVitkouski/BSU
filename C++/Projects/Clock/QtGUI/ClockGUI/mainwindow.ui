@@ -149,8 +149,8 @@
      <widget class="QLabel" name="labelTimeStopwatch">
       <property name="geometry">
        <rect>
-        <x>320</x>
-        <y>140</y>
+        <x>270</x>
+        <y>120</y>
         <width>351</width>
         <height>81</height>
        </rect>
@@ -183,8 +183,8 @@
      <widget class="QListWidget" name="listWidgetLaps">
       <property name="geometry">
        <rect>
-        <x>595</x>
-        <y>61</y>
+        <x>670</x>
+        <y>60</y>
         <width>301</width>
         <height>201</height>
        </rect>
