@@ -5,3 +5,7 @@ std::string Clock::getTime() const {
 
 	return std::format("{:%H:%M:%S}", now);
 }
+
+void Clock::setTimezone(const std::string& tz) {
+    timezone = tz;
+}
