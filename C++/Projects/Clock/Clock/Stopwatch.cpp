@@ -32,6 +32,13 @@ void Stopwatch::pause() {
 	}
 }
 
+// resume a stopwatch
+void Stopwatch::resume() {
+    if(!isRunning()) {
+        running = true;
+    }
+}
+
 // reset a stopwatch, clear laps, accumulated time becomes zero
 void Stopwatch::reset() {
 	running = false;

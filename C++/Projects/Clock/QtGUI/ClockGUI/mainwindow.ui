@@ -106,7 +106,34 @@
      </sizepolicy>
     </property>
     <widget class="QWidget" name="pageAlarm"/>
-    <widget class="QWidget" name="pageStopwatch"/>
+    <widget class="QWidget" name="pageStopwatch">
+     <widget class="QPushButton" name="btnPlayStopwatch">
+      <property name="geometry">
+       <rect>
+        <x>230</x>
+        <y>340</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Play</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnPause">
+      <property name="geometry">
+       <rect>
+        <x>410</x>
+        <y>340</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Pause/Unpause</string>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="pageClock">
      <widget class="QLabel" name="labelTime">
       <property name="geometry">
