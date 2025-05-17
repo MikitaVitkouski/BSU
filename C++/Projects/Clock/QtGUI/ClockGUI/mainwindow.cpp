@@ -7,18 +7,10 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    connect(ui->btnAlarm, &QPushButton::clicked, this, [=]() {
-        ui->stackedWidget->setCurrentIndex(0);
-    });
-    connect(ui->btnStopwatch, &QPushButton::clicked, this, [=]() {
-        ui->stackedWidget->setCurrentIndex(1);
-    });
-    connect(ui->btnClock, &QPushButton::clicked, this, [=]() {
-        ui->stackedWidget->setCurrentIndex(2);
-    });
-    connect(ui->btnTimer, &QPushButton::clicked, this, [=]() {
-        ui->stackedWidget->setCurrentIndex(3);
-    });
+    connect(ui->btnAlarm, &QPushButton::clicked, this, &MainWindow::onAlarmClicked);
+    connect(ui->btnStopwatch, &QPushButton::clicked, this, &MainWindow::onStopwatchClicked);
+    connect(ui->btnClock, &QPushButton::clicked, this, &MainWindow::onClockClicked);
+    connect(ui->btnTimer, &QPushButton::clicked, this, &MainWindow::onTimerClicked);
     ui->stackedWidget->setCurrentIndex(0);
     QTimer *timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, [this]() {
@@ -32,3 +24,18 @@ MainWindow::~MainWindow()
     delete ui;
 }
 
+void MainWindow::onAlarmClicked() {
+    ui->stackedWidget->setCurrentIndex(0);
+}
+
+void MainWindow::onStopwatchClicked() {
+    ui->stackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::onClockClicked() {
+    ui->stackedWidget->setCurrentIndex(2);
+}
+
+void MainWindow::onTimerClicked() {
+    ui->stackedWidget->setCurrentIndex(3);
+}
