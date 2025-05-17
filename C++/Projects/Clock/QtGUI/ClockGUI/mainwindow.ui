@@ -96,22 +96,19 @@
        <string>TextLabel</string>
       </property>
      </widget>
-     <widget class="QLabel" name="labelTimezone">
+     <widget class="QComboBox" name="comboBoxTimezone">
       <property name="geometry">
        <rect>
-        <x>510</x>
-        <y>130</y>
-        <width>141</width>
-        <height>61</height>
+        <x>540</x>
+        <y>160</y>
+        <width>72</width>
+        <height>24</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>30</pointsize>
+        <pointsize>15</pointsize>
        </font>
-      </property>
-      <property name="text">
-       <string>GMT+3</string>
       </property>
      </widget>
     </widget>
