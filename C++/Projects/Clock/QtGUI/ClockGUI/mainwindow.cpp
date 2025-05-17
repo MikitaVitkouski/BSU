@@ -65,6 +65,14 @@ QString styleSheet = R"(
     timer->start(999); // updating every second
 
     updateClockTime(); // update clock time when launched
+
+    stopwatchTimer = new QTimer(this);
+    connect(stopwatchTimer, &QTimer::timeout, this, &MainWindow::updateStopwatchDisplay);
+
+    connect(ui->btnPlayStopwatch, &QPushButton::clicked, this,&MainWindow::on_btnPlayStopwatch_clicked);
+    connect(ui->btnPauseStopwatch, &QPushButton::clicked, this,&MainWindow::on_btnPauseStopwatch_clicked);
+    connect(ui->btnResetStopwatch, &QPushButton::clicked, this,&MainWindow::on_btnResetStopwatch_clicked);
+    connect(ui->btnAddLap, &QPushButton::clicked, this,&MainWindow::on_btnAddLap_clicked);
 }
 
 MainWindow::~MainWindow()

@@ -34,7 +34,8 @@ void Stopwatch::pause() {
 
 // resume a stopwatch
 void Stopwatch::resume() {
-    if(!isRunning()) {
+    if (!isRunning()) {
+        startTime = std::chrono::steady_clock::now();
         running = true;
     }
 }

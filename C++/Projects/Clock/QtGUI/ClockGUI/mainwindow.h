@@ -3,6 +3,7 @@
 
 #include <QMainWindow>
 #include "Clock.h"
+#include "Stopwatch.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -24,11 +25,18 @@ private slots:
     void onTimerClicked();
     void onTimezoneChanged(int index); // slot to change timezone
     void updateClockTime(); // updating time
+    void updateStopwatchDisplay();
+    void on_btnPlayStopwatch_clicked();
+    void on_btnPauseStopwatch_clicked();
+    void on_btnResetStopwatch_clicked();
+    void on_btnAddLap_clicked();
 
 private:
     Ui::MainWindow *ui;
     Clock clock;
     QTimer* timer;
     void populateTimezones();
+    Stopwatch stopwatch;
+    QTimer* stopwatchTimer;
 };
 #endif // MAINWINDOW_H

@@ -110,27 +110,74 @@
      <widget class="QPushButton" name="btnPlayStopwatch">
       <property name="geometry">
        <rect>
-        <x>230</x>
-        <y>340</y>
-        <width>80</width>
-        <height>24</height>
+        <x>150</x>
+        <y>300</y>
+        <width>150</width>
+        <height>60</height>
        </rect>
       </property>
       <property name="text">
        <string>Play</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnPause">
+     <widget class="QPushButton" name="btnPauseStopwatch">
       <property name="geometry">
        <rect>
-        <x>410</x>
-        <y>340</y>
-        <width>80</width>
-        <height>24</height>
+        <x>350</x>
+        <y>300</y>
+        <width>150</width>
+        <height>60</height>
        </rect>
       </property>
       <property name="text">
        <string>Pause/Unpause</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnResetStopwatch">
+      <property name="geometry">
+       <rect>
+        <x>750</x>
+        <y>300</y>
+        <width>150</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Reset</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="labelTimeStopwatch">
+      <property name="geometry">
+       <rect>
+        <x>320</x>
+        <y>140</y>
+        <width>351</width>
+        <height>81</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>50</pointsize>
+       </font>
+      </property>
+      <property name="layoutDirection">
+       <enum>Qt::LayoutDirection::LeftToRight</enum>
+      </property>
+      <property name="text">
+       <string>00:00:00</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnAddLap">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>300</y>
+        <width>150</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Lap</string>
       </property>
      </widget>
     </widget>
