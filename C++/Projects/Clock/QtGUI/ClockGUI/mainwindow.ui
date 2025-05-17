@@ -69,10 +69,10 @@
    <widget class="QStackedWidget" name="stackedWidget">
     <property name="geometry">
      <rect>
-      <x>160</x>
-      <y>190</y>
+      <x>150</x>
+      <y>180</y>
       <width>1011</width>
-      <height>301</height>
+      <height>501</height>
      </rect>
     </property>
     <widget class="QWidget" name="pageAlarm"/>
@@ -81,10 +81,10 @@
      <widget class="QLabel" name="labelTime">
       <property name="geometry">
        <rect>
-        <x>490</x>
-        <y>50</y>
-        <width>201</width>
-        <height>31</height>
+        <x>330</x>
+        <y>80</y>
+        <width>341</width>
+        <height>151</height>
        </rect>
       </property>
       <property name="font">
@@ -99,10 +99,10 @@
      <widget class="QComboBox" name="comboBoxTimezone">
       <property name="geometry">
        <rect>
-        <x>540</x>
-        <y>160</y>
-        <width>72</width>
-        <height>24</height>
+        <x>50</x>
+        <y>330</y>
+        <width>941</width>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">

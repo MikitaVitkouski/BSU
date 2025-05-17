@@ -22,9 +22,13 @@ private slots:
     void onStopwatchClicked();
     void onClockClicked();
     void onTimerClicked();
+    void onTimezoneChanged(int index); // slot to change timezone
+    void updateClockTime(); // updating time
 
 private:
     Ui::MainWindow *ui;
     Clock clock;
+    QTimer* timer;
+    void populateTimezones();
 };
 #endif // MAINWINDOW_H
