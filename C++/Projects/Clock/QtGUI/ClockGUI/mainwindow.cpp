@@ -24,7 +24,7 @@ MainWindow::MainWindow(QWidget *parent)
         text-align: center;
     }
 
-    QLabel#labelTime, QLabel#labelDate {
+    QLabel#labelTime, QLabel#labelDate, QLabel#labelTimezone {
         color: qlineargradient(
             x1: 0, y1: 0,
             x2: 1, y2: 0,
@@ -122,55 +122,55 @@ void MainWindow::onTimerClicked()      { ui->stackedWidget->setCurrentIndex(3); 
 
 void MainWindow::populateTimezones()
 {
-    ui->comboBoxTimezone->addItem("Moscow (UTC+3)", "Europe/Moscow");
-    ui->comboBoxTimezone->addItem("London (UTC+1)", "Europe/London");
-    ui->comboBoxTimezone->addItem("Tokyo (UTC+9)", "Asia/Tokyo");
-    ui->comboBoxTimezone->addItem("New York (UTC-5)", "America/New_York");
-    ui->comboBoxTimezone->addItem("Baker Island (UTC−12)", "Etc/GMT+12");
-    ui->comboBoxTimezone->addItem("American Samoa (UTC−11)", "Pacific/Pago_Pago");
-    ui->comboBoxTimezone->addItem("Honolulu (UTC−10)", "Pacific/Honolulu");
-    ui->comboBoxTimezone->addItem("Anchorage (UTC−9)", "America/Anchorage");
-    ui->comboBoxTimezone->addItem("Los Angeles (UTC−8)", "America/Los_Angeles");
-    ui->comboBoxTimezone->addItem("Denver (UTC−7)", "America/Denver");
-    ui->comboBoxTimezone->addItem("Mexico City (UTC−6)", "America/Mexico_City");
-    ui->comboBoxTimezone->addItem("Santiago (UTC−4)", "America/Santiago");
-    ui->comboBoxTimezone->addItem("Buenos Aires (UTC−3)", "America/Argentina/Buenos_Aires");
-    ui->comboBoxTimezone->addItem("South Georgia (UTC−2)", "Atlantic/South_Georgia");
-    ui->comboBoxTimezone->addItem("Azores (UTC−1)", "Atlantic/Azores");
-    ui->comboBoxTimezone->addItem("Reykjavik (UTC+0)", "Atlantic/Reykjavik");
-    ui->comboBoxTimezone->addItem("Paris (UTC+1)", "Europe/Paris");
-    ui->comboBoxTimezone->addItem("Berlin (UTC+2)", "Europe/Berlin");
-    ui->comboBoxTimezone->addItem("Cairo (UTC+2)", "Africa/Cairo");
-    ui->comboBoxTimezone->addItem("Johannesburg (UTC+2)", "Africa/Johannesburg");
-    ui->comboBoxTimezone->addItem("Nairobi (UTC+3)", "Africa/Nairobi");
-    ui->comboBoxTimezone->addItem("Dubai (UTC+4)", "Asia/Dubai");
-    ui->comboBoxTimezone->addItem("Baku (UTC+4)", "Asia/Baku");
-    ui->comboBoxTimezone->addItem("Karachi (UTC+5)", "Asia/Karachi");
-    ui->comboBoxTimezone->addItem("Tashkent (UTC+5)", "Asia/Tashkent");
-    ui->comboBoxTimezone->addItem("Dhaka (UTC+6)", "Asia/Dhaka");
-    ui->comboBoxTimezone->addItem("Almaty (UTC+6)", "Asia/Almaty");
-    ui->comboBoxTimezone->addItem("Bangkok (UTC+7)", "Asia/Bangkok");
-    ui->comboBoxTimezone->addItem("Jakarta (UTC+7)", "Asia/Jakarta");
-    ui->comboBoxTimezone->addItem("Beijing (UTC+8)", "Asia/Shanghai");
-    ui->comboBoxTimezone->addItem("Singapore (UTC+8)", "Asia/Singapore");
-    ui->comboBoxTimezone->addItem("Tokyo (UTC+9)", "Asia/Tokyo");
-    ui->comboBoxTimezone->addItem("Seoul (UTC+9)", "Asia/Seoul");
-    ui->comboBoxTimezone->addItem("Sydney (UTC+10)", "Australia/Sydney");
-    ui->comboBoxTimezone->addItem("Vladivostok (UTC+10)", "Asia/Vladivostok");
-    ui->comboBoxTimezone->addItem("Magadan (UTC+11)", "Asia/Magadan");
-    ui->comboBoxTimezone->addItem("Noumea (UTC+11)", "Pacific/Noumea");
-    ui->comboBoxTimezone->addItem("Auckland (UTC+12)", "Pacific/Auckland");
-    ui->comboBoxTimezone->addItem("Fiji (UTC+12)", "Pacific/Fiji");
-    ui->comboBoxTimezone->addItem("Chatham Islands (UTC+12:45)", "Pacific/Chatham");
-    ui->comboBoxTimezone->addItem("Apia (UTC+13)", "Pacific/Apia");
-    ui->comboBoxTimezone->addItem("Nukuʻalofa (UTC+13)", "Pacific/Tongatapu");
-    ui->comboBoxTimezone->addItem("Kiritimati (UTC+14)", "Pacific/Kiritimati");
-    ui->comboBoxTimezone->addItem("Rome (UTC+1)", "Europe/Rome");
-    ui->comboBoxTimezone->addItem("Helsinki (UTC+2)", "Europe/Helsinki");
-    ui->comboBoxTimezone->addItem("Tehran (UTC+3:30)", "Asia/Tehran");
-    ui->comboBoxTimezone->addItem("Mumbai (UTC+5:30)", "Asia/Kolkata");
-    ui->comboBoxTimezone->addItem("Yangon (UTC+6:30)", "Asia/Yangon");
-    ui->comboBoxTimezone->addItem("Adelaide (UTC+9:30)", "Australia/Adelaide");
+    ui->comboBoxTimezone->addItem("Moscow", "Europe/Moscow");
+    ui->comboBoxTimezone->addItem("London", "Europe/London");
+    ui->comboBoxTimezone->addItem("Tokyo", "Asia/Tokyo");
+    ui->comboBoxTimezone->addItem("New York", "America/New_York");
+    ui->comboBoxTimezone->addItem("Baker Island", "Etc/GMT+12");
+    ui->comboBoxTimezone->addItem("American Samoa", "Pacific/Pago_Pago");
+    ui->comboBoxTimezone->addItem("Honolulu", "Pacific/Honolulu");
+    ui->comboBoxTimezone->addItem("Anchorage", "America/Anchorage");
+    ui->comboBoxTimezone->addItem("Los Angeles", "America/Los_Angeles");
+    ui->comboBoxTimezone->addItem("Denver", "America/Denver");
+    ui->comboBoxTimezone->addItem("Mexico City", "America/Mexico_City");
+    ui->comboBoxTimezone->addItem("Santiago", "America/Santiago");
+    ui->comboBoxTimezone->addItem("Buenos Aires", "America/Argentina/Buenos_Aires");
+    ui->comboBoxTimezone->addItem("South Georgia", "Atlantic/South_Georgia");
+    ui->comboBoxTimezone->addItem("Azores", "Atlantic/Azores");
+    ui->comboBoxTimezone->addItem("Reykjavik", "Atlantic/Reykjavik");
+    ui->comboBoxTimezone->addItem("Paris", "Europe/Paris");
+    ui->comboBoxTimezone->addItem("Berlin", "Europe/Berlin");
+    ui->comboBoxTimezone->addItem("Cairo", "Africa/Cairo");
+    ui->comboBoxTimezone->addItem("Johannesburg", "Africa/Johannesburg");
+    ui->comboBoxTimezone->addItem("Nairobi", "Africa/Nairobi");
+    ui->comboBoxTimezone->addItem("Dubai", "Asia/Dubai");
+    ui->comboBoxTimezone->addItem("Baku", "Asia/Baku");
+    ui->comboBoxTimezone->addItem("Karachi", "Asia/Karachi");
+    ui->comboBoxTimezone->addItem("Tashkent", "Asia/Tashkent");
+    ui->comboBoxTimezone->addItem("Dhaka", "Asia/Dhaka");
+    ui->comboBoxTimezone->addItem("Almaty", "Asia/Almaty");
+    ui->comboBoxTimezone->addItem("Bangkok", "Asia/Bangkok");
+    ui->comboBoxTimezone->addItem("Jakarta", "Asia/Jakarta");
+    ui->comboBoxTimezone->addItem("Beijing", "Asia/Shanghai");
+    ui->comboBoxTimezone->addItem("Singapore", "Asia/Singapore");
+    ui->comboBoxTimezone->addItem("Tokyo", "Asia/Tokyo");
+    ui->comboBoxTimezone->addItem("Seoul", "Asia/Seoul");
+    ui->comboBoxTimezone->addItem("Sydney", "Australia/Sydney");
+    ui->comboBoxTimezone->addItem("Vladivostok", "Asia/Vladivostok");
+    ui->comboBoxTimezone->addItem("Magadan", "Asia/Magadan");
+    ui->comboBoxTimezone->addItem("Noumea", "Pacific/Noumea");
+    ui->comboBoxTimezone->addItem("Auckland", "Pacific/Auckland");
+    ui->comboBoxTimezone->addItem("Fiji", "Pacific/Fiji");
+    ui->comboBoxTimezone->addItem("Chatham Islands", "Pacific/Chatham");
+    ui->comboBoxTimezone->addItem("Apia", "Pacific/Apia");
+    ui->comboBoxTimezone->addItem("Nukuʻalofa", "Pacific/Tongatapu");
+    ui->comboBoxTimezone->addItem("Kiritimati", "Pacific/Kiritimati");
+    ui->comboBoxTimezone->addItem("Rome", "Europe/Rome");
+    ui->comboBoxTimezone->addItem("Helsinki", "Europe/Helsinki");
+    ui->comboBoxTimezone->addItem("Tehran", "Asia/Tehran");
+    ui->comboBoxTimezone->addItem("Mumbai", "Asia/Kolkata");
+    ui->comboBoxTimezone->addItem("Yangon", "Asia/Yangon");
+    ui->comboBoxTimezone->addItem("Adelaide", "Australia/Adelaide");
 
     // Moscow (UTC+3) by default
     int index = ui->comboBoxTimezone->findData("Europe/Moscow");
@@ -196,6 +196,13 @@ void MainWindow::updateClockTime()
 
     ui->labelTime->setText(QString::fromStdString(clock.getTime()));
     ui->labelDate->setText(localTime.date().toString("dd.MM.yyyy"));
+
+    int offsetSeconds = tz.offsetFromUtc(nowUtc);
+    int hours = offsetSeconds / 3600;
+    int minutes = (abs(offsetSeconds) % 3600) / 60;
+    QString sign = hours >= 0 ? "+" : "-";
+
+    ui->labelTimezone->setText(QString("%1%2:%3").arg(sign).arg(abs(hours), 2, 10, QChar('0')).arg(minutes, 2, 10, QChar('0')));
 }
 
 void MainWindow::on_btnPlayStopwatch_clicked() {

@@ -274,6 +274,22 @@
        <set>Qt::AlignmentFlag::AlignCenter</set>
       </property>
      </widget>
+     <widget class="QLabel" name="labelTimezone">
+      <property name="geometry">
+       <rect>
+        <x>711</x>
+        <y>80</y>
+        <width>200</width>
+        <height>111</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>+3:00</string>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pageTimer"/>
    </widget>
