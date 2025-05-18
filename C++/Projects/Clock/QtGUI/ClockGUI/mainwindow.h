@@ -11,6 +11,8 @@
 #include <QTimeEdit>
 #include "TimerManager.h"
 #include "AlarmManager.h"
+#include <QListWidgetItem>
+#include <QFile>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

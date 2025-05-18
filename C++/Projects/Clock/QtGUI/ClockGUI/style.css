@@ -1,0 +1,309 @@
+    QWidget {
+        background-color: #f5faff;
+        color: #2c3e50;
+        font-family: "Segoe UI", "Roboto", sans-serif;
+        font-size: 16px;
+    }
+
+    QLabel {
+        font-size: 16px;
+        color: #2c3e50;
+        text-align: center;
+    }
+
+    QTimeEdit {
+        color: #66ccff;
+        background-color: #e6f7ff;
+        font-size: 45px;
+        font-weight: bold;
+        border: 1px solid #b3e5fc;
+        border-radius: 12px;
+        padding: 10px;
+    }
+
+    QListWidget::item {
+        background-color: #eaf6ff;
+        padding: 8px 12px;
+        margin: 4px;
+        border-radius: 6px;
+        color: #2c3e50;
+    }
+
+    QListWidget::item:selected {
+        background-color: #cceeff;
+        color: #004466;
+    }
+
+    QListWidget#listWidgetAlarms {
+        border: 1px solid #cceeff;
+        border-radius: 12px;
+        background-color: rgba(0, 170, 255, 0.04);
+        padding: 10px;
+        margin-top: 10px;
+        color: #2c3e50;
+        font-size: 16px;
+    }
+
+    QListWidget#listWidgetLaps {
+        border: 1px solid #cceeff;
+        border-radius: 12px;
+        background-color: rgba(0, 170, 255, 0.04);
+        padding: 10px;
+        margin-top: 10px;
+        color: #2c3e50;
+        font-size: 16px;
+    }
+
+    QScrollBar:vertical {
+        border: none;
+        background: transparent;
+        width: 12px;
+        margin: 4px 0 4px 0;
+        border-radius: 6px;
+    }
+
+    QScrollBar::handle:vertical {
+        background: #00aaff;
+        min-height: 20px;
+        border-radius: 6px;
+    }
+
+    QScrollBar::handle:vertical:hover {
+        background: #007acc;
+    }
+
+    QScrollBar::sub-line:vertical,
+    QScrollBar::add-line:vertical {
+        height: 0;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-page:vertical,
+    QScrollBar::sub-page:vertical {
+        background: none;
+    }
+
+    QLabel#labelTimeStopwatch {
+        color: qlineargradient(
+            x1: 0, y1: 0,
+            x2: 1, y2: 0,
+            stop: 0 #00aaff,
+            stop: 1 #66ccff
+        );
+        font-weight: bold;
+        font-size: 45px;
+        padding: 10px 20px;
+        border-radius: 16px;
+        background-color: rgba(0, 170, 255, 0.05);
+        border: 1px solid #cceeff;
+    }
+
+    QLabel#labelTime {
+        font-size: 50px;
+        font-weight: bold;
+        color: qlineargradient(
+            x1: 0, y1: 0,
+            x2: 1, y2: 0,
+            stop: 0 #00aaff,
+            stop: 1 #66ccff
+    );
+        padding: 10px 0;
+        text-align: center;
+        text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.2);
+    }
+
+    QLabel#labelDate {
+        font-size: 28px;
+        font-weight: semi-bold;
+        color: #3399ff;
+        padding: 6px 0;
+        text-align: center;
+    }
+
+    QLabel#labelTimezone {
+        font-size: 20px;
+        font-weight: normal;
+        color: #666666;
+        padding: 4px 0;
+        font-style: italic;
+        text-align: center;
+    }
+
+    QPushButton {
+        color: qlineargradient(
+            x1: 0, y1: 0,
+            x2: 1, y2: 0,
+            stop: 0 #00aaff,
+            stop: 1 #66ccff
+        );
+        font-weight: bold;
+        font-size: 30px;
+        padding: 10px 20px;
+        border-radius: 16px;
+        background-color: rgba(0, 170, 255, 0.05);
+        border: 1px solid #cceeff;
+    }
+
+    QPushButton#btnResetStopwatch {
+        color: #ff4d4d;
+        background-color: rgba(255, 77, 77, 0.1);
+        border: 2px solid #ff4d4d;
+        font-size: 30px;
+        font-weight: bold;
+        padding: 10px 20px;
+        border-radius: 16px;
+    }
+
+    QPushButton#btnPlayStopwatch {
+        color: #2ecc71;
+        background-color: rgba(46, 204, 113, 0.1);
+        border: 2px solid #27ae60;
+        font-weight: bold;
+        font-size: 28px;
+        border-radius: 16px;
+    }
+
+    QPushButton#btnPauseStopwatch {
+        color: #f39c12;
+        background-color: rgba(243, 156, 18, 0.1);
+        border: 2px solid #d68910;
+        font-weight: bold;
+        font-size: 28px;
+        border-radius: 16px;
+    }
+
+    QPushButton#btnResumeStopwatch {
+        color: #3498db;
+        background-color: rgba(52, 152, 219, 0.1);
+        border: 2px solid #2980b9;
+        font-weight: bold;
+        font-size: 28px;
+        border-radius: 16px;
+    }
+
+    QPushButton#btnAddLap {
+        color: #7f8c8d;
+        background-color: rgba(127, 140, 141, 0.1);
+        border: 2px solid #95a5a6;
+        font-weight: bold;
+        font-size: 28px;
+        border-radius: 16px;
+    }
+
+    QPushButton#btnPlayTimer {
+        color: #2ecc71;
+        background-color: rgba(46, 204, 113, 0.1);
+        border: 2px solid #27ae60;
+        font-weight: bold;
+        font-size: 28px;
+        border-radius: 16px;
+        padding: 10px 20px;
+    }
+
+    QPushButton#btnResetTimer {
+        color: #ff4d4d;
+        background-color: rgba(255, 77, 77, 0.1);
+        border: 2px solid #ff4d4d;
+        font-weight: bold;
+        font-size: 30px;
+        border-radius: 16px;
+        padding: 10px 20px;
+    }
+
+    QPushButton#btnPauseTimer {
+        color: #f39c12;
+        background-color: rgba(243, 156, 18, 0.1);
+        border: 2px solid #d68910;
+        font-weight: bold;
+        font-size: 28px;
+        border-radius: 16px;
+        padding: 10px 20px;
+    }
+
+    QPushButton#btnResumeTimer {
+        color: #3498db;
+        background-color: rgba(52, 152, 219, 0.1);
+        border: 2px solid #2980b9;
+        font-weight: bold;
+        font-size: 28px;
+        border-radius: 16px;
+        padding: 10px 20px;
+    }
+
+    QPushButton:hover {
+        background-color: #007acc;
+    }
+
+    QPushButton#btnResetStopwatch:hover {
+        background-color: #ff4d4d;
+        color: white;
+    }
+
+    QPushButton#btnPlayStopwatch:hover {
+        background-color: #27ae60;
+        color: white;
+    }
+
+    QPushButton#btnPauseStopwatch:hover {
+        background-color: #d68910;
+        color: white;
+    }
+
+    QPushButton#btnResumeStopwatch:hover {
+        background-color: #2980b9;
+        color: white;
+    }
+
+    QPushButton#btnAddLap:hover {
+        background-color: #95a5a6;
+        color: white;
+    }
+
+    QPushButton#btnPlayTimer:hover {
+        background-color: #27ae60;
+        color: white;
+    }
+
+    QPushButton#btnResetTimer:hover {
+        background-color: #ff4d4d;
+        color: white;
+    }
+
+    QPushButton#btnPauseTimer:hover {
+        background-color: #d68910;
+        color: white;
+    }
+
+    QPushButton#btnResumeTimer:hover {
+        background-color: #2980b9;
+        color: white;
+    }
+
+    QComboBox {
+        background-color: #ffffff;
+        color: #2c3e50;
+        border: 1px solid #99dfff;
+        padding: 5px 10px;
+        border-radius: 6px;
+    }
+
+    QComboBox:hover {
+        border: 1px solid #00aaff;
+    }
+
+    QComboBox:drop-down {
+        border: none;
+        background-color: #e0f7ff;
+    }
+
+    QLineEdit {
+        background-color: #ffffff;
+        border: 1px solid #99dfff;
+        border-radius: 6px;
+        padding: 5px;
+        color: #2c3e50;
+    }
+
+    QLineEdit:focus {
+        border: 1px solid #00aaff;
+    }
