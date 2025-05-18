@@ -1,6 +1,8 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include <QTimer>
+#include <QDateTime>
+#include <QTimeZone>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -25,6 +27,18 @@ QString styleSheet = R"(
     }
 
     QLabel {
+        color: #ff6600;
+        font-weight: bold;
+        font-size: 50px;
+    }
+
+    QLabel#labelTime {
+        color: #ff6600;
+        font-weight: bold;
+        font-size: 50px;
+    }
+
+    QLabel#labelDate {
         color: #ff6600;
         font-weight: bold;
         font-size: 50px;
@@ -88,8 +102,8 @@ void MainWindow::onTimerClicked()      { ui->stackedWidget->setCurrentIndex(3); 
 
 void MainWindow::populateTimezones()
 {
-    ui->comboBoxTimezone->addItem("London (UTC+0)", "Europe/London");
     ui->comboBoxTimezone->addItem("Moscow (UTC+3)", "Europe/Moscow");
+    ui->comboBoxTimezone->addItem("London (UTC+0)", "Europe/London");
     ui->comboBoxTimezone->addItem("Tokyo (UTC+9)", "Asia/Tokyo");
     ui->comboBoxTimezone->addItem("New York (UTC-5)", "America/New_York");
     ui->comboBoxTimezone->addItem("Baker Island (UTC−12)", "Etc/GMT+12");
@@ -99,18 +113,15 @@ void MainWindow::populateTimezones()
     ui->comboBoxTimezone->addItem("Los Angeles (UTC−8)", "America/Los_Angeles");
     ui->comboBoxTimezone->addItem("Denver (UTC−7)", "America/Denver");
     ui->comboBoxTimezone->addItem("Mexico City (UTC−6)", "America/Mexico_City");
-    ui->comboBoxTimezone->addItem("New York (UTC−5)", "America/New_York");
     ui->comboBoxTimezone->addItem("Santiago (UTC−4)", "America/Santiago");
     ui->comboBoxTimezone->addItem("Buenos Aires (UTC−3)", "America/Argentina/Buenos_Aires");
     ui->comboBoxTimezone->addItem("South Georgia (UTC−2)", "Atlantic/South_Georgia");
     ui->comboBoxTimezone->addItem("Azores (UTC−1)", "Atlantic/Azores");
-    ui->comboBoxTimezone->addItem("London (UTC+0)", "Europe/London");
     ui->comboBoxTimezone->addItem("Reykjavik (UTC+0)", "Atlantic/Reykjavik");
     ui->comboBoxTimezone->addItem("Paris (UTC+1)", "Europe/Paris");
     ui->comboBoxTimezone->addItem("Berlin (UTC+1)", "Europe/Berlin");
     ui->comboBoxTimezone->addItem("Cairo (UTC+2)", "Africa/Cairo");
     ui->comboBoxTimezone->addItem("Johannesburg (UTC+2)", "Africa/Johannesburg");
-    ui->comboBoxTimezone->addItem("Moscow (UTC+3)", "Europe/Moscow");
     ui->comboBoxTimezone->addItem("Nairobi (UTC+3)", "Africa/Nairobi");
     ui->comboBoxTimezone->addItem("Dubai (UTC+4)", "Asia/Dubai");
     ui->comboBoxTimezone->addItem("Baku (UTC+4)", "Asia/Baku");
@@ -143,8 +154,10 @@ void MainWindow::populateTimezones()
 
     // Moscow (UTC+3) by default
     int index = ui->comboBoxTimezone->findData("Europe/Moscow");
-    if (index != -1)
+    if (index != -1) {
         ui->comboBoxTimezone->setCurrentIndex(index);
+        onTimezoneChanged(index);
+    }
 }
 
 void MainWindow::onTimezoneChanged(int index)
@@ -156,7 +169,13 @@ void MainWindow::onTimezoneChanged(int index)
 
 void MainWindow::updateClockTime()
 {
+    QString timezoneId = ui->comboBoxTimezone->currentData().toString();
+    QTimeZone tz(timezoneId.toUtf8());
+    QDateTime nowUtc = QDateTime::currentDateTimeUtc();
+    QDateTime localTime = nowUtc.toTimeZone(tz);
+
     ui->labelTime->setText(QString::fromStdString(clock.getTime()));
+    ui->labelDate->setText(localTime.date().toString("dd.MM.yyyy"));
 }
 
 void MainWindow::on_btnPlayStopwatch_clicked() {
