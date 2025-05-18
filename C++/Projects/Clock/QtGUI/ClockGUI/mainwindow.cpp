@@ -22,13 +22,13 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     QTimeEdit {
-        font-size: 32px;
+        color: #66ccff;
+        background-color: #e6f7ff;
+        font-size: 45px;
         font-weight: bold;
-        border: 2px solid #2c3e50;
+        border: 1px solid #b3e5fc;
         border-radius: 12px;
-        padding: 8px 16px;
-        background-color: #f0faff;
-        color: #2c3e50;
+        padding: 10px;
     }
 
     QListWidget::item {
@@ -95,7 +95,7 @@ MainWindow::MainWindow(QWidget *parent)
         padding: 10px 20px;
         border-radius: 16px;
         background-color: rgba(0, 170, 255, 0.05);
-        border: 1px solid #cceeffl;
+        border: 1px solid #cceeff;
     }
 
     QPushButton {
@@ -135,8 +135,9 @@ MainWindow::MainWindow(QWidget *parent)
         padding: 5px;
         color: #2c3e50;
     }
+
     QLineEdit:focus {
-    : 1px solid #00aaff;
+        border: 1px solid #00aaff;
     }
     )";
 
