@@ -8,6 +8,7 @@ class Timer {
 public:
 	std::chrono::milliseconds duration;
 	std::chrono::steady_clock::time_point startTime;
+    std::chrono::milliseconds elapsedBeforePause{0};
 	bool running;
 };
 

@@ -360,7 +360,7 @@ void MainWindow::on_btnStartTimer_clicked() {
 
     // Инициализируем TimerManager
     timerManager.start(std::chrono::seconds(totalSeconds));
-    countdownTimer->start(1000);
+    countdownTimer->start(1);
 
     ui->btnStartTimer->setEnabled(false);
     ui->btnPauseTimer->setEnabled(true);
@@ -376,17 +376,15 @@ void MainWindow::onCountdownTick() {
         ui->btnResumeTimer->setEnabled(false);
         ui->btnResetTimer->setEnabled(true);
         ui->timeEditTimer->setEnabled(true);
+        ui->timeEditTimer->setTime(QTime(0, 0, 0));
         return;
     }
 
     auto remaining = timerManager.remaining();
-    int totalSec = static_cast<int>(remaining.count() / 1000);
+    int totalMillis = static_cast<int>(remaining.count());
+    totalSecondsRemaining = totalMillis / 1000;
 
-    int h = totalSec / 3600;
-    int m = (totalSec % 3600) / 60;
-    int s = totalSec % 60;
-
-    ui->timeEditTimer->setTime(QTime(h, m, s));
+    updateTimeEditDisplay();
 }
 
 void MainWindow::updateTimeEditDisplay() {
@@ -406,7 +404,7 @@ void MainWindow::on_btnPauseTimer_clicked() {
 
 void MainWindow::on_btnResumeTimer_clicked() {
     timerManager.resume();
-    countdownTimer->start(1000);
+    countdownTimer->start(1);
     ui->btnPauseTimer->setEnabled(true);
     ui->btnResumeTimer->setEnabled(false);
 }

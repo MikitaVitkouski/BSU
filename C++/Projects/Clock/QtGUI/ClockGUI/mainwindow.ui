@@ -341,7 +341,7 @@
        </rect>
       </property>
       <property name="text">
-       <string>Stop</string>
+       <string>Resume</string>
       </property>
      </widget>
      <widget class="QPushButton" name="btnResetTimer">
