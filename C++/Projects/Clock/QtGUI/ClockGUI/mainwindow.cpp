@@ -24,7 +24,59 @@ MainWindow::MainWindow(QWidget *parent)
         text-align: center;
     }
 
-    QLabel#labelTime, QLabel#labelDate, QLabel#labelTimezone {
+    QListWidget::item {
+        background-color: #eaf6ff;
+        padding: 8px 12px;
+        margin: 4px;
+        border-radius: 6px;
+        color: #2c3e50;
+    }
+
+    QListWidget::item:selected {
+        background-color: #cceeff;
+        color: #004466;
+    }
+
+    QListWidget {
+        border: 1px solid #cceeff;
+        border-radius: 12px;
+        background-color: rgba(0, 170, 255, 0.04);
+        padding: 10px;
+        margin-top: 10px;
+        color: #2c3e50;
+        font-size: 16px;
+    }
+
+    QScrollBar:vertical {
+        border: none;
+        background: transparent;
+        width: 12px;
+        margin: 4px 0 4px 0;
+        border-radius: 6px;
+    }
+
+    QScrollBar::handle:vertical {
+        background: #00aaff;
+        min-height: 20px;
+        border-radius: 6px;
+    }
+
+    QScrollBar::handle:vertical:hover {
+        background: #007acc;
+    }
+
+    QScrollBar::sub-line:vertical,
+    QScrollBar::add-line:vertical {
+        height: 0;
+        subcontrol-origin: margin;
+    }
+
+    QScrollBar::add-page:vertical,
+    QScrollBar::sub-page:vertical {
+        background: none;
+    }
+
+    QLabel#labelTime, QLabel#labelDate, QLabel#labelTimezone, QLabel#labelTimeStopwatch {
         color: qlineargradient(
             x1: 0, y1: 0,
             x2: 1, y2: 0,

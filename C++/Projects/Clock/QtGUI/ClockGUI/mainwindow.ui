@@ -166,6 +166,9 @@
       <property name="text">
        <string>00:00:00</string>
       </property>
+      <property name="alignment">
+       <set>Qt::AlignmentFlag::AlignCenter</set>
+      </property>
      </widget>
      <widget class="QListWidget" name="listWidgetLaps">
       <property name="geometry">
@@ -259,12 +262,12 @@
         <x>310</x>
         <y>200</y>
         <width>391</width>
-        <height>61</height>
+        <height>80</height>
        </rect>
       </property>
       <property name="font">
        <font>
-        <pointsize>24</pointsize>
+        <pointsize>15</pointsize>
        </font>
       </property>
       <property name="text">
