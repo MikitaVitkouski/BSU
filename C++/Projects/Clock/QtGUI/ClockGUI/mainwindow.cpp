@@ -10,57 +10,77 @@ MainWindow::MainWindow(QWidget *parent)
     , timer(new QTimer(this))
 {
     ui->setupUi(this);
-QString styleSheet = R"(
+    QString styleSheet = R"(
     QWidget {
-        background-color: #fdfdfd;
-        color: #444444;
-        font-family: Segoe UI, sans-serif;
+        background-color: #f5faff;
+        color: #2c3e50;
+        font-family: "Segoe UI", "Roboto", sans-serif;
         font-size: 16px;
     }
 
-    QLineEdit {
-        background-color: #2a2a2a;
-        color: #000000;
-        border: 2px solid #ffaa00;
-        border-radius: 10px;
-        padding: 6px;
-    }
-
     QLabel {
-        color: #ff6600;
-        font-weight: bold;
-        font-size: 50px;
+        font-size: 16px;
+        color: #2c3e50;
+        text-align: center;
     }
 
-    QLabel#labelTime {
-        color: #ff6600;
+    QLabel#labelTime, QLabel#labelDate {
+        color: qlineargradient(
+            x1: 0, y1: 0,
+            x2: 1, y2: 0,
+            stop: 0 #00aaff,
+            stop: 1 #66ccff
+        );
         font-weight: bold;
-        font-size: 50px;
-    }
-
-    QLabel#labelDate {
-        color: #ff6600;
-        font-weight: bold;
-        font-size: 50px;
+        font-size: 45px;
+        padding: 10px 20px;
+        border-radius: 16px;
+        background-color: rgba(0, 170, 255, 0.05);
+        border: 1px solid #cceeffl;
     }
 
     QPushButton {
-        background-color: #ffffff;
-        color: #333333;
-        border: 1 px solid #e0e0e0;
-        border-radius: 40px;
-        padding: 10px;
-        min-width: 60px;
+        background-color: #00aaff;
+        color: white;
+        border: none;
+        border-radius: 8px;
+        padding: 8px 16 px;
+        font-weight: 500;
     }
 
     QPushButton:hover {
-        background-color: #f5f5f5;
+        background-color: #007acc;
     }
 
-    QPushButton:pressed {
-        background-color: #ff9900;
+    QComboBox {
+        background-color: #ffffff;
+        color: #2c3e50;
+        border: 1px solid #99dfff;
+        padding: 5px 10px;
+        border-radius: 6px;
     }
-)";
+
+    QComboBox:hover {
+        border: 1px solid #00aaff;
+    }
+
+    QComboBox:drop-down {
+        border: none;
+        background-color: #e0f7ff;
+    }
+
+    QLineEdit {
+        background-color: #ffffff;
+        border: 1px solid #99dfff;
+        border-radius: 6px;
+        padding: 5px;
+        color: #2c3e50;
+    }
+    QLineEdit:focus {
+    : 1px solid #00aaff;
+    }
+    )";
+
     this->setStyleSheet(styleSheet);
     ui->comboBoxTimezone->setMaxVisibleItems(15);
     // Pages
@@ -103,7 +123,7 @@ void MainWindow::onTimerClicked()      { ui->stackedWidget->setCurrentIndex(3); 
 void MainWindow::populateTimezones()
 {
     ui->comboBoxTimezone->addItem("Moscow (UTC+3)", "Europe/Moscow");
-    ui->comboBoxTimezone->addItem("London (UTC+0)", "Europe/London");
+    ui->comboBoxTimezone->addItem("London (UTC+1)", "Europe/London");
     ui->comboBoxTimezone->addItem("Tokyo (UTC+9)", "Asia/Tokyo");
     ui->comboBoxTimezone->addItem("New York (UTC-5)", "America/New_York");
     ui->comboBoxTimezone->addItem("Baker Island (UTC−12)", "Etc/GMT+12");
@@ -119,7 +139,7 @@ void MainWindow::populateTimezones()
     ui->comboBoxTimezone->addItem("Azores (UTC−1)", "Atlantic/Azores");
     ui->comboBoxTimezone->addItem("Reykjavik (UTC+0)", "Atlantic/Reykjavik");
     ui->comboBoxTimezone->addItem("Paris (UTC+1)", "Europe/Paris");
-    ui->comboBoxTimezone->addItem("Berlin (UTC+1)", "Europe/Berlin");
+    ui->comboBoxTimezone->addItem("Berlin (UTC+2)", "Europe/Berlin");
     ui->comboBoxTimezone->addItem("Cairo (UTC+2)", "Africa/Cairo");
     ui->comboBoxTimezone->addItem("Johannesburg (UTC+2)", "Africa/Johannesburg");
     ui->comboBoxTimezone->addItem("Nairobi (UTC+3)", "Africa/Nairobi");
