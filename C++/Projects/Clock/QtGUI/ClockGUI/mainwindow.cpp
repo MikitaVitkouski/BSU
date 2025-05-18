@@ -1,8 +1,5 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
-#include <QTimer>
-#include <QDateTime>
-#include <QTimeZone>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -163,6 +160,11 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Timer
     connect(ui->btnStartTimer, &QPushButton::clicked, this, &MainWindow::on_btnStartTimer_clicked);
+
+    countdownTimer = new QTimer(this);
+    countdownTimer->setInterval(1000);
+
+    connect(countdownTimer, &QTimer::timeout, this, &MainWindow::onCountdownTick);
 }
 
 MainWindow::~MainWindow()
@@ -328,4 +330,35 @@ void MainWindow::updateStopwatchDisplay() {
                           .arg(milli, 3, 10, QChar('0'));
 
     ui->labelTimeStopwatch->setText(timeStr);
+}
+
+void MainWindow::on_btnStartTimer_clicked() {
+    int hours = ui->spinHours->value();
+    int minutes = ui->spinMinutes->value();
+    int seconds = ui->spinSeconds->value();
+
+    totalSecondsRemaining = hours * 3600 + minutes * 60 + seconds;
+    if(totalSecondsRemaining <= 0) return;
+
+    ui->btnStartTimer->setEnabled(false);
+    countdownTimer->start(1000);
+}
+
+void MainWindow::onCountdownTick() {
+    if(totalSecondsRemaining <=0) {
+        countdownTimer->stop();
+        ui->btnStartTimer->setEnabled(true);
+        QMessageBox::information(this, "Timer", "Time exceeded!");
+        return;
+    }
+
+    totalSecondsRemaining--;
+
+    int h = totalSecondsRemaining / 3600;
+    int m = (totalSecondsRemaining % 3600) / 60;
+    int s = totalSecondsRemaining % 60;
+
+    ui->spinHours->setValue(h);
+    ui->spinMinutes->setValue(m);
+    ui->spinSeconds->setValue(s);
 }

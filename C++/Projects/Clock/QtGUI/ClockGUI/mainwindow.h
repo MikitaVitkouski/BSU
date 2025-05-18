@@ -4,6 +4,10 @@
 #include <QMainWindow>
 #include "Clock.h"
 #include "Stopwatch.h"
+#include <QTimer>
+#include <QDateTime>
+#include <QTimeZone>
+#include <QMEssageBox>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -42,5 +46,6 @@ private:
     QTimer* stopwatchTimer;
     QTimer* countdownTimer;
     int totalSecondsRemaining;
+    void onCountdownTick();
 };
 #endif // MAINWINDOW_H
