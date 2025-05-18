@@ -167,19 +167,6 @@
        <string>00:00:00</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnAddLap">
-      <property name="geometry">
-       <rect>
-        <x>550</x>
-        <y>300</y>
-        <width>150</width>
-        <height>60</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Lap</string>
-      </property>
-     </widget>
      <widget class="QListWidget" name="listWidgetLaps">
       <property name="geometry">
        <rect>
@@ -201,6 +188,19 @@
       </property>
       <property name="text">
        <string>Resume</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnAddLap">
+      <property name="geometry">
+       <rect>
+        <x>550</x>
+        <y>300</y>
+        <width>150</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Lap</string>
       </property>
      </widget>
     </widget>

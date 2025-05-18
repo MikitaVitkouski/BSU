@@ -30,7 +30,7 @@ private slots:
     void on_btnPauseStopwatch_clicked();
     void on_btnResumeStopwatch_clicked();
     void on_btnResetStopwatch_clicked();
-    void on_btnAddLap_clicked();
+    void on_btnAddLap_manualclicked();
 
 private:
     Ui::MainWindow *ui;

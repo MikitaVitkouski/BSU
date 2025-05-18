@@ -107,7 +107,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnPauseStopwatch, &QPushButton::clicked, this,&MainWindow::on_btnPauseStopwatch_clicked);
     connect(ui->btnResumeStopwatch, &QPushButton::clicked, this,&MainWindow::on_btnResumeStopwatch_clicked);
     connect(ui->btnResetStopwatch, &QPushButton::clicked, this,&MainWindow::on_btnResetStopwatch_clicked);
-    connect(ui->btnAddLap, &QPushButton::clicked, this,&MainWindow::on_btnAddLap_clicked);
+    connect(ui->btnAddLap, &QPushButton::clicked, this,&MainWindow::on_btnAddLap_manualclicked);
 }
 
 MainWindow::~MainWindow()
@@ -234,7 +234,7 @@ void MainWindow::on_btnResetStopwatch_clicked() {
     ui->btnPauseStopwatch->setText("Pause");
 }
 
-void MainWindow::on_btnAddLap_clicked() {
+void MainWindow::on_btnAddLap_manualclicked() {
     if (!stopwatch.isRunning()) return;
 
     stopwatch.lap();
