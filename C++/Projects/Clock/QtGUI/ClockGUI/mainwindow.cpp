@@ -185,6 +185,9 @@ MainWindow::MainWindow(QWidget *parent)
     ui->btnResetTimer->setEnabled(false);
 
     connect(countdownTimer, &QTimer::timeout, this, &MainWindow::onCountdownTick);
+
+    // Alarm
+    connect(ui->btnAddAlarm, &QPushButton::clicked, this, &MainWindow::on_btnAddAlarm_clicked);
 }
 
 MainWindow::~MainWindow()
@@ -419,4 +422,16 @@ void MainWindow::on_btnResetTimer_clicked() {
     ui->btnResetTimer->setEnabled(false);
     ui->timeEditTimer->setEnabled(true);
     ui->timeEditTimer->setTime(QTime(0, 0, 0));
+}
+
+void MainWindow::on_btnAddAlarm_clicked() {
+    QTime alarmTime = ui->timeEditAlarm->time();
+    QString label = ui->lineEditAlarmLabel->text().trimmed();
+
+    if(label.isEmpty()) {
+        label = "Alarm";
+    }
+
+    QString displayText = QString("%1 - %2").arg(alarmTime.toString("HH:mm")).arg(label);
+    ui->listWidgetAlarms->addItem(displayText);
 }
