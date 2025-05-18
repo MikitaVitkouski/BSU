@@ -17,10 +17,10 @@
    <widget class="QPushButton" name="btnAlarm">
     <property name="geometry">
      <rect>
-      <x>260</x>
-      <y>100</y>
-      <width>120</width>
-      <height>50</height>
+      <x>35</x>
+      <y>50</y>
+      <width>250</width>
+      <height>100</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -36,10 +36,10 @@
    <widget class="QPushButton" name="btnStopwatch">
     <property name="geometry">
      <rect>
-      <x>460</x>
-      <y>100</y>
-      <width>120</width>
-      <height>50</height>
+      <x>360</x>
+      <y>50</y>
+      <width>250</width>
+      <height>100</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -55,10 +55,10 @@
    <widget class="QPushButton" name="btnClock">
     <property name="geometry">
      <rect>
-      <x>670</x>
-      <y>100</y>
-      <width>120</width>
-      <height>50</height>
+      <x>685</x>
+      <y>50</y>
+      <width>250</width>
+      <height>100</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -74,10 +74,10 @@
    <widget class="QPushButton" name="btnTimer">
     <property name="geometry">
      <rect>
-      <x>870</x>
-      <y>100</y>
-      <width>120</width>
-      <height>50</height>
+      <x>1010</x>
+      <y>50</y>
+      <width>250</width>
+      <height>100</height>
      </rect>
     </property>
     <property name="sizePolicy">
@@ -109,10 +109,10 @@
      <widget class="QPushButton" name="btnAddAlarm">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>290</y>
-        <width>150</width>
-        <height>60</height>
+        <x>470</x>
+        <y>10</y>
+        <width>100</width>
+        <height>100</height>
        </rect>
       </property>
       <property name="font">
@@ -127,30 +127,30 @@
      <widget class="QListWidget" name="listWidgetAlarms">
       <property name="geometry">
        <rect>
-        <x>340</x>
-        <y>60</y>
-        <width>256</width>
-        <height>192</height>
+        <x>540</x>
+        <y>130</y>
+        <width>431</width>
+        <height>221</height>
        </rect>
       </property>
      </widget>
      <widget class="QTimeEdit" name="timeEditAlarm">
       <property name="geometry">
        <rect>
-        <x>190</x>
-        <y>110</y>
-        <width>118</width>
-        <height>25</height>
+        <x>10</x>
+        <y>130</y>
+        <width>500</width>
+        <height>100</height>
        </rect>
       </property>
      </widget>
      <widget class="QLineEdit" name="lineEditAlarmLabel">
       <property name="geometry">
        <rect>
-        <x>200</x>
-        <y>150</y>
-        <width>113</width>
-        <height>24</height>
+        <x>10</x>
+        <y>250</y>
+        <width>500</width>
+        <height>100</height>
        </rect>
       </property>
      </widget>

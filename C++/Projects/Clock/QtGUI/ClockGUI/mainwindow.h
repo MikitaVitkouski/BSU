@@ -42,10 +42,6 @@ private slots:
     void on_btnPauseTimer_clicked();
     void on_btnResumeTimer_clicked();
     void on_btnResetTimer_clicked();
-    void showAlarmsPage();
-    void addAlarm();
-    void toggleAlarm(int index, bool enabled);
-    void deleteAlarm(int index);
     void updateAlarmList();
     void checkAlarms();
     void on_btnAddAlarm_clicked();

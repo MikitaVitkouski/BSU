@@ -44,7 +44,7 @@ MainWindow::MainWindow(QWidget *parent)
         color: #004466;
     }
 
-    QListWidget {
+    QListWidget#listWidgetAlarms, listWidgetLaps {
         border: 1px solid #cceeff;
         border-radius: 12px;
         background-color: rgba(0, 170, 255, 0.04);
@@ -99,12 +99,18 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     QPushButton {
-        background-color: #00aaff;
-        color: white;
-        border: none;
-        border-radius: 8px;
-        padding: 8px 16 px;
-        font-weight: 500;
+        color: qlineargradient(
+            x1: 0, y1: 0,
+            x2: 1, y2: 0,
+            stop: 0 #00aaff,
+            stop: 1 #66ccff
+        );
+        font-weight: bold;
+        font-size: 30px;
+        padding: 10px 20px;
+        border-radius: 16px;
+        background-color: rgba(0, 170, 255, 0.05);
+        border: 1px solid #cceeff;
     }
 
     QPushButton:hover {
@@ -187,7 +193,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(countdownTimer, &QTimer::timeout, this, &MainWindow::onCountdownTick);
 
     // Alarm
-    connect(ui->btnAddAlarm, &QPushButton::clicked, this, &MainWindow::on_btnAddAlarm_clicked);
+    // connect(ui->btnAddAlarm, &QPushButton::clicked, this, &MainWindow::on_btnAddAlarm_clicked);
+
+    timer = new QTimer(this);
+    connect(timer, &QTimer::timeout, this, &MainWindow::checkAlarms);
+    timer->start(1000);
+
 }
 
 MainWindow::~MainWindow()
@@ -432,6 +443,38 @@ void MainWindow::on_btnAddAlarm_clicked() {
         label = "Alarm";
     }
 
-    QString displayText = QString("%1 - %2").arg(alarmTime.toString("HH:mm")).arg(label);
-    ui->listWidgetAlarms->addItem(displayText);
+    QDateTime now = QDateTime::currentDateTime();
+    QDateTime alarmDateTime(now.date(), alarmTime);
+    if (alarmDateTime < now) {
+        alarmDateTime = alarmDateTime.addDays(1);
+    }
+
+    std::chrono::system_clock::time_point timePoint =
+        std::chrono::system_clock::from_time_t(alarmDateTime.toSecsSinceEpoch());
+
+    Alarm newAlarm{ timePoint, label.toStdString(), true };
+    alarmManager.addAlarm(newAlarm);
+
+    updateAlarmList();
+}
+
+void MainWindow::updateAlarmList() {
+    ui->listWidgetAlarms->clear();
+
+    const auto& alarms = alarmManager.getAllAlarms();
+    for (const auto& alarm : alarms) {
+        std::time_t tt = std::chrono::system_clock::to_time_t(alarm.time);
+        QDateTime dt = QDateTime::fromSecsSinceEpoch(tt);
+        QString timeStr = dt.time().toString("HH:mm");
+        QString labelStr = QString::fromStdString(alarm.label);
+        QString status = alarm.enabled ? "ON" : "OFF";
+
+        QString itemText = QString("%1 - %2 [%3]").arg(timeStr, labelStr, status);
+        ui->listWidgetAlarms->addItem(itemText);
+    }
+}
+
+void MainWindow::checkAlarms() {
+    alarmManager.checkAndTriggerAlarms();
+    updateAlarmList();
 }
