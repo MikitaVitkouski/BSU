@@ -21,6 +21,16 @@ MainWindow::MainWindow(QWidget *parent)
         text-align: center;
     }
 
+    QTimeEdit {
+        font-size: 32px;
+        font-weight: bold;
+        border: 2px solid #2c3e50;
+        border-radius: 12px;
+        padding: 8px 16px;
+        background-color: #f0faff;
+        color: #2c3e50;
+    }
+
     QListWidget::item {
         background-color: #eaf6ff;
         padding: 8px 12px;
@@ -162,7 +172,10 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnStartTimer, &QPushButton::clicked, this, &MainWindow::on_btnStartTimer_clicked);
 
     countdownTimer = new QTimer(this);
-    countdownTimer->setInterval(1000);
+    ui->timeEditTimer->setDisplayFormat("HH:mm:ss");
+    ui->timeEditTimer->setTime(QTime(0, 0, 0));
+    ui->timeEditTimer->setButtonSymbols(QAbstractSpinBox::NoButtons);
+    ui->timeEditTimer->setAlignment(Qt::AlignCenter);
 
     connect(countdownTimer, &QTimer::timeout, this, &MainWindow::onCountdownTick);
 }
@@ -333,32 +346,34 @@ void MainWindow::updateStopwatchDisplay() {
 }
 
 void MainWindow::on_btnStartTimer_clicked() {
-    int hours = ui->spinHours->value();
-    int minutes = ui->spinMinutes->value();
-    int seconds = ui->spinSeconds->value();
+    QTime selectedTime = ui->timeEditTimer->time();
+    totalSecondsRemaining = QTime(0, 0).secsTo(selectedTime);
 
-    totalSecondsRemaining = hours * 3600 + minutes * 60 + seconds;
-    if(totalSecondsRemaining <= 0) return;
+    if (totalSecondsRemaining <= 0)
+        return;
 
     ui->btnStartTimer->setEnabled(false);
+    ui->timeEditTimer->setEnabled(false);
     countdownTimer->start(1000);
 }
 
 void MainWindow::onCountdownTick() {
-    if(totalSecondsRemaining <=0) {
+    if (totalSecondsRemaining <= 0) {
         countdownTimer->stop();
         ui->btnStartTimer->setEnabled(true);
-        QMessageBox::information(this, "Timer", "Time exceeded!");
+        ui->timeEditTimer->setEnabled(true);
+        QMessageBox::information(this, "Timer", "Time's up!");
         return;
     }
 
     totalSecondsRemaining--;
+    updateTimeEditDisplay();
+}
 
+void MainWindow::updateTimeEditDisplay() {
     int h = totalSecondsRemaining / 3600;
     int m = (totalSecondsRemaining % 3600) / 60;
     int s = totalSecondsRemaining % 60;
 
-    ui->spinHours->setValue(h);
-    ui->spinMinutes->setValue(m);
-    ui->spinSeconds->setValue(s);
+    ui->timeEditTimer->setTime(QTime(h, m, s));
 }

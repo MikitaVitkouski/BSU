@@ -8,6 +8,7 @@
 #include <QDateTime>
 #include <QTimeZone>
 #include <QMEssageBox>
+#include <QTimeEdit>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -45,7 +46,8 @@ private:
     Stopwatch stopwatch;
     QTimer* stopwatchTimer;
     QTimer* countdownTimer;
-    int totalSecondsRemaining;
+    int totalSecondsRemaining = 0;
     void onCountdownTick();
+    void updateTimeEditDisplay();
 };
 #endif // MAINWINDOW_H
