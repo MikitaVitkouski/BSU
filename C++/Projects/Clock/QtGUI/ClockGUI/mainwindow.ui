@@ -294,7 +294,51 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="pageTimer"/>
+    <widget class="QWidget" name="pageTimer">
+     <widget class="QSpinBox" name="spinHours">
+      <property name="geometry">
+       <rect>
+        <x>350</x>
+        <y>180</y>
+        <width>42</width>
+        <height>25</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinMinutes">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>180</y>
+        <width>42</width>
+        <height>25</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QSpinBox" name="spinSeconds">
+      <property name="geometry">
+       <rect>
+        <x>490</x>
+        <y>180</y>
+        <width>42</width>
+        <height>25</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="btnStartTimer">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>270</y>
+        <width>80</width>
+        <height>24</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Start</string>
+      </property>
+     </widget>
+    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">

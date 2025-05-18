@@ -31,6 +31,7 @@ private slots:
     void on_btnResumeStopwatch_clicked();
     void on_btnResetStopwatch_clicked();
     void on_btnAddLap_manualclicked();
+    void on_btnStartTimer_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -39,5 +40,7 @@ private:
     void populateTimezones();
     Stopwatch stopwatch;
     QTimer* stopwatchTimer;
+    QTimer* countdownTimer;
+    int totalSecondsRemaining;
 };
 #endif // MAINWINDOW_H

@@ -146,7 +146,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->comboBoxTimezone, QOverload<int>::of(&QComboBox::currentIndexChanged),
             this, &MainWindow::onTimezoneChanged);
 
-    // Timer
+    // Clock
     connect(timer, &QTimer::timeout, this, &MainWindow::updateClockTime);
     timer->start(999); // updating every second
 
@@ -160,6 +160,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnResumeStopwatch, &QPushButton::clicked, this,&MainWindow::on_btnResumeStopwatch_clicked);
     connect(ui->btnResetStopwatch, &QPushButton::clicked, this,&MainWindow::on_btnResetStopwatch_clicked);
     connect(ui->btnAddLap, &QPushButton::clicked, this,&MainWindow::on_btnAddLap_manualclicked);
+
+    // Timer
+    connect(ui->btnStartTimer, &QPushButton::clicked, this, &MainWindow::on_btnStartTimer_clicked);
 }
 
 MainWindow::~MainWindow()
