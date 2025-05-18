@@ -170,12 +170,18 @@ MainWindow::MainWindow(QWidget *parent)
 
     // Timer
     connect(ui->btnStartTimer, &QPushButton::clicked, this, &MainWindow::on_btnStartTimer_clicked);
+    connect(ui->btnPauseTimer, &QPushButton::clicked, this, &MainWindow::on_btnPauseTimer_clicked);
+    connect(ui->btnResumeTimer, &QPushButton::clicked, this, &MainWindow::on_btnResumeTimer_clicked);
+    connect(ui->btnResetTimer, &QPushButton::clicked, this, &MainWindow::on_btnResetTimer_clicked);
 
     countdownTimer = new QTimer(this);
     ui->timeEditTimer->setDisplayFormat("HH:mm:ss");
     ui->timeEditTimer->setTime(QTime(0, 0, 0));
     ui->timeEditTimer->setButtonSymbols(QAbstractSpinBox::NoButtons);
     ui->timeEditTimer->setAlignment(Qt::AlignCenter);
+    ui->btnPauseTimer->setEnabled(false);
+    ui->btnResumeTimer->setEnabled(false);
+    ui->btnResetTimer->setEnabled(false);
 
     connect(countdownTimer, &QTimer::timeout, this, &MainWindow::onCountdownTick);
 }
@@ -347,27 +353,40 @@ void MainWindow::updateStopwatchDisplay() {
 
 void MainWindow::on_btnStartTimer_clicked() {
     QTime selectedTime = ui->timeEditTimer->time();
-    totalSecondsRemaining = QTime(0, 0).secsTo(selectedTime);
+    int totalSeconds = QTime(0, 0).secsTo(selectedTime);
 
-    if (totalSecondsRemaining <= 0)
+    if (totalSeconds <= 0)
         return;
 
-    ui->btnStartTimer->setEnabled(false);
-    ui->timeEditTimer->setEnabled(false);
+    // Инициализируем TimerManager
+    timerManager.start(std::chrono::seconds(totalSeconds));
     countdownTimer->start(1000);
+
+    ui->btnStartTimer->setEnabled(false);
+    ui->btnPauseTimer->setEnabled(true);
+    ui->btnResetTimer->setEnabled(true);
+    ui->timeEditTimer->setEnabled(false);
 }
 
 void MainWindow::onCountdownTick() {
-    if (totalSecondsRemaining <= 0) {
+    if (timerManager.isFinished()) {
         countdownTimer->stop();
         ui->btnStartTimer->setEnabled(true);
+        ui->btnPauseTimer->setEnabled(false);
+        ui->btnResumeTimer->setEnabled(false);
+        ui->btnResetTimer->setEnabled(true);
         ui->timeEditTimer->setEnabled(true);
-        QMessageBox::information(this, "Timer", "Time's up!");
         return;
     }
 
-    totalSecondsRemaining--;
-    updateTimeEditDisplay();
+    auto remaining = timerManager.remaining();
+    int totalSec = static_cast<int>(remaining.count() / 1000);
+
+    int h = totalSec / 3600;
+    int m = (totalSec % 3600) / 60;
+    int s = totalSec % 60;
+
+    ui->timeEditTimer->setTime(QTime(h, m, s));
 }
 
 void MainWindow::updateTimeEditDisplay() {
@@ -376,4 +395,29 @@ void MainWindow::updateTimeEditDisplay() {
     int s = totalSecondsRemaining % 60;
 
     ui->timeEditTimer->setTime(QTime(h, m, s));
+}
+
+void MainWindow::on_btnPauseTimer_clicked() {
+    timerManager.pause();
+    countdownTimer->stop();
+    ui->btnPauseTimer->setEnabled(false);
+    ui->btnResumeTimer->setEnabled(true);
+}
+
+void MainWindow::on_btnResumeTimer_clicked() {
+    timerManager.resume();
+    countdownTimer->start(1000);
+    ui->btnPauseTimer->setEnabled(true);
+    ui->btnResumeTimer->setEnabled(false);
+}
+
+void MainWindow::on_btnResetTimer_clicked() {
+    timerManager.reset();
+    countdownTimer->stop();
+    ui->btnStartTimer->setEnabled(true);
+    ui->btnPauseTimer->setEnabled(false);
+    ui->btnResumeTimer->setEnabled(false);
+    ui->btnResetTimer->setEnabled(false);
+    ui->timeEditTimer->setEnabled(true);
+    ui->timeEditTimer->setTime(QTime(0, 0, 0));
 }

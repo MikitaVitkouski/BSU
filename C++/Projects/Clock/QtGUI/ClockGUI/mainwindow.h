@@ -9,6 +9,7 @@
 #include <QTimeZone>
 #include <QMEssageBox>
 #include <QTimeEdit>
+#include "TimerManager.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -37,6 +38,9 @@ private slots:
     void on_btnResetStopwatch_clicked();
     void on_btnAddLap_manualclicked();
     void on_btnStartTimer_clicked();
+    void on_btnPauseTimer_clicked();
+    void on_btnResumeTimer_clicked();
+    void on_btnResetTimer_clicked();
 
 private:
     Ui::MainWindow *ui;
@@ -49,5 +53,6 @@ private:
     int totalSecondsRemaining = 0;
     void onCountdownTick();
     void updateTimeEditDisplay();
+    TimerManager timerManager;
 };
 #endif // MAINWINDOW_H

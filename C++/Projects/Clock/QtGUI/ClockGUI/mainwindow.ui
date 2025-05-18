@@ -331,7 +331,7 @@
        <string>Pause</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="btnStopTimer">
+     <widget class="QPushButton" name="btnResumeTimer">
       <property name="geometry">
        <rect>
         <x>570</x>
