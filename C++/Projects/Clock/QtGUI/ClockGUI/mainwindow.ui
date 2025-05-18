@@ -105,7 +105,56 @@
       <verstretch>0</verstretch>
      </sizepolicy>
     </property>
-    <widget class="QWidget" name="pageAlarm"/>
+    <widget class="QWidget" name="pageAlarm">
+     <widget class="QPushButton" name="btnAddAlarm">
+      <property name="geometry">
+       <rect>
+        <x>440</x>
+        <y>290</y>
+        <width>150</width>
+        <height>60</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>35</pointsize>
+       </font>
+      </property>
+      <property name="text">
+       <string>+</string>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="listWidgetAlarms">
+      <property name="geometry">
+       <rect>
+        <x>340</x>
+        <y>60</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QTimeEdit" name="timeEditAlarm">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>110</y>
+        <width>118</width>
+        <height>25</height>
+       </rect>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="lineEditAlarmLabel">
+      <property name="geometry">
+       <rect>
+        <x>200</x>
+        <y>150</y>
+        <width>113</width>
+        <height>24</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="pageStopwatch">
      <widget class="QPushButton" name="btnPlayStopwatch">
       <property name="geometry">
