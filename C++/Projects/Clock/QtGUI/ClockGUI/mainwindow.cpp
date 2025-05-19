@@ -64,6 +64,7 @@ MainWindow::MainWindow(QWidget *parent)
     timer = new QTimer(this);
     connect(timer, &QTimer::timeout, this, &MainWindow::checkAlarms);
     connect(ui->btnDeleteAlarms, &QPushButton::clicked, this, &MainWindow::on_btnDeleteAlarms_clicked);
+    connect(ui->listWidgetAlarms, &QListWidget::itemDoubleClicked,this, &MainWindow::onAlarmItemDoubleClicked);
     timer->start(1000);
 
 }
@@ -351,5 +352,13 @@ void MainWindow::on_btnDeleteAlarms_clicked() {
     auto alarms = alarmManager.getAllAlarms();
     for(int i = 0;i<alarms.size();i++) {
         alarmManager.removeAlarm(i);
+    }
+}
+
+void MainWindow::onAlarmItemDoubleClicked(QListWidgetItem* item) {
+    int index = ui->listWidgetAlarms->row(item);
+    if(index >= 0 && index < alarmManager.getAllAlarms().size()) {
+        alarmManager.toggleAlarm(index);
+        updateAlarmList();
     }
 }
