@@ -167,6 +167,19 @@
        <string>Clear all alarms</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="btnRemoveSelectedAlarm">
+      <property name="geometry">
+       <rect>
+        <x>680</x>
+        <y>10</y>
+        <width>250</width>
+        <height>100</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Remove</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pageStopwatch">
      <widget class="QPushButton" name="btnPlayStopwatch">

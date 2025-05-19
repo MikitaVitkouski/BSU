@@ -49,6 +49,7 @@ private slots:
     void on_btnAddAlarm_clicked();
     void on_btnDeleteAlarms_clicked();
     void onAlarmItemDoubleClicked(QListWidgetItem* item);
+    void on_btnRemoveSelectedAlarm_clicked();
 
 private:
     Ui::MainWindow *ui;

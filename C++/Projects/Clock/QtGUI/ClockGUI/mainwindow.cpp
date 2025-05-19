@@ -65,6 +65,7 @@ MainWindow::MainWindow(QWidget *parent)
     connect(timer, &QTimer::timeout, this, &MainWindow::checkAlarms);
     connect(ui->btnDeleteAlarms, &QPushButton::clicked, this, &MainWindow::on_btnDeleteAlarms_clicked);
     connect(ui->listWidgetAlarms, &QListWidget::itemDoubleClicked,this, &MainWindow::onAlarmItemDoubleClicked);
+    connect(ui->btnRemoveSelectedAlarm, &QPushButton::clicked, this, &MainWindow::on_btnRemoveSelectedAlarm_clicked);
     timer->start(1000);
 
 }
@@ -360,5 +361,15 @@ void MainWindow::onAlarmItemDoubleClicked(QListWidgetItem* item) {
     if(index >= 0 && index < alarmManager.getAllAlarms().size()) {
         alarmManager.toggleAlarm(index);
         updateAlarmList();
+    }
+}
+
+void MainWindow::on_btnRemoveSelectedAlarm_clicked() {
+    int index = ui->listWidgetAlarms->currentRow();
+    if(index >=0&&index < alarmManager.getAllAlarms().size()) {
+        alarmManager.removeAlarm(index);
+        updateAlarmList();
+    } else {
+        QMessageBox::warning(this, "Warning", "No alarm selected.");
     }
 }
