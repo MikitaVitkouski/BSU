@@ -230,6 +230,16 @@
         padding: 10px 20px;
     }
 
+    QPushButton#btnDeleteAlarms {
+        color: #ff4d4d;
+        background-color: rgba(255, 77, 77, 0.1);
+        border: 2px solid #ff4d4d;
+        font-weight: bold;
+        font-size: 25px;
+        border-radius: 16px;
+        padding: 10px 20px;
+    }
+
     QPushButton:hover {
         background-color: #007acc;
     }
@@ -265,6 +275,11 @@
     }
 
     QPushButton#btnResetTimer:hover {
+        background-color: #ff4d4d;
+        color: white;
+    }
+
+    QPushButton#btnDeleteAlarms:hover {
         background-color: #ff4d4d;
         color: white;
     }

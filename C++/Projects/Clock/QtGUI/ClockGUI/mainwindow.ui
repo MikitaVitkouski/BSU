@@ -154,6 +154,19 @@
        </rect>
       </property>
      </widget>
+     <widget class="QPushButton" name="btnDeleteAlarms">
+      <property name="geometry">
+       <rect>
+        <x>400</x>
+        <y>390</y>
+        <width>250</width>
+        <height>100</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Clear all alarms</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="pageStopwatch">
      <widget class="QPushButton" name="btnPlayStopwatch">

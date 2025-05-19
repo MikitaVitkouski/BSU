@@ -47,6 +47,7 @@ private slots:
     void updateAlarmList();
     void checkAlarms();
     void on_btnAddAlarm_clicked();
+    void on_btnDeleteAlarms_clicked();
 
 private:
     Ui::MainWindow *ui;
