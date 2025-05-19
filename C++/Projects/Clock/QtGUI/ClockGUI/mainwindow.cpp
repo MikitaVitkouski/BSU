@@ -325,6 +325,7 @@ void MainWindow::on_btnAddAlarm_clicked() {
     alarmManager.addAlarm(newAlarm);
 
     updateAlarmList();
+    ui->lineEditAlarmLabel->clear();
 }
 
 void MainWindow::updateAlarmList() {
