@@ -49,8 +49,6 @@ void Stopwatch::reset() {
 
 // push_back lap's time to laps' vector
 void Stopwatch::lap() {
-    if (!isRunning()) return;
-
     auto now = elapsed();
 
     if (!laps.empty() && laps.back() == now)

@@ -41,6 +41,12 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnResetStopwatch, &QPushButton::clicked, this,&MainWindow::on_btnResetStopwatch_clicked);
     connect(ui->btnAddLap, &QPushButton::clicked, this,&MainWindow::on_btnAddLap_manualclicked);
 
+    ui->btnPlayStopwatch->setEnabled(true);
+    ui->btnPauseStopwatch->setEnabled(false);
+    ui->btnResetStopwatch->setEnabled(false);
+    ui->btnAddLap->setEnabled(false);
+    ui->btnResumeStopwatch->setEnabled(false);
+
     // Timer
     connect(ui->btnStartTimer, &QPushButton::clicked, this, &MainWindow::on_btnStartTimer_clicked);
     connect(ui->btnPauseTimer, &QPushButton::clicked, this, &MainWindow::on_btnPauseTimer_clicked);
@@ -170,6 +176,12 @@ void MainWindow::on_btnPlayStopwatch_clicked() {
     ui->listWidgetLaps->clear();
     stopwatch.start();
     stopwatchTimer->start(10); // updating timer each 100 ms
+
+    ui->btnPlayStopwatch->setEnabled(false);
+    ui->btnPauseStopwatch->setEnabled(true);
+    ui->btnResetStopwatch->setEnabled(true);
+    ui->btnAddLap->setEnabled(true);
+    ui->btnResumeStopwatch->setEnabled(true);
 }
 
 void MainWindow::on_btnPauseStopwatch_clicked() {
@@ -177,6 +189,11 @@ void MainWindow::on_btnPauseStopwatch_clicked() {
         stopwatch.pause();
         stopwatchTimer->stop();
     }
+    ui->btnPlayStopwatch->setEnabled(false);
+    ui->btnPauseStopwatch->setEnabled(false);
+    ui->btnResetStopwatch->setEnabled(true);
+    ui->btnAddLap->setEnabled(true);
+    ui->btnResumeStopwatch->setEnabled(true);
 }
 
 void MainWindow::on_btnResumeStopwatch_clicked() {
@@ -184,6 +201,11 @@ void MainWindow::on_btnResumeStopwatch_clicked() {
         stopwatch.resume();
         stopwatchTimer->start(10);
     }
+    ui->btnPlayStopwatch->setEnabled(false);
+    ui->btnPauseStopwatch->setEnabled(true);
+    ui->btnResetStopwatch->setEnabled(true);
+    ui->btnAddLap->setEnabled(true);
+    ui->btnResumeStopwatch->setEnabled(false);
 }
 
 void MainWindow::on_btnResetStopwatch_clicked() {
@@ -192,10 +214,15 @@ void MainWindow::on_btnResetStopwatch_clicked() {
     ui->labelTimeStopwatch->setText("00:00:00.000");
     ui->listWidgetLaps->clear();
     ui->btnPauseStopwatch->setText("Pause");
+    ui->btnPlayStopwatch->setEnabled(true);
+    ui->btnPauseStopwatch->setEnabled(false);
+    ui->btnResetStopwatch->setEnabled(false);
+    ui->btnAddLap->setEnabled(false);
+    ui->btnResumeStopwatch->setEnabled(false);
 }
 
 void MainWindow::on_btnAddLap_manualclicked() {
-    if (!stopwatch.isRunning()) return;
+    if (!stopwatch.isRunning() && ui->btnPauseStopwatch->isEnabled()) return;
 
     stopwatch.lap();
     const auto& laps = stopwatch.getLaps();
@@ -215,6 +242,11 @@ void MainWindow::on_btnAddLap_manualclicked() {
                          .arg(ms, 3, 10, QChar('0'));
 
     ui->listWidgetLaps->addItem(lapStr);
+
+    ui->btnPlayStopwatch->setEnabled(false);
+    ui->btnPauseStopwatch->setEnabled(true);
+    ui->btnResetStopwatch->setEnabled(true);
+    ui->btnResumeStopwatch->setEnabled(true);
 }
 
 void MainWindow::updateStopwatchDisplay() {
