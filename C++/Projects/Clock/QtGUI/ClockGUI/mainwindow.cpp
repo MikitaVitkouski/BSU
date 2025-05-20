@@ -274,7 +274,6 @@ void MainWindow::on_btnStartTimer_clicked() {
     if (totalSeconds <= 0)
         return;
 
-    // Инициализируем TimerManager
     timerManager.start(std::chrono::seconds(totalSeconds));
     countdownTimer->start(1);
 
@@ -384,7 +383,7 @@ void MainWindow::checkAlarms() {
 void MainWindow::on_btnDeleteAlarms_clicked() {
     ui->listWidgetAlarms->clear();
     auto alarms = alarmManager.getAllAlarms();
-    for(int i = 0;i<alarms.size();i++) {
+    for (int i = alarms.size() - 1; i >= 0; --i) {
         alarmManager.removeAlarm(i);
     }
 }

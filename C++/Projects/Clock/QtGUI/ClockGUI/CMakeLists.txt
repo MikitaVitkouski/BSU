@@ -8,6 +8,10 @@ qt_standard_project_setup()
 
 add_subdirectory(../../Clock/ ${CMAKE_BINARY_DIR}/ClockBuild)
 
+set(RESOURCE_FILES
+    resources.qrc
+)
+
 set(SOURCES
     main.cpp
     mainwindow.cpp

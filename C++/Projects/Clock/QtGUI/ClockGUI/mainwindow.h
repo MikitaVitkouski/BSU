@@ -13,6 +13,7 @@
 #include "AlarmManager.h"
 #include <QListWidgetItem>
 #include <QFile>
+#include <QListWidget>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
