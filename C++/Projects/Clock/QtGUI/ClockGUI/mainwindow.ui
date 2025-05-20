@@ -34,13 +34,17 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>resources/alarm.svg</normaloff>resources/alarm.svg</iconset>
+      <normaloff>resources/alarm.svg</normaloff>
+      <normalon>resources/alarm.svg</normalon>resources/alarm.svg</iconset>
     </property>
     <property name="iconSize">
      <size>
       <width>64</width>
       <height>64</height>
      </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="btnStopwatch">
@@ -63,13 +67,17 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>resources/stopwatch.svg</normaloff>resources/stopwatch.svg</iconset>
+      <normaloff>resources/stopwatch.svg</normaloff>
+      <normalon>resources/stopwatch.svg</normalon>resources/stopwatch.svg</iconset>
     </property>
     <property name="iconSize">
      <size>
       <width>64</width>
       <height>64</height>
      </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="btnClock">
@@ -92,13 +100,17 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>resources/clock.png</normaloff>resources/clock.png</iconset>
+      <normaloff>resources/clock.png</normaloff>
+      <normalon>resources/clock.png</normalon>resources/clock.png</iconset>
     </property>
     <property name="iconSize">
      <size>
       <width>64</width>
       <height>64</height>
      </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QPushButton" name="btnTimer">
@@ -121,13 +133,17 @@
     </property>
     <property name="icon">
      <iconset>
-      <normaloff>resources/timer.svg</normaloff>resources/timer.svg</iconset>
+      <normaloff>resources/timer.svg</normaloff>
+      <normalon>resources/timer.svg</normalon>resources/timer.svg</iconset>
     </property>
     <property name="iconSize">
      <size>
       <width>64</width>
       <height>64</height>
      </size>
+    </property>
+    <property name="checkable">
+     <bool>false</bool>
     </property>
    </widget>
    <widget class="QStackedWidget" name="stackedWidget">

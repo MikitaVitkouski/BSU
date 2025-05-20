@@ -7,10 +7,7 @@ find_package(Qt6 REQUIRED COMPONENTS Widgets)
 qt_standard_project_setup()
 
 add_subdirectory(../../Clock/ ${CMAKE_BINARY_DIR}/ClockBuild)
-
-set(RESOURCE_FILES
-    resources.qrc
-)
+qt_add_resources(PROJECT_SOURCES resources.qrc)
 
 set(SOURCES
     main.cpp

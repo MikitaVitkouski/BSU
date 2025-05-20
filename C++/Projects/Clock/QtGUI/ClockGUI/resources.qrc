@@ -1,8 +1,8 @@
 <RCC>
   <qresource prefix="/icons">
-    <file>alarm.svg</file>
-    <file>clock.png</file>
-    <file>stopwatch.svg</file>
-    <file>timer.svg</file>
+    <file>resources/alarm.svg</file>
+    <file>resources/stopwatch.svg</file>
+    <file>resources/timer.svg</file>
+    <file>resources/clock.png</file>
   </qresource>
 </RCC>
