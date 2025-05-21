@@ -1,8 +1,10 @@
-![image](https://github.com/user-attachments/assets/fef7169d-1437-4b94-9fa7-eb1b85a241e7)
-![image](https://github.com/user-attachments/assets/262ab51b-c9c6-4bcc-b1b3-3f12c49f3e8f)
-![image](https://github.com/user-attachments/assets/046869c0-abfc-4747-9d93-a758e84c3518)
-![image](https://github.com/user-attachments/assets/ae146cd4-fc6b-45c3-9305-2818b5055190)
+## Screenshots
+![image](https://github.com/user-attachments/assets/e97d4dbc-1f9c-4bcf-a8ff-bef7a067b7d6)
+![image](https://github.com/user-attachments/assets/e58d05e5-6a8a-4ddb-be54-484ff2a46ab0)
+![image](https://github.com/user-attachments/assets/719558fc-2572-4c63-a5d8-ea80d641ac42)
+![image](https://github.com/user-attachments/assets/1496626f-701f-4c8e-a974-bd66c1b1c5e2)
 
+## Description
 A modern C++ application providing multiple time-related utilities including a clock, alarm, stopwatch, and timer — all within a sleek, user-friendly graphical interface built with Qt.
 
 ## Features
