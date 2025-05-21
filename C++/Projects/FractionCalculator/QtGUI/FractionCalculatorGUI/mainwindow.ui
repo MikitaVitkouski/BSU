@@ -24,7 +24,17 @@
      </rect>
     </property>
     <property name="text">
-     <string>+</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>resources/plus.svg</normaloff>resources/plus.svg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="btnSub">
@@ -37,7 +47,17 @@
      </rect>
     </property>
     <property name="text">
-     <string>-</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>resources/sub.svg</normaloff>resources/sub.svg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="btnMul">
@@ -55,7 +75,17 @@
      </font>
     </property>
     <property name="text">
-     <string>*</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>resources/multiply.svg</normaloff>resources/multiply.svg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="btnDiv">
@@ -73,7 +103,17 @@
      </font>
     </property>
     <property name="text">
-     <string>:</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>resources/divide.svg</normaloff>resources/divide.svg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="btnPow">
@@ -319,7 +359,17 @@
      </font>
     </property>
     <property name="text">
-     <string>⌫</string>
+     <string/>
+    </property>
+    <property name="icon">
+     <iconset>
+      <normaloff>resources/backspace.svg</normaloff>resources/backspace.svg</iconset>
+    </property>
+    <property name="iconSize">
+     <size>
+      <width>32</width>
+      <height>32</height>
+     </size>
     </property>
    </widget>
    <widget class="QPushButton" name="btnToggleFormat">

@@ -1,69 +1,20 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include <QMessageBox>
+#include <QFile>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QString styleSheet = R"(
-    QWidget {
-        background-color: #fdfdfd;
-        color: #444444;
-        font-family: Segoe UI, sans-serif;
-        font-size: 16px;
+    QFile file("E:/Repositories/BSU/C++/Projects/FractionCalculator/QtGUI/FractionCalculatorGUI/style.css");
+    if (file.open(QFile::ReadOnly | QFile::Text)) {
+        QTextStream stream(&file);
+        QString styleSheet = stream.readAll();
+        this->setStyleSheet(styleSheet);
+        file.close();
     }
-
-    QLineEdit {
-        background-color: #2a2a2a;
-        color: #000000;
-        border: 2px solid #ffaa00;
-        border-radius: 10px;
-        padding: 6px;
-    }
-
-    QLabel {
-        color: #ff6600;
-        font-weight: bold;
-        font-size: 18px;
-    }
-
-    QPushButton {
-        background-color: #ffffff;
-        color: #333333;
-        border: 1 px solid #e0e0e0;
-        border-radius: 40px;
-        padding: 10px;
-        min-width: 60px;
-    }
-
-    QPushButton:hover {
-        background-color: #f5f5f5;
-    }
-
-    QPushButton:pressed {
-        background-color: #ff9900;
-    }
-
-    QPushButton#btnEvaluate {
-        background-color: #ff6600;
-        color: white;
-        font-weight: bold;
-    }
-
-    QPushButton#btnClear {
-        background-color: #ff6600;
-        color: white;
-        font-weight: bold;
-    }
-
-    QPushButton#btnSlash, QPushButton#btnMul, QPushButton#btnDiv, QPushButton#btnAdd, QPushButton#btnSub, QPushButton#btnPow, QPushButton#btnReverse,
-    QPushButton#btnLeftBracket, QPushButton#btnRightBracket, QPushButton#btnToggleFormat, QPushButton#btnBackspace, QPushButton#btnSlash {
-        color: #ff6600;
-    }
-)";
-    this->setStyleSheet(styleSheet);
 
     //connect (sender, signal, receiver, slot)
     connect(ui->btnAdd,&QPushButton::clicked,this,&MainWindow::onAddClicked);

@@ -6,6 +6,8 @@ qt_standard_project_setup()
 
 add_subdirectory(../../FractionCalculator/ ${CMAKE_BINARY_DIR}/FractionCalculatorBuild)
 
+qt_add_resources(PROJECT_SOURCES resources.qrc)
+
 set(SOURCES
     main.cpp
     mainwindow.cpp

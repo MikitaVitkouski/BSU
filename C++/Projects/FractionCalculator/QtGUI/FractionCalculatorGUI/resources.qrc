@@ -1,0 +1,9 @@
+<RCC>
+  <qresource prefix="/icons">
+    <file>resources/backspace.svg</file>
+    <file>resources/divide.svg</file>
+    <file>resources/multiply.svg</file>
+    <file>resources/plus.svg</file>
+    <file>resources/sub.svg</file>
+  </qresource>
+</RCC>
