@@ -4,5 +4,8 @@
     <file>resources/stopwatch.svg</file>
     <file>resources/timer.svg</file>
     <file>resources/clock.png</file>
+    <file>resources/play.png</file>
+    <file>resources/pause.svg</file>
+    <file>resources/reset.svg</file>
   </qresource>
 </RCC>

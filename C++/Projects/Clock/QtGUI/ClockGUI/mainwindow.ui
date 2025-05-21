@@ -248,7 +248,18 @@
        </rect>
       </property>
       <property name="text">
-       <string>Play</string>
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resources/play.png</normaloff>
+        <normalon>resources/play.png</normalon>resources/play.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>45</width>
+        <height>45</height>
+       </size>
       </property>
      </widget>
      <widget class="QPushButton" name="btnPauseStopwatch">
@@ -261,7 +272,18 @@
        </rect>
       </property>
       <property name="text">
-       <string>Pause</string>
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resources/pause.svg</normaloff>
+        <normalon>resources/pause.svg</normalon>resources/pause.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>45</width>
+        <height>45</height>
+       </size>
       </property>
      </widget>
      <widget class="QPushButton" name="btnResetStopwatch">
@@ -274,7 +296,18 @@
        </rect>
       </property>
       <property name="text">
-       <string>Reset</string>
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resources/reset.svg</normaloff>
+        <normalon>resources/reset.svg</normalon>resources/reset.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>45</width>
+        <height>45</height>
+       </size>
       </property>
      </widget>
      <widget class="QLabel" name="labelTimeStopwatch">
@@ -436,7 +469,18 @@
        </rect>
       </property>
       <property name="text">
-       <string>Start</string>
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resources/play.png</normaloff>
+        <normalon>resources/play.png</normalon>resources/play.png</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>45</width>
+        <height>45</height>
+       </size>
       </property>
      </widget>
      <widget class="QTimeEdit" name="timeEditTimer">
@@ -459,7 +503,18 @@
        </rect>
       </property>
       <property name="text">
-       <string>Pause</string>
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resources/pause.svg</normaloff>
+        <normalon>resources/pause.svg</normalon>resources/pause.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>45</width>
+        <height>45</height>
+       </size>
       </property>
      </widget>
      <widget class="QPushButton" name="btnResumeTimer">
@@ -485,7 +540,18 @@
        </rect>
       </property>
       <property name="text">
-       <string>Reset</string>
+       <string/>
+      </property>
+      <property name="icon">
+       <iconset>
+        <normaloff>resources/reset.svg</normaloff>
+        <normalon>resources/reset.svg</normalon>resources/reset.svg</iconset>
+      </property>
+      <property name="iconSize">
+       <size>
+        <width>45</width>
+        <height>45</height>
+       </size>
       </property>
      </widget>
     </widget>

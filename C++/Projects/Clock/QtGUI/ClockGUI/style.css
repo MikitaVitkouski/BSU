@@ -149,7 +149,7 @@
         border-radius: 16px;
     }
 
-    QPushButton#btnPlayStopwatch {
+    QPushButton#btnPlayStopwatch, QPushButton#btnStartTimer {
         color: #2ecc71;
         background-color: rgba(46, 204, 113, 0.1);
         border: 2px solid #27ae60;
@@ -183,16 +183,6 @@
         font-weight: bold;
         font-size: 28px;
         border-radius: 16px;
-    }
-
-    QPushButton#btnPlayTimer {
-        color: #2ecc71;
-        background-color: rgba(46, 204, 113, 0.1);
-        border: 2px solid #27ae60;
-        font-weight: bold;
-        font-size: 28px;
-        border-radius: 16px;
-        padding: 10px 20px;
     }
 
     QPushButton#btnResetTimer {
@@ -283,7 +273,7 @@
         color: white;
     }
 
-    QPushButton#btnPlayTimer:hover {
+    QPushButton#btnStartTimer:hover {
         background-color: #27ae60;
         color: white;
     }
