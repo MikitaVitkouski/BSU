@@ -33,5 +33,32 @@ int main() {
 		out << name << " " << date << std::endl;
 	}
 
+	std::ofstream winter("winter.txt");
+	std::ofstream spring("spring.txt");
+	std::ofstream summer("summer.txt");
+	std::ofstream autumn("autumn.txt");
+
+	for (const auto& pair : database) {
+		std::string name = pair.first;
+		std::string date = pair.second;
+
+		int month = std::stoi(date.substr(3, 2));
+
+		if (month == 12 || month == 1 || month == 2) {
+			winter << name << " " << date << std::endl;
+		}
+		else if (month >= 3 && month <= 5) {
+			spring << name << " " << date << std::endl;
+		}
+		else if (month >= 6 && month <= 8) {
+			summer << name << " " << date << std::endl;
+		}
+		else if (month >= 9 && month <= 11) {
+			autumn << name << " " << date << std::endl;
+		}
+	}
+
+	winter.close(); spring.close(); summer.close(); autumn.close();
+
 	return 0;
 }

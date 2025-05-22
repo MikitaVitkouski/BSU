@@ -26,5 +26,17 @@
     <Text Include="output.txt">
       <Filter>Source Files</Filter>
     </Text>
+    <Text Include="winter.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="spring.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="summer.txt">
+      <Filter>Source Files</Filter>
+    </Text>
+    <Text Include="autumn.txt">
+      <Filter>Source Files</Filter>
+    </Text>
   </ItemGroup>
 </Project>

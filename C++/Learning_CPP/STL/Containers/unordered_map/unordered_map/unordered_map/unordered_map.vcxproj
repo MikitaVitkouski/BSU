@@ -133,6 +133,10 @@
   <ItemGroup>
     <Text Include="input.txt" />
     <Text Include="output.txt" />
+    <Text Include="spring.txt" />
+    <Text Include="summer.txt" />
+    <Text Include="autumn.txt" />
+    <Text Include="winter.txt" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
