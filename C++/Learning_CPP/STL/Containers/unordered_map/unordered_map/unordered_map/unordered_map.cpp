@@ -15,7 +15,7 @@ int main() {
 
 	std::unordered_map<std::string, std::string> database;
 	std::string line;
-	std::regex pattern(R"(([A-Z][a-z]+)\s+([A-Z][a-z]+)\s+(\d{2}-\d{2}-\d{4}))");
+	std::regex pattern(R"(([A-Z][a-z]+)\s+([A-Z][a-z]+)\s+((0[1-9]|[12][0-9]|3[01])-(0[1-9]|1[0-2])-(1[0-9]{3}|20[0-9]{2}|2100)))");
 	std::smatch match;
 
 	while (std::getline(in, line)) {
