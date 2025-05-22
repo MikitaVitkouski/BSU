@@ -7,5 +7,6 @@
     <file>resources/play.png</file>
     <file>resources/pause.svg</file>
     <file>resources/reset.svg</file>
+    <file>resources/clockapp.png</file>
   </qresource>
 </RCC>
