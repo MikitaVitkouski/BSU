@@ -17,7 +17,7 @@ private:
 public:
 	NoteManager(std::vector<std::string> v);
 	~NoteManager() = default;
-	virtual void addNote(std::string note) = 0;
-	virtual void removeNote(std::string note) = 0;
-	virtual std::vector<std::string> getNotes() = 0;
+	void addNote(std::string note);
+	void removeNote(std::string note);
+	std::vector<std::string> getNotes();
 };
