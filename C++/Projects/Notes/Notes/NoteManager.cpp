@@ -3,7 +3,7 @@
 NoteManager::NoteManager(std::vector<Note> v) : notes(std::move(v)) { }
 
 void NoteManager::addNote(const Note& note) {
-	notes.emplace_back(std::move(note));
+	notes.emplace_back(note);
 }
 
 void NoteManager::removeNote(int index) {
