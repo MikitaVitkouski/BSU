@@ -21,6 +21,7 @@ class NoteManager {
 private:
 	std::vector<Note> notes;
 public:
+	NoteManager();
 	NoteManager(std::vector<Note> v);
 	~NoteManager() = default;
 	void addNote(const Note& note);

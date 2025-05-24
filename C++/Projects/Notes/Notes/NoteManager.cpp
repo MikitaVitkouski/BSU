@@ -1,5 +1,7 @@
 #include "NoteManager.h"
 
+NoteManager::NoteManager() { }
+
 NoteManager::NoteManager(std::vector<Note> v) : notes(std::move(v)) { }
 
 void NoteManager::addNote(const Note& note) {
