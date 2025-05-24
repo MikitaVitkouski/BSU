@@ -3,6 +3,6 @@ project(NotesFull)
 
 add_subdirectory(Notes)
 
-# add_subdirectory(NotesTests)
+add_subdirectory(NotesTests)
 
 # add_subdirectory(QtGUI)

@@ -1,10 +1,36 @@
 #include "pch.h"
 #include "NoteManager.h"
 
-TEST(NotesTest, addNote) {
-	Note note("Breakfast", "Having breakfast from 11:00 AM to 11:15 AM");
+TEST(NotesTest, addNoteAndgetSize) {
+	Note note1("Breakfast", "Having breakfast from 11:00 AM to 11:15 AM");
 	NoteManager manager;
-	manager.addNote(note);
+	manager.addNote(note1);
 
 	EXPECT_EQ(1, manager.getSize());
+
+	Note note2("Lunch", "Having dinner from 1:00 PM to 1:30 PM");
+	manager.addNote(note2);
+
+	EXPECT_EQ(2, manager.getSize());
+}
+
+TEST(NotesTest, removeNoteAndgetSize) {
+	Note note1("Breakfast", "Having breakfast from 11:00 AM to 11:15 AM");
+	NoteManager manager;
+	manager.addNote(note1);
+
+	EXPECT_EQ(1, manager.getSize());
+
+	Note note2("Lunch", "Having dinner from 1:00 PM to 1:30 PM");
+	manager.addNote(note2);
+
+	EXPECT_EQ(2, manager.getSize());
+
+	manager.removeNote(0);
+
+	EXPECT_EQ(1, manager.getSize());
+
+	manager.removeNote(0);
+
+	EXPECT_EQ(0, manager.getSize());
 }
