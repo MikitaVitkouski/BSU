@@ -34,3 +34,22 @@ TEST(NotesTest, removeNoteAndgetSize) {
 
 	EXPECT_EQ(0, manager.getSize());
 }
+
+TEST(NotesTest, getNotes) {
+	NoteManager manager;
+	Note note1("Breakfast", "Having breakfast from 11:00 AM to 11:15 AM");
+	Note note2("Lunch", "Having dinner from 1:00 PM to 1:30 PM");
+
+	manager.addNote(note1);
+	manager.addNote(note2);
+
+	std::vector<Note> expected{note1, note2};
+	std::vector<Note> actual = manager.getNotes();
+
+	ASSERT_EQ(expected.size(), actual.size());
+
+	for (size_t i = 0; i < expected.size(); ++i) {
+		EXPECT_EQ(expected[i].getTitle(), actual[i].getTitle());
+		EXPECT_EQ(expected[i].getNote(), actual[i].getNote());
+	}
+}
