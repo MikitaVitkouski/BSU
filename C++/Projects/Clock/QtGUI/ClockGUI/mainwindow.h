@@ -15,6 +15,7 @@
 #include <QFile>
 #include <QListWidget>
 #include "AlarmitemWidget.h"
+#include <QVector>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -66,6 +67,7 @@ private:
     void updateTimeEditDisplay();
     TimerManager timerManager;
     AlarmManager alarmManager;
+    QVector<QListWidgetItem*> alarmItems;
 
 };
 #endif // MAINWINDOW_H

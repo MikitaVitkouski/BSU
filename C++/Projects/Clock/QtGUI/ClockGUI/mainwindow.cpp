@@ -360,32 +360,47 @@ void MainWindow::on_btnAddAlarm_clicked() {
 }
 
 void MainWindow::updateAlarmList() {
-    ui->listWidgetAlarms->clear();
-
     const auto& alarms = alarmManager.getAllAlarms();
 
-    for (int i = 0;i<alarms.size();++i) {
-        const auto& alarm = alarms[i];
-        std::time_t tt = std::chrono::system_clock::to_time_t(alarm.time);
-        QDateTime dt = QDateTime::fromSecsSinceEpoch(tt);
-        QString timeStr = dt.time().toString("HH:mm");
-        QString labelStr = QString::fromStdString(alarm.label);
+    if (ui->listWidgetAlarms->count() != alarms.size()) {
+        ui->listWidgetAlarms->clear();
+        alarmItems.clear();
 
-        auto* widget = new AlarmItemWidget(timeStr, labelStr, alarm.enabled);
-        QListWidgetItem* item = new QListWidgetItem(ui->listWidgetAlarms);
-        item->setSizeHint(widget->sizeHint());
+        for (int i = 0; i < alarms.size(); ++i) {
+            const auto& alarm = alarms[i];
+            std::time_t tt = std::chrono::system_clock::to_time_t(alarm.time);
+            QDateTime dt = QDateTime::fromSecsSinceEpoch(tt);
+            QString timeStr = dt.time().toString("HH:mm");
+            QString labelStr = QString::fromStdString(alarm.label);
 
-        ui->listWidgetAlarms->addItem(item);
-        ui->listWidgetAlarms->setItemWidget(item, widget);
+            auto* widget = new AlarmItemWidget(timeStr, labelStr, alarm.enabled);
+            auto* item = new QListWidgetItem(ui->listWidgetAlarms);
+            item->setSizeHint(widget->sizeHint());
 
-        connect(widget, &AlarmItemWidget::deleteRequested, this, [=]() {
-            alarmManager.removeAlarm(i);
-            updateAlarmList();
-        });
+            ui->listWidgetAlarms->addItem(item);
+            ui->listWidgetAlarms->setItemWidget(item, widget);
+            alarmItems.append(item);
 
-        connect(widget, &AlarmItemWidget::toggled, this, [=](bool enabled) {
-            alarmManager.setAlarmEnabled(i, enabled);
-        });
+            connect(widget, &AlarmItemWidget::deleteRequested, this, [=]() {
+                alarmManager.removeAlarm(i);
+                updateAlarmList();
+            });
+
+            connect(widget, &AlarmItemWidget::toggled, this, [=](bool enabled) {
+                alarmManager.setAlarmEnabled(i, enabled);
+            });
+        }
+    } else {
+        for (int i = 0; i < alarms.size(); ++i) {
+            auto* widget = qobject_cast<AlarmItemWidget*>(ui->listWidgetAlarms->itemWidget(alarmItems[i]));
+            if (widget) {
+                const auto& alarm = alarms[i];
+                std::time_t tt = std::chrono::system_clock::to_time_t(alarm.time);
+                QDateTime dt = QDateTime::fromSecsSinceEpoch(tt);
+                QString timeStr = dt.time().toString("HH:mm");
+                widget->setEnabledState(alarm.enabled);
+            }
+        }
     }
 }
 
