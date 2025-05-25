@@ -19,7 +19,11 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnAddNoteMenu, &QPushButton::clicked, this, &MainWindow::onbtnAddNoteMenuClicked);
 
     ui->notesStackedWidget->setCurrentIndex(0); // by default represent main page with notes
+
+    //pageAddNoteMenu
+    connect(ui->btnAddNote, &QPushButton::clicked, this, &MainWindow::onbtnAddNoteClicked);
 }
+
 
 MainWindow::~MainWindow()
 {
@@ -32,4 +36,27 @@ void MainWindow::onbtnRepresentClicked() {
 
 void MainWindow::onbtnAddNoteMenuClicked() {
     ui->notesStackedWidget->setCurrentIndex(1);
+}
+
+void MainWindow::updateListWidgetNotes() {
+
+}
+
+void MainWindow::onbtnAddNoteClicked() {
+    QString qstr = ui->lineEditTitle->text();
+    QString qn = ui->textEditNote->toPlainText();
+
+    if(qstr.isEmpty() || qn.isEmpty()) return;
+
+    std::string title = qstr.toStdString();
+    std::string note = qn.toStdString();
+
+    Note newnote(title,note);
+    manager.addNote(newnote);
+
+    updateListWidgetNotes();
+
+    ui->lineEditTitle->clear();
+    ui->textEditNote->clear();
+    ui->notesStackedWidget->setCurrentIndex(0); // back to representation page
 }

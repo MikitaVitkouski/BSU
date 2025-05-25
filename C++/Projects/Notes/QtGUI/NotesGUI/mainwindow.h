@@ -3,6 +3,14 @@
 
 #include <QMainWindow>
 #include <QFile>
+#include <QString>
+#include <QTextEdit>
+#include <QLabel>
+#include <QLineEdit>
+#include <QPushButton>
+#include "NoteManager.h"
+#include <QListWidget>
+#include <QListWidgetItem>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -20,8 +28,11 @@ public:
 
 private:
     Ui::MainWindow *ui;
+    NoteManager manager;
 private slots:
     void onbtnRepresentClicked();
     void onbtnAddNoteMenuClicked();
+    void onbtnAddNoteClicked();
+    void updateListWidgetNotes();
 };
 #endif // MAINWINDOW_H

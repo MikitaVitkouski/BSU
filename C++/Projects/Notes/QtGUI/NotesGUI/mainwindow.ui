@@ -23,7 +23,18 @@
       <height>521</height>
      </rect>
     </property>
-    <widget class="QWidget" name="pageRepresent"/>
+    <widget class="QWidget" name="pageRepresent">
+     <widget class="QListWidget" name="listWidgetNotes">
+      <property name="geometry">
+       <rect>
+        <x>170</x>
+        <y>70</y>
+        <width>671</width>
+        <height>321</height>
+       </rect>
+      </property>
+     </widget>
+    </widget>
     <widget class="QWidget" name="pageAddNote">
      <widget class="QPushButton" name="btnAddNote">
       <property name="geometry">
@@ -38,7 +49,7 @@
        <string>Add</string>
       </property>
      </widget>
-     <widget class="QLineEdit" name="titleLineEdit">
+     <widget class="QLineEdit" name="lineEditTitle">
       <property name="geometry">
        <rect>
         <x>440</x>
@@ -74,7 +85,7 @@
        <string>Note</string>
       </property>
      </widget>
-     <widget class="QTextEdit" name="noteTextEdit">
+     <widget class="QTextEdit" name="textEditNote">
       <property name="geometry">
        <rect>
         <x>180</x>
