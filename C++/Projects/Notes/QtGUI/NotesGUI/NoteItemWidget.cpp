@@ -3,8 +3,17 @@
 NoteItemWidget::NoteItemWidget(const QString& title, const QString& text, QWidget* parent) : QWidget(parent) {
     titleLabel = new QLabel("<b>" + title + "</b>");
     textLabel = new QLabel(text.left(100).replace("\n", " "));
+
+    titleLabel->setMinimumHeight(30);
+    titleLabel->setMinimumWidth(200);
+    textLabel->setMinimumHeight(100);
+    textLabel->setMinimumWidth(200);
+
     editButton = new QPushButton("Edit");
     deleteButton = new QPushButton("Delete");
+
+    editButton->setMinimumSize(80, 30);
+    deleteButton->setMinimumSize(80,30);
 
     QVBoxLayout* textLayout = new QVBoxLayout;
     textLayout->addWidget(titleLabel);

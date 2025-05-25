@@ -326,3 +326,77 @@
     QLineEdit:focus {
         border: 1px solid #00aaff;
     }
+
+    NoteItemWidget QLabel {
+        font-size: 16px;
+        color: #2c3e50;
+        qproperty-alignment: 'AlignLeft | AlignVCenter';
+    }
+
+    NoteItemWidget QPushButton {
+        color: #00aaff;
+        font-weight: bold;
+        font-size: 18px;
+        padding: 6px 12px;
+        border-radius: 12px;
+        background-color: rgba(0, 170, 255, 0.1);
+        border: 1px solid #cceeff;
+        min-width: 80px;
+        min-height: 30px;
+	marign-left = 8px;
+    }
+
+    NoteItemWidget QPushButton:hover {
+        background-color: rgba(0, 122, 204, 0.8);
+        color: white;
+    }
+
+QListWidget#listWidgetNotes {
+    background-color: #f5faff;
+    border: 1.5px solid #00aaff;
+    border-radius: 12px;
+    padding: 8px;
+    color: #2c3e50;
+    font-family: "Segoe UI", "Roboto", sans-serif;
+    font-size: 16px;
+    outline: none;
+}
+
+QListWidget#listWidgetNotes::item {
+    background-color: #eaf6ff;
+    margin: 4px 0;
+    padding: 12px 16px;
+    border-radius: 8px;
+    border: 1px solid transparent;
+    color: #2c3e50;
+    font-weight: 500;
+}
+
+QListWidget#listWidgetNotes::item:selected {
+    background-color: #cceeff;
+    border-color: #00aaff;
+    color: #004466;
+}
+
+NoteItemWidget QLabel#labelTitle {
+    font-size: 18px;
+    font-weight: bold;
+    color: #2c3e50;
+    background-color: #d0e8ff;
+    border: 1.5px solid #00aaff;
+    border-radius: 8px;
+    padding: 6px 12px;
+    margin-bottom: 6px;
+}
+
+NoteItemWidget QLabel#labelNote {
+    font-size: 15px;
+    font-weight: normal;
+    color: #34495e;
+    background-color: #f0f8ff;
+    border: 1px solid #a0cfff;
+    border-radius: 8px;
+    padding: 6px 12px;
+    qproperty-wordWrap: true;
+    max-height: 80px;
+}
