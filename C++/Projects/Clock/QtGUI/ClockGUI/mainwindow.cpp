@@ -371,7 +371,7 @@ void MainWindow::updateAlarmList() {
         QString timeStr = dt.time().toString("HH:mm");
         QString labelStr = QString::fromStdString(alarm.label);
 
-        auto* widget = new AlarmItemWidget(timeStr, labelStr);
+        auto* widget = new AlarmItemWidget(timeStr, labelStr, alarm.enabled);
         QListWidgetItem* item = new QListWidgetItem(ui->listWidgetAlarms);
         item->setSizeHint(widget->sizeHint());
 
@@ -381,6 +381,10 @@ void MainWindow::updateAlarmList() {
         connect(widget, &AlarmItemWidget::deleteRequested, this, [=]() {
             alarmManager.removeAlarm(i);
             updateAlarmList();
+        });
+
+        connect(widget, &AlarmItemWidget::toggled, this, [=](bool enabled) {
+            alarmManager.setAlarmEnabled(i, enabled);
         });
     }
 }

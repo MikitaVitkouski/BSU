@@ -6,17 +6,21 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QString>
+#include <QCheckBox>
 
 class AlarmItemWidget : public QWidget {
     Q_OBJECT
 signals:
     void deleteRequested();
+    void toggled(bool enabled);
 public:
-    AlarmItemWidget(const QString& timeText, const QString& labelText, QWidget* parent = nullptr);
+    AlarmItemWidget(const QString& timeText, const QString& labelText, bool isEnabled, QWidget* parent = nullptr);
+    void setEnabledState(bool state);
 private:
     QLabel* labelTime;
     QLabel* labelLabel;
     QPushButton* btnDelete;
+    QCheckBox* toggleSwitch;
 };
 
 #endif
