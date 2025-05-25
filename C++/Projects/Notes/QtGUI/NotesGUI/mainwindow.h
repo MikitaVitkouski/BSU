@@ -20,5 +20,8 @@ public:
 
 private:
     Ui::MainWindow *ui;
+private slots:
+    void onbtnRepresentClicked();
+    void onbtnAddNoteMenuClicked();
 };
 #endif // MAINWINDOW_H
