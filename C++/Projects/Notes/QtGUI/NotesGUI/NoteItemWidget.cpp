@@ -6,8 +6,10 @@ NoteItemWidget::NoteItemWidget(const QString& title, const QString& text, QWidge
 
     titleLabel->setMinimumHeight(30);
     titleLabel->setMinimumWidth(200);
+    titleLabel->setObjectName("labelTitle");
     textLabel->setMinimumHeight(100);
     textLabel->setMinimumWidth(200);
+    textLabel->setObjectName("labelText");
 
     editButton = new QPushButton("Edit");
     deleteButton = new QPushButton("Delete");

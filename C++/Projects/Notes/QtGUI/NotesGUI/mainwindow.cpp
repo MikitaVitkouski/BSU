@@ -57,9 +57,9 @@ void MainWindow::updateListWidgetNotes() {
         });
 
         connect(widget, &NoteItemWidget::editRequested, this, [this, i]() {
-            const auto& note = manager.getNotes()[i];
-            ui->lineEditTitle->setText(QString::fromStdString(note.getTitle()));
-            ui->textEditNote->setText(QString::fromStdString(note.getNote()));
+            const auto& notes = manager.getNotes();
+            ui->lineEditTitle->setText(QString::fromStdString(notes[i].getTitle()));
+            ui->textEditNote->setText(QString::fromStdString(notes[i].getNote()));
             editingNoteIndex = i;
             ui->notesStackedWidget->setCurrentIndex(1);
         });
@@ -79,7 +79,7 @@ void MainWindow::onbtnAddNoteClicked() {
     std::string title = qstr.toStdString();
     std::string note = qn.toStdString();
 
-    Note newnote(title,note);
+    Note newnote(note,title);
 
     if (editingNoteIndex == -1) {
         manager.addNote(newnote);
