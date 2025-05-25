@@ -39,7 +39,13 @@ void MainWindow::onbtnAddNoteMenuClicked() {
 }
 
 void MainWindow::updateListWidgetNotes() {
+    const std::vector<Note>& notes = manager.getNotes();
 
+    for(const Note& note : notes) {
+        QString display = QString::fromStdString(note.getTitle()) + "\n"
+                          + QString::fromStdString(note.getNote()).left(100);
+        ui->listWidgetNotes->addItem(display);
+    }
 }
 
 void MainWindow::onbtnAddNoteClicked() {
