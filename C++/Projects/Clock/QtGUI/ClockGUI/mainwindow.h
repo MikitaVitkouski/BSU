@@ -14,6 +14,7 @@
 #include <QListWidgetItem>
 #include <QFile>
 #include <QListWidget>
+#include "AlarmitemWidget.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {

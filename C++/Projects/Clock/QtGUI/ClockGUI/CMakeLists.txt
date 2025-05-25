@@ -12,10 +12,12 @@ qt_add_resources(PROJECT_SOURCES resources.qrc)
 set(SOURCES
     main.cpp
     mainwindow.cpp
+    AlarmItemWidget.cpp
 )
 
 set(HEADERS
     mainwindow.h
+    AlarmItemWidget.h
 )
 
 set(UIS
@@ -26,6 +28,8 @@ qt_add_executable(ClockGUI
     ${SOURCES}
     ${HEADERS}
     ${UIS}
+    AlarmItemWidget.h
+    AlarmItemWidget.cpp
 )
 
 target_include_directories(ClockGUI

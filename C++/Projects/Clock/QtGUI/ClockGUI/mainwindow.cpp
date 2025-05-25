@@ -363,15 +363,25 @@ void MainWindow::updateAlarmList() {
     ui->listWidgetAlarms->clear();
 
     const auto& alarms = alarmManager.getAllAlarms();
-    for (const auto& alarm : alarms) {
+
+    for (int i = 0;i<alarms.size();++i) {
+        const auto& alarm = alarms[i];
         std::time_t tt = std::chrono::system_clock::to_time_t(alarm.time);
         QDateTime dt = QDateTime::fromSecsSinceEpoch(tt);
         QString timeStr = dt.time().toString("HH:mm");
         QString labelStr = QString::fromStdString(alarm.label);
-        QString status = alarm.enabled ? "ON" : "OFF";
 
-        QString itemText = QString("%1 - %2 [%3]").arg(timeStr, labelStr, status);
-        ui->listWidgetAlarms->addItem(itemText);
+        auto* widget = new AlarmItemWidget(timeStr, labelStr);
+        QListWidgetItem* item = new QListWidgetItem(ui->listWidgetAlarms);
+        item->setSizeHint(widget->sizeHint());
+
+        ui->listWidgetAlarms->addItem(item);
+        ui->listWidgetAlarms->setItemWidget(item, widget);
+
+        connect(widget, &AlarmItemWidget::deleteRequested, this, [=]() {
+            alarmManager.removeAlarm(i);
+            updateAlarmList();
+        });
     }
 }
 
