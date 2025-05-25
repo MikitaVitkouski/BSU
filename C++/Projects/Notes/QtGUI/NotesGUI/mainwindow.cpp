@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include "NoteItemWidget.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -39,12 +40,33 @@ void MainWindow::onbtnAddNoteMenuClicked() {
 }
 
 void MainWindow::updateListWidgetNotes() {
+    ui->listWidgetNotes->clear();
     const std::vector<Note>& notes = manager.getNotes();
 
-    for(const Note& note : notes) {
-        QString display = QString::fromStdString(note.getTitle()) + "\n"
-                          + QString::fromStdString(note.getNote()).left(100);
-        ui->listWidgetNotes->addItem(display);
+    for(int i = 0;i<notes.size();++i) {
+        const auto& note = notes[i];
+        QListWidgetItem* item = new QListWidgetItem(ui->listWidgetNotes);
+        NoteItemWidget* widget = new NoteItemWidget(
+            QString::fromStdString(note.getTitle()),
+            QString::fromStdString(note.getNote())
+            );
+
+        connect(widget, &NoteItemWidget::deleteRequested, this, [this,index = i]() {
+            manager.removeNote(index);
+            updateListWidgetNotes();
+        });
+
+        connect(widget, &NoteItemWidget::editRequested, this, [this, i]() {
+            const auto& note = manager.getNotes()[i];
+            ui->lineEditTitle->setText(QString::fromStdString(note.getTitle()));
+            ui->textEditNote->setText(QString::fromStdString(note.getNote()));
+            editingNoteIndex = i;
+            ui->notesStackedWidget->setCurrentIndex(1);
+        });
+
+        item->setSizeHint(widget->sizeHint());
+        ui->listWidgetNotes->addItem(item);
+        ui->listWidgetNotes->setItemWidget(item, widget);
     }
 }
 
@@ -58,7 +80,13 @@ void MainWindow::onbtnAddNoteClicked() {
     std::string note = qn.toStdString();
 
     Note newnote(title,note);
-    manager.addNote(newnote);
+
+    if (editingNoteIndex == -1) {
+        manager.addNote(newnote);
+    } else {
+        manager.updateNote(editingNoteIndex, newnote);
+        editingNoteIndex = -1;
+    }
 
     updateListWidgetNotes();
 

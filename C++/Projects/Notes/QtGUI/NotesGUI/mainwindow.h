@@ -29,6 +29,7 @@ public:
 private:
     Ui::MainWindow *ui;
     NoteManager manager;
+    int editingNoteIndex = -1;
 private slots:
     void onbtnRepresentClicked();
     void onbtnAddNoteMenuClicked();
