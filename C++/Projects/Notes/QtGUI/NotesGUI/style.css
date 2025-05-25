@@ -11,14 +11,20 @@
         text-align: center;
     }
 
-    QTimeEdit {
-        color: #66ccff;
-        background-color: #e6f7ff;
-        font-size: 45px;
+    QPushButton {
+        color: #00aaff;
         font-weight: bold;
-        border: 1px solid #b3e5fc;
-        border-radius: 12px;
-        padding: 10px;
+        font-size: 24px;
+        padding: 6px 12px;
+        border-radius: 16px;
+        background-color: rgba(0, 170, 255, 0.05);
+        border: 1px solid #cceeff;
+	qproperty-iconSize: 64px 64px;
+    }
+
+    QPushButton:hover {
+        background-color: rgba(0, 122, 204, 0.8);
+        color: white;
     }
 
     QListWidget::item {
