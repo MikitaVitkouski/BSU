@@ -24,3 +24,9 @@ std::vector<Note> NoteManager::getNotes() const {
 int NoteManager::getSize() const {
 	return notes.size();
 }
+
+void NoteManager::updateNote(int index, const Note& updatedNote) {
+    if (index >=0 && index < static_cast<int>(notes.size())) {
+        notes[index] = updatedNote;
+    }
+}
