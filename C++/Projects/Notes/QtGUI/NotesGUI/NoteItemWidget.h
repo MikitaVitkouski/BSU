@@ -19,6 +19,7 @@ signals:
 private:
     QLabel* titleLabel;
     QLabel* textLabel;
+    QLabel* lengthLabel;
     QPushButton* editButton;
     QPushButton* deleteButton;
 };
