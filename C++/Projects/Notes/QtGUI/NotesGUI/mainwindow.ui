@@ -39,9 +39,9 @@
      <widget class="QPushButton" name="btnAddNote">
       <property name="geometry">
        <rect>
-        <x>690</x>
+        <x>760</x>
         <y>70</y>
-        <width>101</width>
+        <width>151</width>
         <height>41</height>
        </rect>
       </property>
@@ -52,18 +52,18 @@
      <widget class="QLineEdit" name="lineEditTitle">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>80</y>
-        <width>181</width>
-        <height>31</height>
+        <x>470</x>
+        <y>70</y>
+        <width>221</width>
+        <height>41</height>
        </rect>
       </property>
      </widget>
      <widget class="QLabel" name="labelTitle">
       <property name="geometry">
        <rect>
-        <x>370</x>
-        <y>90</y>
+        <x>410</x>
+        <y>80</y>
         <width>49</width>
         <height>16</height>
        </rect>
@@ -88,10 +88,10 @@
      <widget class="QTextEdit" name="textEditNote">
       <property name="geometry">
        <rect>
-        <x>180</x>
+        <x>160</x>
         <y>130</y>
-        <width>681</width>
-        <height>331</height>
+        <width>971</width>
+        <height>431</height>
        </rect>
       </property>
      </widget>

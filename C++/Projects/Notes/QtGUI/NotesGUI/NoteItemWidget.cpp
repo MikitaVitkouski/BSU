@@ -9,6 +9,7 @@ NoteItemWidget::NoteItemWidget(const QString& title, const QString& text, QWidge
     titleLabel->setMinimumHeight(30);
     titleLabel->setMinimumWidth(200);
     titleLabel->setObjectName("labelTitle");
+    titleLabel->setAlignment(Qt::AlignCenter);
     textLabel->setMinimumHeight(200);
     textLabel->setMinimumWidth(400);
     textLabel->setObjectName("labelText");
@@ -22,8 +23,8 @@ NoteItemWidget::NoteItemWidget(const QString& title, const QString& text, QWidge
     deleteButton->setMinimumSize(80,30);
 
     QVBoxLayout* textLayout = new QVBoxLayout;
-    textLayout->addWidget(titleLabel);
-    textLayout->addWidget(lengthLabel);
+    textLayout->addWidget(titleLabel, 0, Qt::AlignHCenter);
+    textLayout->addWidget(lengthLabel, 0, Qt::AlignHCenter);
     textLayout->addWidget(textLabel);
 
     QHBoxLayout* mainLayout = new QHBoxLayout(this);
