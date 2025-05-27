@@ -7,13 +7,35 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QFile file("E:/Repositories/BSU/C++/Projects/Notes/QtGUI/NotesGUI/style.css");
-    if (file.open(QFile::ReadOnly | QFile::Text)) {
-        QTextStream stream(&file);
+    QFile fileStyle("E:/Repositories/BSU/C++/Projects/Notes/QtGUI/NotesGUI/style.css");
+    if (fileStyle.open(QFile::ReadOnly | QFile::Text)) {
+        QTextStream stream(&fileStyle);
         QString styleSheet = stream.readAll();
         this->setStyleSheet(styleSheet);
-        file.close();
+        fileStyle.close();
     }
+
+    // Loading notes from file
+    QFile file("E:/Repositories/BSU/C++/Projects/Notes/QtGUI/NotesGUI/notes.json");
+    if (file.open(QIODevice::ReadOnly)) {
+        QByteArray data = file.readAll();
+        file.close();
+
+        QJsonDocument doc = QJsonDocument::fromJson(data);
+        if (doc.isArray()) {
+            QJsonArray jsonArray = doc.array();
+            for (const auto& val : jsonArray) {
+                QJsonObject obj = val.toObject();
+                std::string title = obj["title"].toString().toStdString();
+                std::string note = obj["note"].toString().toStdString();
+
+                Note newNote(note, title);
+                manager.addNote(newNote);
+            }
+        }
+    }
+
+    updateListWidgetNotes();
 
     //Pages
     connect(ui->btnRepresent, &QPushButton::clicked, this, &MainWindow::onbtnRepresentClicked);
@@ -93,4 +115,23 @@ void MainWindow::onbtnAddNoteClicked() {
     ui->lineEditTitle->clear();
     ui->textEditNote->clear();
     ui->notesStackedWidget->setCurrentIndex(0); // back to representation page
+}
+
+void MainWindow::closeEvent(QCloseEvent *event) {
+    QFile file("E:/Repositories/BSU/C++/Projects/Notes/QtGUI/NotesGUI/notes.json");
+    if (file.open(QIODevice::WriteOnly)) {
+        QJsonArray jsonArray;
+        const auto& notes = manager.getNotes();
+        for (const auto& note : notes) {
+            QJsonObject obj;
+            obj["title"] = QString::fromStdString(note.getTitle());
+            obj["note"] = QString::fromStdString(note.getNote());
+            jsonArray.append(obj);
+        }
+        QJsonDocument doc(jsonArray);
+        file.write(doc.toJson());
+        file.close();
+    }
+
+    QMainWindow::closeEvent(event);
 }

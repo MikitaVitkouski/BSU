@@ -11,6 +11,10 @@
 #include "NoteManager.h"
 #include <QListWidget>
 #include <QListWidgetItem>
+#include <QCLoseEvent>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -35,5 +39,7 @@ private slots:
     void onbtnAddNoteMenuClicked();
     void onbtnAddNoteClicked();
     void updateListWidgetNotes();
+protected:
+    void closeEvent(QCloseEvent *event) override;
 };
 #endif // MAINWINDOW_H
