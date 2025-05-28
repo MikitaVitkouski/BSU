@@ -39,6 +39,7 @@ private slots:
     void onbtnAddNoteMenuClicked();
     void onbtnAddNoteClicked();
     void updateListWidgetNotes();
+    void onNoteItemDoubleClicked();
 protected:
     void closeEvent(QCloseEvent *event) override;
 };

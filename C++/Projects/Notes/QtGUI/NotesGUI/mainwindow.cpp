@@ -45,6 +45,9 @@ MainWindow::MainWindow(QWidget *parent)
 
     //pageAddNoteMenu
     connect(ui->btnAddNote, &QPushButton::clicked, this, &MainWindow::onbtnAddNoteClicked);
+
+    // doubleClickedOnNote
+    connect(ui->listWidgetNotes, &QListWidget::itemDoubleClicked, this, &MainWindow::onNoteItemDoubleClicked);
 }
 
 
@@ -140,4 +143,16 @@ void MainWindow::closeEvent(QCloseEvent *event) {
     }
 
     QMainWindow::closeEvent(event);
+}
+
+void MainWindow::onNoteItemDoubleClicked() {
+    int row = ui->listWidgetNotes->currentRow();
+    const auto& notes = manager.getNotes();
+    if(row >=0 && row < notes.size()) {
+        ui->lineEditTitle->setText(QString::fromStdString(notes[row].getTitle()));
+        ui->textEditNote->setText(QString::fromStdString(notes[row].getNote()));
+        editingNoteIndex = row;
+        ui->notesStackedWidget->setCurrentIndex(1);
+        ui->btnAddNote->setText("Save");
+    }
 }

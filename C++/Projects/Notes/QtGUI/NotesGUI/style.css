@@ -109,9 +109,14 @@
         color: #2c3e50;
     }
 
+    QListWidget::item:focus {
+	outline: none;
+    }
+
     QListWidget::item:selected {
         background-color: #cceeff;
         color: #004466;
+	border: none;
     }
 
     QScrollBar:vertical {
