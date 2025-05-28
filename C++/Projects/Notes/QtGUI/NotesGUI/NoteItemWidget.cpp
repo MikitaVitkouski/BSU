@@ -6,13 +6,13 @@ NoteItemWidget::NoteItemWidget(const QString& title, const QString& text, QWidge
     QString labelText = "Length of note: " + QString::number(text.length()) + " symbols";
     lengthLabel = new QLabel(labelText, this); // length of note
 
-    titleLabel->setMinimumHeight(30);
-    titleLabel->setMinimumWidth(200);
     titleLabel->setObjectName("labelTitle");
     titleLabel->setAlignment(Qt::AlignCenter);
+    titleLabel->setMinimumHeight(30);
+    titleLabel->setMinimumWidth(200);
+    textLabel->setObjectName("labelText");
     textLabel->setMinimumHeight(200);
     textLabel->setMinimumWidth(400);
-    textLabel->setObjectName("labelText");
     lengthLabel->setObjectName("labelLength");
     textLabel->setWordWrap(true); // text not in a single line
 

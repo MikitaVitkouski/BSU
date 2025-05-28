@@ -59,7 +59,7 @@
        </rect>
       </property>
      </widget>
-     <widget class="QLabel" name="labelTitle">
+     <widget class="QLabel" name="labelTitle1">
       <property name="geometry">
        <rect>
         <x>410</x>
