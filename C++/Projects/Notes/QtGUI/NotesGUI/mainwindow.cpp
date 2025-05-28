@@ -59,6 +59,8 @@ void MainWindow::onbtnRepresentClicked() {
 
 void MainWindow::onbtnAddNoteMenuClicked() {
     ui->notesStackedWidget->setCurrentIndex(1);
+    ui->btnAddNote->setText("Add");
+    editingNoteIndex = -1;
 }
 
 void MainWindow::updateListWidgetNotes() {
@@ -84,6 +86,8 @@ void MainWindow::updateListWidgetNotes() {
             ui->textEditNote->setText(QString::fromStdString(notes[i].getNote()));
             editingNoteIndex = i;
             ui->notesStackedWidget->setCurrentIndex(1);
+
+            ui->btnAddNote->setText("Save");
         });
 
         item->setSizeHint(widget->sizeHint());
@@ -108,6 +112,8 @@ void MainWindow::onbtnAddNoteClicked() {
     } else {
         manager.updateNote(editingNoteIndex, newnote);
         editingNoteIndex = -1;
+
+        ui->btnAddNote->setText("Add");
     }
 
     updateListWidgetNotes();
