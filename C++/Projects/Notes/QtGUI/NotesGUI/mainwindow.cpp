@@ -1,13 +1,17 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include "NoteItemWidget.h"
+#include <QCoreApplication>
+#include <QTextStream>
+#include <QDir>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QFile fileStyle("E:/Repositories/BSU/C++/Projects/Notes/QtGUI/NotesGUI/style.css");
+    QString directory = QCoreApplication::applicationDirPath();
+    QFile fileStyle(directory + QDir::separator() "style.css");
     if (fileStyle.open(QFile::ReadOnly | QFile::Text)) {
         QTextStream stream(&fileStyle);
         QString styleSheet = stream.readAll();
@@ -16,7 +20,7 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     // Loading notes from file
-    QFile file("E:/Repositories/BSU/C++/Projects/Notes/QtGUI/NotesGUI/notes.json");
+    QFile file(directory + QDir::separator() + "notes.json");
     if (file.open(QIODevice::ReadOnly)) {
         QByteArray data = file.readAll();
         file.close();
