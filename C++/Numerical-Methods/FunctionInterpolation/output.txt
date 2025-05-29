@@ -1,0 +1,71 @@
+x*: 0.216667
+x**: 0.7
+x***: 1.11667
+1. Grid and function values table:
+------------------------------
+       x_i              f(x_i)
+------------------------------
+      0.15            0.256129
+      0.25            0.327113
+      0.35            0.397166
+      0.45            0.465365
+      0.55            0.530827
+      0.65            0.592715
+      0.75            0.650248
+      0.85            0.702701
+      0.95            0.749414
+      1.05              0.7898
+      1.15            0.823345
+------------------------------
+
+Coefficients c_k of the approximating polynomial phi(x):
+c[0] = 0.150011
+c[1] = 0.699837
+c[2] = 0.0758359
+c[3] = -0.168647
+c[4] = 0.00847288
+c[5] = 0.00492207
+
+
+Errors in polynomial approximation:
+Error at x*: 3.87053e-07
+Error at x**: 2.21548e-07
+Error at x***: 3.56539e-07
+
+Errors in nodes x*, x**, x***:
+r(x*) = 3.870530e-07
+r(x**) = 2.215479e-07
+r(x***) = 3.565386e-07
+
+Root mean square deviation between f and phi: sigma = 2.088905e-07
+
+Values of the Lagrange interpolation polynomial:
+Pn(x*) = 0.303509
+Pn(x**) = 0.622073
+Pn(x***) = 0.812952
+
+Interpolation errors (residuals):
+r(x*) = -3.769207e-14
+r(x**) = 1.110223e-15
+r(x***) = 7.194245e-14
+Upper bound estimate of Lagrange interpolation error at x* = 4.673170e-14
+Upper bound estimate of Lagrange interpolation error at x** = 1.165054e-15
+Upper bound estimate of Lagrange interpolation error at x*** = 9.960352e-14
+
+Lagrange interpolation with Chebyshev nodes:
+Pn(x*) = 3.035089e-01
+Pn(x**) = 6.220728e-01
+Pn(x***) = 8.129521e-01
+Errors at points for Chebyshev interpolation:
+r(x*) = 7.827072e-15
+r(x**) = 7.771561e-15
+r(x***) = 5.218048e-15
+
+Cubic spline interpolation values:
+S(x*) = 3.030950e-01
+S(x**) = 6.203030e-01
+S(x***) = 8.121090e-01
+Cubic spline interpolation errors:
+r(x*) = 4.138827e-04
+r(x**) = 1.769863e-03
+r(x***) = 8.430694e-04
