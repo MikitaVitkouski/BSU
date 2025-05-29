@@ -21,12 +21,12 @@ class NoteManager {
 private:
 	std::vector<Note> notes;
 public:
-	NoteManager();
+	NoteManager() = default;
 	NoteManager(std::vector<Note> v);
 	~NoteManager() = default;
 	void addNote(const Note& note);
 	void removeNote(int index);
-    void updateNote(int index, const Note& updatedNote);
+        void updateNote(int index, const Note& updatedNote);
 	std::vector<Note> getNotes() const;
 	int getSize() const;
 };
