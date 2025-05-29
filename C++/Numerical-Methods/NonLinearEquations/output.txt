@@ -1,0 +1,15 @@
+
+Simple iteration method:
+Approximated root: -2.5128625013680495endl
+Number of iterations: 28
+Error: 4.4703108770249855e-07
+
+Newton method:
+Approximated root: -2.5128624172523395
+Number of iterations: 6
+Error: 0.0000000000000000e+00
+
+Chebyshev method:
+Approximated root: -2.5128624172523395
+Number of iteration: 4
+Error: 0.0000000000000000e+00
