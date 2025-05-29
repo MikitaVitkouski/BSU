@@ -10,8 +10,10 @@ MainWindow::MainWindow(QWidget *parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QString directory = QCoreApplication::applicationDirPath();
-    QFile fileStyle(directory + QDir::separator() "style.css");
+    QDir directory = QDir::currentPath();directory.cdUp(); directory.cdUp();
+    QString basePath = directory.absolutePath();
+
+    QFile fileStyle(basePath + QDir::separator() + "style.css");
     if (fileStyle.open(QFile::ReadOnly | QFile::Text)) {
         QTextStream stream(&fileStyle);
         QString styleSheet = stream.readAll();
@@ -20,7 +22,7 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     // Loading notes from file
-    QFile file(directory + QDir::separator() + "notes.json");
+    QFile file(basePath + QDir::separator() + "notes.json");
     if (file.open(QIODevice::ReadOnly)) {
         QByteArray data = file.readAll();
         file.close();
