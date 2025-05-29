@@ -5,4 +5,4 @@ add_subdirectory(Notes)
 
 add_subdirectory(NotesTests)
 
-# add_subdirectory(QtGUI)
+add_subdirectory(QtGUI)
