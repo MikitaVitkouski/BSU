@@ -69,15 +69,37 @@
     QPushButton#editButton {
 	font-size: 18px;
 	margin-left: 10px;
+	background-color: #f4a900;
+	color: white;
     }
 
     QPushButton#deleteButton {
 	font-size: 18px;
+	background-color: #ff0000;
+	color: white
+    }
+
+    QPushButton#btnAddNote {
+	font-size: 20px;
+        background-color: #28a745;
+        color: white;
     }
 
     QPushButton:hover {
         background-color: rgba(0, 122, 204, 0.8);
         color: white;
+    }
+
+    QPushButton#editButton:hover {
+        background-color: #e69500;
+    }
+
+    QPushButton#deleteButton:hover {
+        background-color: #690303;
+    }
+
+    QPushButton#btnAddNote:hover {
+        background-color: #218838;
     }
 
     QTextEdit {
