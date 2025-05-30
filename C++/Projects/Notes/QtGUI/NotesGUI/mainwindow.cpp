@@ -102,6 +102,10 @@ void MainWindow::updateListWidgetNotes() {
         item->setSizeHint(widget->sizeHint());
         ui->listWidgetNotes->addItem(item);
         ui->listWidgetNotes->setItemWidget(item, widget);
+        ui->listWidgetNotes->setViewMode(QListView::IconMode);
+        ui->listWidgetNotes->setFlow(QListView::LeftToRight);
+        ui->listWidgetNotes->setWrapping(true); // чтобы переходить на новую строку
+        ui->listWidgetNotes->setGridSize(QSize(450, 220)); // размер каждой "плитки"
     }
 }
 

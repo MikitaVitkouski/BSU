@@ -7,6 +7,7 @@
 #include <QPushButton>
 #include <QHBoxLayout>
 #include <QString>
+#include <QDate>
 
 class NoteItemWidget : public QWidget {
     Q_OBJECT

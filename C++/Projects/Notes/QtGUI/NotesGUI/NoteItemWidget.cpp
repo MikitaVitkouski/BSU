@@ -27,10 +27,17 @@ NoteItemWidget::NoteItemWidget(const QString& title, const QString& text, QWidge
     textLayout->addWidget(lengthLabel, 0, Qt::AlignHCenter);
     textLayout->addWidget(textLabel);
 
+    QHBoxLayout* buttonsLayout = new QHBoxLayout;
+    buttonsLayout->addWidget(editButton);
+    buttonsLayout->addWidget(deleteButton);
+    QVBoxLayout* buttonsWrapperLayout = new QVBoxLayout; // wrapped layout to set buttons on the top right
+    buttonsWrapperLayout->addLayout(buttonsLayout);
+    buttonsWrapperLayout->addStretch();
+
     QHBoxLayout* mainLayout = new QHBoxLayout(this);
     mainLayout->addLayout(textLayout);
-    mainLayout->addWidget(editButton);
-    mainLayout->addWidget(deleteButton);
+    mainLayout->addLayout(buttonsWrapperLayout);
+
     setLayout(mainLayout);
 
     connect(editButton, &QPushButton::clicked, this, &NoteItemWidget::editRequested);
