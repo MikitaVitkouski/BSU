@@ -19,6 +19,9 @@ NoteItemWidget::NoteItemWidget(const QString& title, const QString& text, QWidge
     editButton = new QPushButton("Edit");
     deleteButton = new QPushButton("Delete");
 
+    editButton->setObjectName("editButton");
+    deleteButton->setObjectName("deleteButton");
+
     editButton->setMinimumSize(80, 30);
     deleteButton->setMinimumSize(80,30);
 

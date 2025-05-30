@@ -66,6 +66,15 @@
 	qproperty-iconSize: 64px 64px;
     }
 
+    QPushButton#editButton {
+	font-size: 18px;
+	margin-left: 10px;
+    }
+
+    QPushButton#deleteButton {
+	font-size: 18px;
+    }
+
     QPushButton:hover {
         background-color: rgba(0, 122, 204, 0.8);
         color: white;
