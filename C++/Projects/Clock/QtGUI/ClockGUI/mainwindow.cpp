@@ -1,5 +1,9 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
+#include <QDir>
+#include <QJsonDocument>
+#include <QJsonArray>
+#include <QJsonObject>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -7,12 +11,40 @@ MainWindow::MainWindow(QWidget *parent)
     , timer(new QTimer(this))
 {
     ui->setupUi(this);
-    QFile file("E:/Repositories/BSU/C++/Projects/Clock/QtGUI/ClockGUI/style.css");
-    if (file.open(QFile::ReadOnly | QFile::Text)) {
-        QTextStream stream(&file);
+    QDir directory = QDir::currentPath();directory.cdUp(); directory.cdUp();
+    QString basePath = directory.absolutePath();
+
+    QFile fileStyle(basePath + QDir::separator() + "style.css");
+    if (fileStyle.open(QFile::ReadOnly | QFile::Text)) {
+        QTextStream stream(&fileStyle);
         QString styleSheet = stream.readAll();
         this->setStyleSheet(styleSheet);
+        fileStyle.close();
+    }
+
+    // Loading notes from file
+    QFile file(basePath + QDir::separator() + "alarms.json");
+    if (file.open(QIODevice::ReadOnly)) {
+        QByteArray data = file.readAll();
         file.close();
+
+        QJsonDocument doc = QJsonDocument::fromJson(data);
+        if (doc.isArray()) {
+            QJsonArray jsonArray = doc.array();
+            for (const auto& val : jsonArray) {
+                QJsonObject obj = val.toObject();
+                qint64 timestamp = obj["time"].toVariant().toLongLong();
+                std::string label = obj["text"].toString().toStdString();
+                std::string status = obj["status"].toString().toStdString();
+
+                Alarm newAlarm;
+                newAlarm.time = std::chrono::system_clock::from_time_t(static_cast<std::time_t>(timestamp));
+                newAlarm.label = label;
+                newAlarm.enabled = (status == "enabled");
+
+                alarmManager.addAlarm(newAlarm);
+            }
+        }
     }
     ui->comboBoxTimezone->setMaxVisibleItems(15);
     // Pages
@@ -433,4 +465,25 @@ void MainWindow::on_btnRemoveSelectedAlarm_clicked() {
     } else {
         QMessageBox::warning(this, "Warning", "No alarm selected.");
     }
+}
+
+void MainWindow::closeEvent(QCloseEvent *event) {
+    QFile file("E:/Repositories/BSU/C++/Projects/Clock/QtGUI/ClockGUI/alarms.json");
+    if (file.open(QIODevice::WriteOnly)) {
+        QJsonArray jsonArray;
+        const auto& alarms = alarmManager.getAllAlarms();
+        for (const auto& alarm : alarms) {
+            QJsonObject obj;
+
+            std::time_t timeT = std::chrono::system_clock::to_time_t(alarm.time);
+            obj["time"] = static_cast<qint64>(timeT);
+            obj["text"] = QString::fromStdString(alarm.getLabel());
+            obj["status"] = QString::fromStdString(alarm.getStatus());
+            jsonArray.append(obj);
+        }
+        QJsonDocument doc(jsonArray);
+        file.write(doc.toJson());
+        file.close();
+    }
+    QMainWindow::closeEvent(event);
 }

@@ -68,6 +68,8 @@ private:
     TimerManager timerManager;
     AlarmManager alarmManager;
     QVector<QListWidgetItem*> alarmItems;
+protected:
+    void closeEvent(QCloseEvent *event) override;
 
 };
 #endif // MAINWINDOW_H

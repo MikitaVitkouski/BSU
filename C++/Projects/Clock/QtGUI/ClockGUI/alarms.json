@@ -1,0 +1,22 @@
+[
+    {
+        "status": "enabled",
+        "text": "wake up",
+        "time": 1748668500
+    },
+    {
+        "status": "enabled",
+        "text": "breakfast",
+        "time": 1748672100
+    },
+    {
+        "status": "disabled",
+        "text": "Lunch",
+        "time": 1748690100
+    },
+    {
+        "status": "enabled",
+        "text": "Dinner",
+        "time": 1748700900
+    }
+]

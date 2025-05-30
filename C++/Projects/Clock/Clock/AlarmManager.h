@@ -10,6 +10,23 @@ public:
 	std::chrono::system_clock::time_point time;
 	std::string label; // "School", "Breakfast", "Meeting", etc.
 	bool enabled;
+
+    std::string getLabel() const {
+        return label;
+    }
+
+    std::string getStatus() const {
+        return enabled ? "enabled" : "disabled";
+    }
+
+    std::string getTime() const {
+        std::time_t tt = std::chrono::system_clock::to_time_t(time);
+        std::tm tm = *std::localtime(&tt);
+
+        std::ostringstream oss;
+        oss << std::put_time(&tm, "%Y-%m-%dT%H:%M:%S");
+        return oss.str();
+    }
 };
 
 class AlarmManager {
