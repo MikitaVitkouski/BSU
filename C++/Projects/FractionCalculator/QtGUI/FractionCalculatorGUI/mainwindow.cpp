@@ -2,18 +2,22 @@
 #include "ui_mainwindow.h"
 #include <QMessageBox>
 #include <QFile>
+#include <QDir>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
 {
     ui->setupUi(this);
-    QFile file("E:/Repositories/BSU/C++/Projects/FractionCalculator/QtGUI/FractionCalculatorGUI/style.css");
-    if (file.open(QFile::ReadOnly | QFile::Text)) {
-        QTextStream stream(&file);
+    QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();
+    QString basePath = directory.absolutePath();
+
+    QFile fileStyle(basePath + QDir::separator() + "style.css");
+    if (fileStyle.open(QFile::ReadOnly | QFile::Text)) {
+        QTextStream stream(&fileStyle);
         QString styleSheet = stream.readAll();
         this->setStyleSheet(styleSheet);
-        file.close();
+        fileStyle.close();
     }
 
     //connect (sender, signal, receiver, slot)
