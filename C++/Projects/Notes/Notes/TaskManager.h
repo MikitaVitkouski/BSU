@@ -36,7 +36,7 @@ public:
 	void removeTask(int index);
 	void updateTask(int index, const Task& updatedTask);
 	void toggleTaskStatus(int index);
-	std::vector<Task>& getTasks() const;
+	const std::vector<Task>& getTasks() const;
 	int getSize() const;
 	bool isTaskCompleted(int index) const;
 };

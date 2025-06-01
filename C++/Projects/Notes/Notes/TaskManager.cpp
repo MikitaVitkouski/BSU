@@ -16,7 +16,7 @@ void TaskManager::updateTask(int index, const Task& updatedTask) {
 	}
 }
 
-std::vector<Task>& TaskManager::getTasks() const {
+const std::vector<Task>& TaskManager::getTasks() const {
 	return tasks;
 }
 
