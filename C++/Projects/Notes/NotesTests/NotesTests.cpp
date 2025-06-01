@@ -53,3 +53,19 @@ TEST(NotesTest, getNotes) {
 		EXPECT_EQ(expected[i].getNote(), actual[i].getNote());
 	}
 }
+
+TEST(TaskTest, addTask) {
+
+}
+
+TEST(TaskTest, removeTask) {
+
+}
+
+TEST(TaskTest, updateTask) {
+
+}
+
+TEST(TaskTest, toggleTaskStatus) {
+
+}

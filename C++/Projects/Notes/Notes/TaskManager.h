@@ -7,15 +7,22 @@
 class Task {
 private:
 	std::string title;
-	std::string task;
-	bool isCompleted;
+	std::vector<std::pair<std::string, bool>> subtasks;
 public:
-	Task(std::string tit, std::string tas, bool isDone) : title(tit), task(tas), isCompleted(isDone) { }
+	Task(std::string tit, std::vector<std::pair<std::string,bool>> tas) : title(tit), subtasks(tas) { }
 	~Task() = default;
 
 	std::string getTitle() const { return title; }
-	std::string getTask() const { return task; }
-	bool getStatus() const { return isCompleted; }
+	std::vector<std::pair<std::string, bool>> getSubtasks() const { return subtasks; }
+	void toggleStatusSubtasks() { 
+		for (auto& subtask : subtasks) {
+			subtask.second = !subtask.second;
+		}
+	}
+	bool isCompleted() const {
+		return std::all_of(subtasks.begin(), subtasks.end(),
+			[](const auto& sub) { return sub.second; });
+	}
 };
 
 class TaskManager {
@@ -28,6 +35,8 @@ public:
 	void addTask(const Task& task);
 	void removeTask(int index);
 	void updateTask(int index, const Task& updatedTask);
-	std::vector<Task> getTasks() const;
+	void toggleTaskStatus(int index);
+	std::vector<Task>& getTasks() const;
 	int getSize() const;
+	bool isTaskCompleted(int index) const;
 };
