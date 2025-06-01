@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "NoteManager.h"
+#include "TaskManager.h"
 
 TEST(NotesTest, addNoteAndgetSize) {
 	Note note1("Having breakfast from 11:00 AM to 11:15 AM", "Breakfast");
@@ -55,17 +56,53 @@ TEST(NotesTest, getNotes) {
 }
 
 TEST(TaskTest, addTask) {
+	Task t1("Cake", { {"Milk", false}, {"Eggs",false} });
+	Task t2("Gym", { {"Push-ups", false}, {"3 km", false} });
 
+	TaskManager manager;
+	manager.addTask(t1); manager.addTask(t2);
+
+	EXPECT_EQ(2, manager.getSize());
 }
 
 TEST(TaskTest, removeTask) {
+	Task t1("Cake", { {"Milk", false}, {"Eggs",false} });
+	Task t2("Gym", { {"Push-ups", false}, {"3 km", false} });
 
+	TaskManager manager;
+	manager.addTask(t1); manager.addTask(t2);
+
+	EXPECT_EQ(2, manager.getSize());
+
+	manager.removeTask(0);
+
+	EXPECT_EQ(1, manager.getSize());
 }
 
 TEST(TaskTest, updateTask) {
+	Task t1("Cake", { {"Milk", false}, {"Eggs",false} });
 
+	TaskManager manager;
+	manager.addTask(t1);
+
+	Task t2("Cake", { {"Eggs", false}, {"Milk", false} });
+	manager.updateTask(0, t2);
+
+	std::vector<Task> expected{t2};
+	std::vector<Task> actual = manager.getTasks();
+
+	ASSERT_EQ(expected.size(), actual.size());
+
+	for (size_t i = 0; i < expected.size(); ++i) {
+		EXPECT_EQ(expected[i].getTitle(), actual[i].getTitle());
+		EXPECT_EQ(expected[i].getSubtasks(), actual[i].getSubtasks());
+	}
 }
 
 TEST(TaskTest, toggleTaskStatus) {
+	
+}
+
+TEST(TaskTest, getTasks) {
 
 }
