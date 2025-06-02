@@ -10,6 +10,7 @@
 #include <QVBoxLayout>
 #include <QString>
 #include <vector>
+#include <QFrame>
 
 class TaskItemWidget : public QWidget {
     Q_OBJECT
@@ -27,6 +28,9 @@ private:
     std::vector<QCheckBox*> checkboxes;
     QPushButton* editButton;
     QPushButton* deleteButton;
+    QFrame* tileFrame;
+
+    void updateCompletionStyle();
 };
 
 #endif // TASKITEMWIDGET_H

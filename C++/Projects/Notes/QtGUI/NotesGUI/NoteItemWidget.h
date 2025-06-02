@@ -8,6 +8,7 @@
 #include <QHBoxLayout>
 #include <QString>
 #include <QDate>
+#include <QFrame>
 
 class NoteItemWidget : public QWidget {
     Q_OBJECT

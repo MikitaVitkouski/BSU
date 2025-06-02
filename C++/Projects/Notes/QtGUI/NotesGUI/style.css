@@ -10,7 +10,7 @@
         color: #2c3e50;
     }
 
-    QLabel#labelTitle {
+    QLabel#labelTitle, QLabel#labelTaskTitle {
 	font-weight: bold;
 	font-size: 18px;
 	color: #2c3e50;
@@ -66,20 +66,20 @@
 	qproperty-iconSize: 64px 64px;
     }
 
-    QPushButton#editButton {
+    QPushButton#editButton, QPushButton#editTaskButton {
 	font-size: 18px;
 	margin-left: 10px;
 	background-color: #f4a900;
 	color: white;
     }
 
-    QPushButton#deleteButton {
+    QPushButton#deleteButton, QPushButton#deleteTaskButton {
 	font-size: 18px;
 	background-color: #ff0000;
 	color: white
     }
 
-    QPushButton#btnAddNote {
+    QPushButton#btnAddNote, QPushButton#btnAddTask {
 	font-size: 20px;
         background-color: #28a745;
         color: white;
@@ -90,15 +90,15 @@
         color: white;
     }
 
-    QPushButton#editButton:hover {
+    QPushButton#editButton:hover, QPushButton#editTaskButton:hover {
         background-color: #e69500;
     }
 
-    QPushButton#deleteButton:hover {
+    QPushButton#deleteButton:hover, QPushButton#deleteTaskButton:hover {
         background-color: #690303;
     }
 
-    QPushButton#btnAddNote:hover {
+    QPushButton#btnAddNote:hover, QPushButton#btnAddTask {
         background-color: #218838;
     }
 
@@ -204,3 +204,41 @@
     QLineEdit:focus {
         border: 1px solid #00aaff;
     }
+
+    QCheckBox#subtaskCheckbox {
+        spacing: 12px;
+        font-size: 16px;
+        font-weight: normal;
+        padding: 6px 10px;
+        border-radius: 8px;
+        background: qlineargradient(
+            x1: 0, y1: 0, x2: 1, y2: 0,
+            stop: 0 #f7fbff,
+            stop: 1 #e2efff
+        );
+        border: 1px solid #bcd4f7;
+        color: #2c3e50;
+    }
+
+    QCheckBox#subtaskCheckbox::indicator {
+	width: 20px;
+	height: 20px;
+	border-radius: 6px;
+	background-color: #ffffff;
+	border: 2px solid #99dfff;
+    }
+
+    QCheckBox#subtaskCheckbox::indicator:checked {
+	image: url(:/icons/checkmark.svg); /* или убери строку, если не используешь иконки */
+	background-color: #00aaff;
+	border: 2px solid #00aaff;
+    }
+
+    QCheckBox#subtaskCheckbox:hover {
+	background: #d9ecff;
+	border: 1px solid #7fc8ff;
+    }
+
+    QCheckBox#subtaskCheckbox::indicator:hover {
+	border: 2px solid #00aaff;
+    } 
