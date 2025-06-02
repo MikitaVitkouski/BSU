@@ -46,6 +46,7 @@ MainWindow::MainWindow(QWidget *parent)
     //Pages
     connect(ui->btnRepresent, &QPushButton::clicked, this, &MainWindow::onbtnRepresentClicked);
     connect(ui->btnAddNoteMenu, &QPushButton::clicked, this, &MainWindow::onbtnAddNoteMenuClicked);
+    connect(ui->btnAddTaskMenu, &QPushButton::clicked, this, &MainWindow::onbtnAddTaskMenuClicked);
 
     ui->notesStackedWidget->setCurrentIndex(0); // by default represent main page with notes
 
@@ -70,6 +71,12 @@ void MainWindow::onbtnAddNoteMenuClicked() {
     ui->notesStackedWidget->setCurrentIndex(1);
     ui->btnAddNote->setText("Add");
     editingNoteIndex = -1;
+}
+
+void MainWindow::onbtnAddTaskMenuClicked() {
+    ui->notesStackedWidget->setCurrentIndex(2);
+    ui->btnAddTaskMenu->setText("Add");
+    editingTaskIndex = -1;
 }
 
 void MainWindow::updateListWidgetNotes() {
@@ -137,7 +144,10 @@ void MainWindow::onbtnAddNoteClicked() {
 }
 
 void MainWindow::closeEvent(QCloseEvent *event) {
-    QFile file("E:/Repositories/BSU/C++/Projects/Notes/QtGUI/NotesGUI/notes.json");
+    QDir directory = QDir::currentPath();directory.cdUp(); directory.cdUp();
+    QString basePath = directory.absolutePath();
+
+    QFile file(basePath + QDir::separator() + "notes.json");
     if (file.open(QIODevice::WriteOnly)) {
         QJsonArray jsonArray;
         const auto& notes = manager.getNotes();

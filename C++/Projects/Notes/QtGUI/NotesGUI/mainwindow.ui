@@ -23,6 +23,9 @@
       <height>651</height>
      </rect>
     </property>
+    <property name="currentIndex">
+     <number>2</number>
+    </property>
     <widget class="QWidget" name="pageRepresent">
      <widget class="QListWidget" name="listWidgetNotes">
       <property name="geometry">
@@ -102,31 +105,45 @@
       </property>
      </widget>
     </widget>
+    <widget class="QWidget" name="pageAddTask"/>
    </widget>
    <widget class="QPushButton" name="btnRepresent">
     <property name="geometry">
      <rect>
-      <x>350</x>
+      <x>230</x>
       <y>30</y>
       <width>251</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>Represent</string>
+     <string>Notes</string>
     </property>
    </widget>
    <widget class="QPushButton" name="btnAddNoteMenu">
     <property name="geometry">
      <rect>
-      <x>700</x>
+      <x>510</x>
       <y>30</y>
       <width>231</width>
       <height>51</height>
      </rect>
     </property>
     <property name="text">
-     <string>+</string>
+     <string>Add note</string>
+    </property>
+   </widget>
+   <widget class="QPushButton" name="btnAddTaskMenu">
+    <property name="geometry">
+     <rect>
+      <x>790</x>
+      <y>30</y>
+      <width>231</width>
+      <height>51</height>
+     </rect>
+    </property>
+    <property name="text">
+     <string>Add task</string>
     </property>
    </widget>
   </widget>

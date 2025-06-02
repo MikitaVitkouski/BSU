@@ -34,12 +34,14 @@ private:
     Ui::MainWindow *ui;
     NoteManager manager;
     int editingNoteIndex = -1;
+    int editingTaskIndex = -1;
 private slots:
     void onbtnRepresentClicked();
     void onbtnAddNoteMenuClicked();
     void onbtnAddNoteClicked();
     void updateListWidgetNotes();
     void onNoteItemDoubleClicked();
+    void onbtnAddTaskClicked();
 protected:
     void closeEvent(QCloseEvent *event) override;
 };

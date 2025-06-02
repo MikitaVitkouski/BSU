@@ -396,6 +396,7 @@ void MainWindow::updateAlarmList() {
 
     if (ui->listWidgetAlarms->count() != alarms.size()) {
         ui->listWidgetAlarms->clear();
+        disconnect(ui->listWidgetAlarms, &QListWidget::itemChanged, this, &MainWindow::onAlarmItemChanged);
         alarmItems.clear();
 
         for (int i = 0; i < alarms.size(); ++i) {
