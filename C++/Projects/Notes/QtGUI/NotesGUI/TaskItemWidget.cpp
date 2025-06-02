@@ -6,12 +6,19 @@ TaskItemWidget::TaskItemWidget(const QString& title, const std::vector<std::pair
     titleLabel = new QLabel("<b>" + title + "</b>");
     titleLabel->setAlignment(Qt::AlignCenter);
 
+    titleLabel->setMinimumHeight(30);
+    titleLabel->setMinimumWidth(200);
+
     QVBoxLayout* mainLayout = new QVBoxLayout;
     mainLayout->addWidget(titleLabel);
 
     for (size_t i = 0; i < subtasks.size(); ++i) {
         QCheckBox* checkbox = new QCheckBox(subtasks[i].first);
         checkbox->setChecked(subtasks[i].second);
+
+        checkbox->setMinimumHeight(25);
+        checkbox->setMinimumWidth(400);
+
         checkboxes.push_back(checkbox);
         mainLayout->addWidget(checkbox);
 
@@ -26,6 +33,9 @@ TaskItemWidget::TaskItemWidget(const QString& title, const std::vector<std::pair
     QHBoxLayout* buttonLayout = new QHBoxLayout;
     buttonLayout->addWidget(editButton);
     buttonLayout->addWidget(deleteButton);
+
+    editButton->setMinimumSize(80, 30);
+    deleteButton->setMinimumSize(80, 30);
 
     mainLayout->addLayout(buttonLayout);
     setLayout(mainLayout);
