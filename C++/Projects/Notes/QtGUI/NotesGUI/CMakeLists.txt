@@ -30,6 +30,8 @@ qt_add_executable(ClockGUI
     ${UIS}
     NoteItemWidget.h
     NoteItemWidget.cpp
+    TaskItemWidget.h
+    TaskItemWidget.cpp
 )
 
 target_include_directories(ClockGUI

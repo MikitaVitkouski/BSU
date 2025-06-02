@@ -57,7 +57,6 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->listWidgetNotes, &QListWidget::itemDoubleClicked, this, &MainWindow::onNoteItemDoubleClicked);
 }
 
-
 MainWindow::~MainWindow()
 {
     delete ui;
@@ -175,4 +174,8 @@ void MainWindow::onNoteItemDoubleClicked() {
         ui->notesStackedWidget->setCurrentIndex(1);
         ui->btnAddNote->setText("Save");
     }
+}
+
+void MainWindow::onbtnAddTaskClicked() {
+    QString title = ui->lineEditTaskTitle->text();
 }
