@@ -9,6 +9,7 @@
 #include <QLineEdit>
 #include <QPushButton>
 #include "NoteManager.h"
+#include "TaskManager.h"
 #include <QListWidget>
 #include <QListWidgetItem>
 #include <QCLoseEvent>
@@ -33,6 +34,7 @@ public:
 private:
     Ui::MainWindow *ui;
     NoteManager manager;
+    TaskManager taskManager;
     int editingNoteIndex = -1;
     int editingTaskIndex = -1;
 private slots:

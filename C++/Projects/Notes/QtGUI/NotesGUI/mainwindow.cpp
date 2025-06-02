@@ -4,6 +4,7 @@
 #include <QCoreApplication>
 #include <QTextStream>
 #include <QDir>
+#include "TaskItemWidget.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -178,4 +179,72 @@ void MainWindow::onNoteItemDoubleClicked() {
 
 void MainWindow::onbtnAddTaskClicked() {
     QString title = ui->lineEditTaskTitle->text();
+    QString subtasksText = ui->textEditSubtasks->toPlainText();
+
+    if(title.isEmpty() || subtasksText.isEmpty()) return;
+
+    QStringList subtasksLines = subtasksText.split("\n", Qt::SkipEmptyParts);
+    std::vector<std::pair<std::string, bool>> subtasks {};
+    for (const QString& line : subtasksLines) {
+        subtasks.emplace_back(line.toStdString(), false);
+    }
+
+    Task newTask(title.toStdString(), subtasks);
+
+    if (editingTaskIndex = -1) {
+        taskManager.addTask(newTask);
+    } else {
+        taskManager.updateTask(editingTaskIndex, newTask);
+        editingTaskIndex = -1;
+        ui->btnAddTaskMenu->setText("Add");
+    }
+
+    // updateListWidgetTasks();
+
+    ui->lineEditTaskTitle->clear();
+    ui->textEditSubtasks->clear();
+    ui->notesStackedWidget->setCurrentIndex(3);
+}
+
+void MainWindow::updateListWidgetTasks() {
+    ui->listWidgetTasks->clear();
+
+    const auto& tasks = taskManager.getTasks();
+
+    for(int i = 0;i<tasks.size();++i) {
+        const Task& task = tasks[i];
+        std::vector<std::pair<QString, bool>> qSubtasks;
+        for(const auto& st : task.getSubtasks()) {
+            qSubtasks.emplace_back(QString::fromStdString(st.first), st.second);
+        }
+
+        TaskItemWidget* widget = new TaskItemWidget(
+            QString::fromStdString(task.getTitle()),
+            qSubtasks
+            );
+
+        QListWidgetItem* item = new QListWidgetItem(ui->listWidgetTasks);
+        item->setSizeHint(widget->sizeHint());
+        ui->listWidgetTasks->addItem(item);
+        ui->listWidgetTasks->setItemWidget(item, widget);
+
+        connect(widget, &TaskItemWidget::deleteRequested, this, [this, i]() {
+            taskManager.removeTask(i);
+            updateListWidgetTasks();
+        });
+
+        connect(widget, &TaskItemWidget::editRequested, this, [this, i]() {
+            const Task& t = taskManager.getTasks()[i];
+            ui->lineEditTaskTitle->setText(QString::fromStdString(t.getTitle()));
+            QStringList subLines;
+            for (const auto& sub : t.getSubtasks()) {
+                subLines << QString::fromStdString(sub.first);
+            }
+            ui->textEditSubtasks->setText(subLines.join('\n'));
+
+            editingTaskIndex = i;
+            ui->notesStackedWidget->setCurrentIndex(2);
+            ui->btnAddTaskMenu->setText("Save");
+        });
+    }
 }
