@@ -43,19 +43,23 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     updateListWidgetNotes();
+    updateListWidgetTasks();
 
     //Pages
     connect(ui->btnRepresent, &QPushButton::clicked, this, &MainWindow::onbtnRepresentClicked);
     connect(ui->btnAddNoteMenu, &QPushButton::clicked, this, &MainWindow::onbtnAddNoteMenuClicked);
     connect(ui->btnAddTaskMenu, &QPushButton::clicked, this, &MainWindow::onbtnAddTaskMenuClicked);
+    connect(ui->btnRepresentTasks, &QPushButton::clicked, this, &MainWindow::onbtnRepresentTasksClicked);
 
     ui->notesStackedWidget->setCurrentIndex(0); // by default represent main page with notes
 
     //pageAddNoteMenu
     connect(ui->btnAddNote, &QPushButton::clicked, this, &MainWindow::onbtnAddNoteClicked);
+    connect(ui->btnAddTask, &QPushButton::clicked, this, &MainWindow::onbtnAddTaskClicked);
 
     // doubleClickedOnNote
     connect(ui->listWidgetNotes, &QListWidget::itemDoubleClicked, this, &MainWindow::onNoteItemDoubleClicked);
+    connect(ui->listWidgetTasks, &QListWidget::itemDoubleClicked, this, &MainWindow::onTaskItemDoubleClicked);
 }
 
 MainWindow::~MainWindow()
@@ -195,12 +199,12 @@ void MainWindow::onbtnAddTaskClicked() {
 
     Task newTask(title.toStdString(), subtasks);
 
-    if (editingTaskIndex = -1) {
+    if (editingTaskIndex == -1) {
         taskManager.addTask(newTask);
     } else {
         taskManager.updateTask(editingTaskIndex, newTask);
         editingTaskIndex = -1;
-        ui->btnAddTaskMenu->setText("Add");
+        ui->btnAddTask->setText("Add");
     }
 
     updateListWidgetTasks();
@@ -248,7 +252,7 @@ void MainWindow::updateListWidgetTasks() {
 
             editingTaskIndex = i;
             ui->notesStackedWidget->setCurrentIndex(2);
-            ui->btnAddTaskMenu->setText("Save");
+            ui->btnAddTask->setText("Save");
         });
     }
 }
@@ -268,6 +272,6 @@ void MainWindow::onTaskItemDoubleClicked() {
 
         editingTaskIndex = row;
         ui->notesStackedWidget->setCurrentIndex(2);
-        ui->btnAddTaskMenu->setText("Save");
+        ui->btnAddTask->setText("Save");
     }
 }
