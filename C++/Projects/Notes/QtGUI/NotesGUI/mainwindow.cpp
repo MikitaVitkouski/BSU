@@ -67,6 +67,10 @@ void MainWindow::onbtnRepresentClicked() {
     ui->notesStackedWidget->setCurrentIndex(0);
 }
 
+void MainWindow::onbtnRepresentTasksClicked() {
+    ui->notesStackedWidget->setCurrentIndex(3);
+}
+
 void MainWindow::onbtnAddNoteMenuClicked() {
     ui->notesStackedWidget->setCurrentIndex(1);
     ui->btnAddNote->setText("Add");
@@ -199,7 +203,7 @@ void MainWindow::onbtnAddTaskClicked() {
         ui->btnAddTaskMenu->setText("Add");
     }
 
-    // updateListWidgetTasks();
+    updateListWidgetTasks();
 
     ui->lineEditTaskTitle->clear();
     ui->textEditSubtasks->clear();
@@ -246,5 +250,24 @@ void MainWindow::updateListWidgetTasks() {
             ui->notesStackedWidget->setCurrentIndex(2);
             ui->btnAddTaskMenu->setText("Save");
         });
+    }
+}
+
+void MainWindow::onTaskItemDoubleClicked() {
+    int row = ui->listWidgetTasks->currentRow();
+    const auto& tasks = taskManager.getTasks();
+    if (row >= 0 && row < tasks.size()) {
+        const Task& task = tasks[row];
+        ui->lineEditTaskTitle->setText(QString::fromStdString(task.getTitle()));
+
+        QStringList subLines;
+        for (const auto& sub : task.getSubtasks()) {
+            subLines << QString::fromStdString(sub.first);
+        }
+        ui->textEditSubtasks->setText(subLines.join('\n'));
+
+        editingTaskIndex = row;
+        ui->notesStackedWidget->setCurrentIndex(2);
+        ui->btnAddTaskMenu->setText("Save");
     }
 }
