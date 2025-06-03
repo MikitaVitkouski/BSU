@@ -25,8 +25,8 @@ TaskItemWidget::TaskItemWidget(const QString& title, const std::vector<std::pair
         QCheckBox* checkbox = new QCheckBox(subtasks[i].first);
         checkbox->setChecked(subtasks[i].second);
 
-        checkbox->setMinimumHeight(25);
-        checkbox->setMinimumWidth(400);
+        checkbox->setMinimumHeight(40);
+        checkbox->setMinimumWidth(200);
         checkbox->setObjectName("subtaskCheckbox");
 
         checkboxes.push_back(checkbox);
