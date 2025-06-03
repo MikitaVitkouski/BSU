@@ -23,10 +23,10 @@ MainWindow::MainWindow(QWidget *parent)
     }
 
     // Loading notes from file
-    QFile file(basePath + QDir::separator() + "notes.json");
-    if (file.open(QIODevice::ReadOnly)) {
-        QByteArray data = file.readAll();
-        file.close();
+    QFile fileNotes(basePath + QDir::separator() + "notes.json");
+    if (fileNotes.open(QIODevice::ReadOnly)) {
+        QByteArray data = fileNotes.readAll();
+        fileNotes.close();
 
         QJsonDocument doc = QJsonDocument::fromJson(data);
         if (doc.isArray()) {
@@ -38,6 +38,36 @@ MainWindow::MainWindow(QWidget *parent)
 
                 Note newNote(note, title);
                 manager.addNote(newNote);
+            }
+        }
+    }
+
+    // Loading tasks from file
+    QFile fileTasks(basePath + QDir::separator() + "tasks.json");
+    if (fileTasks.open(QIODevice::ReadOnly)) {
+        QByteArray data = fileTasks.readAll();
+        fileTasks.close();
+
+        QJsonDocument doc = QJsonDocument::fromJson(data);
+        if (doc.isArray()) {
+            QJsonArray jsonArray = doc.array();
+            for(const auto& val : jsonArray) {
+                QJsonObject obj = val.toObject();
+                std::string title = obj["title"].toString().toStdString();
+                std::vector<std::pair<std::string, bool>> subtasks{};
+
+                if (obj["subtasks"].isArray()) {
+                    QJsonArray subtasksArray = obj["subtasks"].toArray();
+                    for (const auto& subVal : subtasksArray) {
+                        QJsonObject subObj = subVal.toObject();
+                        std::string subTitle = subObj["title"].toString().toStdString();
+                        bool done = subObj["done"].toBool();
+                        subtasks.emplace_back(subTitle, done);
+                    }
+                }
+
+                Task newTask(title, subtasks);
+                taskManager.addTask(newTask);
             }
         }
     }

@@ -1,0 +1,27 @@
+[
+    {
+        "subtasks": [
+            {
+                "done": false,
+                "title": "500 dm"
+            },
+            {
+                "done": false,
+                "title": "100 bots"
+            },
+            {
+                "done": false,
+                "title": "1 demo"
+            },
+            {
+                "done": false,
+                "title": "5 grenades"
+            },
+            {
+                "done": false,
+                "title": "5 practices"
+            }
+        ],
+        "title": "Counter-Strike training"
+    }
+]
