@@ -155,8 +155,8 @@ void MainWindow::closeEvent(QCloseEvent *event) {
     QDir directory = QDir::currentPath();directory.cdUp(); directory.cdUp();
     QString basePath = directory.absolutePath();
 
-    QFile file(basePath + QDir::separator() + "notes.json");
-    if (file.open(QIODevice::WriteOnly)) {
+    QFile fileNotes(basePath + QDir::separator() + "notes.json");
+    if (fileNotes.open(QIODevice::WriteOnly)) {
         QJsonArray jsonArray;
         const auto& notes = manager.getNotes();
         for (const auto& note : notes) {
@@ -166,8 +166,31 @@ void MainWindow::closeEvent(QCloseEvent *event) {
             jsonArray.append(obj);
         }
         QJsonDocument doc(jsonArray);
-        file.write(doc.toJson());
-        file.close();
+        fileNotes.write(doc.toJson());
+        fileNotes.close();
+    }
+
+    QFile fileTasks(basePath + QDir::separator() + "tasks.json");
+    if (fileTasks.open(QIODevice::WriteOnly)) {
+        QJsonArray jsonArray;
+        const auto& tasks = taskManager.getTasks();
+        for (const auto& task : tasks) {
+            QJsonObject obj;
+            obj["title"] = QString::fromStdString(task.getTitle());
+            QJsonArray subtasksArray;
+            for(const auto& subtask : task.getSubtasks()) {
+                QJsonObject subtaskObj;
+                subtaskObj["title"] = QString::fromStdString(subtask.first);
+                subtaskObj["done"] = subtask.second;
+                subtasksArray.append(subtaskObj);
+            }
+            obj["subtasks"] = subtasksArray;
+            jsonArray.append(obj);
+        }
+
+        QJsonDocument doc(jsonArray);
+        fileTasks.write(doc.toJson());
+        fileTasks.close();
     }
 
     QMainWindow::closeEvent(event);
