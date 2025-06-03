@@ -1,10 +1,4 @@
 #include "TaskItemWidget.h"
-#include <QLabel>
-#include <QVBoxLayout>
-#include <QHBoxLayout>
-#include <QCheckBox>
-#include <QPushButton>
-#include <QStyle>
 
 TaskItemWidget::TaskItemWidget(const QString& title, const std::vector<std::pair<QString, bool>>& subtasks, QWidget* parent)
     : QWidget(parent)

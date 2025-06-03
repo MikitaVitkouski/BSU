@@ -11,6 +11,8 @@
 #include <QString>
 #include <vector>
 #include <QFrame>
+#include <QHBoxLayout>
+#include <QStyle>
 
 class TaskItemWidget : public QWidget {
     Q_OBJECT
