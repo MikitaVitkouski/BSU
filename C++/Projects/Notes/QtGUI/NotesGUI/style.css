@@ -229,7 +229,6 @@
     }
 
     QCheckBox#subtaskCheckbox::indicator:checked {
-	image: url(:/icons/checkmark.svg); /* или убери строку, если не используешь иконки */
 	background-color: #00aaff;
 	border: 2px solid #00aaff;
     }
@@ -242,3 +241,15 @@
     QCheckBox#subtaskCheckbox::indicator:hover {
 	border: 2px solid #00aaff;
     } 
+
+    QFrame#taskTile[completed="true"] {
+        background-color: #d4edda;
+        border: 2px solid #28a745;
+        border-radius: 8px;
+    }
+
+    QFrame#taskTile[completed="false"] {
+	background-color: #ffffff;
+	border: 1px solid #ccc;
+	border-radius: 8px;
+    }
