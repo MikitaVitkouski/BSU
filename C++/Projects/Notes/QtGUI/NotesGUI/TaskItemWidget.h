@@ -24,6 +24,7 @@ public:
 signals:
     void editRequested();
     void deleteRequested();
+    void subtaskToggled(int index, bool checked);
 
 private:
     QLabel* titleLabel;

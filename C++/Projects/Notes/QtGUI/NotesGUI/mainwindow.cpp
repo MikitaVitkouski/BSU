@@ -307,6 +307,10 @@ void MainWindow::updateListWidgetTasks() {
             ui->notesStackedWidget->setCurrentIndex(2);
             ui->btnAddTask->setText("Save");
         });
+
+        connect(widget, &TaskItemWidget::subtaskToggled, this, [this, i](int subIndex, bool checked) {
+            taskManager.updateSubtask(i, subIndex, checked);
+        });
     }
 }
 

@@ -13,7 +13,8 @@ public:
 	~Task() = default;
 
 	std::string getTitle() const { return title; }
-	std::vector<std::pair<std::string, bool>> getSubtasks() const { return subtasks; }
+    std::vector<std::pair<std::string, bool>>& getSubtasks() { return subtasks; }
+    std::vector<std::pair<std::string, bool>> getSubtasks() const { return subtasks; }
 	void toggleStatusSubtasks() { 
 		for (auto& subtask : subtasks) {
 			subtask.second = !subtask.second;
@@ -23,6 +24,11 @@ public:
 		return std::all_of(subtasks.begin(), subtasks.end(),
 			[](const auto& sub) { return sub.second; });
 	}
+    void setSubtaskChecked(int index, bool checked) {
+        if (index >= 0 && index < subtasks.size()) {
+            subtasks[index].second = checked;
+        }
+    }
 };
 
 class TaskManager {
@@ -39,4 +45,5 @@ public:
 	const std::vector<Task>& getTasks() const;
 	int getSize() const;
 	bool isTaskCompleted(int index) const;
+    void updateSubtask(int taskIndex, int subIndex, bool checked);
 };

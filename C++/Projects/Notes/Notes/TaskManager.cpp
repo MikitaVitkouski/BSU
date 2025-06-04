@@ -38,3 +38,9 @@ bool TaskManager::isTaskCompleted(int index) const {
 		return false;
 	}
 }
+
+void TaskManager::updateSubtask(int taskIndex, int subIndex, bool checked) {
+    if (taskIndex >= 0 && taskIndex < tasks.size()) {
+        tasks[taskIndex].setSubtaskChecked(subIndex, checked);
+    }
+}

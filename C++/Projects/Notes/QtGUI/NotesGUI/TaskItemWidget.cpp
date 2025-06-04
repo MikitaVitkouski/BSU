@@ -32,7 +32,8 @@ TaskItemWidget::TaskItemWidget(const QString& title, const std::vector<std::pair
         checkboxes.push_back(checkbox);
         mainLayout->addWidget(checkbox);
 
-        connect(checkbox, &QCheckBox::stateChanged, this, [this]() {
+        connect(checkbox, &QCheckBox::stateChanged, this, [this, i](int state) {
+            emit subtaskToggled(i, state == Qt::Checked);
             updateCompletionStyle();
         });
     }
