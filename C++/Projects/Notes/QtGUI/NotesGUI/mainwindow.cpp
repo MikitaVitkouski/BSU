@@ -113,7 +113,7 @@ void MainWindow::onbtnAddNoteMenuClicked() {
 
 void MainWindow::onbtnAddTaskMenuClicked() {
     ui->notesStackedWidget->setCurrentIndex(2);
-    ui->btnAddTaskMenu->setText("Add");
+    ui->btnAddTask->setText("Add");
     editingTaskIndex = -1;
 }
 
