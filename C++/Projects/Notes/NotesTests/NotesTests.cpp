@@ -129,3 +129,18 @@ TEST(TaskTest, getTasks) {
 		EXPECT_EQ(expected[i].getSubtasks(), actual[i].getSubtasks());
 	}
 }
+
+TEST(TaskTest, updateSubtaskIsCompleted) {
+	Task t1("Cake", { {"Milk", false}, {"Eggs",false} });
+	Task t2("Gym", { {"Push-ups", false}, {"3 km", false} });
+
+	TaskManager manager;
+	manager.addTask(t1); manager.addTask(t2);
+	
+	manager.updateSubtask(0, 0, true);
+	manager.updateSubtask(1, 1, true);
+	manager.updateSubtask(0, 1, true);
+
+	EXPECT_EQ(1, manager.isTaskCompleted(0));
+	EXPECT_EQ(0, manager.isTaskCompleted(1));
+}
