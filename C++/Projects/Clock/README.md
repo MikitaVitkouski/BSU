@@ -30,6 +30,7 @@ Clock/
 │   ├── Stopwatch.{h,cpp}
 │   ├── TimerManager.{h,cpp}
 │   ├── Clock.{h,cpp}
+│   ├── CMakeLists.txt
 │
 ├── ClockTests/                  # Unit tests using GoogleTest
 │   ├── BackendTests.cpp
@@ -63,7 +64,7 @@ Clock/
 
 5. Build and run the project from Qt Creator.
 
-6. Once built, launch the application to start performing calculations with fractions!
+6. Once built, launch the application to start usage!
 
 ## Usage
 
