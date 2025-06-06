@@ -23,5 +23,66 @@
             }
         ],
         "title": "Counter-Strike training"
+    },
+    {
+        "subtasks": [
+            {
+                "done": false,
+                "title": "200g sugar"
+            },
+            {
+                "done": true,
+                "title": "150g flour\""
+            },
+            {
+                "done": true,
+                "title": "60g cocoa powder"
+            },
+            {
+                "done": true,
+                "title": "1.5 tsp baking powder"
+            },
+            {
+                "done": false,
+                "title": "0.5 tsp salt"
+            },
+            {
+                "done": false,
+                "title": "2 eggs"
+            },
+            {
+                "done": false,
+                "title": "120ml milk"
+            },
+            {
+                "done": false,
+                "title": "60ml vegetable oil"
+            },
+            {
+                "done": false,
+                "title": "1 tsp vanilla extract"
+            },
+            {
+                "done": false,
+                "title": "120ml boiling water"
+            },
+            {
+                "done": false,
+                "title": "200g butter (for frosting)"
+            },
+            {
+                "done": false,
+                "title": "100g dark chocolate"
+            },
+            {
+                "done": false,
+                "title": "100g powdered sugar"
+            },
+            {
+                "done": false,
+                "title": "2-3 tbsp cream"
+            }
+        ],
+        "title": "Cake"
     }
 ]

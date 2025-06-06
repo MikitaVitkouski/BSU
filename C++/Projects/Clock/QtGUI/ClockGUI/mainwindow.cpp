@@ -396,7 +396,6 @@ void MainWindow::updateAlarmList() {
 
     if (ui->listWidgetAlarms->count() != alarms.size()) {
         ui->listWidgetAlarms->clear();
-        disconnect(ui->listWidgetAlarms, &QListWidget::itemChanged, this, &MainWindow::onAlarmItemChanged);
         alarmItems.clear();
 
         for (int i = 0; i < alarms.size(); ++i) {
@@ -469,7 +468,10 @@ void MainWindow::on_btnRemoveSelectedAlarm_clicked() {
 }
 
 void MainWindow::closeEvent(QCloseEvent *event) {
-    QFile file("E:/Repositories/BSU/C++/Projects/Clock/QtGUI/ClockGUI/alarms.json");
+    QDir directory = QDir::currentPath();directory.cdUp(); directory.cdUp();
+    QString basePath = directory.absolutePath();
+
+    QFile file(basePath + QDir::separator() + "notes.json");
     if (file.open(QIODevice::WriteOnly)) {
         QJsonArray jsonArray;
         const auto& alarms = alarmManager.getAllAlarms();
