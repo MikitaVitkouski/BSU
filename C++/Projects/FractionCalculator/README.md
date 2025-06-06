@@ -1,8 +1,11 @@
-![image](https://github.com/user-attachments/assets/bd6c4852-02da-4e58-bd57-e22d8ac4c279)
-![image](https://github.com/user-attachments/assets/37f02296-a420-4e14-97e7-37993f407fe9)
-![image](https://github.com/user-attachments/assets/98ec076d-a99e-4564-ba18-d6bf9b000179)
+## Screenchots
+![image](https://github.com/user-attachments/assets/1ad32900-4c56-4690-b0da-a7e9998c60d9)
+![image](https://github.com/user-attachments/assets/eb8f7ae3-6462-4fde-9611-592d05ad1c29)
+![image](https://github.com/user-attachments/assets/4e093a92-55d2-4c07-aaaf-6c58a40934b0)
 
-A simple C++ application for performing arithmetic operations on fractions with a graphical user interface built using Qt.
+## Description
+
+A simple C++ application for performing arithmetic operations on fractions or numbers with a graphical user interface built using Qt.
 
 Features
 Fraction Operations: Addition, subtraction, multiplication, division, and exponentiation of fractions.
@@ -10,6 +13,7 @@ Simplification: Automatically simplifies fractions to their lowest terms.
 Comparison: Compare fractions with other fractions or decimals.
 Decimal and Fraction Display: Toggle between fraction and decimal formats for results.
 Reverse Fraction: Reverse fractions (e.g., `2/3` becomes `3/2`).
+Simple calculator: Each number is like fraction ('2' becomes '2/1'), so you can use this app as default calculator.
 
 ## Technologies Used
 
