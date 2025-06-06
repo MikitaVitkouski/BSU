@@ -1,0 +1,22 @@
+[
+    {
+        "status": "disabled",
+        "text": "wake up",
+        "time": 1748668500
+    },
+    {
+        "status": "disabled",
+        "text": "breakfast",
+        "time": 1748672100
+    },
+    {
+        "status": "enabled",
+        "text": "bus",
+        "time": 1749222000
+    },
+    {
+        "status": "enabled",
+        "text": "university",
+        "time": 1749304800
+    }
+]
