@@ -1,5 +1,5 @@
 ## Screenshots
-![image](https://github.com/user-attachments/assets/e97d4dbc-1f9c-4bcf-a8ff-bef7a067b7d6)
+![image](https://github.com/user-attachments/assets/96d761cb-eaec-48b4-a65a-e587c7efd8ef)
 ![image](https://github.com/user-attachments/assets/e58d05e5-6a8a-4ddb-be54-484ff2a46ab0)
 ![image](https://github.com/user-attachments/assets/719558fc-2572-4c63-a5d8-ea80d641ac42)
 ![image](https://github.com/user-attachments/assets/1496626f-701f-4c8e-a974-bd66c1b1c5e2)
