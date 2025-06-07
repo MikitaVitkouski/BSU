@@ -7,66 +7,69 @@
 
 ## Description
 
-A C++ application for managing notes and tasks with an elegant and responsive Qt-based user interface.
-Users can create, edit, delete, and organize their notes and to-dos in a visually clean layout with persistent state during runtime.
+A **C++** application for managing **notes** and **tasks** with an elegant and responsive **Qt-based user interface**.  
+Users can create, edit, delete, and organize their notes and to-dos in a visually clean layout with **persistent state during runtime**.
 
 ## Features
 
-Note and task view, add, delete, edit.
+- **Note and Task View**: Organized sections for quick access.
+- **Create, Edit, Delete**: Manage both notes and to-dos efficiently.
+- **Live Updates**: Changes reflect immediately in the interface.
+- **Responsive UI**: Designed with modern Qt widgets and styles.
 
 ## Technologies Used
 
-Qt 6.9: Used for building the entire graphical interface and managing UI components (QStackedWidget, QPushButton, etc.).
-C++11: Core logic and time handling.
-CMake: The project uses CMake as the build system for easy compilation and setup across platforms.
-GTest: Unit tests are provided for back-end part.
+- **Qt 6.9** — GUI.
+- **C++11** — Core logic for handling notes and tasks.
+- **CMake** — Build system.
+- **GTest** — Unit tests for back-end logic.
+- **CSS** - Stylesheet for GUI.
 
 ## Project Structure
 
+```bash
 Notes/
-├── Notes/                        # Backend logic
+├── Notes/                    # Backend logic
 │   ├── NoteManager.{h,cpp}
 │   ├── TaskManager.{h,cpp}
-│   ├── CMakeLists.txt
+│   └── CMakeLists.txt
 │
-├── NotesTests/                  # Unit tests using GoogleTest
+├── NotesTests/              # Unit tests
 │   ├── NotesTests.cpp
 │   ├── pch.h
 │   └── pch.cpp
 │
-├── QtGUI/NotesGUI/              # GUI code built with Qt
+├── QtGUI/NotesGUI/          # GUI with Qt
 │   ├── main.cpp
 │   ├── mainwindow.{h,cpp}
-│   ├── TaskItemWidget.{h,cpp}
-│   ├── NoteItemWidget.{h,cpp}
 │   ├── mainwindow.ui
+│   ├── NoteItemWidget.{h,cpp}
+│   ├── TaskItemWidget.{h,cpp}
 │   ├── style.css
 │   ├── resources.qrc
 │   └── CMakeLists.txt
 │
-└── CMakeLists.txt               # Root CMake build config
+└── CMakeLists.txt           # Root build config
+```
 
 ## Installation and Setup
 
-1. Clone the repository:
+1. **Clone the repository**:
 
    ```bash
    git clone https://github.com/MikitaVitkouski/BSU.git
    cd BSU/C++/Projects/Notes/
    ```
 
-2. Make sure you have **Qt** and **CMake** installed.
+2. **Install dependencies**: Make sure **Qt** and **CMake** are installed.
 
-3. Open **Qt Creator**.
+3. **Open project**: Launch **Qt Creator** and open the `CMakeLists.txt` from `QtGUI/NotesGUI/`.
 
-4. Select the **CMakeLists.txt** file from the `QtGUI - NotesGUI` folder (where the code and CMake configuration are located).
-
-5. Build and run the project from Qt Creator.
-
-6. Once built, launch the application to start work with tasks and notes!
+4. **Build and run**: Compile and launch directly from Qt Creator.
 
 ## Usage
 
-Navigate using the top/bottom navigation buttons (Notes, Add note, Add task, Tasks).
-Add notes for usual things.
-Add tasks for any tasks in your life, mark its progress.
+- Use top navigation to switch between: **Notes**, **Tasks**, **Add Note**, **Add Task**.
+- Create **notes** for general-purpose text or ideas.
+- Add **tasks** with progress indicators to track life events or projects.
+- All changes are reflected live and stored during runtime for seamless experience.
