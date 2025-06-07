@@ -8,36 +8,39 @@
 A modern C++ application providing multiple time-related utilities including a clock, alarm, stopwatch, and timer — all within a sleek, user-friendly graphical interface built with Qt.
 
 ## Features
-Clock View: Displays the current time, date, and time zone in a stylish format.
-Alarms: Add, delete, and manage alarms. Alarms persist during runtime and notify users at the set time.
-Stopwatch: Start, pause, resume, reset functionality. Add lap times and review them in a list.
-Timer: Countdown timer with start/pause/resume/reset functionality.
-Dynamic UI: Switch between sections with visually active navigation buttons for clarity.
-Custom Styles: Carefully designed interface using modern colors and Qt Style Sheets (style.css) for a pleasant user experience.
+
+- **Clock View**: Displays the current time, date, and time zone in a stylish format.
+- **Alarms**: Add, delete, and manage alarms. Alarms persist during runtime and notify users at the set time.
+- **Stopwatch**: Start, pause, resume, and reset. Add lap times and review them in a list.
+- **Timer**: Countdown timer with full control (start/pause/resume/reset).
+- **Dynamic UI**: Switch between sections using visually active navigation buttons.
+- **Custom Styles**: Carefully designed with Qt Style Sheets (`style.css`) for a pleasant experience.
 
 ## Technologies Used
 
-Qt 6.9: Used for building the entire graphical interface and managing UI components (QStackedWidget, QPushButton, etc.).
-C++11: Core logic and time handling.
-CMake: The project uses CMake as the build system for easy compilation and setup across platforms.
-GTest: Unit tests are provided for back-end part.
+- **Qt 6.9** — GUI.
+- **C++11** — Core logic and time processing.
+- **CMake** — Build system.
+- **GTest** — Unit tests for backend logic.
+- **CSS** - Stylesheet for GUI.
 
 ## Project Structure
 
+```bash
 Clock/
-├── Clock/                        # Backend logic
+├── Clock/                    # Backend logic
 │   ├── AlarmManager.{h,cpp}
 │   ├── Stopwatch.{h,cpp}
 │   ├── TimerManager.{h,cpp}
 │   ├── Clock.{h,cpp}
-│   ├── CMakeLists.txt
+│   └── CMakeLists.txt
 │
-├── ClockTests/                  # Unit tests using GoogleTest
+├── ClockTests/              # Unit tests (Google Test)
 │   ├── BackendTests.cpp
 │   ├── pch.h
 │   └── pch.cpp
 │
-├── QtGUI/ClockGUI/              # GUI code built with Qt
+├── QtGUI/ClockGUI/          # GUI with Qt
 │   ├── main.cpp
 │   ├── mainwindow.{h,cpp}
 │   ├── mainwindow.ui
@@ -45,31 +48,29 @@ Clock/
 │   ├── resources.qrc
 │   └── CMakeLists.txt
 │
-└── CMakeLists.txt               # Root CMake build config
+└── CMakeLists.txt           # Root build configuration
+```
 
 ## Installation and Setup
 
-1. Clone the repository:
+1. **Clone the repository**:
 
    ```bash
    git clone https://github.com/MikitaVitkouski/BSU.git
    cd BSU/C++/Projects/Clock/
    ```
 
-2. Make sure you have **Qt** and **CMake** installed.
+2. **Install dependencies**: Ensure **Qt** and **CMake** are installed.
 
-3. Open **Qt Creator**.
+3. **Open project**: Launch **Qt Creator** and open the `CMakeLists.txt` from the `QtGUI/ClockGUI` folder.
 
-4. Select the **CMakeLists.txt** file from the `QtGUI - ClockGUI` folder (where the code and CMake configuration are located).
-
-5. Build and run the project from Qt Creator.
-
-6. Once built, launch the application to start usage!
+4. **Build and run**: Use Qt Creator's interface to build and launch the app.
 
 ## Usage
 
-Navigate using the top/bottom navigation buttons (Clock, Alarm, Stopwatch, Timer).
-Set Alarms and view them in a list with options to remove.
-Use Stopwatch to time events and view lap records.
-Run Timer to count down from a set time with pause/resume control.
-The active view is highlighted for clear navigation.
+
+- Navigate using the top/bottom buttons: **Clock**, **Alarm**, **Stopwatch**, **Timer**.
+- Set alarms and manage them in a list with delete options.
+- Use the **Stopwatch** to time events with lap tracking.
+- Use the **Timer** for countdowns with control options.
+- Active section is visually highlighted for intuitive UX.
