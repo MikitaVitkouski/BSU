@@ -7,26 +7,28 @@
 
 A simple C++ application for performing arithmetic operations on fractions or numbers with a graphical user interface built using Qt.
 
-Features
-Fraction Operations: Addition, subtraction, multiplication, division, and exponentiation of fractions.
-Simplification: Automatically simplifies fractions to their lowest terms.
-Comparison: Compare fractions with other fractions or decimals.
-Decimal and Fraction Display: Toggle between fraction and decimal formats for results.
-Reverse Fraction: Reverse fractions (e.g., `2/3` becomes `3/2`).
-Simple calculator: Each number is like fraction ('2' becomes '2/1'), so you can use this app as default calculator.
+## Features
+
+- **Fraction Operations**: Add, subtract, multiply, divide, and exponentiate fractions.
+- **Simplification**: Automatically reduces fractions to their lowest terms.
+- **Comparison**: Compare fractions with other fractions or decimal numbers.
+- **Fraction & Decimal Display**: Toggle between fraction and decimal formats for results.
+- **Reverse Fractions**: Easily invert fractions (e.g., `2/3` becomes `3/2`).
+- **Basic Calculator Mode**: Integers are treated as fractions (e.g., `2` → `2/1`), making it usable as a general calculator.
 
 ## Technologies Used
 
-Qt 6.9: The GUI is built using Qt 6.9, providing a simple and interactive interface for performing calculations.
-CMake: The project uses CMake as the build system for easy compilation and setup across platforms.
-GTest: Unit tests are provided for core functionalities, ensuring the reliability of fraction operations and handling edge cases.
-Standard Libraries: The project utilizes the <iostream>, <cmath>, <numeric>, and <stdexcept> standard libraries.
-
+- **C++11** – Main programming language.
+- **Qt 6.9** – GUI framework.
+- **CMake** – Build system.
+- **GTest** – Unit testing.
+- **CSS** – GUI styling.
+  
 ## Project Structure
 
-FractionCalculator: Contains the core logic for handling fraction operations, simplifications, and comparisons.
-QtGUI: Contains the user interface files for interacting with the calculator.
-FractionTests: Includes optional unit tests for the core functionality.
+- `FractionCalculator/` – Core logic for fraction operations, simplification, and comparisons.
+- `QtGUI/` – GUI components for the calculator.
+- `FractionTests/` – Unit tests for validating core functionality.
 
 ## Installation and Setup
 
@@ -49,6 +51,7 @@ FractionTests: Includes optional unit tests for the core functionality.
 
 ## Usage
 
-Enter fractions or integers to perform arithmetic operations.
-Toggle between fraction and decimal views for the results.
-Perform basic operations like addition, subtraction, multiplication, and division directly in the UI.
+- Input fractions or integers via the GUI.
+- Perform basic arithmetic operations.
+- Switch between fraction and decimal result displays.
+- Use the calculator in both simple and fraction modes.
