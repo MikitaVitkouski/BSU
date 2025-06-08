@@ -26,9 +26,28 @@ A simple C++ application for performing arithmetic operations on fractions or nu
   
 ## Project Structure
 
-- `FractionCalculator/` – Core logic for fraction operations, simplification, and comparisons.
-- `QtGUI/` – GUI components for the calculator.
-- `FractionTests/` – Unit tests for validating core functionality.
+```bash
+FractionCalculator/
+├── FractionCalculator/                    # Backend logic
+│   ├── Fraction.{h,cpp}
+│   └── CMakeLists.txt
+│
+├── FractionTests/              # Unit tests
+│   ├── test.cpp                # Fraction class tests
+│   ├── pch.h
+│   └── pch.cpp
+│
+├── QtGUI/FractionCalculatorGUI/          # GUI with Qt
+│   ├── main.cpp
+│   ├── mainwindow.{h,cpp}
+│   ├── mainwindow.ui
+│   ├── ExpressionLineEdit.{h,cpp}
+│   ├── style.css
+│   ├── resources.qrc
+│   └── CMakeLists.txt
+│
+└── CMakeLists.txt           # Root build config
+```
 
 ## Installation and Setup
 
