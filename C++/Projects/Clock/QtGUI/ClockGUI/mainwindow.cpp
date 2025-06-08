@@ -4,6 +4,7 @@
 #include <QJsonDocument>
 #include <QJsonArray>
 #include <QJsonObject>
+#include <QKeyEvent>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -489,4 +490,12 @@ void MainWindow::closeEvent(QCloseEvent *event) {
         file.close();
     }
     QMainWindow::closeEvent(event);
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event) {
+    if(event->key() == Qt::Key_Escape) {
+        ui->stackedWidget->setCurrentIndex(0);
+    } else {
+        QMainWindow::keyPressEvent(event);
+    }
 }

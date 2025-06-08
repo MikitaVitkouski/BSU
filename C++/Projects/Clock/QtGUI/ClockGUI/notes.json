@@ -10,13 +10,8 @@
         "time": 1748672100
     },
     {
-        "status": "enabled",
-        "text": "bus",
-        "time": 1749222000
-    },
-    {
-        "status": "enabled",
-        "text": "university",
-        "time": 1749304800
+        "status": "disabled",
+        "text": "Dinner",
+        "time": 1748700900
     }
 ]
