@@ -1,5 +1,6 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
+#include "ExpressionLineEdit.h"
 #include <QMessageBox>
 #include <QFile>
 #include <QDir>
@@ -44,6 +45,9 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnToggleFormat, &QPushButton::clicked,this,&MainWindow::onToggleFormatClicked);
     connect(ui->btnReverse, &QPushButton::clicked,this,&MainWindow::onReverseClicked);
     connect(ui->btnSlash,&QPushButton::clicked,this,&MainWindow::onSlashClicked);
+
+    // keys
+    connect(ui->lineEditExpression, &ExpressionLineEdit::enterPressed, this, &MainWindow::onEvaluateClicked);
 }
 
 MainWindow::~MainWindow()

@@ -168,7 +168,7 @@
      <string>)</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="lineEditExpression">
+   <widget class="ExpressionLineEdit" name="lineEditExpression">
     <property name="geometry">
      <rect>
       <x>370</x>
@@ -424,6 +424,13 @@
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>ExpressionLineEdit</class>
+   <extends>QLineEdit</extends>
+   <header>ExpressionLineEdit.h</header>
+  </customwidget>
+ </customwidgets>
  <resources/>
  <connections/>
 </ui>

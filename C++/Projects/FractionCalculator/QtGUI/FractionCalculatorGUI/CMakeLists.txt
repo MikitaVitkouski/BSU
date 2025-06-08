@@ -12,11 +12,13 @@ set(SOURCES
     main.cpp
     mainwindow.cpp
     ExpressionParser.cpp
+    ExpressionLineEdit.cpp
 )
 
 set(HEADERS
     mainwindow.h
     ExpressionParser.h
+    ExpressionLineEdit.h
 )
 
 set(UIS
@@ -29,10 +31,14 @@ qt_add_executable(FractionCalculatorGUI
     ${UIS}
     ExpressionParser.h
     ExpressionParser.cpp
+    ExpressionLineEdit.h
+    ExpressionLineEdit.cpp
 )
 
 target_include_directories(FractionCalculatorGUI
     PRIVATE
+        ${CMAKE_CURRENT_SOURCE_DIR}
+        ${CMAKE_CURRENT_BINARY_DIR}
         ../../FractionCalculator
 )
 
