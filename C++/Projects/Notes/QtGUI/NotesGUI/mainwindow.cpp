@@ -5,6 +5,7 @@
 #include <QTextStream>
 #include <QDir>
 #include "TaskItemWidget.h"
+#include <QKeyEvent>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -330,5 +331,14 @@ void MainWindow::onTaskItemDoubleClicked() {
         editingTaskIndex = row;
         ui->notesStackedWidget->setCurrentIndex(2);
         ui->btnAddTask->setText("Save");
+    }
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event) {
+    if (event->key() == Qt::Key_F5) {
+        updateListWidgetNotes();
+        updateListWidgetTasks();
+    } else {
+        QMainWindow::keyPressEvent(event); // if we've pressed not F5
     }
 }
