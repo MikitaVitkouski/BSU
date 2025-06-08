@@ -338,6 +338,8 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
     if (event->key() == Qt::Key_F5) {
         updateListWidgetNotes();
         updateListWidgetTasks();
+    } else if (event->key() == Qt::Key_Escape) {
+        ui->notesStackedWidget->setCurrentIndex(0);
     } else {
         QMainWindow::keyPressEvent(event); // if we've pressed not F5
     }
