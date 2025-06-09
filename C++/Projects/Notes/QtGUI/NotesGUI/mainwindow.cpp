@@ -340,6 +340,14 @@ void MainWindow::keyPressEvent(QKeyEvent *event) {
         updateListWidgetTasks();
     } else if (event->key() == Qt::Key_Escape) {
         ui->notesStackedWidget->setCurrentIndex(0);
+    } else if (event->key() == Qt::Key_1){
+        ui->notesStackedWidget->setCurrentIndex(0);
+    } else if (event->key() == Qt::Key_2){
+        ui->notesStackedWidget->setCurrentIndex(1);
+    } else if (event->key() == Qt::Key_3){
+        ui->notesStackedWidget->setCurrentIndex(2);
+    } else if (event->key() == Qt::Key_4){
+        ui->notesStackedWidget->setCurrentIndex(3);
     } else {
         QMainWindow::keyPressEvent(event); // if we've pressed not F5
     }
