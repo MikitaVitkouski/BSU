@@ -98,7 +98,7 @@
         background-color: #690303;
     }
 
-    QPushButton#btnAddNote:hover, QPushButton#btnAddTask {
+    QPushButton#btnAddNote:hover, QPushButton#btnAddTask:hover {
         background-color: #218838;
     }
 
