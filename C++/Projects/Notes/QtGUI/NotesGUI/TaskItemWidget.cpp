@@ -35,6 +35,10 @@ TaskItemWidget::TaskItemWidget(const QString& title, const std::vector<std::pair
         connect(checkbox, &QCheckBox::stateChanged, this, [this, i](int state) {
             emit subtaskToggled(i, state == Qt::Checked);
             updateCompletionStyle();
+
+            if (QWidget* mw = this->window()) {
+                mw->setFocus();  // return focus to MainWindow
+            }
         });
     }
 

@@ -75,6 +75,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     updateListWidgetNotes();
     updateListWidgetTasks();
+    this->setFocus();
 
     //Pages
     connect(ui->btnRepresent, &QPushButton::clicked, this, &MainWindow::onbtnRepresentClicked);
