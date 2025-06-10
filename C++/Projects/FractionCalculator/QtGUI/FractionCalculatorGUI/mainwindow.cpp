@@ -21,6 +21,8 @@ MainWindow::MainWindow(QWidget *parent)
         fileStyle.close();
     }
 
+    this->setFocus();
+
     //connect (sender, signal, receiver, slot)
     connect(ui->btnAdd,&QPushButton::clicked,this,&MainWindow::onAddClicked);
     connect(ui->btnSub,&QPushButton::clicked,this,&MainWindow::onSubClicked);

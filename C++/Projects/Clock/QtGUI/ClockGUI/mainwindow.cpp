@@ -48,6 +48,7 @@ MainWindow::MainWindow(QWidget *parent)
         }
     }
     ui->comboBoxTimezone->setMaxVisibleItems(15);
+    this->setFocus();
     // Pages
     connect(ui->btnAlarm, &QPushButton::clicked, this, &MainWindow::onAlarmClicked);
     connect(ui->btnStopwatch, &QPushButton::clicked, this, &MainWindow::onStopwatchClicked);
