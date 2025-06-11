@@ -4,6 +4,7 @@
 #include <QMainWindow>
 #include "Fraction.h"
 #include "ExpressionParser.h"
+#include "ExpressionLineEdit.h"
 
 QT_BEGIN_NAMESPACE
 namespace Ui {
@@ -18,6 +19,10 @@ class MainWindow : public QMainWindow
 public:
     MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
+
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
+
 private slots:
     void onAddClicked();
     void onSubClicked();
@@ -42,6 +47,7 @@ private slots:
     void onToggleFormatClicked();
     void onReverseClicked();
     void onSlashClicked();
+    void onEscapePressed();
 
 private:
     Ui::MainWindow *ui;

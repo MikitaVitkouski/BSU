@@ -2,6 +2,7 @@
 #define EXPRESSIONLINEEDIT_H
 
 #include <QLineEdit>
+#include <QKeyEvent>
 
 class ExpressionLineEdit : public QLineEdit {
     Q_OBJECT
@@ -11,6 +12,7 @@ public:
 
 signals:
     void enterPressed();
+    void escapePressed();
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;

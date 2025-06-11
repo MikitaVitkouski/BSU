@@ -50,6 +50,7 @@ MainWindow::MainWindow(QWidget *parent)
 
     // keys
     connect(ui->lineEditExpression, &ExpressionLineEdit::enterPressed, this, &MainWindow::onEvaluateClicked);
+    connect(ui->lineEditExpression, &ExpressionLineEdit::escapePressed, this, &MainWindow::onEscapePressed);
 }
 
 MainWindow::~MainWindow()
@@ -193,4 +194,17 @@ void MainWindow::onReverseClicked() {
 
 void MainWindow::onSlashClicked() {
     ui->lineEditExpression->insert("/");
+}
+
+void MainWindow::onEscapePressed() {
+    ui->lineEditExpression->clear();
+    ui->labelResult->clear();
+}
+
+void MainWindow::keyPressEvent(QKeyEvent *event) {
+    if (event->key() == Qt::Key_Escape) {
+        onEscapePressed();
+    } else {
+        QMainWindow::keyPressEvent(event);
+    }
 }
