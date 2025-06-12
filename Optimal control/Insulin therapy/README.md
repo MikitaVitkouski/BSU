@@ -116,6 +116,7 @@ d_schedule = zeros(N, 1);
 d_schedule(1:2) = 18;  % Food intake at time steps 1-2
 d_schedule(7:8) = 18;  % Food intake at time steps 7-8
 d_schedule(15:16) = 18; % Food intake at time steps 15-16
+```matlab
 
 #### Graphics and results
 
