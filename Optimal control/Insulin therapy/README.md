@@ -77,6 +77,7 @@ v(t) = \frac{A_G t}{t_{\text{max},G}^2} \exp\left(-\frac{t}{t_{\text{max},G}}\ri
 $$
 
 Where:
+
 - \( A_G = 0.8 \) is the carbohydrate bioavailability (dimensionless)
 - \( t_{\text{max},G} = 40 \) is the maximum time for glucose appearance in the bloodstream (min)
 - \( M_w G = 180 \) is the molecular weight of glucose
@@ -87,6 +88,7 @@ The initial conditions for the system of differential equations are:
 - \( S_1(0) = 0 \), \( S_2(0) = 0 \), \( I(0) = 6 \)
 - \( x_1(0) = 0.0634 \), \( x_2(0) = 0.0005 \), \( x_3(0) = 0.3138 \)
 - \( Q_1(0) = 65.28 \), \( Q_2(0) = 10.1271 \)
+
 
 ### Experiments
 The following experiments were conducted to track the patient's blood glucose level:
