@@ -95,5 +95,33 @@ The following experiments were conducted to track the patient's blood glucose le
 2. The patient ate 36 XE during the first 18 minutes of the experiment and did not receive insulin.
 3. The patient received 6000 units (6 ME) of insulin during the first minute and ate 36 XE during the first 18 minutes.
 
+![image](https://github.com/user-attachments/assets/859b7ea4-cec0-4ceb-86fe-ac89ba2f693e)
+
+
 ### Optimal Insulin Therapy
 The goal of the insulin therapy is to select the insulin doses to keep the blood glucose level of the patient at a normal level (typically 6 mmol/L). The optimal control problem is formulated and solved to determine the insulin infusion schedule.
+
+#### Food Intake Schedule
+The following food intake schedule was used in the optimization experiments:
+
+- **Time steps 1-2:** 18 XE (36 grams of carbohydrates) ingested
+- **Time steps 7-8:** 18 XE (36 grams of carbohydrates) ingested
+- **Time steps 15-16:** 18 XE (36 grams of carbohydrates) ingested
+
+This carbohydrate intake schedule is implemented in the code as follows:
+
+```matlab
+% Food intake schedule for optimization
+d_schedule = zeros(N, 1);
+d_schedule(1:2) = 18;  % Food intake at time steps 1-2
+d_schedule(7:8) = 18;  % Food intake at time steps 7-8
+d_schedule(15:16) = 18; % Food intake at time steps 15-16
+
+#### Graphics and results
+
+![image](https://github.com/user-attachments/assets/8f8750c0-26f4-4867-936c-bd5e8e13a71c)
+![image](https://github.com/user-attachments/assets/68b9f09e-586a-464c-b68e-8e7adf9a3f8a)
+![image](https://github.com/user-attachments/assets/1720df17-c425-48ce-b36f-8d8d570ca860)
+![image](https://github.com/user-attachments/assets/f904e144-3100-495d-979d-5a01f9ec6b94)
+![image](https://github.com/user-attachments/assets/9a615d89-b67c-4e5d-adc0-d9dc8f520c22)
+![image](https://github.com/user-attachments/assets/70416781-f474-4ee8-9907-801ec6315515)
