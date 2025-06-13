@@ -45,7 +45,7 @@ $$
 Evaluate the polynomial at control points:
 
 $$
-x^* = x_0 + \frac{2h}{3}, \quad x^{****} = x_{n/2} + \frac{h}{2}, \quad x^{*********} = x_n - \frac{h}{3}
+x^* = x_0 + \frac{2h}{3}, \quad x^{**} = x_{n/2} + \frac{h}{2}, \quad x^{***} = x_n - \frac{h}{3}
 $$
 
 Compute the approximation errors:
