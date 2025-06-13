@@ -60,7 +60,13 @@ $$
 P_n(x)
 $$
 
-Evaluate it at control points $$ x^{\ast}, x^{\ast\ast}, x^{\ast\ast\ast} $$ and compute interpolation errors:
+Evaluate it at control points 
+
+$$ 
+x^{\ast}, x^{\ast\ast}, x^{\ast\ast\ast} 
+$$ 
+
+and compute interpolation errors:
 
 $$
 r(x) = f(x) - P_n(x)
@@ -72,7 +78,13 @@ $$
 P_{\text{cheb}}(x)
 $$
 
-Evaluate it at control points $$ x^{\ast}, x^{\ast\ast}, x^{\ast\ast\ast} $$ and compute interpolation errors:
+Evaluate it at control points 
+
+$$ 
+x^{\ast}, x^{\ast\ast}, x^{\ast\ast\ast} 
+$$ 
+
+and compute interpolation errors:
 
 $$
 r(x) = f(x) - P_{\text{cheb}}(x)
@@ -84,7 +96,13 @@ $$
 S(x)
 $$
 
-Evaluate it at control points $$ x^{\ast}, x^{\ast\ast}, x^{\ast\ast\ast} $$ and compute interpolation errors:
+Evaluate it at control points 
+
+$$ 
+x^{\ast}, x^{\ast\ast}, x^{\ast\ast\ast} 
+$$ 
+
+and compute interpolation errors:
 
 $$
 r(x) = f(x) - S(x)
