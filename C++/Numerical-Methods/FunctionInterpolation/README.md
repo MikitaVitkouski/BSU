@@ -45,7 +45,7 @@ $$
 Evaluate the polynomial at control points:
 
 $$
-x^* = x_0 + \frac{2h}{3}, \quad x^{**} = x_{n/2} + \frac{h}{2}, \quad x^{***} = x_n - \frac{h}{3}
+x^{\ast} = x_0 + \frac{2h}{3}, \quad x^{\ast\ast} = x_{n/2} + \frac{h}{2}, \quad x^{\ast\ast} = x_n - \frac{h}{3}
 $$
 
 Compute the approximation errors:
@@ -60,7 +60,7 @@ $$
 P_n(x)
 $$
 
-Evaluate it at control points \( x^*, x^{****}, x^{*********} \) and compute interpolation errors:
+Evaluate it at control points \(x^{\ast}, x^{\ast\ast}, x^{\ast\ast\ast} \) and compute interpolation errors:
 
 $$
 r(x) = f(x) - P_n(x)
@@ -72,7 +72,7 @@ $$
 P_{\text{cheb}}(x)
 $$
 
-Evaluate it at control points \( x^*, x^{****}, x^{*********} \) and compute interpolation errors:
+Evaluate it at control points \( x^{\ast}, x^{\ast\ast}, x^{\ast\ast\ast} \) and compute interpolation errors:
 
 $$
 r(x) = f(x) - P_{\text{cheb}}(x)
@@ -84,7 +84,7 @@ $$
 S(x)
 $$
 
-Evaluate it at control points \( x^*, x^{****}, x^{*********} \) and compute interpolation errors:
+Evaluate it at control points \( x^{\ast}, x^{\ast\ast}, x^{\ast\ast\ast} \) and compute interpolation errors:
 
 $$
 r(x) = f(x) - S(x)
