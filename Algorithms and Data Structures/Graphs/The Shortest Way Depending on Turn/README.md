@@ -27,6 +27,7 @@ Example:
 
 input.txt:
 
+```bash
 6 5 5
 
 4 2
@@ -52,9 +53,12 @@ input.txt:
 6 3 1
 
 2 6
+```
 
 output.txt:
 
+```bash
 Yes
 
 16
+```
