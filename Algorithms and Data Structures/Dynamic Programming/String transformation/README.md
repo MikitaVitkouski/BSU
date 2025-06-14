@@ -16,6 +16,7 @@ Example:
 
 in.txt:
 
+```bash
 2
 
 3
@@ -25,7 +26,9 @@ in.txt:
 abcd
 
 bce
-
+```
 out.txt:
 
+```bash
 3
+```
