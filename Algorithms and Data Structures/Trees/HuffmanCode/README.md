@@ -17,11 +17,14 @@ Example:
 
 huffman.in:
 
+```bash
 6
 
 1 1 2 2 5 8
-
+```
 
 huffman.out:
 
+```bash
 42
+```
