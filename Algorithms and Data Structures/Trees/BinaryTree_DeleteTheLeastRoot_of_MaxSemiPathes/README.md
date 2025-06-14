@@ -6,6 +6,7 @@ The input file contains a sequence of numbers — the keys of the vertices in th
 
 in.txt:
 
+```bash
 50
 40
 60
@@ -14,6 +15,7 @@ in.txt:
 27
 35
 46
+```
 
 Output:
 
@@ -21,6 +23,7 @@ The output file must contain a sequence of vertex keys obtained by a direct left
 
 out.txt:
 
+```bash
 50
 45
 30
@@ -28,3 +31,4 @@ out.txt:
 35
 46
 60
+```
