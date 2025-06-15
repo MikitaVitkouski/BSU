@@ -13,5 +13,10 @@
         "status": "disabled",
         "text": "Dinner",
         "time": 1748700900
+    },
+    {
+        "status": "enabled",
+        "text": "Alarm",
+        "time": 1750021200
     }
 ]

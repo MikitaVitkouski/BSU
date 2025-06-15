@@ -19,7 +19,7 @@ AlarmItemWidget::AlarmItemWidget(const QString& timeText, const QString& labelTe
     labelLabel->setObjectName("alarmLabelText");
     btnDelete->setObjectName("alarmDeleteButton");
 
-    connect(toggleSwitch, &QCheckBox::toggled, this, &AlarmItemWidget::toggled);
+    connect(toggleSwitch, &QCheckBox::toggled, this, &AlarmItemWidget::onAlarmToggled);
     connect(btnDelete, &QPushButton::clicked, this, &AlarmItemWidget::deleteRequested);
 
     QVBoxLayout* textLayout = new QVBoxLayout;
@@ -34,5 +34,7 @@ AlarmItemWidget::AlarmItemWidget(const QString& timeText, const QString& labelTe
 }
 
 void AlarmItemWidget::setEnabledState(bool state) {
-    toggleSwitch->setChecked(state);
+    if (toggleSwitch->isChecked() != state) {
+        toggleSwitch->setChecked(state);
+    }
 }

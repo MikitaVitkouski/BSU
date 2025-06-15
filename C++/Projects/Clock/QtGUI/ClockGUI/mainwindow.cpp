@@ -420,7 +420,7 @@ void MainWindow::updateAlarmList() {
                 updateAlarmList();
             });
 
-            connect(widget, &AlarmItemWidget::toggled, this, [=](bool enabled) {
+            connect(widget, &AlarmItemWidget::onAlarmToggled, this, [=](bool enabled) {
                 alarmManager.setAlarmEnabled(i, enabled);
             });
         }
@@ -473,7 +473,7 @@ void MainWindow::closeEvent(QCloseEvent *event) {
     QDir directory = QDir::currentPath();directory.cdUp(); directory.cdUp();
     QString basePath = directory.absolutePath();
 
-    QFile file(basePath + QDir::separator() + "notes.json");
+    QFile file(basePath + QDir::separator() + "alarms.json");
     if (file.open(QIODevice::WriteOnly)) {
         QJsonArray jsonArray;
         const auto& alarms = alarmManager.getAllAlarms();

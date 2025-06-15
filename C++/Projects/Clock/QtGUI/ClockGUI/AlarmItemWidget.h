@@ -12,7 +12,7 @@ class AlarmItemWidget : public QWidget {
     Q_OBJECT
 signals:
     void deleteRequested();
-    void toggled(bool enabled);
+    void onAlarmToggled(bool enabled);
 public:
     AlarmItemWidget(const QString& timeText, const QString& labelText, bool isEnabled, QWidget* parent = nullptr);
     void setEnabledState(bool state);
