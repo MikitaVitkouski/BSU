@@ -422,6 +422,7 @@ void MainWindow::updateAlarmList() {
 
             connect(widget, &AlarmItemWidget::onAlarmToggled, this, [=](bool enabled) {
                 alarmManager.setAlarmEnabled(i, enabled);
+                updateAlarmList();
             });
         }
     } else {
