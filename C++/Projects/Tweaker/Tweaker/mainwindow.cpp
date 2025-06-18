@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "./ui_mainwindow.h"
 #include <QDir>
+#include <QProcess>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -29,6 +30,18 @@ MainWindow::MainWindow(QWidget *parent)
 MainWindow::~MainWindow()
 {
     delete ui;
+}
+
+void applyRegistryFile(const QString& regFilePath) {
+    QProcess process;
+    QString command {"regedit"};
+    QStringList arguments{};
+    arguments << "/s" << regFilePath;
+
+    bool success = process.startDetached(command, arguments);
+    if (!success) {
+        qWarning("Cannot load regedit!");
+    }
 }
 
 void MainWindow::onbtnEasyModeClicked() {
