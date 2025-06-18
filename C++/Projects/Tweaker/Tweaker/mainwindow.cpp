@@ -45,17 +45,27 @@ void applyRegistryFile(const QString& regFilePath) {
 }
 
 void MainWindow::onbtnEasyModeClicked() {
-
+    QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();
+    QString basePath = directory.absolutePath();
+    applyRegistryFile(basePath + QDir::separator() + "easy.reg");
 }
 
 void MainWindow::onbtnMediumModeClicked() {
-
+    QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();
+    QString basePath = directory.absolutePath();
+    applyRegistryFile(basePath + QDir::separator() + "medium.reg");
 }
+
 
 void MainWindow::onbtnHardModeClicked() {
-
+    QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();
+    QString basePath = directory.absolutePath();
+    applyRegistryFile(basePath + QDir::separator() + "hard.reg");
 }
 
-void MainWindow::onbtnExpertModeClicked() {
 
+void MainWindow::onbtnExpertModeClicked() {
+    QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();
+    QString basePath = directory.absolutePath();
+    applyRegistryFile(basePath + QDir::separator() + "expert.reg");
 }
