@@ -56,13 +56,11 @@ void MainWindow::onbtnMediumModeClicked() {
     applyRegistryFile(basePath + QDir::separator() + "medium.reg");
 }
 
-
 void MainWindow::onbtnHardModeClicked() {
     QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();
     QString basePath = directory.absolutePath();
     applyRegistryFile(basePath + QDir::separator() + "hard.reg");
 }
-
 
 void MainWindow::onbtnExpertModeClicked() {
     QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();

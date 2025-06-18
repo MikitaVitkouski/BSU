@@ -22,10 +22,15 @@ set(UIS
     mainwindow.ui
 )
 
+if(WIN32)
+    set(WINDOWS_MANIFEST resources.rc)
+endif()
+
 qt_add_executable(Tweaker
     ${SOURCES}
     ${HEADERS}
     ${UIS}
+    ${WINDOWS_MANIFEST}
 )
 
 target_link_libraries(Tweaker PRIVATE Qt6::Widgets)
