@@ -3,6 +3,7 @@
 #include <QDir>
 #include <QProcess>
 #include <QPixmap>
+#include <QMessageBox>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -51,6 +52,10 @@ void applyRegistryFile(const QString& regFilePath) {
     }
 }
 
+bool confirmRisk() {
+    QMessageBox msgBox;
+}
+
 void MainWindow::onbtnEasyModeClicked() {
     QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();
     QString basePath = directory.absolutePath();
@@ -74,3 +79,4 @@ void MainWindow::onbtnExpertModeClicked() {
     QString basePath = directory.absolutePath();
     applyRegistryFile(basePath + QDir::separator() + "expert.reg");
 }
+

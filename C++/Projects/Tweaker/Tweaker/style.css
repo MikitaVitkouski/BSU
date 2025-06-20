@@ -27,6 +27,50 @@ QPushButton:hover {
     border: 1px solid #4e944d;
 }
 
+QPushButton#btnEasyMode {
+    background-color: #B706B2;
+    border: 1px solid #9a0593;
+    color: white;
+}
+
+QPushButton#btnEasyMode:hover {
+    background-color: #9a0593;
+    border: 1px solid #7a046f;
+}
+
+QPushButton#btnMediumMode {
+    background-color: #42C00C;
+    border: 1px solid #379609;
+    color: white;
+}
+
+QPushButton#btnMediumMode:hover {
+    background-color: #379609;
+    border: 1px solid #2d7507;
+}
+
+QPushButton#btnHardMode {
+    background-color: #F9F912;
+    border: 1px solid #d4d40b;
+    color: #1e1e1e;
+}
+
+QPushButton#btnHardMode:hover {
+    background-color: #d4d40b;
+    border: 1px solid #aaaa09;
+}
+
+QPushButton#btnExpertMode {
+    background-color: #EE0FAB;
+    border: 1px solid #b60d8a;
+    color: white;
+}
+
+QPushButton#btnExpertMode:hover {
+    background-color: #b60d8a;
+    border: 1px solid #8a0867;
+}
+
 QGroupBox {
     border: 1px solid #cccccc;
     margin-top: 12px;
