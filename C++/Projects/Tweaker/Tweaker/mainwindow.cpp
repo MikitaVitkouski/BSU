@@ -2,6 +2,7 @@
 #include "./ui_mainwindow.h"
 #include <QDir>
 #include <QProcess>
+#include <QPixmap>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -19,6 +20,12 @@ MainWindow::MainWindow(QWidget *parent)
         this->setStyleSheet(styleSheet);
         fileStyle.close();
     }
+
+    // logos
+    QString imagePath = basePath + QDir::separator() + "icons" + QDir::separator() + "resources" + QDir::separator() + "gear.png";
+    QPixmap pixmap(imagePath);
+    ui->logoGear->setPixmap(pixmap);
+    ui->logoGear->setScaledContents(true);
 
     // buttons
     connect(ui->btnEasyMode, &QPushButton::clicked, this, &MainWindow::onbtnEasyModeClicked);

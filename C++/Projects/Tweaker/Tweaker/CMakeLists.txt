@@ -12,6 +12,7 @@ qt_add_resources(PROJECT_SOURCES resources.qrc)
 set(SOURCES
     main.cpp
     mainwindow.cpp
+    ${RESOURCE_SOURCES}
 )
 
 set(HEADERS
