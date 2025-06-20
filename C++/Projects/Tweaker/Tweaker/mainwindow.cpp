@@ -54,27 +54,46 @@ void applyRegistryFile(const QString& regFilePath) {
 
 bool confirmRisk() {
     QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setWindowTitle("Warning!");
+    msgBox.setText("You are about to apply changes to the registry.\n"
+                   "This may lead to unpredictable consequences.\n"
+                   "Proceed at your own risk!\n\n"
+                   "Do you want to continue?");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msgBox.setDefaultButton(QMessageBox::No);
+
+    int ret {msgBox.exec()};
+    return ret == QMessageBox::Yes;
 }
 
 void MainWindow::onbtnEasyModeClicked() {
+    if(!confirmRisk()) return;
+
     QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();
     QString basePath = directory.absolutePath();
     applyRegistryFile(basePath + QDir::separator() + "easy.reg");
 }
 
 void MainWindow::onbtnMediumModeClicked() {
+    if(!confirmRisk()) return;
+
     QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();
     QString basePath = directory.absolutePath();
     applyRegistryFile(basePath + QDir::separator() + "medium.reg");
 }
 
 void MainWindow::onbtnHardModeClicked() {
+    if(!confirmRisk()) return;
+
     QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();
     QString basePath = directory.absolutePath();
     applyRegistryFile(basePath + QDir::separator() + "hard.reg");
 }
 
 void MainWindow::onbtnExpertModeClicked() {
+    if(!confirmRisk()) return;
+
     QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();
     QString basePath = directory.absolutePath();
     applyRegistryFile(basePath + QDir::separator() + "expert.reg");
