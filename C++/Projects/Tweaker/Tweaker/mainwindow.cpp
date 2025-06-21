@@ -4,6 +4,7 @@
 #include <QProcess>
 #include <QPixmap>
 #include <QMessageBox>
+#include <QToolTip>
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -28,8 +29,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->logoGear->setPixmap(pixmap);
     ui->logoGear->setScaledContents(true);
 
-    // RAM
-
+    // RAM representation
     memoryUsagePercent = 0;
 
     ramTimer = new QTimer(this);
@@ -44,6 +44,21 @@ MainWindow::MainWindow(QWidget *parent)
     connect(ui->btnMediumMode, &QPushButton::clicked, this, &MainWindow::onbtnMediumModeClicked);
     connect(ui->btnHardMode, &QPushButton::clicked, this, &MainWindow::onbtnHardModeClicked);
     connect(ui->btnExpertMode, &QPushButton::clicked, this, &MainWindow::onbtnExpertModeClicked);
+
+    // tool tips for buttons
+    ui->btnEasyMode->setToolTip("- Printing, taxing, remote regitsry, touch keyboard, Xbox-related services\n"
+                                "- Improves JPEG import quality\n"
+                                "- Geolocation, BITS, Distributed Link Tracking, Program Compatibility Assistant, etc.");
+    ui->btnMediumMode->setToolTip("Includes everything from easy tweaking mode\n"
+                                  "- Windows Defender\n"
+                                  "- User Account Control (UAC)\n"
+                                  "- Windows Firewall\n"
+                                  "- Sleep, hibernate\n"
+                                  "- Power scheme is set to Maximum performance\n"
+                                  "- Windows Update (including auto updates)\n"
+                                  "- More services (Hyper-V)");
+    ui->btnHardMode->setToolTip("Includes everything from medium tweaking mode\n");
+    ui->btnExpertMode->setToolTip("Includes everything from hard tweaking mode\n");
 }
 
 MainWindow::~MainWindow()
