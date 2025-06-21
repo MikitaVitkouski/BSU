@@ -12,11 +12,13 @@ qt_add_resources(PROJECT_SOURCES resources.qrc)
 set(SOURCES
     main.cpp
     mainwindow.cpp
+    RamLabel.cpp
     ${RESOURCE_SOURCES}
 )
 
 set(HEADERS
     mainwindow.h
+    RamLabel.h
 )
 
 set(UIS
@@ -32,6 +34,8 @@ qt_add_executable(Tweaker
     ${HEADERS}
     ${UIS}
     ${WINDOWS_MANIFEST}
+    RamLabel.cpp
+    RamLabel.h
 )
 
 target_link_libraries(Tweaker PRIVATE Qt6::Widgets)

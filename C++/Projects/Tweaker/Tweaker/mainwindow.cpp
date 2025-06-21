@@ -28,6 +28,17 @@ MainWindow::MainWindow(QWidget *parent)
     ui->logoGear->setPixmap(pixmap);
     ui->logoGear->setScaledContents(true);
 
+    // RAM
+
+    memoryUsagePercent = 0;
+
+    ramTimer = new QTimer(this);
+    connect(ramTimer, &QTimer::timeout, this, &MainWindow::updateMemoryUsage);
+    ramTimer->start(1000);
+    ramLabel = new RamLabel(this);
+    ramLabel->setGeometry(510, 70, 150, 100);
+    ramLabel->show();
+
     // buttons
     connect(ui->btnEasyMode, &QPushButton::clicked, this, &MainWindow::onbtnEasyModeClicked);
     connect(ui->btnMediumMode, &QPushButton::clicked, this, &MainWindow::onbtnMediumModeClicked);
@@ -99,3 +110,12 @@ void MainWindow::onbtnExpertModeClicked() {
     applyRegistryFile(basePath + QDir::separator() + "expert.reg");
 }
 
+void MainWindow::updateMemoryUsage() {
+    MEMORYSTATUSEX statex;
+    statex.dwLength = sizeof(statex);
+    GlobalMemoryStatusEx(&statex);
+    memoryUsagePercent = static_cast<int>(statex.dwMemoryLoad);
+
+    ramLabel->usage = memoryUsagePercent;
+    ramLabel->update();
+}

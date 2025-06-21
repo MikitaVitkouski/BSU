@@ -10,6 +10,16 @@ QLabel {
     color: #2e2e2e;
 }
 
+QLabel#labelRAMName {
+    color: #00aaff;
+    font-weight: bold;
+    font-size: 18px;
+    background: transparent;
+    border: none;
+    padding: 0;
+    qproperty-alignment: 'AlignCenter';
+}
+
 QPushButton {
     color: #ffffff;
     font-weight: bold;
