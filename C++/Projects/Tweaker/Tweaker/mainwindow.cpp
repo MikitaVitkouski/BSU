@@ -48,7 +48,8 @@ MainWindow::MainWindow(QWidget *parent)
     // tool tips for buttons
     ui->btnEasyMode->setToolTip("- Printing, taxing, remote regitsry, touch keyboard, Xbox-related services\n"
                                 "- Improves JPEG import quality\n"
-                                "- Geolocation, BITS, Distributed Link Tracking, Program Compatibility Assistant, etc.");
+                                "- Geolocation, BITS, Distributed Link Tracking, Program Compatibility Assistant, etc."
+                                "- Game DVR");
     ui->btnMediumMode->setToolTip("Includes everything from easy tweaking mode\n"
                                   "- Windows Defender\n"
                                   "- User Account Control (UAC)\n"
@@ -56,12 +57,15 @@ MainWindow::MainWindow(QWidget *parent)
                                   "- Sleep, hibernate\n"
                                   "- Power scheme is set to Maximum performance\n"
                                   "- Windows Update (including auto updates)\n"
+                                  "- Windows Search\n"
                                   "- More services (Hyper-V)");
     ui->btnHardMode->setToolTip("Includes everything from medium tweaking mode\n"
                                 "- Adjust for best performance (rectangle and antialiasing fonts are on)\n"
                                 "- Disable virtual memory\n"
                                 "- More services (Windows Modules Installer)");
-    ui->btnExpertMode->setToolTip("Includes everything from hard tweaking mode\n");
+    ui->btnExpertMode->setToolTip("Includes everything from hard tweaking mode\n"
+                                  "- Indexing of disks\n"
+                                  "- Cortana");
 }
 
 MainWindow::~MainWindow()

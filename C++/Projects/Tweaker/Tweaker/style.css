@@ -1,5 +1,10 @@
 QWidget {
-    background-color: #f9f9f9;
+    background: qlineargradient(
+        x1: 0, y1: 0,
+        x2: 1, y2: 1,
+        stop: 0 #f6f9fc,
+        stop: 1 #e9f1f7
+    );
     color: #1e1e1e;
     font-family: "Segoe UI", "Roboto", sans-serif;
     font-size: 15px;
@@ -8,6 +13,8 @@ QWidget {
 QLabel {
     font-size: 15px;
     color: #2e2e2e;
+    background: transparent;
+    border: none;
 }
 
 QLabel#labelRAMName {
