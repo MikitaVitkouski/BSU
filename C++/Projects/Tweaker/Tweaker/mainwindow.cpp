@@ -93,12 +93,28 @@ bool confirmRisk() {
     return ret == QMessageBox::Yes;
 }
 
+void promptRestart() {
+    QMessageBox msgBox;
+    msgBox.setIcon(QMessageBox::Question);
+    msgBox.setWindowTitle("Restart required");
+    msgBox.setText("Some changes require a system restart to apply changes.\n\nRestart now?");
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::No);
+    msgBox.setDefaultButton(QMessageBox::No);
+
+    int ret {msgBox.exec()};
+    if (ret == QMessageBox::Yes) {
+        QProcess::startDetached("shutdown", QStringList() << "/r" << "/t" << "0");
+    }
+}
+
 void MainWindow::onbtnEasyModeClicked() {
     if(!confirmRisk()) return;
 
     QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();
     QString basePath = directory.absolutePath();
     applyRegistryFile(basePath + QDir::separator() + "easy.reg");
+
+    promptRestart();
 }
 
 void MainWindow::onbtnMediumModeClicked() {
@@ -107,6 +123,8 @@ void MainWindow::onbtnMediumModeClicked() {
     QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();
     QString basePath = directory.absolutePath();
     applyRegistryFile(basePath + QDir::separator() + "medium.reg");
+
+    promptRestart();
 }
 
 void MainWindow::onbtnHardModeClicked() {
@@ -115,6 +133,8 @@ void MainWindow::onbtnHardModeClicked() {
     QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();
     QString basePath = directory.absolutePath();
     applyRegistryFile(basePath + QDir::separator() + "hard.reg");
+
+    promptRestart();
 }
 
 void MainWindow::onbtnExpertModeClicked() {
@@ -123,6 +143,8 @@ void MainWindow::onbtnExpertModeClicked() {
     QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();
     QString basePath = directory.absolutePath();
     applyRegistryFile(basePath + QDir::separator() + "expert.reg");
+
+    promptRestart();
 }
 
 void MainWindow::updateMemoryUsage() {
