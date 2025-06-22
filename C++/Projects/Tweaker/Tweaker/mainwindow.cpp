@@ -57,7 +57,10 @@ MainWindow::MainWindow(QWidget *parent)
                                   "- Power scheme is set to Maximum performance\n"
                                   "- Windows Update (including auto updates)\n"
                                   "- More services (Hyper-V)");
-    ui->btnHardMode->setToolTip("Includes everything from medium tweaking mode\n");
+    ui->btnHardMode->setToolTip("Includes everything from medium tweaking mode\n"
+                                "- Adjust for best performance (rectangle and antialiasing fonts are on)\n"
+                                "- Disable virtual memory\n"
+                                "- More services (Windows Modules Installer)");
     ui->btnExpertMode->setToolTip("Includes everything from hard tweaking mode\n");
 }
 
