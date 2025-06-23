@@ -1,14 +1,10 @@
 ## Screenshots
 
-![image](https://github.com/user-attachments/assets/26c573bf-db8e-42f0-b87e-2ed91678499b)
+![image](https://github.com/user-attachments/assets/b0b7f736-0c56-40d3-a715-ccd52ad69ea2)
 
 ## Description
 
-### Hard Mode
-
-This registry file is designed for advanced users who want to fully disable non-essential Windows services and features to maximize performance, reduce background activity, and gain full control over system behavior.
-
-> ⚠️ **Warning:** This is a highly aggressive tweak set. It disables many background services, security features, and automatic updates. Use at your own risk and only if you understand the consequences.
+Choose mode of tweak: easy, medium, hard or expert. Decrease RAM usage without many actions manually. I use this after Windows reinstall to disable useless from my point of view Windows functions.
 
 ### Key Changes Applied
 
@@ -21,7 +17,7 @@ This registry file is designed for advanced users who want to fully disable non-
 | Power & Paging          | Disables hibernation, fast startup, and paging file                         |
 | Screen Saver            | Turned off to prevent interruptions                                          |
 | Firewall                | All firewall profiles (Domain, Private, Public) disabled                     |
-| User Account Control    | UAC is disabled (`EnableLUA=0`) for full administrative control             |
+| User Account Control    | UAC is disabled for full administrative control                             |
 
 ### Intended Use Cases
 
