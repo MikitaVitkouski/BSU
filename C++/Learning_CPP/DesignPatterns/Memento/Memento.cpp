@@ -2,6 +2,7 @@
 #include <string>
 #include <stack>
 
+// Memento
 class Memento {
 	std::string state;
 public:
@@ -11,6 +12,7 @@ public:
 	}
 };
 
+// Originator
 class TextEditor {
 	std::string text;
 public:
@@ -31,6 +33,7 @@ public:
 	}
 };
 
+// Caretaker
 class History {
 	std::stack<Memento> mementos;
 public:
