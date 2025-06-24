@@ -4,6 +4,7 @@
 
 class ATM;
 
+// State
 class ATMState {
 public:
 	virtual void insertCard(ATM& atm) = 0;
@@ -12,6 +13,7 @@ public:
 	virtual ~ATMState() = default;
 };
 
+// Concrete states
 class NoCardState : public ATMState {
 	void insertCard(ATM& atm) override;
 	void enterPIN(ATM& atm, int) override {
@@ -47,6 +49,7 @@ public:
 	void withdrawCash(ATM& atm, int amount) override;
 };
 
+// Context
 class ATM {
 private:
 	std::unique_ptr<ATMState> currentState;
