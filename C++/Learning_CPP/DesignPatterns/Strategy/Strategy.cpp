@@ -31,6 +31,7 @@ public:
 	}
 };
 
+// Context
 class Navigator {
 private:
 	std::unique_ptr<RouteStrategy> strategy;
