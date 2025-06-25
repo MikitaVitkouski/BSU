@@ -12,8 +12,7 @@ MainWindow::MainWindow(QWidget *parent)
 {
     ui->setupUi(this);
 
-    QDir directory = QDir::currentPath(); directory.cdUp(); directory.cdUp();
-    QString basePath = directory.absolutePath();
+    QString basePath = QCoreApplication::applicationDirPath();
 
     QFile fileStyle(basePath + QDir::separator() + "style.css");
     if (fileStyle.open(QFile::ReadOnly | QFile::Text)) {
